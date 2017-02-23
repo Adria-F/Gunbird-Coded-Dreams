@@ -1,7 +1,6 @@
 # Gunbird
 
-# Team Coded Dreams
-## Members
+## Coded Dreams Members
 Adrià Ferrer
 Josep Pi
 Norman Benet
