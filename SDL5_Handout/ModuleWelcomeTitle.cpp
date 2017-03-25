@@ -31,10 +31,10 @@ bool ModuleWelcomeTitle::Start()
 	graphics = App->textures->Load("assets/maps/credit-insert_welcome-page.png");
 
 	LOG("Loading music")
-	App->audio->Load("assets/music/welcome_title.ogg");
+	App->audio->Load("assets/music/castle-welcome_title.ogg");
 	App->audio->Play();
 	// TODO 1: Enable (and properly disable) the player module
-	App->player->Enable();
+	App->player->Enable(); //Player in welcome title?
 	fading = false;
 
 	return ret;

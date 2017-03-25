@@ -31,7 +31,7 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading castle scene");
 	
 	graphics = App->textures->Load("assets/maps/castle_background.png");
-	App->audio->Load("assets/music/castle.ogg");
+	App->audio->Load("assets/music/castle-welcome_title.ogg");
 	App->audio->Play();
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();

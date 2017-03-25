@@ -34,7 +34,7 @@ bool ModuleHighscores::Start()
 	App->audio->Load("assets/music/highscore.ogg");
 	App->audio->Play();
 	// TODO 1: Enable (and properly disable) the player module
-	App->player->Enable();
+	App->player->Enable(); //Player in highscores?
 	fading = false;
 
 	return true;
