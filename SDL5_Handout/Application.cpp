@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
+#include "ModuleHighscores.h"
 
 Application::Application()
 {
@@ -22,6 +23,7 @@ Application::Application()
 	modules[7] = fade = new ModuleFadeToBlack();
 	modules[8] = audio = new ModuleAudio();
 	modules[9] = welcometitle = new ModuleWelcomeTitle();
+	modules[10] = highscores = new ModuleHighscores();
 }
 
 Application::~Application()

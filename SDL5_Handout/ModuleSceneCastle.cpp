@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
+#include "ModuleHighscores.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -58,7 +59,7 @@ update_status ModuleSceneCastle::Update()
 	// TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->welcometitle);
+		App->fade->FadeToBlack(this, App->highscores);
 		fading = true;
 	}
 

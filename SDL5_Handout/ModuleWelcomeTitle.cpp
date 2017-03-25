@@ -43,7 +43,7 @@ bool ModuleWelcomeTitle::Start()
 // UnLoad assets
 bool ModuleWelcomeTitle::CleanUp()
 {
-	LOG("Unloading castle scene");
+	LOG("Unloading welcome scene");
 	App->audio->Stop();
 	App->player->Disable();
 
