@@ -26,16 +26,18 @@ ModuleWelcomeTitle::~ModuleWelcomeTitle()
 // Load assets
 bool ModuleWelcomeTitle::Start()
 {
-	LOG("Loading castle scene");
-
+	LOG("Loading WelcomeTitle scene");
+	bool ret = true;
 	graphics = App->textures->Load("assets/maps/credit-insert_welcome-page.png");
-	App->audio->Load("assets/music/title.ogg");
+
+	LOG("Loading music")
+	App->audio->Load("assets/music/welcome_title.ogg");
 	App->audio->Play();
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	fading = false;
 
-	return true;
+	return ret;
 }
 
 // UnLoad assets
@@ -54,9 +56,9 @@ update_status ModuleWelcomeTitle::Update()
 {
 	// Draw everything --------------------------------------
 	
-	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // sea and sky
+	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // Welcome title Screen
 
-																				 // TODO 3: make so pressing SPACE the HONDA stage is loaded
+	// TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->scene_mine);
