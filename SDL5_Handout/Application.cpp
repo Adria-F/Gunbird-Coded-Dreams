@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
 #include "ModuleHighscores.h"
+#include "ModuleSelection.h"
 
 Application::Application()
 {
@@ -19,11 +20,13 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = scene_mine = new ModuleSceneMine();
 	modules[5] = scene_castle = new ModuleSceneCastle();
-	modules[6] = player = new ModulePlayer();
-	modules[7] = fade = new ModuleFadeToBlack();
-	modules[8] = audio = new ModuleAudio();
-	modules[9] = welcometitle = new ModuleWelcomeTitle();
-	modules[10] = highscores = new ModuleHighscores();
+	modules[6] = welcometitle = new ModuleWelcomeTitle();
+	modules[7] = highscores = new ModuleHighscores();
+	modules[8] = selection = new ModuleSelection();
+	modules[9] = player = new ModulePlayer();
+	modules[10] = fade = new ModuleFadeToBlack();
+	modules[11] = audio = new ModuleAudio();
+	
 }
 
 Application::~Application()
@@ -42,6 +45,7 @@ bool Application::Init()
 	scene_castle->Disable();
 	highscores->Disable();
 	scene_mine->Disable();
+	selection->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

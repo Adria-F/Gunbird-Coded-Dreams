@@ -22,9 +22,9 @@ bool ModuleAudio::Init()
 	return true;
 }
 
-void ModuleAudio::Play()
+void ModuleAudio::Play(int loop)
 {
-	Mix_PlayMusic(music, -1);
+	Mix_PlayMusic(music, loop);
 }
 
 void ModuleAudio::Stop()

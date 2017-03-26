@@ -6,16 +6,18 @@
 
 class ModuleAudio : public Module
 {
+
 public:
 	ModuleAudio();
 	virtual ~ModuleAudio();
 
 	bool Load(const char* path);
-	void Play();
+	void Play(int loop);
 	void Stop();
 
 	bool Init();
 	bool CleanUp();
+
 public:
 	Mix_Music* music = nullptr;
 };

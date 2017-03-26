@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModuleAudio.h"
+#include "ModuleFadeToBlack.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -36,6 +38,14 @@ update_status ModuleInput::PreUpdate()
 
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
+	if (keyboard[SDL_SCANCODE_SPACE])
+	{
+		if (App->fade->GetFadeState() == false)
+		{
+			App->audio->Load("assets/music/insert_coin.ogg");
+			App->audio->Play(1);
+		}
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -31,8 +31,9 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading castle scene");
 	
 	graphics = App->textures->Load("assets/maps/castle_background.png");
+	
 	App->audio->Load("assets/music/castle-welcome_title.ogg");
-	App->audio->Play();
+	App->audio->Play(-1);
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	fading = false;

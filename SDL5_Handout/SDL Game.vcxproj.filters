@@ -65,6 +65,9 @@
     <ClInclude Include="ModuleHighscores.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSelection.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -107,6 +110,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleHighscores.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSelection.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

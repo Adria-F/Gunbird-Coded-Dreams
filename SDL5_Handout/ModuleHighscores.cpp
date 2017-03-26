@@ -30,11 +30,10 @@ bool ModuleHighscores::Start()
 	bool ret = true;
 	graphics = App->textures->Load("assets/maps/highscore_nameregist.png");
 
-	LOG("Loading music")
+	LOG("Loading music");
 	App->audio->Load("assets/music/highscore.ogg");
-	App->audio->Play();
+	App->audio->Play(-1);
 	// TODO 1: Enable (and properly disable) the player module
-	App->player->Enable(); //Player in highscores?
 	fading = false;
 
 	return true;
