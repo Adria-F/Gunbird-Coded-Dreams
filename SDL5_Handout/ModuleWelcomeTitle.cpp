@@ -43,6 +43,7 @@ bool ModuleWelcomeTitle::Start()
 bool ModuleWelcomeTitle::CleanUp()
 {
 	LOG("Unloading welcome scene");
+	App->textures->Unload(graphics);
 	App->audio->Stop();
 	App->player->Disable();
 

@@ -42,6 +42,14 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
+bool ModulePlayer::CleanUp()
+{
+	bool ret = true;
+	App->textures->Unload(graphics);
+
+	return ret;
+}
+
 // Update: draw background
 update_status ModulePlayer::Update()
 {

@@ -29,6 +29,7 @@ void ModuleAudio::Play(int loop)
 
 void ModuleAudio::Stop()
 {
+	Mix_FreeMusic(music);
 	Mix_HaltMusic();
 }
 

@@ -43,6 +43,7 @@ bool ModuleHighscores::Start()
 bool ModuleHighscores::CleanUp()
 {
 	LOG("Unloading highscore scene");
+	App->textures->Unload(graphics);
 	App->audio->Stop();
 	App->player->Disable();
 

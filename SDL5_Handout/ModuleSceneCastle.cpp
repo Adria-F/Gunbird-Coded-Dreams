@@ -46,6 +46,7 @@ bool ModuleSceneCastle::Start()
 bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading castle scene");
+	App->textures->Unload(graphics);
 	App->audio->Stop();
 	App->player->Disable();
 

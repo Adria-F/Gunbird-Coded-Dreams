@@ -46,6 +46,7 @@ bool ModuleSceneMine::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
 	LOG("Unloading mine stage");
+	App->textures->Unload(graphics);
 	App->audio->Stop();
 	App->player->Disable();
 

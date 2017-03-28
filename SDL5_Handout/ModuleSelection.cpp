@@ -33,7 +33,6 @@ bool ModuleSelection::Start()
 	App->audio->Load("assets/music/castle-welcome_title.ogg");
 	App->audio->Play(-1);
 	// TODO 1: Enable (and properly disable) the player module
-	App->player->Enable(); //Player in welcome title?
 	fading = false;
 
 	return ret;
@@ -43,6 +42,7 @@ bool ModuleSelection::Start()
 bool ModuleSelection::CleanUp()
 {
 	LOG("Unloading selection scene");
+	App->textures->Unload(graphics);
 	App->audio->Stop();
 	App->player->Disable();
 
