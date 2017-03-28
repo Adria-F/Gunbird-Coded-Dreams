@@ -44,6 +44,7 @@ bool ModuleWelcomeTitle::CleanUp()
 {
 	LOG("Unloading welcome scene");
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 	App->audio->Stop();
 	App->player->Disable();
 

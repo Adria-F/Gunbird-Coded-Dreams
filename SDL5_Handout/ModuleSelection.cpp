@@ -43,6 +43,7 @@ bool ModuleSelection::CleanUp()
 {
 	LOG("Unloading selection scene");
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 	App->audio->Stop();
 	App->player->Disable();
 

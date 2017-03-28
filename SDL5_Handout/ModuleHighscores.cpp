@@ -44,6 +44,7 @@ bool ModuleHighscores::CleanUp()
 {
 	LOG("Unloading highscore scene");
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 	App->audio->Stop();
 	App->player->Disable();
 
