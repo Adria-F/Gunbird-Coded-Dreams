@@ -46,31 +46,17 @@ update_status ModuleRender::PreUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::Update()	
+update_status ModuleRender::Update()
 {
-	int speed = 2;
+	int speed = 1;
 
-	if (App->input->keyboard[SDL_SCANCODE_UP])
+	if (App->scene_mine->background_y < 0 && App->scene_mine->IsEnabled())
 	{
-		if (App->scene_mine->background_y < 0 && App->scene_mine->IsEnabled())
-		{
-			App->scene_mine->background_y += speed;
-		}
-		if (App->scene_castle->background_y < 0 && App->scene_castle->IsEnabled())
-		{
-			App->scene_castle->background_y += speed;
-		}
+		App->scene_mine->background_y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN])
+	if (App->scene_castle->background_y < 0 && App->scene_castle->IsEnabled())
 	{
-		if (App->scene_mine->background_y > -2895 && App->scene_mine->IsEnabled())
-		{
-			App->scene_mine->background_y -= speed;
-		}
-		if (App->scene_castle->background_y > -2895 && App->scene_castle->IsEnabled())
-		{
-			App->scene_castle->background_y -= speed;
-		}
+		App->scene_castle->background_y += speed;
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -79,6 +65,7 @@ update_status ModuleRender::Update()
 update_status ModuleRender::PostUpdate()
 {
 	SDL_RenderPresent(renderer);
+
 	return update_status::UPDATE_CONTINUE;
 }
 

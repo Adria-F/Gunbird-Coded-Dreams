@@ -18,8 +18,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = 3535;
-	background_x = 0;
-	background_y = -2895;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -32,6 +30,9 @@ bool ModuleSceneCastle::Start()
 	
 	graphics = App->textures->Load("assets/maps/castle_background.png");
 	
+	background_x = 0;
+	background_y = -2895;
+
 	App->audio->Load("assets/music/castle-welcome_title.ogg");
 	App->audio->Play(-1);
 	// TODO 1: Enable (and properly disable) the player module

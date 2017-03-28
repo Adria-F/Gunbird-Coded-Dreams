@@ -16,8 +16,6 @@ ModuleSceneMine::ModuleSceneMine()
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = 3535;
-	background_x = 0;
-	background_y = -2895;
 }
 
 ModuleSceneMine::~ModuleSceneMine()
@@ -29,6 +27,9 @@ bool ModuleSceneMine::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("assets/maps/mine_background.png");
+
+	background_x = 0;
+	background_y = -2895;
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg");
