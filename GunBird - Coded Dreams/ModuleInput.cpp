@@ -42,7 +42,7 @@ update_status ModuleInput::PreUpdate()
 	{
 		if (App->fade->GetFadeState() == false)
 		{
-			App->audio->Load("assets/music/insert_coin.ogg");
+			App->audio->Load("assets/effects/gunbird_101 [VOICE] Coin (Credit Inserted).wav");
 			App->audio->Play(1);
 		}
 	}
