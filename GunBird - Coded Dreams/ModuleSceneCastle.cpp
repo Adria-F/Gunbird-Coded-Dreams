@@ -31,7 +31,7 @@ bool ModuleSceneCastle::Start()
 	graphics = App->textures->Load("assets/maps/castle_background.png");
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
-	App->render->camera.y = -2895;
+	App->render->camera.y = -3210;
 
 	App->audio->Load("assets/music/castle-welcome_title.ogg");
 	App->audio->Play(-1);

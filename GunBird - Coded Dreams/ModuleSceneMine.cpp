@@ -30,7 +30,7 @@ bool ModuleSceneMine::Start()
 	graphics = App->textures->Load("assets/maps/mine_background.png");
 
 	App->render->camera.x  = 0;
-	App->render->camera.y = -2895;
+	App->render->camera.y = -3210;
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg");

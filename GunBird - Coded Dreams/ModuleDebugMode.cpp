@@ -8,8 +8,8 @@ using namespace std;
 
 ModuleDebugMode::ModuleDebugMode()
 {
-	notifier.w = 147;
-	notifier.h = 31;
+	notifier.w = 73;
+	notifier.h = 15;
 }
 
 ModuleDebugMode::~ModuleDebugMode()
@@ -42,9 +42,9 @@ bool ModuleDebugMode::CleanUp()
 		{
 			App->render->camera.y = 0;
 		}
-		else if (App->render->camera.y < -2895)
+		else if (App->render->camera.y < -3210)
 		{
-			App->render->camera.y = -2895;
+			App->render->camera.y = -3210;
 		}
 	}
 
