@@ -4,14 +4,18 @@
 #include "SDL/include/SDL.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleDebugMode.h"
 
 ModuleInput::ModuleInput() : Module()
 {
+	for (uint i = 0; i < MAX_KEYS; ++i)
+		keyboard[i] = KEY_IDLE;
 }
 
 // Destructor
 ModuleInput::~ModuleInput()
-{}
+{
+}
 
 // Called before render is available
 bool ModuleInput::Init()
@@ -34,10 +38,41 @@ update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
-	keyboard = SDL_GetKeyboardState(NULL);
+	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
+	for (int i = 0; i < MAX_KEYS; ++i)
+	{
+		if (keys[i] == 1)
+		{
+			if (keyboard[i] == KEY_IDLE)
+				keyboard[i] = KEY_DOWN;
+			else
+				keyboard[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (keyboard[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
+				keyboard[i] = KEY_UP;
+			else
+				keyboard[i] = KEY_IDLE;
+		}
+	}
 
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
+
+	if (keyboard[SDL_SCANCODE_TAB] == KEY_STATE::KEY_DOWN)
+	{
+		if (App->debug->IsEnabled())
+		{
+			App->debug->Disable();
+		}
+		else
+		{
+			App->debug->Enable();
+		}
+	}
+
 	if (keyboard[SDL_SCANCODE_SPACE])
 	{
 		if (App->fade->GetFadeState() == false)

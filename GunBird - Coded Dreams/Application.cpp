@@ -11,6 +11,7 @@
 #include "ModuleWelcomeTitle.h"
 #include "ModuleHighscores.h"
 #include "ModuleSelection.h"
+#include "ModuleDebugMode.h"
 
 Application::Application()
 {
@@ -26,6 +27,7 @@ Application::Application()
 	modules[9] = player = new ModulePlayer();
 	modules[10] = fade = new ModuleFadeToBlack();
 	modules[11] = audio = new ModuleAudio();
+	modules[12] = debug = new ModuleDebugMode();
 	
 }
 
@@ -46,6 +48,7 @@ bool Application::Init()
 	highscores->Disable();
 	scene_mine->Disable();
 	selection->Disable();
+	debug->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
