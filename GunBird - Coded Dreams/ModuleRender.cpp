@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "ModuleSceneMine.h"
 #include "ModuleSceneCastle.h"
+#include "ModuleDebugMode.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -50,15 +51,30 @@ update_status ModuleRender::Update()
 {
 	int speed = 1;
 
-	if (App->scene_mine->background_y < 0 && App->scene_mine->IsEnabled())
+	if (camera.y < 0 && moving_scene)
 	{
-		App->scene_mine->background_y += speed;
+		camera.y += speed;
 	}
-	if (App->scene_castle->background_y < 0 && App->scene_castle->IsEnabled())
+	if (App->debug->debugging)
 	{
-		App->scene_castle->background_y += speed;
+		if (App->input->keyboard[SDL_SCANCODE_UP])
+		{
+			camera.y += 3;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN])
+		{
+			camera.y -= 3;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT])
+		{
+			camera.x -= 3;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_LEFT])
+		{
+			camera.x += 3;
+		}
 	}
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

@@ -15,8 +15,6 @@ ModuleSelection::ModuleSelection()
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = SCREEN_HEIGHT;
-	background_x = 0;
-	background_y = 0;
 }
 
 ModuleSelection::~ModuleSelection()
@@ -27,6 +25,10 @@ bool ModuleSelection::Start()
 {
 	LOG("Loading WelcomeTitle scene");
 	bool ret = true;
+	App->render->moving_scene = false;
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+
 	graphics = App->textures->Load("assets/maps/selection.png");
 
 	LOG("Loading music");
@@ -56,7 +58,7 @@ update_status ModuleSelection::Update()
 {
 	// Draw everything --------------------------------------
 
-	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // Selection Screen
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // Selection Screen
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

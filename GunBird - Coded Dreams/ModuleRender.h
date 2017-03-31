@@ -21,8 +21,15 @@ public:
 
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed = 1.0f);
 
+	struct
+	{
+		int x;
+		int y;
+	}camera;
+
 public:
 	SDL_Renderer* renderer = nullptr;
+	bool moving_scene = false;
 };
 
 #endif //__ModuleRenderer_H__

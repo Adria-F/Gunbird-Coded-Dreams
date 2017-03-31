@@ -22,8 +22,6 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect background;
 	bool fading;
-	int background_x;
-	int background_y;
 };
 
 #endif // __MODULESCENEMINE_H__

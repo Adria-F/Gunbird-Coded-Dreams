@@ -16,8 +16,6 @@ ModuleWelcomeTitle::ModuleWelcomeTitle()
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = SCREEN_HEIGHT;
-	background_x = 0;
-	background_y = 0;
 }
 
 ModuleWelcomeTitle::~ModuleWelcomeTitle()
@@ -28,6 +26,10 @@ bool ModuleWelcomeTitle::Start()
 {
 	LOG("Loading WelcomeTitle scene");
 	bool ret = true;
+	App->render->moving_scene = false;
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+
 	graphics = App->textures->Load("assets/maps/credit-insert_welcome-page.png");
 
 	LOG("Loading music");
@@ -57,7 +59,7 @@ update_status ModuleWelcomeTitle::Update()
 {
 	// Draw everything --------------------------------------
 	
-	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // Welcome title Screen
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // Welcome title Screen
 
 	// TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

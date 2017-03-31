@@ -26,10 +26,11 @@ bool ModuleSceneMine::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	App->render->moving_scene = true;
 	graphics = App->textures->Load("assets/maps/mine_background.png");
 
-	background_x = 0;
-	background_y = -2895;
+	App->render->camera.x  = 0;
+	App->render->camera.y = -2895;
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg");
@@ -58,7 +59,7 @@ bool ModuleSceneMine::CleanUp()
 update_status ModuleSceneMine::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // back of the room
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // back of the room
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

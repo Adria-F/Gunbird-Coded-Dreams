@@ -3,6 +3,9 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "Animation.h"
+
+struct SDL_Texture;
 
 class ModuleDebugMode : public Module
 {
@@ -16,6 +19,8 @@ public:
 
 public:
 
+	SDL_Texture* debugging_on = nullptr;
+	SDL_Rect notifier;
 	bool debugging = false;
 };
 

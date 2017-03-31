@@ -16,8 +16,6 @@ ModuleHighscores::ModuleHighscores()
 	// Background
 	background.w = SCREEN_WIDTH;
 	background.h = SCREEN_HEIGHT;
-	background_x = 0;
-	background_y = 0;
 }
 
 ModuleHighscores::~ModuleHighscores()
@@ -28,6 +26,9 @@ bool ModuleHighscores::Start()
 {
 	LOG("Loading highscores scene");
 	bool ret = true;
+	App->render->moving_scene = false;
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 	graphics = App->textures->Load("assets/maps/highscore_nameregist.png");
 
 	LOG("Loading music");
@@ -55,7 +56,7 @@ bool ModuleHighscores::CleanUp()
 update_status ModuleHighscores::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, background_x, background_y, &background, 0.75f); // sea and sky
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // sea and sky
 
 																				 // TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
