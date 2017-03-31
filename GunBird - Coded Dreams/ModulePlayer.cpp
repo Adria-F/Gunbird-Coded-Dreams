@@ -9,8 +9,6 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 101;
-	position.y = 266;
 
 	// idle animation (arcade sprite sheet)
 	idle.PushBack({68, 64, 18, 32}); //w - h - w - h
@@ -27,6 +25,10 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
+	
+	position.x = 101;
+	position.y = 266;
+
 	return ret;
 }
 
