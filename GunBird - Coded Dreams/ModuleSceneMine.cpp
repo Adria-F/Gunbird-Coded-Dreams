@@ -14,8 +14,12 @@
 ModuleSceneMine::ModuleSceneMine()
 {
 	// Background
-	background.w = SCREEN_WIDTH;
-	background.h = 3535;
+	background_rect.w = SCREEN_WIDTH;
+	background_rect.h = 3535;
+
+	// Above background
+	above_background_rect.w = SCREEN_WIDTH;
+	above_background_rect.h = 3535;
 }
 
 ModuleSceneMine::~ModuleSceneMine()
@@ -24,10 +28,12 @@ ModuleSceneMine::~ModuleSceneMine()
 // Load assets
 bool ModuleSceneMine::Start()
 {
+	// Background
 	LOG("Loading background assets");
 	bool ret = true;
 	App->render->moving_scene = true;
-	graphics = App->textures->Load("assets/maps/mine_background.png");
+	graphics_background_text = App->textures->Load("assets/maps/mine_background.png");
+	graphics_above_background_text = App->textures->Load("assets/maps/above mine_background.png");
 
 	App->render->camera.x  = 0;
 	App->render->camera.y = -3210;
@@ -35,6 +41,7 @@ bool ModuleSceneMine::Start()
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg");
 	App->audio->Play(-1);
+
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	fading = false;
@@ -47,8 +54,12 @@ bool ModuleSceneMine::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
 	LOG("Unloading mine stage");
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	App->textures->Unload(graphics_above_background_text);
+	App->textures->Unload(graphics_background_text);
+
+	graphics_above_background_text = nullptr;
+	graphics_background_text = nullptr;
+
 	App->audio->Stop();
 	App->player->Disable();
 
@@ -59,7 +70,9 @@ bool ModuleSceneMine::CleanUp()
 update_status ModuleSceneMine::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // back of the room
+	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
+
+	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y, &above_background_rect, 0.75f);
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

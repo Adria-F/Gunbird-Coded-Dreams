@@ -19,8 +19,12 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
-	SDL_Rect background;
+	SDL_Texture* graphics_background_text = nullptr;
+	SDL_Texture* graphics_above_background_text = nullptr;
+
+	SDL_Rect background_rect;
+	SDL_Rect above_background_rect;
+
 	bool fading;
 };
 
