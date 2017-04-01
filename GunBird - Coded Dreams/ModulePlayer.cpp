@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -66,7 +67,9 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) //The key state down is to control the spree you can shoot the bullets.
 	{
-		App->particles->AddParticle(App->particles->bullet, position.x+5, position.y-45);
+		App->particles->AddParticle(App->particles->bullet, position.x + 5, position.y - 45);
+		App->audio->LoadFX("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav");
+		App->audio->PlayFX(1);
 	}
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();

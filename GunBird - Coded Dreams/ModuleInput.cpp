@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleDebugMode.h"
+#include "ModuleParticles.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -81,7 +82,10 @@ update_status ModuleInput::PreUpdate()
 			App->audio->Play(1);
 		}
 	}
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) //The key state down is to control the spree you can shoot the bullets.
+	{
 
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

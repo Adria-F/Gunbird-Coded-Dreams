@@ -12,7 +12,9 @@ public:
 	virtual ~ModuleAudio();
 
 	bool Load(const char* path);
+	bool LoadFX(const char* path);
 	void Play(int loop);
+	void PlayFX(int loop);
 	void Stop();
 
 	bool Init();
@@ -20,5 +22,6 @@ public:
 
 public:
 	Mix_Music* music = nullptr;
+	Mix_Music* effect = nullptr;
 };
 #endif

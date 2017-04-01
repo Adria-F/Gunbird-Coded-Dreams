@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -28,8 +29,7 @@ bool ModuleParticles::Start()
 	bullet.speed.y = -10;
 	bullet.anim.loop = false;
 	bullet.anim.speed = 0.5f;
-	bullet.born = 1;
-
+	
 	return true;
 }
 
