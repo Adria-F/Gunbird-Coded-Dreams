@@ -7,12 +7,14 @@
 class Animation
 {
 public:
+	bool loop = true;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
 
 private:
 	float current_frame;
 	int last_frame = 0;
+	int loops = 0;
 
 public:
 
@@ -28,6 +30,15 @@ public:
 			current_frame = 0;
 
 		return frames[(int)current_frame];
+	}
+	bool Finished() const
+	{
+		return loops > 0;
+	}
+
+	void Reset()
+	{
+		current_frame = 0;
 	}
 };
 

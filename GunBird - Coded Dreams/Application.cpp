@@ -12,6 +12,8 @@
 #include "ModuleHighscores.h"
 #include "ModuleSelection.h"
 #include "ModuleDebugMode.h"
+#include "ModuleShooting.h"
+#include "ModuleParticles.h"
 
 Application::Application()
 {
@@ -28,6 +30,8 @@ Application::Application()
 	modules[10] = fade = new ModuleFadeToBlack();
 	modules[11] = audio = new ModuleAudio();
 	modules[12] = debug = new ModuleDebugMode();
+	modules[13] = shooting = new ModuleShooting();
+	modules[14] = particles = new ModuleParticles();
 	
 }
 
@@ -49,6 +53,10 @@ bool Application::Init()
 	scene_mine->Disable();
 	selection->Disable();
 	debug->Disable();
+	//testing the shooting mechanic
+	selection->Disable();
+	welcometitle->Disable();
+	scene_mine->Enable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

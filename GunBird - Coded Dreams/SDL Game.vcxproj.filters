@@ -71,6 +71,12 @@
     <ClInclude Include="ModuleDebugMode.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleShooting.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -120,6 +126,12 @@
     </ClCompile>
     <ClCompile Include="ModuleDebugMode.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShooting.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
