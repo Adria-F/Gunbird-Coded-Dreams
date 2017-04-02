@@ -4,11 +4,10 @@
 #include "SDL/include/SDL.h"
 #include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
-//Josep: I've created a new music called effect so I can put different sounds in the game. It dosn't work :(
+
 ModuleAudio::ModuleAudio()
 {
 }
-
 
 ModuleAudio::~ModuleAudio()
 {
@@ -18,39 +17,51 @@ bool ModuleAudio::Init()
 {
 	Mix_Init(MIX_INIT_OGG);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	//Mix_Volume(-1, 100);
 
 	return true;
 }
 
-void ModuleAudio::Play(int loop)
+void ModuleAudio::Play(sound_type type)
 {
-	Mix_PlayMusic(music, loop);
-}
-
-void ModuleAudio::PlayFX(int loop)
-{
-	Mix_PlayMusic(effect, loop);
+	switch (type)
+	{
+	case sound_type::MUSIC:
+	{
+		Mix_PlayMusic(music, -1);
+		break;
+	}
+	case sound_type::EFFECT:
+	{
+		Mix_PlayChannel(-1, effect, 0);
+		break;
+	}
+	}
 }
 
 void ModuleAudio::Stop()
 {
+	Mix_HaltChannel(-1);
 	Mix_FreeMusic(music);
-	Mix_FreeMusic(effect);
+	Mix_FreeChunk(effect);
 	music = nullptr;
-	effect = nullptr;
-	Mix_HaltMusic();
 }
 
-bool ModuleAudio::Load(const char* path)
+bool ModuleAudio::Load(const char* path, sound_type type)
 {
-	music = Mix_LoadMUS(path);
-
-	return true;
-}
-
-bool ModuleAudio::LoadFX(const char* path)
-{
-	effect = Mix_LoadMUS(path);
+	switch (type)
+	{
+	case sound_type::MUSIC:
+	{
+		music = Mix_LoadMUS(path);
+		break;
+	}
+	case sound_type::EFFECT:
+	{
+		effect = Mix_LoadWAV(path);
+		break;
+	}
+	}
 
 	return true;
 }

@@ -6,6 +6,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleDebugMode.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -78,14 +79,48 @@ update_status ModuleInput::PreUpdate()
 	{
 		if (App->fade->GetFadeState() == false)
 		{
-			App->audio->Load("assets/effects/gunbird_101 [VOICE] Coin (Credit Inserted).wav");
-			App->audio->Play(1);
+			App->audio->Load("assets/effects/gunbird_101 [VOICE] Coin (Credit Inserted).wav", App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
 		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) //The key state down is to control the spree you can shoot the bullets.
-	{
 
+	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->goingW = true;
+		App->player->goingS = false;
 	}
+	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
+	{
+		App->player->goingW = false;
+	}
+	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->goingA = true;
+		App->player->goingD = false;
+	}
+	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
+	{
+		App->player->goingA = false;
+	}
+	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->goingS = true;
+		App->player->goingW = false;
+	}
+	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+	{
+		App->player->goingS = false;
+	}
+	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->goingD = true;
+		App->player->goingA = false;
+	}
+	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+	{
+		App->player->goingD = false;
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 

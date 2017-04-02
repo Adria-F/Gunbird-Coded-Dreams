@@ -32,8 +32,8 @@ bool ModuleSelection::Start()
 	graphics = App->textures->Load("assets/maps/selection.png");
 
 	LOG("Loading music");
-	App->audio->Load("assets/music/castle-welcome_title.ogg");
-	App->audio->Play(-1);
+	App->audio->Load("assets/music/castle-welcome_title.ogg", App->audio->MUSIC);
+	App->audio->Play(App->audio->MUSIC);
 	// TODO 1: Enable (and properly disable) the player module
 	fading = false;
 

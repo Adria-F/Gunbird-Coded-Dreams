@@ -25,7 +25,19 @@ public:
 	Animation left;
 	Animation right;
 	iPoint position;
+	int bullet_counter;
+	bool shot;
 
+	bool goingW;
+	bool goingA;
+	bool goingS;
+	bool goingD;
+
+private:
+
+	Uint32 start_time = 0;
+	Uint32 total_time = (Uint32)(2.0f * 0.5f * 100.0f);
+	Uint32 now;
 };
 
 #endif

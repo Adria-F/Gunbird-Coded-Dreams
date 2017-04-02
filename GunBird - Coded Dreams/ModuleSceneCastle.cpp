@@ -17,7 +17,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 {
 	// Background
 	background.w = SCREEN_WIDTH;
-	background.h = 3535;
+	background.h = 2108;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -31,10 +31,10 @@ bool ModuleSceneCastle::Start()
 	graphics = App->textures->Load("assets/maps/castle_background.png");
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
-	App->render->camera.y = -3210;
+	App->render->camera.y = -1782;
 
-	App->audio->Load("assets/music/castle-welcome_title.ogg");
-	App->audio->Play(-1);
+	App->audio->Load("assets/music/castle-welcome_title.ogg", App->audio->MUSIC);
+	App->audio->Play(App->audio->MUSIC);
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	fading = false;

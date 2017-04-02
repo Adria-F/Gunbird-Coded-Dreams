@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -71,40 +72,55 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	now = SDL_GetTicks() - start_time;
+
+	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
+	{
+		App->particles->AddParticle(App->particles->bullet, position.x + 5, position.y - 45);
+		start_time = SDL_GetTicks();
+		bullet_counter++;
+		if (bullet_counter == MAX_BULLETS)
+		{
+			shot = false;
+		}
+	}
+	
 	Animation* current_animation = &idle;
 
 	int speed = 3;
 
-	if(App->input->keyboard[SDL_SCANCODE_W] && position.y > 32)
+	if(goingW && position.y > 32)
 	{
 		position.y -= speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_A] && position.x > 0)
+	if (goingA)
 	{
 		current_animation = &left;
-		position.x -= speed;
+		if (position.x > 0)
+		{
+			position.x -= speed;
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_S] && position.y < SCREEN_HEIGHT)
+	if (goingS && position.y < SCREEN_HEIGHT)
 	{
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_D] && position.x < SCREEN_WIDTH - 18)
+	if (goingD)
 	{
 		current_animation = &right;
-		position.x += speed;
+		if (position.x < SCREEN_WIDTH - 18)
+		{
+			position.x += speed;
+		}
 	}
-	/*
-	if (App->input->keyboard[SDL_SCANCODE_D] == 1)
+
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && shot == false) //The key state down is to control the spree you can shoot the bullets.
 	{
-		current_animation = &forward;
-		position.x += speed;
-	}
-	*/
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN) //The key state down is to control the spree you can shoot the bullets.
-	{
-		App->particles->AddParticle(App->particles->bullet, position.x + 5, position.y - 45);
-		App->audio->LoadFX("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav");
-		App->audio->PlayFX(1);
+		shot = true;
+		bullet_counter = 0;
+		start_time = SDL_GetTicks();
+		App->audio->Load("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
 	}
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();

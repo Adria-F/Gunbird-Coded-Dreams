@@ -19,7 +19,7 @@ ModuleSceneMine::ModuleSceneMine()
 
 	// Above background
 	above_background_rect.w = SCREEN_WIDTH;
-	above_background_rect.h = 3535;
+	above_background_rect.h = 3245;
 }
 
 ModuleSceneMine::~ModuleSceneMine()
@@ -39,8 +39,8 @@ bool ModuleSceneMine::Start()
 	App->render->camera.y = -3210;
 
 	LOG("Loading music");
-	App->audio->Load("assets/music/mine.ogg");
-	App->audio->Play(-1);
+	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
+	App->audio->Play(App->audio->MUSIC);
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
@@ -72,7 +72,8 @@ update_status ModuleSceneMine::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 
-	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y, &above_background_rect, 0.75f);
+	above_background_rect.y -= 1;
+	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y + 290, &above_background_rect, 0.75f);
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

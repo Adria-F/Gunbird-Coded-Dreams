@@ -63,6 +63,7 @@ update_status ModuleRender::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN])
 		{
+			App->scene_mine->above_background_rect.y += 4;
 			camera.y -= 3;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT])

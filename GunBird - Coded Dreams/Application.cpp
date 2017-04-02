@@ -54,11 +54,9 @@ bool Application::Init()
 	selection->Disable();
 	debug->Disable();
 	//testing the shooting mechanic
-	/*
-		selection->Disable();
 	welcometitle->Disable();
 	scene_mine->Enable();
-	*/
+	
 
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
