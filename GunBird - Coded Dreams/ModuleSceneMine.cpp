@@ -59,7 +59,7 @@ bool ModuleSceneMine::CleanUp()
 
 	graphics_above_background_text = nullptr;
 	graphics_background_text = nullptr;
-
+	
 	App->audio->Stop();
 	App->player->Disable();
 
@@ -74,6 +74,8 @@ update_status ModuleSceneMine::Update()
 
 	above_background_rect.y -= 1;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y + 290, &above_background_rect, 0.75f);
+	
+	
 
 	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

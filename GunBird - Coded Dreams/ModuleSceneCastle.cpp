@@ -27,19 +27,22 @@ ModuleSceneCastle::~ModuleSceneCastle()
 bool ModuleSceneCastle::Start()
 {
 	LOG("Loading castle scene");
-	
+	bool ret = true;
 	graphics = App->textures->Load("assets/maps/castle_background.png");
 	App->render->moving_scene = true;
+
 	App->render->camera.x = 0;
 	App->render->camera.y = -1782;
 
+	LOG("Loading Music");
 	App->audio->Load("assets/music/castle-welcome_title.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
+
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	fading = false;
 
-	return true;
+	return ret;
 }
 
 // UnLoad assets
@@ -47,7 +50,9 @@ bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading castle scene");
 	App->textures->Unload(graphics);
+
 	graphics = nullptr;
+
 	App->audio->Stop();
 	App->player->Disable();
 

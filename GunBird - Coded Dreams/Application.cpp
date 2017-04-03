@@ -32,7 +32,6 @@ Application::Application()
 	modules[12] = debug = new ModuleDebugMode();
 	modules[13] = shooting = new ModuleShooting();
 	modules[14] = particles = new ModuleParticles();
-	
 }
 
 Application::~Application()
@@ -53,11 +52,12 @@ bool Application::Init()
 	scene_mine->Disable();
 	selection->Disable();
 	debug->Disable();
+
+	/*
 	//testing the shooting mechanic
 	welcometitle->Disable();
 	scene_mine->Enable();
-	
-
+	*/
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
