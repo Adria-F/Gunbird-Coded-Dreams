@@ -8,6 +8,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
@@ -45,6 +46,7 @@ bool ModuleSceneMine::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
+	App->collision->Enable();
 	fading = false;
 
 	return ret;
@@ -63,6 +65,7 @@ bool ModuleSceneMine::CleanUp()
 	
 	App->audio->Stop();
 	App->player->Disable();
+	App->collision->Disable();
 
 	return true;
 }

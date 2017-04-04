@@ -14,24 +14,27 @@
 #include "ModuleDebugMode.h"
 #include "ModuleShooting.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene_mine = new ModuleSceneMine();
-	modules[5] = scene_castle = new ModuleSceneCastle();
-	modules[6] = welcometitle = new ModuleWelcomeTitle();
-	modules[7] = highscores = new ModuleHighscores();
-	modules[8] = selection = new ModuleSelection();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = fade = new ModuleFadeToBlack();
-	modules[11] = audio = new ModuleAudio();
-	modules[12] = debug = new ModuleDebugMode();
-	modules[13] = shooting = new ModuleShooting();
-	modules[14] = particles = new ModuleParticles();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = scene_mine = new ModuleSceneMine();
+	modules[i++] = scene_castle = new ModuleSceneCastle();
+	modules[i++] = welcometitle = new ModuleWelcomeTitle();
+	modules[i++] = highscores = new ModuleHighscores();
+	modules[i++] = selection = new ModuleSelection();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = debug = new ModuleDebugMode();
+	modules[i++] = shooting = new ModuleShooting();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = fade = new ModuleFadeToBlack();
 }
 
 Application::~Application()
@@ -52,6 +55,7 @@ bool Application::Init()
 	scene_mine->Disable();
 	selection->Disable();
 	debug->Disable();
+	collision->Disable();
 
 	/*
 	//testing the shooting mechanic

@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -25,7 +26,7 @@ bool ModuleParticles::Start()
 
 	// Marion Bullets
 	bullet.anim.PushBack({ 166, 127, 10, 30 });
-	bullet.life = 600;
+	bullet.life = 10000;
 	bullet.speed.y = -8;
 	bullet.anim.loop = false;
 	bullet.anim.speed = 0.5f;
@@ -75,6 +76,13 @@ update_status ModuleParticles::Update()
 				// Play particle fx here
 			}
 		}
+
+		if (p->position.x < -PARTICLES_MARGIN || p->position.x > (SCREEN_WIDTH + PARTICLES_MARGIN) || p->position.y < -PARTICLES_MARGIN || p->position.y > (SCREEN_HEIGHT + PARTICLES_MARGIN))
+		{
+			p->life = 0;
+			delete p;
+			active[i] = nullptr;
+		}
 	}
 
 	return UPDATE_CONTINUE;
@@ -87,7 +95,15 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->position.x = x;
 	p->position.y = y;
 
-	active[last_particle++] = p;
+	for (int i = 0; i < MAX_ACTIVE_PARTICLES; i++)
+	{
+		if (active[i] == nullptr)
+		{
+			active[i] = p;
+			break;
+		}
+	}
+	//active[last_particle++] = p;
 }
 
 // -------------------------------------------------------------

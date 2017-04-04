@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
 #include "ModuleHighscores.h"
+#include "ModuleCollision.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -40,6 +41,7 @@ bool ModuleSceneCastle::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
+	App->collision->Enable();
 	fading = false;
 
 	return ret;
@@ -55,6 +57,7 @@ bool ModuleSceneCastle::CleanUp()
 
 	App->audio->Stop();
 	App->player->Disable();
+	App->collision->Disable();
 
 	return true;
 }

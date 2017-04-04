@@ -30,5 +30,6 @@ typedef unsigned int uint;
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
 #define MAX_BULLETS 4
+#define PARTICLES_MARGIN 64
 
 #endif // __GLOBALS_H__
