@@ -25,8 +25,8 @@ bool ModuleParticles::Start()
 
 	// Marion Bullets
 	bullet.anim.PushBack({ 166, 127, 10, 30 });
-	bullet.life = 450;
-	bullet.speed.y = -10;
+	bullet.life = 600;
+	bullet.speed.y = -8;
 	bullet.anim.loop = false;
 	bullet.anim.speed = 0.5f;
 	

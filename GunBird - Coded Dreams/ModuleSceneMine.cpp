@@ -37,6 +37,7 @@ bool ModuleSceneMine::Start()
 
 	App->render->camera.x  = 0;
 	App->render->camera.y = -3210;
+	above_background_rect.y = 0;
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
