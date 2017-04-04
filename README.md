@@ -7,8 +7,18 @@ From the sounds to the enemies.
 
 Decompress the .zip file and execute the executable inside the decompressed folder.
 
+##Usage (version 0.3)
 
-##Usage
+Character
+WASD: move character
+F key: shoot
+
+Debugging Mode
+Tab: activate / deactivate
+Arrow keys: move camera
+
+
+##Usage (original game)
 
 Control-> Shoot
 
