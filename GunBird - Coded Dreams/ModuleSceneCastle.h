@@ -6,6 +6,7 @@
 #include "Globals.h"
 
 struct SDL_Texture;
+struct Collider;
 
 class ModuleSceneCastle : public Module
 {
@@ -20,6 +21,9 @@ public:
 public:
 	
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* graphics_gturret = nullptr;
+	Animation gturret;
+	Collider* rect_gturret;
 	SDL_Rect background;
 	bool fading;
 };
