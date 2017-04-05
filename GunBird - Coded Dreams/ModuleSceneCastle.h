@@ -18,6 +18,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void OnCollision(Collider* c1, Collider* c2);
+
 public:
 	
 	SDL_Texture* graphics = nullptr;
@@ -25,6 +27,7 @@ public:
 	Animation gturret;
 	Collider* rect_gturret;
 	SDL_Rect background;
+	SDL_Rect rec_gturret;
 	bool fading;
 };
 
