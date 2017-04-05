@@ -59,7 +59,7 @@ bool ModulePlayer::Start()
 	position.x = 101;
 	position.y = 266;
 
-	Pcollider = App->collision->AddCollider({ 0, 0, 23, 32 }, COLLIDER_PLAYER, this);
+	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
 
 	return ret;
 }
