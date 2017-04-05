@@ -21,7 +21,8 @@ ModuleSceneCastle::ModuleSceneCastle()
 	background.h = 2108;
 
 	// General Turret
-	general_turret.PushBack({ 0, 0, 32, 32 });
+	gturret.PushBack({ 0, 0, 32, 32 });
+	gturret.speed = 0.1f;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -33,7 +34,7 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading castle scene");
 	bool ret = true;
 	graphics = App->textures->Load("assets/maps/castle_background.png");
-	graphics_gturret = App->textures->Load("assets/enemies/general_turret.png");
+	graphics_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
 	App->render->moving_scene = true;
 
 	App->render->camera.x = 0;
@@ -58,6 +59,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(graphics);
 
 	graphics = nullptr;
+	graphics_gturret = nullptr;
 
 	App->audio->Stop();
 	App->player->Disable();
@@ -72,7 +74,7 @@ update_status ModuleSceneCastle::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // sea and sky
 
-	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // general_turret
+	App->render->Blit(graphics_gturret, 161, 1596, &background, 0.75f); // general_turret
 
 	// TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
