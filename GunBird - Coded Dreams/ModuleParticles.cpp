@@ -25,7 +25,7 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("assets/characters/marion.png");
 
 	// Marion Bullets
-	bullet.anim.PushBack({ 166, 127, 10, 30 });
+	bullet.anim.PushBack({ 166, 127, 7, 30 });
 	bullet.life = 10000;
 	bullet.speed.y = -8;
 	bullet.anim.loop = false;
