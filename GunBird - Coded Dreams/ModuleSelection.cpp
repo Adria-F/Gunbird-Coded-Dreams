@@ -47,7 +47,6 @@ bool ModuleSelection::CleanUp()
 	App->textures->Unload(graphics);
 	graphics = nullptr;
 	App->audio->Stop();
-	App->player->Disable();
 
 	return true;
 }

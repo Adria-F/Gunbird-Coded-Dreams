@@ -29,11 +29,11 @@ Application::Application()
 	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = selection = new ModuleSelection();
 	modules[i++] = player = new ModulePlayer();
-	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
 	modules[i++] = shooting = new ModuleShooting();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }
 
@@ -57,11 +57,11 @@ bool Application::Init()
 	debug->Disable();
 	collision->Disable();
 
-	/*
-	//testing the shooting mechanic
+	
+	/*//testing the shooting mechanic
 	welcometitle->Disable();
-	scene_mine->Enable();
-	*/
+	scene_mine->Enable();*/
+	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
