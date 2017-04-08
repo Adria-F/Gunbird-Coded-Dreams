@@ -58,9 +58,9 @@ bool Application::Init()
 	collision->Disable();
 
 	
-	/*//testing the shooting mechanic
-	welcometitle->Disable();
-	scene_mine->Enable();*/
+	//testing the shooting mechanic
+	//welcometitle->Disable();
+	//scene_castle->Enable();
 	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

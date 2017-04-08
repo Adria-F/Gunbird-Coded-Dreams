@@ -22,12 +22,27 @@ public:
 
 public:
 	
+	//background
 	SDL_Texture* graphics = nullptr;
+	SDL_Rect background;
+
+	//gturret
 	SDL_Texture* graphics_gturret = nullptr;
 	Animation gturret;
 	Collider* rect_gturret;
-	SDL_Rect background;
 	SDL_Rect rec_gturret;
+
+	//building1
+	SDL_Texture* graphics_build1 = nullptr;
+	Animation build1;
+	Collider* rect_build1;
+	SDL_Rect rec_building1;
+	//flag1
+	Animation flag1;	
+	SDL_Rect rec_flag1;
+
+
+
 	bool fading;
 };
 
