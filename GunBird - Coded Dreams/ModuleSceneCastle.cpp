@@ -53,6 +53,7 @@ ModuleSceneCastle::~ModuleSceneCastle()
 bool ModuleSceneCastle::Start()
 {
 	LOG("Loading castle scene");
+	LOG("Loading background assets");
 	bool ret = true;
 	graphics = App->textures->Load("assets/maps/castle_background.png");
 
@@ -62,7 +63,7 @@ bool ModuleSceneCastle::Start()
 
 	//building1
 	graphics_build1 = App->textures->Load("assets/maps/Castle_Sprites.png");
-	rect_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_NONE, this);
+	rect_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_ENEMY, this);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
@@ -82,11 +83,14 @@ bool ModuleSceneCastle::Start()
 // UnLoad assets
 bool ModuleSceneCastle::CleanUp()
 {
-	LOG("Unloading castle scene");
+	LOG("Unloading Castle scene");
 	App->textures->Unload(graphics);
+	App->textures->Unload(graphics_gturret);
+	App->textures->Unload(graphics_build1);
 
 	graphics = nullptr;
 	graphics_gturret = nullptr;
+	graphics_build1 = nullptr;
 
 	App->audio->Stop();
 	App->player->Disable();

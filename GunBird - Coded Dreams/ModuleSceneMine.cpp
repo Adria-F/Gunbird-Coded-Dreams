@@ -30,6 +30,7 @@ ModuleSceneMine::~ModuleSceneMine()
 bool ModuleSceneMine::Start()
 {
 	// Background
+	LOG("Loading Mine Scene");
 	LOG("Loading background assets");
 	bool ret = true;
 	App->render->moving_scene = true;
@@ -56,7 +57,7 @@ bool ModuleSceneMine::Start()
 bool ModuleSceneMine::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
-	LOG("Unloading mine stage");
+	LOG("Unloading Mine scene");
 	App->textures->Unload(graphics_above_background_text);
 	App->textures->Unload(graphics_background_text);
 

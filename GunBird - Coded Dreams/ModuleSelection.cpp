@@ -23,7 +23,7 @@ ModuleSelection::~ModuleSelection()
 // Load assets
 bool ModuleSelection::Start()
 {
-	LOG("Loading WelcomeTitle scene");
+	LOG("Loading Selection scene");
 	bool ret = true;
 	App->render->moving_scene = false;
 	App->render->camera.x = 0;
@@ -43,7 +43,7 @@ bool ModuleSelection::Start()
 // UnLoad assets
 bool ModuleSelection::CleanUp()
 {
-	LOG("Unloading selection scene");
+	LOG("Unloading Selection scene");
 	App->textures->Unload(graphics);
 	graphics = nullptr;
 	App->audio->Stop();

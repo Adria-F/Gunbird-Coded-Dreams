@@ -76,6 +76,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 				{
 					textures[i] = texture;
 					room = true;
+					break;
 				}
 			}
 			if (room == false)
