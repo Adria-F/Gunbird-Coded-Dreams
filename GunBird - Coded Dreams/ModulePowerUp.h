@@ -20,6 +20,7 @@ class ModulePowerUp : public Module
 public:
 	int x;
 	int y;
+	Particle* powerups[MAX_POWERUP];
 
 public:
 

@@ -8,6 +8,10 @@
 
 ModulePowerUp::ModulePowerUp()
 {
+	for (int i = 0; i < MAX_POWERUP; i++)
+	{
+		powerups[i] = nullptr;
+	}
 }
 
 ModulePowerUp::~ModulePowerUp()
@@ -30,14 +34,44 @@ bool ModulePowerUp::CleanUp()
 
 update_status ModulePowerUp::Update()
 {
+	for (int i = 0; i < MAX_POWERUP; i++)
+	{
+		if (powerups[i] != nullptr)
+		{
+			if (powerups[i]->position.y < 50)
+			{
+				powerups[i]->going_up = false;
+			}
+			else if (powerups[i]->position.y > 250)
+			{
+				powerups[i]->going_up = true;
+			}
+			if (powerups[i]->going_up)
+			{
+				powerups[i]->position.y -= 1;
+			}
+			else
+			{
+				powerups[i]->position.y += 3;
+			}
+		}
+	}
+	
 	return UPDATE_CONTINUE;
 }
 
 void ModulePowerUp::AddPowerUp(powerup_type type, int x, int y)
 {
-	App->particles->upgrade.speed.x = 0;
-	App->particles->upgrade.speed.y = 0;
-	App->particles->AddParticle(App->particles->upgrade, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
+	for (int i = 0; i < MAX_POWERUP; i++)
+	{
+		if (powerups[i] == nullptr)
+		{
+			App->particles->upgrade.speed.x = 0;
+			App->particles->upgrade.speed.y = -1;
+			powerups[i] = App->particles->AddParticle(App->particles->upgrade, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
+			break;
+		}
+	}
 }
 
 void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)

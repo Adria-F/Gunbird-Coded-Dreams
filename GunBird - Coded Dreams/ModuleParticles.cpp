@@ -113,8 +113,9 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
+	Particle* temp_p = nullptr;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] == nullptr)
@@ -134,9 +135,12 @@ void ModuleParticles::AddParticle(const Particle& particle, particle_type type, 
 				break;
 			}
 			active[i] = p;
+			temp_p = p;
 			break;
 		}
 	}
+
+	return temp_p;
 }
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
