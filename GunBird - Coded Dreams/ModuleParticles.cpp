@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
+#include "ModulePowerUp.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -22,7 +23,8 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("assets/characters/marion.png");
+	bullet_graphics = App->textures->Load("assets/characters/marion.png");
+	upgrade_graphics = App->textures->Load("assets/items/upgrade.png");
 
 	// Marion Bullets
 	bullet.anim.PushBack({ 166, 127, 7, 30 });
@@ -30,6 +32,12 @@ bool ModuleParticles::Start()
 	bullet.speed.y = -8;
 	bullet.anim.loop = false;
 	bullet.anim.speed = 0.5f;
+
+	// Upgrade
+	upgrade.anim.PushBack({ 4, 32, 23, 11 });
+	upgrade.life = 100000;
+	upgrade.anim.loop = false;
+	upgrade.anim.speed = 0.5f;
 	
 	return true;
 }
@@ -38,7 +46,10 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(graphics);
+	App->textures->Unload(bullet_graphics);
+	App->textures->Unload(upgrade_graphics);
+	bullet_graphics = nullptr;
+	upgrade_graphics = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -69,7 +80,14 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			switch (p->type)
+			{
+			case P_BULLET:
+				App->render->Blit(bullet_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_UPGRADE:
+				App->render->Blit(upgrade_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			}
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -87,7 +105,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -97,8 +115,16 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
-			if (collider_type != COLLIDER_NONE)
+			p->type = type;
+			switch (collider_type)
+			{
+			case COLLIDER_PLAYER_SHOT:
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				break;
+			case COLLIDER_POWER_UP:
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, App->powerup);
+				break;
+			}
 			active[i] = p;
 			break;
 		}

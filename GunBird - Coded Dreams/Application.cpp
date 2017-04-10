@@ -15,6 +15,7 @@
 #include "ModuleShooting.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModulePowerUp.h"
 
 Application::Application()
 {
@@ -33,6 +34,7 @@ Application::Application()
 	modules[i++] = debug = new ModuleDebugMode();
 	modules[i++] = shooting = new ModuleShooting();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }
@@ -56,6 +58,8 @@ bool Application::Init()
 	selection->Disable();
 	debug->Disable();
 	collision->Disable();
+	powerup->Disable();
+	particles->Disable();
 
 	
 	//testing the shooting mechanic

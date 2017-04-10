@@ -12,6 +12,7 @@
 #include "ModuleHighscores.h"
 #include "ModuleCollision.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -74,6 +75,7 @@ bool ModuleSceneCastle::Start()
 
 	App->player->Enable();
 	App->collision->Enable();
+	App->particles->Enable();
 	fading = false;
 
 	return ret;
@@ -94,6 +96,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->audio->Stop();
 	App->player->Disable();
 	App->collision->Disable();
+	App->particles->Disable();
 
 	return true;
 }

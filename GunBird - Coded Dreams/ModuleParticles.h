@@ -13,6 +13,12 @@ struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
 
+enum particle_type
+{
+	P_BULLET,
+	P_UPGRADE
+};
+
 struct Particle
 {
 	Collider* collider = nullptr;
@@ -23,6 +29,7 @@ struct Particle
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
+	particle_type type;
 
 	Particle();
 	Particle(const Particle& p);
@@ -41,16 +48,18 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 
 private:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* bullet_graphics = nullptr;
+	SDL_Texture* upgrade_graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
 
 	Particle bullet;
+	Particle upgrade;
 };
 
 #endif // __MODULEPARTICLES_H__

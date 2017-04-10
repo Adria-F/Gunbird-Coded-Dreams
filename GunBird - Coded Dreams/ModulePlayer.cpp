@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModulePowerUp.h"
 #include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -60,6 +61,8 @@ bool ModulePlayer::Start()
 
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
 
+	App->powerup->Enable();
+
 	return ret;
 }
 
@@ -68,6 +71,8 @@ bool ModulePlayer::CleanUp()
 	bool ret = true;
 	App->textures->Unload(graphics);
 	graphics = nullptr;
+
+	App->powerup->Disable();
 
 	return ret;
 }
@@ -79,7 +84,7 @@ update_status ModulePlayer::Update()
 
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
-		App->particles->AddParticle(App->particles->bullet, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bullet, particle_type::P_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 		start_time = SDL_GetTicks();
 		bullet_counter++;
 		if (bullet_counter == MAX_BULLETS)
@@ -124,6 +129,11 @@ update_status ModulePlayer::Update()
 		start_time = SDL_GetTicks();
 		App->audio->Load("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(powerup_type::UPGRADE, 100, 150);
 	}
 	
 	// Draw everything --------------------------------------
