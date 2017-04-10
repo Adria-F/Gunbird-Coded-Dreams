@@ -45,7 +45,6 @@ bool ModuleSceneMine::Start()
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
 
-	// TODO 1: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->collision->Enable();
 	fading = false;
@@ -56,7 +55,6 @@ bool ModuleSceneMine::Start()
 // Load assets
 bool ModuleSceneMine::CleanUp()
 {
-	// TODO 5: Remove all memory leaks
 	LOG("Unloading Mine scene");
 	App->textures->Unload(graphics_above_background_text);
 	App->textures->Unload(graphics_background_text);
@@ -80,9 +78,6 @@ update_status ModuleSceneMine::Update()
 	above_background_rect.y -= 1;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y + 290, &above_background_rect, 0.75f);
 	
-	
-
-	// TODO 3: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->scene_castle);

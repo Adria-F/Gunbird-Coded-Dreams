@@ -4,7 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleWelcomeTitle.h"
 #include "ModulePlayer.h"
-#include "ModuleSceneMine.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
@@ -34,7 +34,7 @@ bool ModuleSelection::Start()
 	LOG("Loading music");
 	App->audio->Load("assets/music/castle-welcome_title.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
-	// TODO 1: Enable (and properly disable) the player module
+
 	fading = false;
 
 	return ret;
@@ -62,7 +62,7 @@ update_status ModuleSelection::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->scene_mine);
+		App->fade->FadeToBlack(this, App->scene_castle);
 		fading = true;
 	}
 	return UPDATE_CONTINUE;

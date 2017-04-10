@@ -17,7 +17,6 @@ bool ModuleAudio::Init()
 {
 	Mix_Init(MIX_INIT_OGG);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	//Mix_Volume(-1, 100);
 
 	return true;
 }

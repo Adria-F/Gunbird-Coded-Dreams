@@ -34,7 +34,7 @@ bool ModuleHighscores::Start()
 	LOG("Loading music");
 	App->audio->Load("assets/music/highscore.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
-	// TODO 1: Enable (and properly disable) the player module
+
 	fading = false;
 
 	return true;
@@ -55,9 +55,8 @@ bool ModuleHighscores::CleanUp()
 update_status ModuleHighscores::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // sea and sky
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f);
 
-																				 // TODO 3: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->welcometitle);

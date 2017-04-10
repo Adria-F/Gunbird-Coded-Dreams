@@ -14,7 +14,6 @@ ModuleDebugMode::ModuleDebugMode()
 
 ModuleDebugMode::~ModuleDebugMode()
 {
-
 }
 
 bool ModuleDebugMode::Start()

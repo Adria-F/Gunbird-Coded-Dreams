@@ -43,7 +43,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 
 	flag1.speed = 0.4f;
 	
-
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -113,7 +112,6 @@ update_status ModuleSceneCastle::Update()
 	rect_gturret->SetPos((App->render->camera.x + 162), (App->render->camera.y + 1596));
 
 	//building 1
-	
 	Animation* current_animation1 = &build1;
 	rec_building1 = current_animation1->GetCurrentFrame();
 	App->render->Blit(graphics_build1, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);
