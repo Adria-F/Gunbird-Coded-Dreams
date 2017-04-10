@@ -59,11 +59,11 @@ bool ModuleSceneCastle::Start()
 
 	//gturret
 	graphics_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
-	rect_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_ENEMY, this);
+	rect_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);
 
 	//building1
 	graphics_build1 = App->textures->Load("assets/maps/Castle_Sprites.png");
-	rect_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_ENEMY, this);
+	rect_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_BUILDING, this);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
