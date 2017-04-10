@@ -34,10 +34,18 @@ bool ModuleParticles::Start()
 	bullet.anim.speed = 0.5f;
 
 	// Upgrade
-	upgrade.anim.PushBack({ 4, 32, 23, 11 });
+	upgrade.anim.PushBack({ 4, 31, 22, 13 });
+	upgrade.anim.PushBack({ 54, 31, 22, 13 });
+	upgrade.anim.PushBack({ 104, 31, 22, 13 });
+	upgrade.anim.PushBack({ 54, 47, 22, 13 });
+	upgrade.anim.PushBack({ 104, 47, 22, 13 });
+	upgrade.anim.PushBack({ 54, 64, 22, 13 });
+	upgrade.anim.PushBack({ 104, 64, 22, 13 });
+	upgrade.anim.PushBack({ 56, 83, 22, 13 });
+	upgrade.anim.PushBack({ 81, 83, 22, 13 });
 	upgrade.life = 100000;
-	upgrade.anim.loop = false;
-	upgrade.anim.speed = 0.5f;
+	upgrade.anim.loop = true;
+	upgrade.anim.speed = 0.2f;
 	
 	return true;
 }
