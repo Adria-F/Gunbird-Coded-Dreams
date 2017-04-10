@@ -19,6 +19,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void OnCollision(Collider* c1, Collider* c2);
+
 public:
 
 	SDL_Texture* graphics = nullptr;
@@ -40,6 +42,11 @@ private:
 	Uint32 start_time = 0;
 	Uint32 total_time = (Uint32)(2.0f * 0.5f * 100.0f);
 	Uint32 now;
+
+	bool drop = true;
+	Uint32 drop_timer_start = 0;
+	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 300.0f);
+	Uint32 drop_timer_now;
 };
 
 #endif

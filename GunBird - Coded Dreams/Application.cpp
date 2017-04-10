@@ -33,8 +33,8 @@ Application::Application()
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
 	modules[i++] = shooting = new ModuleShooting();
-	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = powerup = new ModulePowerUp();
+	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }

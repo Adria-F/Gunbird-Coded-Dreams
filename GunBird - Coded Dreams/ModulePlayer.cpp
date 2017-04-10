@@ -82,6 +82,12 @@ update_status ModulePlayer::Update()
 {
 	now = SDL_GetTicks() - start_time;
 
+	drop_timer_now = SDL_GetTicks() - drop_timer_start;
+	if (drop_timer_now >= drop_timer_total)
+	{
+		drop = true;
+	}
+	
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
 		App->particles->AddParticle(App->particles->bullet, particle_type::P_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
@@ -144,4 +150,18 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 	
 	return UPDATE_CONTINUE;
+}
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+	
+	drop_timer_start = SDL_GetTicks();
+	if (c2->type == COLLIDER_DROPPING_ENEMY)
+	{
+		if (drop)
+		{
+			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
+			drop = false;
+		}
+	}
 }

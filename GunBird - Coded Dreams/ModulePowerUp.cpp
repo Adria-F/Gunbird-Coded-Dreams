@@ -80,6 +80,14 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->audio->Load("assets/music/upgrade_marion.wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
+		for (int i = 0; i < MAX_POWERUP; i++)
+		{
+			if (powerups[i] != nullptr && powerups[i]->collider == c1)
+			{
+				powerups[i] = nullptr;
+				break;
+			}
+		}
 		App->particles->OnCollision(c1, c2);
 	}
 }
