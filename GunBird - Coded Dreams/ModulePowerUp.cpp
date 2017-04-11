@@ -5,6 +5,8 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include <stdlib.h>
+#include <time.h>
 
 ModulePowerUp::ModulePowerUp()
 {
@@ -38,21 +40,13 @@ update_status ModulePowerUp::Update()
 	{
 		if (powerups[i] != nullptr)
 		{
-			if (powerups[i]->position.y < 50)
+			if (powerups[i]->position.y <= 50 || powerups[i]->position.y >= (SCREEN_HEIGHT - 50 - 13))
 			{
-				powerups[i]->going_up = false;
+				powerups[i]->speed.y = -powerups[i]->speed.y;
 			}
-			else if (powerups[i]->position.y > 250)
+			if (powerups[i]->position.x <= 0 || powerups[i]->position.x >= (SCREEN_WIDTH - 22))
 			{
-				powerups[i]->going_up = true;
-			}
-			if (powerups[i]->going_up)
-			{
-				powerups[i]->position.y -= 1;
-			}
-			else
-			{
-				powerups[i]->position.y += 3;
+				powerups[i]->speed.x = -powerups[i]->speed.x;
 			}
 		}
 	}
@@ -62,12 +56,16 @@ update_status ModulePowerUp::Update()
 
 void ModulePowerUp::AddPowerUp(powerup_type type, int x, int y)
 {
+	srand(time(NULL));
 	for (int i = 0; i < MAX_POWERUP; i++)
 	{
 		if (powerups[i] == nullptr)
 		{
-			App->particles->upgrade.speed.x = 0;
-			App->particles->upgrade.speed.y = -1;
+			while (App->particles->upgrade.speed.x == 0)
+			{
+				App->particles->upgrade.speed.x = rand() % 4 + -2;
+			}
+			App->particles->upgrade.speed.y = rand() % -2 + -1;
 			powerups[i] = App->particles->AddParticle(App->particles->upgrade, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
 			break;
 		}
