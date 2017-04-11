@@ -33,7 +33,7 @@ public:
 	SDL_Rect rec_gturret;
 
 	//building1
-	SDL_Texture* graphics_build1 = nullptr;
+	SDL_Texture* graphics_buildings = nullptr;
 	Animation build1;
 	Collider* rect_build1;
 	SDL_Rect rec_building1;
@@ -41,6 +41,13 @@ public:
 	Animation flag1;	
 	SDL_Rect rec_flag1;
 
+	//building2
+	Animation build2;
+	Collider* rect_build2;
+	SDL_Rect rec_building2;
+	//flag2
+	Animation flag2;
+	SDL_Rect rec_flag2;
 
 
 	bool fading;
