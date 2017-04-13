@@ -5,6 +5,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include <math.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -61,11 +62,14 @@ void ModulePowerUp::AddPowerUp(powerup_type type, int x, int y)
 	{
 		if (powerups[i] == nullptr)
 		{
+			App->particles->upgrade.speed.x = rand() % 20 + -10;
+			App->particles->upgrade.speed.x /= 10;
 			while (App->particles->upgrade.speed.x == 0)
 			{
-				App->particles->upgrade.speed.x = rand() % 4 + -2;
+				App->particles->upgrade.speed.x = rand() % 20 + -10;
+				App->particles->upgrade.speed.x /= 10;
 			}
-			App->particles->upgrade.speed.y = rand() % -2 + -1;
+			App->particles->upgrade.speed.y = - sqrt(1-pow(App->particles->upgrade.speed.x, 2.0));
 			powerups[i] = App->particles->AddParticle(App->particles->upgrade, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
 			break;
 		}
