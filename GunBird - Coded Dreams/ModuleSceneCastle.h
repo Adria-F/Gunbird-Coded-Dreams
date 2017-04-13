@@ -37,6 +37,11 @@ public:
 	Animation build1;
 	Collider* rect_build1;
 	SDL_Rect rec_building1;
+
+	//build1 down
+	Animation build1down;
+	SDL_Rect rec_build1down;
+
 	//flag1
 	Animation flag1;	
 	SDL_Rect rec_flag1;

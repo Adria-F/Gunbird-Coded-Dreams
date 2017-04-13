@@ -164,4 +164,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			drop = false;
 		}
 	}
+	if (c2->type == COLLIDER_BUILDING)
+	{
+		c1;
+	}
 }

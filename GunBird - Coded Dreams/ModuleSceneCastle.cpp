@@ -42,6 +42,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	flag1.PushBack({ 89, 154, 65, 21 });
 	flag1.speed = 0.07f;
 
+	//Build 1 destroyed
+	build1down.PushBack({ 92, 186, 61, 52 });
+	build1down.speed = 0.1f;
+
 	//Build2
 	build2.PushBack({ 69, 0, 72, 83 });
 	build2.speed = 0.1f;
@@ -148,7 +152,11 @@ update_status ModuleSceneCastle::Update()
 	rec_flag2 = current_animation4->GetCurrentFrame();
 	App->render->Blit(graphics_buildings, (App->render->camera.x + 109), (App->render->camera.y + 1155), &rec_flag2);//render
 
-
+	//building 1 down
+	Animation* current_animation5 = &build1down;
+	rec_building1 = current_animation5->GetCurrentFrame();
+	App->render->Blit(graphics_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);//render
+	rect_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
