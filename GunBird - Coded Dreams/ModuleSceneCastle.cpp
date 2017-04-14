@@ -152,11 +152,6 @@ update_status ModuleSceneCastle::Update()
 	rec_flag2 = current_animation4->GetCurrentFrame();
 	App->render->Blit(graphics_buildings, (App->render->camera.x + 109), (App->render->camera.y + 1155), &rec_flag2);//render
 
-	//building 1 down
-	Animation* current_animation5 = &build1down;
-	rec_building1 = current_animation5->GetCurrentFrame();
-	App->render->Blit(graphics_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);//render
-	rect_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
@@ -164,6 +159,13 @@ update_status ModuleSceneCastle::Update()
 		App->fade->FadeToBlack(this, App->highscores);
 		fading = true;
 	}
+	/*OnCollision(player shot, building)
+	{	Animation* current_animation5 = &build1down;
+			rec_building1 = current_animation5->GetCurrentFrame();
+			App->render->Blit(graphics_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);//render
+			rect_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415))
+	}
+	*/
 
 	return UPDATE_CONTINUE;
 }
@@ -174,5 +176,15 @@ void ModuleSceneCastle::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->render->moving_scene = false;
 		App->fade->FadeToBlack(App->scene_castle, App->highscores);
+	}
+	if (c2->type == COLLIDER_BUILDING)
+	{
+		if (c2 == rect_build1)
+		{
+			Animation* current_animation5 = &build1down;
+			rec_building1 = current_animation5->GetCurrentFrame();
+			App->render->Blit(graphics_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);//render
+			rect_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
+		}
 	}
 }

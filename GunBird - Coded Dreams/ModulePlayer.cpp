@@ -154,7 +154,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
+
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
@@ -164,8 +164,5 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			drop = false;
 		}
 	}
-	if (c2->type == COLLIDER_BUILDING)
-	{
-		c1;
-	}
 }
+	
