@@ -20,7 +20,9 @@ public:
 public:
 
 	SDL_Texture* texture_bullet = nullptr;
+	SDL_Texture* texture_enemy_medium_bullet = nullptr;
 	SDL_Rect rect_bullet;
+	SDL_Rect rect_enemy_medium_bullet;
 };
 
 #endif
