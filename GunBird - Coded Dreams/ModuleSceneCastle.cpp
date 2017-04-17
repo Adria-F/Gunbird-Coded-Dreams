@@ -76,6 +76,7 @@ bool ModuleSceneCastle::Start()
 	texture_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
 	coll_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);*/
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
+	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 
 	//building1
 	texture_buildings = App->textures->Load("assets/maps/Castle_Sprites.png");

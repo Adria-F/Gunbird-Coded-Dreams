@@ -9,7 +9,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	ANTIAIRCRAFT, //TEMP
-	ROBOT
+	HUMANOIDE_ROBOT
 };
 
 class Enemy;

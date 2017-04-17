@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy_Antiaircraft.h"
+#include "Enemy_Humanoide_Robot.h"
 #include "Enemy.h"
 
 #define SPAWN_MARGIN 50
@@ -122,10 +123,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 	if(i != MAX_ENEMIES)
 	{
-		switch(info.type)
+		switch (info.type)
 		{
 		case ENEMY_TYPES::ANTIAIRCRAFT:
 			enemies[i] = new Enemy_Antiaircraft(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::HUMANOIDE_ROBOT:
+			enemies[i] = new Enemy_Humanoide_Robot(info.x, info.y);
 			break;
 		}
 	}
