@@ -13,6 +13,7 @@
 #include "ModuleCollision.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -22,12 +23,12 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.w = SCREEN_WIDTH;
 	rect_background.h = 2108;
 
-	//General Turret
+	/*//General Turret
 	anim_gturret.PushBack({ 0, 0, 32, 32 });
 	anim_gturret.PushBack({ 34, 0, 32,32 });
 	anim_gturret.PushBack({ 68, 0, 32, 32 });
 	anim_gturret.PushBack({ 102, 0, 32, 32 });
-	anim_gturret.speed = 0.1f;
+	anim_gturret.speed = 0.1f;*/
 
 	//Build1
 	anim_build1.PushBack({ 0, 0, 64, 86 });
@@ -71,9 +72,10 @@ bool ModuleSceneCastle::Start()
 	bool ret = true;
 	texture_bg = App->textures->Load("assets/maps/castle_background.png");
 
-	//gturret
+	/*//gturret
 	texture_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
-	coll_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);
+	coll_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);*/
+	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 
 	//building1
 	texture_buildings = App->textures->Load("assets/maps/Castle_Sprites.png");
@@ -125,11 +127,11 @@ update_status ModuleSceneCastle::Update()
 	//background
 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f); // sea and sky
 
-	//general turret
+	/*//general turret
 	Animation* current_animation = &anim_gturret;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	App->render->Blit(texture_gturret, (App->render->camera.x + 162), (App->render->camera.y + 1596), &r);
-	coll_gturret->SetPos((App->render->camera.x + 162), (App->render->camera.y + 1596));
+	coll_gturret->SetPos((App->render->camera.x + 162), (App->render->camera.y + 1596));*/
 
 	//building 1
 	Animation* current_animation1 = &anim_build1;

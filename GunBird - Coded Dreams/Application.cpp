@@ -16,6 +16,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
@@ -29,6 +30,7 @@ Application::Application()
 	modules[i++] = welcometitle = new ModuleWelcomeTitle();
 	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = selection = new ModuleSelection();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
