@@ -19,8 +19,8 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
-	SDL_Rect bullet;
+	SDL_Texture* texture_bullet = nullptr;
+	SDL_Rect rect_bullet;
 };
 
 #endif

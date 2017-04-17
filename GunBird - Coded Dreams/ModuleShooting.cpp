@@ -10,10 +10,10 @@
 ModuleShooting::ModuleShooting()
 {
 	//Marion Bullets
-	bullet.x = 166;
-	bullet.y = 127;
-	bullet.h = 40;
-	bullet.w = 20;
+	rect_bullet.x = 166;
+	rect_bullet.y = 127;
+	rect_bullet.h = 40;
+	rect_bullet.w = 20;
 	
 }
 ModuleShooting::~ModuleShooting()
@@ -23,7 +23,7 @@ bool ModuleShooting::Start()
 {
 	LOG("Loading ModuleShooting");
 	bool ret = true;
-	graphics = App->textures->Load("assets/characters/marion.png");
+	texture_bullet = App->textures->Load("assets/characters/marion.png");
 	LOG("Loading FX");
 
 	return ret;
@@ -32,8 +32,8 @@ bool ModuleShooting::Start()
 bool ModuleShooting::CleanUp()
 {
 	LOG("Unloading ModuleShooting");
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	App->textures->Unload(texture_bullet);
+	texture_bullet = nullptr;
 	App->audio->Stop();
 	return true;
 }

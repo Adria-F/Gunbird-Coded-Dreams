@@ -23,37 +23,37 @@ public:
 public:
 	
 	//background
-	SDL_Texture* graphics = nullptr;
-	SDL_Rect background;
+	SDL_Texture* texture_bg = nullptr;
+	SDL_Rect rect_background;
 
 	//gturret
-	SDL_Texture* graphics_gturret = nullptr;
-	Animation gturret;
-	Collider* rect_gturret;
-	SDL_Rect rec_gturret;
+	SDL_Texture* texture_gturret = nullptr;
+	Animation anim_gturret;
+	Collider* coll_gturret;
+	SDL_Rect rect_gturret;
 
 	//building1
-	SDL_Texture* graphics_buildings = nullptr;
-	Animation build1;
-	Collider* rect_build1;
-	SDL_Rect rec_building1;
+	SDL_Texture* texture_buildings = nullptr;
+	Animation anim_build1;
+	Collider* coll_build1;
+	SDL_Rect rect_building1;
 
 	//build1 down
-	Animation build1down;
-	SDL_Rect rec_build1down;
+	Animation anim_build1down;
+	SDL_Rect rect_build1down;
 
 	//flag1
-	Animation flag1;	
-	SDL_Rect rec_flag1;
+	Animation anim_flag1;	
+	SDL_Rect rect_flag1;
 
 	//building2
-	Animation build2;
-	Collider* rect_build2;
-	SDL_Rect rec_building2;
-	//flag2
-	Animation flag2;
-	SDL_Rect rec_flag2;
+	Animation anim_build2;
+	Collider* coll_build2;
+	SDL_Rect rect_building2;
 
+	//flag2
+	Animation anim_flag2;
+	SDL_Rect rect_flag2;
 
 	bool fading;
 };
