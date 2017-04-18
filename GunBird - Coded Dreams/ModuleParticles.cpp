@@ -7,6 +7,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleSceneCastle.h"
+#include "ModuleHighscores.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -170,6 +173,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
+		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->player)
+		{
+			App->render->moving_scene = false;
+			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+		}
+		
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			delete active[i];

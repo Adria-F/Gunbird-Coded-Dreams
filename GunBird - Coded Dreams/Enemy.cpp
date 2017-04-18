@@ -31,5 +31,8 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-
+	if (collider->type == COLLIDER_PLAYER_SHOT)
+	{
+		lives -= 1;
+	}
 }

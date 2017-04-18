@@ -18,7 +18,7 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 
 	animation = &anim;
 
-	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_DROPPING_ENEMY, App->scene_castle);
+	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Antiaircraft::Move()

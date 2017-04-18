@@ -22,6 +22,8 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	anim.PushBack({ 154, 133, 76, 72 });//6
 	anim.speed = 0.1f;
 	path.PushBack({ 0.0f, -0.25f }, 100);
+
+	lives = 88;
 /*
 	if (position.y >= 1370)//intent de que tiri endavant
 	{
@@ -35,7 +37,7 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	
 	animation = &anim;
 
-	collider = App->collision->AddCollider({ 70, 1505, 77, 77 }, COLLIDER_ENEMY, App->scene_castle);
+	collider = App->collision->AddCollider({ 70, 1505, 77, 77 }, COLLIDER_ENEMY, (Module*)App->enemies);
 
 	
 	
