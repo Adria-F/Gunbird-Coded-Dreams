@@ -62,6 +62,7 @@ bool Application::Init()
 	collision->Disable();
 	powerup->Disable();
 	particles->Disable();
+	enemies->Disable();
 
 	
 	//testing the shooting mechanic

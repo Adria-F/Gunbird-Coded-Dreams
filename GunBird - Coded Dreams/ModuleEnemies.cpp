@@ -8,7 +8,7 @@
 #include "Enemy_Humanoide_Robot.h"
 #include "Enemy.h"
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 100
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -67,7 +67,7 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.y * SCREEN_SIZE < (App->render->camera.y) - SPAWN_MARGIN)
+			if ((abs(App->render->camera.y) + SCREEN_HEIGHT + SPAWN_MARGIN) < enemies[i]->position.y)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];

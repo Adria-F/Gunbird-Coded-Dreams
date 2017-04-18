@@ -6,6 +6,9 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 #include "Path.h"
+#include "ModulePlayer.h"
+#include <math.h>
+#include "SDL/include/SDL_timer.h"
 
 Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 {
@@ -42,10 +45,34 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	original_pos.y = y;
 }
 
+Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
+{
+
+}
+
 void Enemy_Humanoide_Robot::Move()
 {
 	if (position.y >= 1370)
 	{
 		position = original_pos + path.GetCurrentPosition();
 	}
+
+	now = SDL_GetTicks() - start_time;
+
+	if (now > total_time)
+	{
+		start_time = SDL_GetTicks();
+		//App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->player->position.x, App->player->position.y, COLLIDER_ENEMY_SHOT);
+		shots[0] = App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
+		vector = (App->player->position.x + 15 - position.x - 37);
+		vector /= 30;
+		shots[0]->speed.x = vector;
+		shots[0]->speed.y = sqrt(pow(3.5, 2.0) - pow(vector, 2.0));
+		shots[1] = App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->render->camera.x + position.x + 53, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
+		vector = (App->player->position.x + 50 - position.x - 37);
+		vector /= 30;
+		shots[1]->speed.x = vector;
+		shots[1]->speed.y = sqrt(pow(3.5, 2.0) - pow(vector, 2.0));
+	}
+
 }

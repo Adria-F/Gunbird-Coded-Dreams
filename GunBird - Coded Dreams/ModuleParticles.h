@@ -8,6 +8,7 @@
 #include "ModuleCollision.h"
 
 #define MAX_ACTIVE_PARTICLES 500
+#define SMALL_SHOT_SPEED 10
 
 struct SDL_Texture;
 struct Collider;
@@ -16,7 +17,8 @@ enum COLLIDER_TYPE;
 enum particle_type
 {
 	P_BULLET,
-	P_UPGRADE
+	P_UPGRADE,
+	P_SMALL_SHOT
 };
 
 struct Particle
@@ -55,12 +57,14 @@ private:
 
 	SDL_Texture* bullet_graphics = nullptr;
 	SDL_Texture* upgrade_graphics = nullptr;
+	SDL_Texture* small_shot_graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
 
 	Particle bullet;
 	Particle upgrade;
+	Particle small_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

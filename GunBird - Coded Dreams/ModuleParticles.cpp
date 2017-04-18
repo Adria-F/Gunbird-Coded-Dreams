@@ -25,6 +25,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	bullet_graphics = App->textures->Load("assets/characters/marion.png");
 	upgrade_graphics = App->textures->Load("assets/items/upgrade.png");
+	small_shot_graphics = App->textures->Load("assets/enemies/basic_shoot.png");
 
 	// Marion Bullets
 	bullet.anim.PushBack({ 166, 127, 7, 30 });
@@ -46,6 +47,21 @@ bool ModuleParticles::Start()
 	upgrade.life = 100000;
 	upgrade.anim.loop = true;
 	upgrade.anim.speed = 0.2f;
+
+	// Small shot
+	small_shot.anim.PushBack({ 9, 9, 6, 6});
+	small_shot.anim.PushBack({ 41, 9, 6, 6 });
+	small_shot.anim.PushBack({ 73, 9, 6, 6 });
+	small_shot.anim.PushBack({ 105, 9, 6, 6 });
+	small_shot.anim.PushBack({ 137, 9, 6, 6 });
+	small_shot.anim.PushBack({ 185, 9, 6, 6 });
+	small_shot.anim.PushBack({ 9, 25, 6, 6 });
+	small_shot.anim.PushBack({ 41, 25, 6, 6 });
+	small_shot.life = 100000;
+	small_shot.speed.x = 0;
+	small_shot.speed.y = 0;
+	small_shot.anim.loop = true;
+	small_shot.anim.speed = 0.5f;
 	
 	return true;
 }
@@ -56,8 +72,10 @@ bool ModuleParticles::CleanUp()
 	LOG("Unloading particles");
 	App->textures->Unload(bullet_graphics);
 	App->textures->Unload(upgrade_graphics);
+	App->textures->Unload(small_shot_graphics);
 	bullet_graphics = nullptr;
 	upgrade_graphics = nullptr;
+	small_shot_graphics = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -95,6 +113,8 @@ update_status ModuleParticles::Update()
 				break;
 			case P_UPGRADE:
 				App->render->Blit(upgrade_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			case P_SMALL_SHOT:
+				App->render->Blit(small_shot_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			}
 			if (p->fx_played == false)
 			{
@@ -133,6 +153,8 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 			case COLLIDER_POWER_UP:
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, App->powerup);
 				break;
+			case COLLIDER_ENEMY_SHOT:
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 			active[i] = p;
 			temp_p = p;
