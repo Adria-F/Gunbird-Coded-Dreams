@@ -62,7 +62,7 @@ update_status ModuleSelection::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->scene_castle);
+		App->fade->FadeToBlack(this, App->scene_castle, 0.5f);//0.5 serà millor per nosaltres per treballar bé
 		fading = true;
 	}
 	return UPDATE_CONTINUE;

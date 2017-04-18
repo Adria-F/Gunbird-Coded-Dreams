@@ -32,8 +32,11 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_gturret.speed = 0.1f;*/
 
 	//Build1
+	/*
 	anim_build1.PushBack({ 0, 0, 64, 86 });
 	anim_build1.speed = 0.1f;
+	*/
+	
 	anim_flag1.PushBack({ 13, 95, 69, 23 });
 	anim_flag1.PushBack({ 13, 121, 69, 23 });
 	anim_flag1.PushBack({ 13, 146, 69, 23 });
@@ -76,12 +79,15 @@ bool ModuleSceneCastle::Start()
 	/*//gturret
 	texture_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
 	coll_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);*/
+
+	/*//building1
+	texture_buildings = App->textures->Load("assets/maps/Castle_Sprites.png");
+	coll_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_BUILDING, this);*/
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
-
-	//building1
-	texture_buildings = App->textures->Load("assets/maps/Castle_Sprites.png");
-	coll_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_BUILDING, this);
+	App->enemies->AddEnemy(BUILDING1, 145, 1415);
+	
+	
 
 	//building2
 	coll_build2 = App->collision->AddCollider({ 69, 0, 72, 83 }, COLLIDER_BUILDING, this);
@@ -141,11 +147,13 @@ update_status ModuleSceneCastle::Update()
 	coll_gturret->SetPos((App->render->camera.x + 162), (App->render->camera.y + 1596));*/
 
 	//building 1
+	/*
 	Animation* current_animation1 = &anim_build1;
 	rect_building1 = current_animation1->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
 	coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));//collider
-
+	*/
+	
 	Animation* current_animation2 = &anim_flag1;
 	rect_flag1 = current_animation2->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 175), (App->render->camera.y + 1403), &rect_flag1);//render
