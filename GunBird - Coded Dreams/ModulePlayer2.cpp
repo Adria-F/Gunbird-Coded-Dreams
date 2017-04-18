@@ -44,7 +44,7 @@ bool ModulePlayer2::Start()
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
 
-	position.x = 101;
+	position.x = 150;
 	position.y = 266;
 
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);

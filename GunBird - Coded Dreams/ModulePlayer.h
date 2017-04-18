@@ -27,6 +27,9 @@ public:
 	Animation idle;
 	Animation left;
 	Animation right;
+	Animation stele1;
+	Animation stele2;
+	Animation stele3;
 	iPoint position;
 	Collider* Pcollider;
 	int bullet_counter;

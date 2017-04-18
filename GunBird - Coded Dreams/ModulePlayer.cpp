@@ -44,11 +44,36 @@ ModulePlayer::ModulePlayer()
 	left.PushBack({ 66, 0, 23, 32 });
 	left.PushBack({ 99, 0, 23, 32 });
 	left.speed = 0.1f;
+
+	//Stars stele
+	//1
+	stele1.PushBack({ 169, 0, 11, 11 }); 
+	stele1.PushBack({ 169, 16, 11, 11 });
+	stele1.PushBack({ 169, 30, 11, 11 });
+	stele1.PushBack({ 169, 45, 11, 11 });
+	//2
+	stele2.PushBack({ 184, 0, 11, 11 });
+	stele2.PushBack({ 184, 16, 11, 11 });
+	//3
+	stele3.PushBack({ 199, 0, 11, 11 });
+	stele3.PushBack({ 213, 0, 11, 11 });
+	stele3.PushBack({ 230, 0, 11, 11 });
+	stele3.PushBack({ 247, 0, 11, 11 });
+	stele3.PushBack({ 261, 0, 11, 11 });
+	stele3.PushBack({ 279, 0, 11, 11 });
+	stele3.PushBack({ 199, 16, 11, 11 });
+	stele3.PushBack({ 213, 16, 11, 11 });
+	stele3.PushBack({ 230, 16, 11, 11 });
+	stele3.PushBack({ 247, 16, 11, 11 });
+	stele3.PushBack({ 261, 16, 11, 11 });
+	stele3.PushBack({ 279, 16, 11, 11 });
+	stele1.speed = 0.1f;
+	stele2.speed = 0.1f;
+	stele3.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
 {}
-
 // Load assets
 bool ModulePlayer::Start()
 {
@@ -56,7 +81,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
 	
-	position.x = 101;
+	position.x = 50;
 	position.y = 266;
 
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
@@ -100,6 +125,10 @@ update_status ModulePlayer::Update()
 	}
 	
 	Animation* current_animation = &idle;
+	
+	Animation* stele_animation1 = &stele1;
+	Animation* stele_animation2 = &stele2;
+	Animation* stele_animation3 = &stele3;
 
 	int speed = 3;
 
@@ -110,6 +139,7 @@ update_status ModulePlayer::Update()
 	if (going_MARION_left)
 	{
 		current_animation = &left;
+
 		if (position.x > 0)
 		{
 			position.x -= speed;
@@ -144,11 +174,18 @@ update_status ModulePlayer::Update()
 	
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect s1 = stele_animation1->GetCurrentFrame();
+	SDL_Rect s2 = stele_animation2->GetCurrentFrame();
+	SDL_Rect s3 = stele_animation3->GetCurrentFrame();
 
 	Pcollider->SetPos(position.x, position.y - r.h);
-
+	//Move graphics render
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
-	
+	//Stele render
+	App->render->Blit(graphics, position.x+4, position.y - s1.h + 10, &s1);
+	App->render->Blit(graphics, position.x + 4, position.y - s2.h + 15, &s2);
+	App->render->Blit(graphics, position.x + 4, position.y - s3.h + 20, &s3);
+
 	return UPDATE_CONTINUE;
 }
 
