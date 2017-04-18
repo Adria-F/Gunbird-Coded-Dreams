@@ -57,20 +57,20 @@ update_status ModuleRender::Update()
 	}
 	if (App->debug->debugging)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_UP])
+		if (App->input->keyboard[SDL_SCANCODE_KP_8])
 		{
 			camera.y += 3;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN])
+		if (App->input->keyboard[SDL_SCANCODE_KP_5])
 		{
 			App->scene_mine->above_background_rect.y += 4;
 			camera.y -= 3;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT])
+		if (App->input->keyboard[SDL_SCANCODE_KP_6])
 		{
 			camera.x -= 3;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT])
+		if (App->input->keyboard[SDL_SCANCODE_KP_4])
 		{
 			camera.x += 3;
 		}
