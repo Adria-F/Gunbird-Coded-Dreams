@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleSceneCastle.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleSceneMine.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -94,9 +95,11 @@ bool ModuleSceneCastle::Start()
 	App->audio->Play(App->audio->MUSIC);
 
 	App->player->Enable();
+	App->player2->Enable();
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
+
 	fading = false;
 
 	return ret;
@@ -116,6 +119,7 @@ bool ModuleSceneCastle::CleanUp()
 
 	App->audio->Stop();
 	App->player->Disable();
+	App->player2->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();

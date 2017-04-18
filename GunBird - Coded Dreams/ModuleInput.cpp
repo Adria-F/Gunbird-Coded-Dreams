@@ -7,6 +7,7 @@
 #include "ModuleDebugMode.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -121,6 +122,45 @@ update_status ModuleInput::PreUpdate()
 		App->player->goingD = false;
 	}
 
+	//------------------------------------------------------------------------------------------ Jeff
+
+
+	if (keyboard[SDL_SCANCODE_KP_8] == KEY_STATE::KEY_DOWN)
+	{
+		App->player2->going8_U= true;
+		App->player2->going5_D = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_8] == KEY_STATE::KEY_UP)
+	{
+		App->player2->going8_U = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_4] == KEY_STATE::KEY_DOWN)
+	{
+		App->player2->going4_L = true;
+		App->player2->going6_R = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_4] == KEY_STATE::KEY_UP)
+	{
+		App->player2->going4_L = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_5] == KEY_STATE::KEY_DOWN)
+	{
+		App->player2->going5_D = true;
+		App->player2->going8_U = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_5] == KEY_STATE::KEY_UP)
+	{
+		App->player2->going5_D = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_6] == KEY_STATE::KEY_DOWN)
+	{
+		App->player2->going6_R = true;
+		App->player2->going4_L = false;
+	}
+	if (keyboard[SDL_SCANCODE_KP_6] == KEY_STATE::KEY_UP)
+	{
+		App->player2->going6_R = false;
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 
