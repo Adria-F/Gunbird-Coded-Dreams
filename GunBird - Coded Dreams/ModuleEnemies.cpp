@@ -8,7 +8,7 @@
 #include "Enemy_Humanoide_Robot.h"
 #include "Enemy.h"
 
-#define SPAWN_MARGIN 100
+#define SPAWN_MARGIN 75
 
 ModuleEnemies::ModuleEnemies()
 {
