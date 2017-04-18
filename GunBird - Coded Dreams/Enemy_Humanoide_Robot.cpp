@@ -37,10 +37,8 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	
 	animation = &anim;
 
-	collider = App->collision->AddCollider({ 70, 1505, 77, 77 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
 
-	
-	
 	//collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
