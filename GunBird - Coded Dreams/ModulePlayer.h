@@ -32,10 +32,10 @@ public:
 	int bullet_counter;
 	bool shot;
 
-	bool goingW;
-	bool goingA;
-	bool goingS;
-	bool goingD;
+	bool going_MARION_up;
+	bool going_MARION_left;
+	bool going_MARION_down;
+	bool going_MARION_right;
 
 private:
 

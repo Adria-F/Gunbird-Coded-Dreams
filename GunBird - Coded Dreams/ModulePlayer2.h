@@ -1,4 +1,3 @@
-
 #ifndef __ModulePlayer2_H__
 #define __ModulePlayer2_H__
 
@@ -28,15 +27,15 @@ public:
 	Animation idle;
 	Animation left;
 	Animation right;
-	iPoint position2;
+	iPoint position;
 	Collider* Pcollider;
 	int bullet_counter;
 	bool shot;
 
-	bool going8_U;
-	bool going4_L;
-	bool going5_D;
-	bool going6_R;
+	bool going_ASH_up;
+	bool going_ASH_left;
+	bool going_ASH_down;
+	bool going_ASH_right;
 
 private:
 

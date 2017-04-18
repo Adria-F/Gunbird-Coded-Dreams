@@ -42,10 +42,10 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("assets/characters/Ash.png"); // arcade version
+	graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
 
-	position2.x = 101;
-	position2.y = 266;
+	position.x = 101;
+	position.y = 266;
 
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
 
@@ -78,7 +78,7 @@ update_status ModulePlayer2::Update()
 
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
-		App->particles->AddParticle(App->particles->bullet, particle_type::P_BULLET, position2.x + 5, position2.y - 45, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ASH_bullet_particle, particle_type::P_ASH_BULLET, position.x + 3, position.y - 45, COLLIDER_PLAYER_SHOT);
 		start_time = SDL_GetTicks();
 		bullet_counter++;
 		if (bullet_counter == MAX_BULLETS)
@@ -91,28 +91,28 @@ update_status ModulePlayer2::Update()
 
 	int speed = 3;
 
-	if (going8_U && position2.y > 32)
+	if (going_ASH_up && position.y > 32)
 	{
-		position2.y -= speed;
+		position.y -= speed;
 	}
-	if (going4_L)
+	if (going_ASH_left)
 	{
 		current_animation = &right;
-		if (position2.x > 0)
+		if (position.x > 0)
 		{
-			position2.x -= speed;
+			position.x -= speed;
 		}
 	}
-	if (going5_D && position2.y < SCREEN_HEIGHT)
+	if (going_ASH_down && position.y < SCREEN_HEIGHT)
 	{
-		position2.y += speed;
+		position.y += speed;
 	}
-	if (going6_R)
+	if (going_ASH_right)
 	{
 		current_animation = &left;
-		if (position2.x < SCREEN_WIDTH - 18)
+		if (position.x < SCREEN_WIDTH - 18)
 		{
-			position2.x += speed;
+			position.x += speed;
 		}
 	}
 
@@ -121,7 +121,7 @@ update_status ModulePlayer2::Update()
 		shot = true;
 		bullet_counter = 0;
 		start_time = SDL_GetTicks();
-		App->audio->Load("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav", App->audio->EFFECT);
+		App->audio->Load("assets/effects/gunbird_209 [EFFECT] ASH (Shoots Level 1 & 2).wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
 	}
 
@@ -133,9 +133,9 @@ update_status ModulePlayer2::Update()
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	Pcollider->SetPos(position2.x, position2.y - r.h);
+	Pcollider->SetPos(position.x, position.y - r.h);
 
-	App->render->Blit(graphics, position2.x, position2.y - r.h, &r);
+	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 
 	return UPDATE_CONTINUE;
 }

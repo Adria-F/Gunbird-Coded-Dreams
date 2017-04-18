@@ -87,39 +87,39 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->goingW = true;
-		App->player->goingS = false;
+		App->player->going_MARION_up = true;
+		App->player->going_MARION_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
 	{
-		App->player->goingW = false;
+		App->player->going_MARION_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->goingA = true;
-		App->player->goingD = false;
+		App->player->going_MARION_left = true;
+		App->player->going_MARION_right = false;
 	}
 	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
 	{
-		App->player->goingA = false;
+		App->player->going_MARION_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->goingS = true;
-		App->player->goingW = false;
+		App->player->going_MARION_down = true;
+		App->player->going_MARION_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
 	{
-		App->player->goingS = false;
+		App->player->going_MARION_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->goingD = true;
-		App->player->goingA = false;
+		App->player->going_MARION_right = true;
+		App->player->going_MARION_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
 	{
-		App->player->goingD = false;
+		App->player->going_MARION_right = false;
 	}
 
 	//------------------------------------------------------------------------------------------ Jeff
@@ -127,39 +127,39 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going8_U= true;
-		App->player2->going5_D = false;
+		App->player2->going_ASH_up= true;
+		App->player2->going_ASH_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going8_U = false;
+		App->player2->going_ASH_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going4_L = true;
-		App->player2->going6_R = false;
+		App->player2->going_ASH_left = true;
+		App->player2->going_ASH_right = false;
 	}
 	if (keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going4_L = false;
+		App->player2->going_ASH_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going5_D = true;
-		App->player2->going8_U = false;
+		App->player2->going_ASH_down = true;
+		App->player2->going_ASH_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going5_D = false;
+		App->player2->going_ASH_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going6_R = true;
-		App->player2->going4_L = false;
+		App->player2->going_ASH_right = true;
+		App->player2->going_ASH_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going6_R = false;
+		App->player2->going_ASH_right = false;
 	}
 	return update_status::UPDATE_CONTINUE;
 }

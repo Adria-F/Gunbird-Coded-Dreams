@@ -90,7 +90,7 @@ update_status ModulePlayer::Update()
 	
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
-		App->particles->AddParticle(App->particles->bullet, particle_type::P_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->MARION_bullet_particle, particle_type::P_MARION_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 		start_time = SDL_GetTicks();
 		bullet_counter++;
 		if (bullet_counter == MAX_BULLETS)
@@ -103,11 +103,11 @@ update_status ModulePlayer::Update()
 
 	int speed = 3;
 
-	if(goingW && position.y > 32)
+	if(going_MARION_up && position.y > 32)
 	{
 		position.y -= speed;
 	}
-	if (goingA)
+	if (going_MARION_left)
 	{
 		current_animation = &left;
 		if (position.x > 0)
@@ -115,11 +115,11 @@ update_status ModulePlayer::Update()
 			position.x -= speed;
 		}
 	}
-	if (goingS && position.y < SCREEN_HEIGHT)
+	if (going_MARION_down && position.y < SCREEN_HEIGHT)
 	{
 		position.y += speed;
 	}
-	if (goingD)
+	if (going_MARION_right)
 	{
 		current_animation = &right;
 		if (position.x < SCREEN_WIDTH - 18)

@@ -26,45 +26,53 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	bullet_graphics = App->textures->Load("assets/characters/marion.png");
-	upgrade_graphics = App->textures->Load("assets/items/upgrade.png");
-	small_shot_graphics = App->textures->Load("assets/enemies/basic_shoot.png");
+	MARION_bullet_texture = App->textures->Load("assets/characters/marion.png");
+	ASH_bullet_texture = App->textures->Load("assets/characters/ash.png");
+	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
+	small_shot_texture = App->textures->Load("assets/enemies/basic_shoot.png");
 
 	// Marion Bullets
-	bullet.anim.PushBack({ 166, 127, 7, 30 });
-	bullet.life = 10000;
-	bullet.speed.y = -8;
-	bullet.anim.loop = false;
-	bullet.anim.speed = 0.5f;
+	MARION_bullet_particle.anim.PushBack({ 166, 127, 7, 30 });
+	MARION_bullet_particle.life = 10000;
+	MARION_bullet_particle.speed.y = -8;
+	MARION_bullet_particle.anim.loop = false;
+	MARION_bullet_particle.anim.speed = 0.5f;
+
+	// Ash Bullets
+	ASH_bullet_particle.anim.PushBack({ 27, 222, 14, 6 });
+	ASH_bullet_particle.life = 10000;
+	ASH_bullet_particle.speed.y = -8;
+	ASH_bullet_particle.anim.loop = false;
+	ASH_bullet_particle.anim.speed = 0.5f;
 
 	// Upgrade
-	upgrade.anim.PushBack({ 4, 31, 22, 13 });
-	upgrade.anim.PushBack({ 54, 31, 22, 13 });
-	upgrade.anim.PushBack({ 104, 31, 22, 13 });
-	upgrade.anim.PushBack({ 54, 47, 22, 13 });
-	upgrade.anim.PushBack({ 104, 47, 22, 13 });
-	upgrade.anim.PushBack({ 54, 64, 22, 13 });
-	upgrade.anim.PushBack({ 104, 64, 22, 13 });
-	upgrade.anim.PushBack({ 56, 83, 22, 13 });
-	upgrade.anim.PushBack({ 81, 83, 22, 13 });
-	upgrade.life = 100000;
-	upgrade.anim.loop = true;
-	upgrade.anim.speed = 0.2f;
+	upgrade_particle.anim.PushBack({ 4, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 47, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 47, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 64, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 64, 22, 13 });
+	upgrade_particle.anim.PushBack({ 56, 83, 22, 13 });
+	upgrade_particle.anim.PushBack({ 81, 83, 22, 13 });
+	upgrade_particle.life = 100000;
+	upgrade_particle.anim.loop = true;
+	upgrade_particle.anim.speed = 0.2f;
 
 	// Small shot
-	small_shot.anim.PushBack({ 9, 9, 6, 6});
-	small_shot.anim.PushBack({ 41, 9, 6, 6 });
-	small_shot.anim.PushBack({ 73, 9, 6, 6 });
-	small_shot.anim.PushBack({ 105, 9, 6, 6 });
-	small_shot.anim.PushBack({ 137, 9, 6, 6 });
-	small_shot.anim.PushBack({ 185, 9, 6, 6 });
-	small_shot.anim.PushBack({ 9, 25, 6, 6 });
-	small_shot.anim.PushBack({ 41, 25, 6, 6 });
-	small_shot.life = 100000;
-	small_shot.speed.x = 0;
-	small_shot.speed.y = 0;
-	small_shot.anim.loop = true;
-	small_shot.anim.speed = 0.5f;
+	small_shot_particle.anim.PushBack({ 9, 9, 6, 6});
+	small_shot_particle.anim.PushBack({ 41, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 73, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 105, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 137, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 185, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 9, 25, 6, 6 });
+	small_shot_particle.anim.PushBack({ 41, 25, 6, 6 });
+	small_shot_particle.life = 100000;
+	small_shot_particle.speed.x = 0;
+	small_shot_particle.speed.y = 0;
+	small_shot_particle.anim.loop = true;
+	small_shot_particle.anim.speed = 0.5f;
 	
 	return true;
 }
@@ -73,12 +81,15 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(bullet_graphics);
-	App->textures->Unload(upgrade_graphics);
-	App->textures->Unload(small_shot_graphics);
-	bullet_graphics = nullptr;
-	upgrade_graphics = nullptr;
-	small_shot_graphics = nullptr;
+	App->textures->Unload(MARION_bullet_texture);
+	App->textures->Unload(ASH_bullet_texture);
+	App->textures->Unload(upgrade_texture);
+	App->textures->Unload(small_shot_texture);
+
+	MARION_bullet_texture = nullptr;
+	ASH_bullet_texture = nullptr;
+	upgrade_texture = nullptr;
+	small_shot_texture = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -111,13 +122,16 @@ update_status ModuleParticles::Update()
 		{
 			switch (p->type)
 			{
-			case P_BULLET:
-				App->render->Blit(bullet_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			case P_MARION_BULLET:
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_ASH_BULLET:
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_UPGRADE:
-				App->render->Blit(upgrade_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			case P_SMALL_SHOT:
-				App->render->Blit(small_shot_graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			}
 			if (p->fx_played == false)
 			{
@@ -174,6 +188,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		// Always destroy particles that collide
 		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->player)
+		{
+			App->render->moving_scene = false;
+			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+		}
+
+		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->player2)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);

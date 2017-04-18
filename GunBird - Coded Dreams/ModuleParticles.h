@@ -16,7 +16,8 @@ enum COLLIDER_TYPE;
 
 enum particle_type
 {
-	P_BULLET,
+	P_MARION_BULLET,
+	P_ASH_BULLET,
 	P_UPGRADE,
 	P_SMALL_SHOT
 };
@@ -55,16 +56,18 @@ public:
 
 private:
 
-	SDL_Texture* bullet_graphics = nullptr;
-	SDL_Texture* upgrade_graphics = nullptr;
-	SDL_Texture* small_shot_graphics = nullptr;
+	SDL_Texture* MARION_bullet_texture = nullptr;
+	SDL_Texture* ASH_bullet_texture = nullptr;
+	SDL_Texture* upgrade_texture = nullptr;
+	SDL_Texture* small_shot_texture = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
 
-	Particle bullet;
-	Particle upgrade;
-	Particle small_shot;
+	Particle MARION_bullet_particle;
+	Particle ASH_bullet_particle;
+	Particle upgrade_particle;
+	Particle small_shot_particle;
 };
 
 #endif // __MODULEPARTICLES_H__

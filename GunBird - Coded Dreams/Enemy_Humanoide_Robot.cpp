@@ -65,12 +65,12 @@ void Enemy_Humanoide_Robot::Move()
 	{
 		start_time = SDL_GetTicks();
 		//App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->player->position.x, App->player->position.y, COLLIDER_ENEMY_SHOT);
-		shots[0] = App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
+		shots[0] = App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
 		vector = (App->player->position.x + 15 - position.x - 37);
 		vector /= 30;
 		shots[0]->speed.x = vector;
 		shots[0]->speed.y = sqrt(pow(3.5, 2.0) - pow(vector, 2.0));
-		shots[1] = App->particles->AddParticle(App->particles->small_shot, P_SMALL_SHOT, App->render->camera.x + position.x + 53, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
+		shots[1] = App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 53, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT);
 		vector = (App->player->position.x + 50 - position.x - 37);
 		vector /= 30;
 		shots[1]->speed.x = vector;
