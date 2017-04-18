@@ -176,11 +176,6 @@ update_status ModuleSceneCastle::Update()
 
 void ModuleSceneCastle::OnCollision(Collider* c1, Collider* c2)
 {
-	/*if (c2->callback == App->player && c1->type == COLLIDER_ENEMY)
-	{
-		App->render->moving_scene = false;
-		App->fade->FadeToBlack(App->scene_castle, App->highscores);
-	}*/
 	if (c2->type == COLLIDER_BUILDING)
 	{
 		if (c2 == coll_build1)
