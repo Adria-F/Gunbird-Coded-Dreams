@@ -73,6 +73,7 @@
     <ClInclude Include="Enemy_Antiaircraft.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Building1.h" />
     <ClInclude Include="Enemy_Humanoide_Robot.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Enemy_Antiaircraft.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Building1.cpp" />
     <ClCompile Include="Enemy_Humanoide_Robot.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

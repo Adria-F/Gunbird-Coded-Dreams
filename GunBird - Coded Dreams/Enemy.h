@@ -16,7 +16,7 @@ protected:
 public:
 	iPoint position;
 	SDL_Texture* sprites = nullptr;
-	int lives = 1;
+	int lives;
 
 public:
 	Enemy(int x, int y);
