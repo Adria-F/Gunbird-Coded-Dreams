@@ -35,8 +35,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	/*
 	anim_build1.PushBack({ 0, 0, 64, 86 });
 	anim_build1.speed = 0.1f;
-	*/
-	
 	anim_flag1.PushBack({ 13, 95, 69, 23 });
 	anim_flag1.PushBack({ 13, 121, 69, 23 });
 	anim_flag1.PushBack({ 13, 146, 69, 23 });
@@ -46,12 +44,16 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_flag1.PushBack({ 89, 127, 65, 21 });
 	anim_flag1.PushBack({ 89, 154, 65, 21 });
 	anim_flag1.speed = 0.07f;
+	*/
+	
+
 
 	//Build 1 destroyed
 	anim_build1down.PushBack({ 92, 186, 61, 52 });
 	anim_build1down.speed = 0.1f;
 
 	//Build2
+	/*
 	anim_build2.PushBack({ 69, 0, 72, 83 });
 	anim_build2.speed = 0.1f;
 	anim_flag2.PushBack({ 13, 95, 69, 23 });
@@ -62,7 +64,12 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_flag2.PushBack({ 88, 98, 69, 23 });
 	anim_flag2.PushBack({ 89, 127, 65, 21 });
 	anim_flag2.PushBack({ 89, 154, 65, 21 });
-	anim_flag2.speed = 0.07f; 
+	anim_flag2.speed = 0.07f;
+	*/
+
+	
+
+
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -86,11 +93,12 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
+	App->enemies->AddEnemy(FLAG1, 175, 1403);
+	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+	App->enemies->AddEnemy(FLAG2, 109, 1155);
 	
-	
-
 	//building2
-	coll_build2 = App->collision->AddCollider({ 69, 0, 72, 83 }, COLLIDER_BUILDING, this);
+	//coll_build2 = App->collision->AddCollider({ 69, 0, 72, 83 }, COLLIDER_BUILDING, this);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
@@ -152,13 +160,12 @@ update_status ModuleSceneCastle::Update()
 	rect_building1 = current_animation1->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
 	coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));//collider
-	*/
-	
 	Animation* current_animation2 = &anim_flag1;
 	rect_flag1 = current_animation2->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 175), (App->render->camera.y + 1403), &rect_flag1);//render
-
-	//building 2
+	*/
+	/*
+		//building 2
 	Animation* current_animation3 = &anim_build2;
 	rect_building2 = current_animation3->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 75), (App->render->camera.y + 1165), &rect_building2);//render
@@ -167,6 +174,10 @@ update_status ModuleSceneCastle::Update()
 	Animation* current_animation4 = &anim_flag2;
 	rect_flag2 = current_animation4->GetCurrentFrame();
 	App->render->Blit(texture_buildings, (App->render->camera.x + 109), (App->render->camera.y + 1155), &rect_flag2);//render
+	*/
+	
+
+
 
 
 	//Fade To Black ---------------------------------------------

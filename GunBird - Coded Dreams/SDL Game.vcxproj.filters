@@ -15,6 +15,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{9959fce8-ae70-41fb-ae20-28fcd06c749b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Buildings">
+      <UniqueIdentifier>{487bfa0d-c568-4632-bf35-de7f00ca2c44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -105,7 +108,16 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Building1.h">
-      <Filter>Modules\Enemies</Filter>
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Building2.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Flag1.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Flag2.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -184,8 +196,17 @@
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Building2.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
     <ClCompile Include="Enemy_Building1.cpp">
-      <Filter>Modules\Enemies</Filter>
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Flag1.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Flag2.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

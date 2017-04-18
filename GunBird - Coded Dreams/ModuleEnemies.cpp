@@ -7,6 +7,9 @@
 #include "Enemy_Antiaircraft.h"
 #include "Enemy_Humanoide_Robot.h"
 #include "Enemy_Building1.h"
+#include "Enemy_Building2.h"
+#include "Enemy_Flag1.h"
+#include "Enemy_Flag2.h"
 #include "Enemy.h"
 
 #define SPAWN_MARGIN 75
@@ -136,6 +139,18 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::BUILDING1:
 			enemies[i] = new Enemy_Building1(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BUILDING2:
+			enemies[i] = new Enemy_Building2(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::FLAG1:
+			enemies[i] = new Enemy_Flag1(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::FLAG2:
+			enemies[i] = new Enemy_Flag2(info.x, info.y);
 			break;
 		}
 	}
