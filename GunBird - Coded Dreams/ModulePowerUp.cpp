@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleAudio.h"
 #include <math.h>
 #include <stdlib.h>
@@ -31,7 +32,6 @@ bool ModulePowerUp::Start()
 
 bool ModulePowerUp::CleanUp()
 {
-	
 	return true;
 }
 
@@ -81,6 +81,20 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 	if (c2->callback == App->player)
 	{
 		App->audio->Load("assets/music/upgrade_marion.wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
+		for (int i = 0; i < MAX_POWERUP; i++)
+		{
+			if (powerups[i] != nullptr && powerups[i]->collider == c1)
+			{
+				powerups[i] = nullptr;
+				break;
+			}
+		}
+		App->particles->OnCollision(c1, c2);
+	}
+	else if (c2->callback == App->player2)
+	{
+		App->audio->Load("assets/music/upgrade_ash.wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
 		for (int i = 0; i < MAX_POWERUP; i++)
 		{

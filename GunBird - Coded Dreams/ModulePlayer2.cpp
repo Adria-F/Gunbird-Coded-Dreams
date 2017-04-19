@@ -17,21 +17,23 @@ ModulePlayer2::ModulePlayer2()
 	// idle animation
 	idle.PushBack({ 14, 13, 19, 32 });//x - y - w - h
 	idle.PushBack({ 43, 13, 19, 32 });
-	idle.speed = 0.1f;
+	idle.speed = 0.3f;
 
 	//right animation
-	right.PushBack({ 16, 55, 17, 32 });//x - y - w - h
-	right.PushBack({ 43, 55, 17, 32 });
 	right.PushBack({ 70, 55, 14, 32 });
 	right.PushBack({ 94, 55, 14, 32 });
-	right.speed = 0.1f;
+	right.speed = 0.3f;
 
 	//left animation
 	left.PushBack({ 15, 97, 14, 32 });//x - y - w - h
 	left.PushBack({ 39, 97, 14, 32 });
-	left.PushBack({ 63, 97, 17, 32 });
-	left.PushBack({ 90, 97, 17, 32 });
-	left.speed = 0.1f;
+	left.speed = 0.3f;
+
+	//right.PushBack({ 16, 55, 17, 32 });//x - y - w - h
+	//right.PushBack({ 43, 55, 17, 32 });
+
+	//left.PushBack({ 63, 97, 17, 32 });
+	//left.PushBack({ 90, 97, 17, 32 });
 }
 
 ModulePlayer2::~ModulePlayer2()

@@ -33,16 +33,14 @@ Application::Application()
 	modules[i++] = selection = new ModuleSelection();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
 	modules[i++] = shooting = new ModuleShooting();
 	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
-
-
 }
 
 Application::~Application()

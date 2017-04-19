@@ -11,6 +11,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleHighscores.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -40,7 +41,7 @@ bool ModuleParticles::Start()
 	MARION_bullet_particle.anim.speed = 0.5f;
 
 	// Ash Bullets
-	ASH_bullet_particle.anim.PushBack({ 27, 222, 14, 6 });
+	ASH_bullet_particle.anim.PushBack({ 175, 29, 9, 29});
 	ASH_bullet_particle.life = 10000;
 	ASH_bullet_particle.speed.y = -8;
 	ASH_bullet_particle.anim.loop = false;
