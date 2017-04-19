@@ -8,7 +8,7 @@
 #include "ModuleCollision.h"
 
 #define MAX_ACTIVE_PARTICLES 500
-#define SMALL_SHOT_SPEED 10
+#define SMALL_SHOT_SPEED 3.5
 
 struct SDL_Texture;
 struct Collider;
@@ -52,7 +52,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	Particle* AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	Particle* AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, float x_phase = 0);
 
 private:
 
@@ -61,6 +61,9 @@ private:
 	SDL_Texture* upgrade_texture = nullptr;
 	SDL_Texture* small_shot_texture = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
+	fPoint vector;
+	float modul;
+	float y_phase;
 
 public:
 

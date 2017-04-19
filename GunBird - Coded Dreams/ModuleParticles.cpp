@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleHighscores.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -150,7 +151,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, float x_phase)
 {
 	Particle* temp_p = nullptr;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -172,6 +173,32 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 				break;
 			case COLLIDER_ENEMY_SHOT:
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				switch (type)
+				{
+				case P_SMALL_SHOT:
+					y_phase = 16 + (((x - App->player->position.x) / (y - App->player->position.y)) * 12);
+					if (App->player->position.x - x < 0)
+					{
+						if (x_phase < 0)
+						{
+							y_phase = -y_phase;
+						}
+					}
+					else
+					{
+						if (x_phase > 0)
+						{
+							y_phase = -y_phase;
+						}
+					}
+					vector.x = App->player->position.x + 10 + x_phase - x;
+					vector.y = App->player->position.y - 16 + y_phase - y;
+					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+					vector.x /= modul;
+					vector.y /= modul;
+					p->speed.x = vector.x * SMALL_SHOT_SPEED;
+					p->speed.y = vector.y * SMALL_SHOT_SPEED;
+				}
 			}
 			active[i] = p;
 			temp_p = p;

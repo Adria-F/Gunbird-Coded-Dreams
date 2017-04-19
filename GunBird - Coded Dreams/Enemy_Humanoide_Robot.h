@@ -14,13 +14,10 @@ private:
 
 	Path path;
 	iPoint original_pos;
-	float vector;
 
 	Uint32 start_time = 0;
 	Uint32 total_time = (Uint32)(2.0f * 0.5f * 1000.0f);
 	Uint32 now;
-
-	Particle* shots[2];
 
 	Animation anim;
 
