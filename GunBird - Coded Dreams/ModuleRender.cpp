@@ -49,7 +49,7 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()
 {
-	int speed = 1;
+	float speed = 0.5;
 
 	if (camera.y < 0 && moving_scene)
 	{
@@ -61,7 +61,7 @@ update_status ModuleRender::Update()
 		{
 			camera.y += 3;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_KP_5])
+		if (App->input->keyboard[SDL_SCANCODE_KP_2])
 		{
 			App->scene_mine->above_background_rect.y += 4;
 			camera.y -= 3;

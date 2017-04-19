@@ -13,7 +13,7 @@ Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 	anim.speed = 0.1f;
 	animation = &anim;
 
-	collider = App->collision->AddCollider({ 145, 1415, 64, 86 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 145, 1415, 64, 86 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }
 
 void Enemy_Building1::Move()
