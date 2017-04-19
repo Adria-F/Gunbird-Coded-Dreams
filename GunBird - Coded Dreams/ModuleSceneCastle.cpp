@@ -183,7 +183,7 @@ update_status ModuleSceneCastle::Update()
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->highscores);
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
 	}
 	/*OnCollision(player shot, building)

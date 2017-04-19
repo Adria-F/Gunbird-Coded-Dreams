@@ -59,7 +59,7 @@ update_status ModuleHighscores::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->welcometitle);
+		App->fade->FadeToBlack(this, App->welcometitle, 0.5f);
 		fading = true;
 	}
 

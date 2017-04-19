@@ -4,7 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleWelcomeTitle.h"
 #include "ModulePlayer.h"
-#include "ModuleSelection.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
@@ -62,7 +62,7 @@ update_status ModuleWelcomeTitle::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->selection, 0.5f);//0.5 és més ràpid per treballar, així serém més eficients
+		App->fade->FadeToBlack(this, App->scene_castle, 0.5f);//0.5 és més ràpid per treballar, així serém més eficients
 		fading = true;
 	}
 	return UPDATE_CONTINUE;
