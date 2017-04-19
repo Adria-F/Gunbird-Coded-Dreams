@@ -26,6 +26,12 @@ public:
 	SDL_Texture* texture_bg = nullptr;
 	SDL_Rect rect_background;
 
+	//Bridge
+	SDL_Texture* texture_bridge = nullptr;
+	Animation anim_bridge;
+	SDL_Rect rect_bridge;
+	
+
 	//gturret
 	SDL_Texture* texture_gturret = nullptr;
 	Animation anim_gturret;

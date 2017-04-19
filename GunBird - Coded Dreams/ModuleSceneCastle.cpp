@@ -24,6 +24,18 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.w = SCREEN_WIDTH;
 	rect_background.h = 2108;
 
+	//Bridge
+	anim_bridge.PushBack({ 0, 0, 121, 35});
+	anim_bridge.PushBack({ 121, 0, 116, 35 });
+	anim_bridge.PushBack({ 242, 0, 119 , 35 });
+	anim_bridge.PushBack({ 0, 35 , 121, 35 });
+	anim_bridge.PushBack({ 121, 35 , 121, 35 });
+	anim_bridge.PushBack({ 0, 134 , 112, 106 });
+	anim_bridge.PushBack({ 0, 295, 117, 110 });
+	anim_bridge.PushBack({ 117, 295, 117, 110 });
+	anim_bridge.PushBack({ 234, 295, 117, 110 });
+	anim_bridge.speed = 0.01f;
+
 	/*//General Turret
 	anim_gturret.PushBack({ 0, 0, 32, 32 });
 	anim_gturret.PushBack({ 34, 0, 32,32 });
@@ -48,9 +60,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	
 
 
-	//Build 1 destroyed
-	anim_build1down.PushBack({ 92, 186, 61, 52 });
-	anim_build1down.speed = 0.1f;
 
 	//Build2
 	/*
@@ -82,6 +91,9 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	texture_bg = App->textures->Load("assets/maps/castle_background.png");
+
+	//Bridge
+	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
 
 	/*//gturret
 	texture_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
@@ -130,6 +142,7 @@ bool ModuleSceneCastle::CleanUp()
 	texture_bg = nullptr;
 	texture_gturret = nullptr;
 	texture_buildings = nullptr;
+	texture_bridge = nullptr;
 
 	App->audio->Stop();
 	App->player->Disable();
@@ -148,11 +161,12 @@ update_status ModuleSceneCastle::Update()
 	//background
 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f); // sea and sky
 
-	/*//general turret
-	Animation* current_animation = &anim_gturret;
-	SDL_Rect r = current_animation->GetCurrentFrame();
-	App->render->Blit(texture_gturret, (App->render->camera.x + 162), (App->render->camera.y + 1596), &r);
-	coll_gturret->SetPos((App->render->camera.x + 162), (App->render->camera.y + 1596));*/
+	
+	//bridge	
+	Animation* current_animation = &anim_bridge;
+	SDL_Rect rect_bridge = current_animation->GetCurrentFrame();
+	App->render->Blit(texture_bridge, (App->render->camera.x + 70), (App->render->camera.y + 1346), &rect_bridge);
+	
 
 	//building 1
 	/*
@@ -186,13 +200,6 @@ update_status ModuleSceneCastle::Update()
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
 	}
-	/*OnCollision(player shot, building)
-	{	Animation* current_animation5 = &build1down;
-			rec_building1 = current_animation5->GetCurrentFrame();
-			App->render->Blit(graphics_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rec_building1);//render
-			rect_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415))
-	}
-	*/
 
 	return UPDATE_CONTINUE;
 }
