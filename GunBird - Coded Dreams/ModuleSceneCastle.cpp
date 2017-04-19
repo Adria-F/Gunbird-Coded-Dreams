@@ -26,15 +26,15 @@ ModuleSceneCastle::ModuleSceneCastle()
 
 	//Bridge
 	anim_bridge.PushBack({ 0, 0, 121, 35});
-	anim_bridge.PushBack({ 121, 0, 116, 35 });
-	anim_bridge.PushBack({ 242, 0, 119 , 35 });
-	anim_bridge.PushBack({ 0, 35 , 121, 35 });
-	anim_bridge.PushBack({ 121, 35 , 121, 35 });
-	anim_bridge.PushBack({ 0, 134 , 112, 106 });
-	anim_bridge.PushBack({ 0, 295, 117, 110 });
-	anim_bridge.PushBack({ 117, 295, 117, 110 });
-	anim_bridge.PushBack({ 234, 295, 117, 110 });
-	anim_bridge.speed = 0.01f;
+	anim_bridge.PushBack({ 125, 0, 116, 35 });
+	anim_bridge.PushBack({ 250, 0, 119 , 35 });
+	anim_bridge.PushBack({ 0, 65 , 121, 72 });
+	anim_bridge.PushBack({ 125, 65 , 121, 72 });
+	anim_bridge.PushBack({ 0, 205 , 110, 106 });
+	anim_bridge.PushBack({ 0, 320, 117, 110 });
+	anim_bridge.PushBack({ 125, 320, 117, 110 });
+	anim_bridge.PushBack({ 250, 322, 117, 110 });
+	anim_bridge.speed = 0.03f;
 
 	/*//General Turret
 	anim_gturret.PushBack({ 0, 0, 32, 32 });
@@ -165,7 +165,7 @@ update_status ModuleSceneCastle::Update()
 	//bridge	
 	Animation* current_animation = &anim_bridge;
 	SDL_Rect rect_bridge = current_animation->GetCurrentFrame();
-	App->render->Blit(texture_bridge, (App->render->camera.x + 70), (App->render->camera.y + 1346), &rect_bridge);
+	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
 	
 
 	//building 1
