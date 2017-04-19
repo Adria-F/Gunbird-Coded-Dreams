@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy_Antiaircraft.h"
+#include "Enemy_Torpedo.h"
 #include "Enemy_Humanoide_Robot.h"
 #include "Enemy_Building1.h"
 #include "Enemy_Building2.h"
@@ -131,6 +132,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::ANTIAIRCRAFT:
 			enemies[i] = new Enemy_Antiaircraft(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::TORPEDO:
+			enemies[i] = new Enemy_Torpedo(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::HUMANOIDE_ROBOT:

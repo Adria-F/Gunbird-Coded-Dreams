@@ -24,22 +24,12 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, -0.25f }, 100);
 
 	lives = 88;
-/*
-	if (position.y >= 1370)//intent de que tiri endavant
-	{
-		path.PushBack({ 0.0f, -0.25f }, 100);
-	}
-	else if (position.y <= 1370)
-	{
-		path.PushBack({ 0.0f, 0.25f }, 20);
-	}
-	*/
-	
+
 	animation = &anim;
 
 	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
 
-	//collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	
 
 	original_pos.x = x;
 	original_pos.y = y;
