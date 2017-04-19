@@ -6,6 +6,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleSceneMine.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
@@ -17,7 +18,6 @@
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
 #include "ModuleEnemies.h"
-#include "ModulePlayer2.h"
 
 Application::Application()
 {

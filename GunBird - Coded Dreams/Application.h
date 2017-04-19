@@ -12,6 +12,7 @@ class ModuleRender;
 class ModuleSceneCastle;
 class ModuleSceneMine;
 class ModulePlayer;
+class ModulePlayer2;
 class ModuleFadeToBlack;
 class Module;
 class ModuleAudio;
@@ -24,7 +25,6 @@ class ModuleParticles;
 class ModuleCollision;
 class ModulePowerUp;
 class ModuleEnemies;
-class ModulePlayer2;
 
 class Application
 {
@@ -38,6 +38,7 @@ public:
 	ModuleSceneCastle* scene_castle;
 	ModuleSceneMine* scene_mine;
 	ModulePlayer* player;
+	ModulePlayer2* player2;
 	ModuleFadeToBlack* fade;
 	ModuleAudio* audio;
 	ModuleWelcomeTitle* welcometitle;
@@ -49,7 +50,6 @@ public:
 	ModuleCollision* collision;
 	ModulePowerUp* powerup;
 	ModuleEnemies* enemies;
-	ModulePlayer2* player2;
 
 public:
 
