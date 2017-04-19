@@ -151,10 +151,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::BUILDING2:
 			enemies[i] = new Enemy_Building2(info.x, info.y);
 			break;
-
-		case ENEMY_TYPES::FLAG2:
-			enemies[i] = new Enemy_Flag2(info.x, info.y);
-			break;
 		}
 	}
 }

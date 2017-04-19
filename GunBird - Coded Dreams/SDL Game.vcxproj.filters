@@ -113,9 +113,6 @@
     <ClInclude Include="Enemy_Building2.h">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Flag2.h">
-      <Filter>Modules\Enemies\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Torpedo.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
@@ -200,9 +197,6 @@
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Building1.cpp">
-      <Filter>Modules\Enemies\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Flag2.cpp">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Torpedo.cpp">

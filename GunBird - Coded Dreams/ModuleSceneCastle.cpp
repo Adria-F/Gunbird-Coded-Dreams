@@ -106,9 +106,8 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	App->enemies->AddEnemy(TORPEDO, 70, 1505);
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
-	App->enemies->AddEnemy(FLAG1, 175, 1403);
 	App->enemies->AddEnemy(BUILDING2, 75, 1165);
-	App->enemies->AddEnemy(FLAG2, 109, 1155);
+
 	
 	//building2
 	//coll_build2 = App->collision->AddCollider({ 69, 0, 72, 83 }, COLLIDER_BUILDING, this);
