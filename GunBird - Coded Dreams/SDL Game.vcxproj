@@ -75,7 +75,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Building1.h" />
     <ClInclude Include="Enemy_Building2.h" />
-    <ClInclude Include="Enemy_Flag1.h" />
     <ClInclude Include="Enemy_Flag2.h" />
     <ClInclude Include="Enemy_Humanoide_Robot.h" />
     <ClInclude Include="Enemy_Torpedo.h" />
@@ -110,7 +109,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Building1.cpp" />
     <ClCompile Include="Enemy_Building2.cpp" />
-    <ClCompile Include="Enemy_Flag1.cpp" />
     <ClCompile Include="Enemy_Flag2.cpp" />
     <ClCompile Include="Enemy_Humanoide_Robot.cpp" />
     <ClCompile Include="Enemy_Torpedo.cpp" />

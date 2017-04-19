@@ -17,6 +17,7 @@ public:
 	iPoint position;
 	SDL_Texture* sprites = nullptr;
 	int lives;
+	bool extra_anim = false;
 
 public:
 	Enemy(int x, int y);
@@ -25,6 +26,7 @@ public:
 	const Collider* GetCollider() const;
 
 	virtual void Move() {};
+	virtual void ExtraAnim() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
 };

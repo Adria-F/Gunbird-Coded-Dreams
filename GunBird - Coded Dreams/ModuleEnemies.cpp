@@ -9,7 +9,6 @@
 #include "Enemy_Humanoide_Robot.h"
 #include "Enemy_Building1.h"
 #include "Enemy_Building2.h"
-#include "Enemy_Flag1.h"
 #include "Enemy_Flag2.h"
 #include "Enemy.h"
 
@@ -61,6 +60,9 @@ update_status ModuleEnemies::Update()
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(enemies[i]->sprites);
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr && enemies[i]->extra_anim) enemies[i]->ExtraAnim();
 
 	return UPDATE_CONTINUE;
 }
@@ -148,10 +150,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::BUILDING2:
 			enemies[i] = new Enemy_Building2(info.x, info.y);
-			break;
-
-		case ENEMY_TYPES::FLAG1:
-			enemies[i] = new Enemy_Flag1(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::FLAG2:
