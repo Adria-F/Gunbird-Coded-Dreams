@@ -45,7 +45,7 @@ private:
 
 	bool drop = true;
 	Uint32 drop_timer_start = 0;
-	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 300.0f);
+	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 1000.0f);
 	Uint32 drop_timer_now;
 };
 

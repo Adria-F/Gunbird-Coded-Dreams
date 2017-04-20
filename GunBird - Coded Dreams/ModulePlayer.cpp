@@ -166,11 +166,6 @@ update_status ModulePlayer::Update()
 		App->audio->Load("assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(powerup_type::UPGRADE, 100, 150);
-	}
 	
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();

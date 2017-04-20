@@ -95,22 +95,11 @@ bool ModuleSceneCastle::Start()
 	//Bridge
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
 
-	/*//gturret
-	texture_gturret = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
-	coll_gturret = App->collision->AddCollider({ 0, 0, 32, 32 }, COLLIDER_DROPPING_ENEMY, this);*/
-
-	/*//building1
-	texture_buildings = App->textures->Load("assets/maps/Castle_Sprites.png");
-	coll_build1 = App->collision->AddCollider({ 0, 0, 64, 86 }, COLLIDER_BUILDING, this);*/
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	App->enemies->AddEnemy(TORPEDO, 70, 1505);
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
 	App->enemies->AddEnemy(BUILDING2, 75, 1165);
-
-	
-	//building2
-	//coll_build2 = App->collision->AddCollider({ 69, 0, 72, 83 }, COLLIDER_BUILDING, this);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
@@ -136,12 +125,9 @@ bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading Castle scene");
 	App->textures->Unload(texture_bg);
-	App->textures->Unload(texture_gturret);
-	App->textures->Unload(texture_buildings);
+	App->textures->Unload(texture_bridge);
 
 	texture_bg = nullptr;
-	texture_gturret = nullptr;
-	texture_buildings = nullptr;
 	texture_bridge = nullptr;
 
 	App->audio->Stop();
@@ -159,40 +145,12 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------
 	//background
-	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f); // sea and sky
-
+	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 	
 	//bridge	
 	Animation* current_animation = &anim_bridge;
 	SDL_Rect rect_bridge = current_animation->GetCurrentFrame();
 	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
-	
-
-	//building 1
-	/*
-	Animation* current_animation1 = &anim_build1;
-	rect_building1 = current_animation1->GetCurrentFrame();
-	App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
-	coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));//collider
-	Animation* current_animation2 = &anim_flag1;
-	rect_flag1 = current_animation2->GetCurrentFrame();
-	App->render->Blit(texture_buildings, (App->render->camera.x + 175), (App->render->camera.y + 1403), &rect_flag1);//render
-	*/
-	/*
-		//building 2
-	Animation* current_animation3 = &anim_build2;
-	rect_building2 = current_animation3->GetCurrentFrame();
-	App->render->Blit(texture_buildings, (App->render->camera.x + 75), (App->render->camera.y + 1165), &rect_building2);//render
-	coll_build2->SetPos((App->render->camera.x + 75), (App->render->camera.y + 1165));//collider
-
-	Animation* current_animation4 = &anim_flag2;
-	rect_flag2 = current_animation4->GetCurrentFrame();
-	App->render->Blit(texture_buildings, (App->render->camera.x + 109), (App->render->camera.y + 1155), &rect_flag2);//render
-	*/
-	
-
-
-
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

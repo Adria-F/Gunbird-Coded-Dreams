@@ -127,11 +127,6 @@ update_status ModulePlayer2::Update()
 		App->audio->Play(App->audio->EFFECT);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(powerup_type::UPGRADE, 100, 150);
-	}
-
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
