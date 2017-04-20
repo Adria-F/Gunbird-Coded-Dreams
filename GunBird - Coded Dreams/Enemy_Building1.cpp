@@ -24,6 +24,7 @@ Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 	flag_anim.PushBack({ 89, 154, 65, 21 });
 	flag_anim.speed = 0.07f;
 	
+	lives = 10;
 
 	collider = App->collision->AddCollider({ 145, 1415, 64, 86 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }

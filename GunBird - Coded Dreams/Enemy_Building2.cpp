@@ -24,6 +24,8 @@ Enemy_Building2::Enemy_Building2(int x, int y) : Enemy(x, y)
 	flag_anim.PushBack({ 89, 154, 65, 21 });
 	flag_anim.speed = 0.07f;
 
+	lives = 25;
+
 	collider = App->collision->AddCollider({ 75, 1165, 72, 83 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }
 void Enemy_Building2::Move()
