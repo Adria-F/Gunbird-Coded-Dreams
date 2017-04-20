@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
+#include "ModuleDebugMode.h"
 
 ModuleCollision::ModuleCollision()
 {
@@ -141,10 +142,7 @@ update_status ModuleCollision::Update()
 
 void ModuleCollision::DebugDraw()
 {
-	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
-		debug = !debug;
-
-	if(debug == false)
+	if(App->debug->debugging == false)
 		return;
 
 	Uint8 alpha = 80;
