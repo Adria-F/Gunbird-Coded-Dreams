@@ -19,12 +19,24 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	anim.PushBack({ 60, 74, 21, 31 });
 	anim.PushBack({ 84, 74, 15, 31 });
 	anim.speed = 0.15f;
+	
+	if (wave = 1)
+	{
+		path.PushBack({ 1.5f, 1.25f }, 140);
+		path.PushBack({ 1.25f, 1.5f }, 140);
+	}
 
-	/*path.PushBack({ 1.5f, 1.85f }, 250);
-	path.PushBack({ 1.25f, 2.0f }, 50);*/
-	path.PushBack({ 1.5f, 1.25f }, 140);
-	path.PushBack({ 1.25f, 1.5f }, 140);
+	else if (wave = 2)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			path.PushBack({ (float)(320 -5 * i), 0.0f }, 140);
+		}
+	}
+	else if (wave = 3)
+	{
 
+	}
 	lives = 12;
 	animation = &anim;
 
