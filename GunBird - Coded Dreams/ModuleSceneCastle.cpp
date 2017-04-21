@@ -24,9 +24,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.w = SCREEN_WIDTH;
 	rect_background.h = 2108;
 
-	//Upper background
+	/*//Upper background
 	rect_background_upper.w = SCREEN_WIDTH;
 	rect_background_upper.h = 930;
+	*/
 
 	//First river
 	anim_1_river.PushBack({ 0, 0, 224, 120});
