@@ -133,6 +133,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
+	int count = 0;
+
+	for (Enemy* curr = enemies[0]; enemies[count] != nullptr; curr++)
+		count++;
+	int id = count;
+
 	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
 	if(i != MAX_ENEMIES)
@@ -144,7 +150,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 		case ENEMY_TYPES::TORPEDO:
-			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave);
+			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave, id);
 			break;
 
 		case ENEMY_TYPES::HUMANOIDE_ROBOT:

@@ -16,7 +16,7 @@ private:
 
 public:
 
-	Enemy_Torpedo(int x, int y, int wave);
+	Enemy_Torpedo(int x, int y, int wave, int id);
 
 	void Move();
 };

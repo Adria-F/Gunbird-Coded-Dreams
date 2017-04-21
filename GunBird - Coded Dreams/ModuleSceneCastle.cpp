@@ -92,12 +92,14 @@ bool ModuleSceneCastle::Start()
 
 	//second wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 55, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
+	/* 
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 65, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 75, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 95, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 105, 1200, 2);
+	*/
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
