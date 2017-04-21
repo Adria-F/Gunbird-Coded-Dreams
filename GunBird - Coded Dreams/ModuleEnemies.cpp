@@ -59,7 +59,7 @@ update_status ModuleEnemies::Update()
 	{
 		if (enemies[i] != nullptr)
 		{
-			if (enemies[i]->lives <= 0) enemies[i]->DeadAnim();
+			if (enemies[i]->dead) enemies[i]->DeadAnim();
 			else enemies[i]->Move();
 		}
 	}
@@ -168,6 +168,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
+			if (enemies[i]->lives <= 0)
+			{
+				//Aqui haurem de crear una particula que sigui explosio
+			}
 			break;
 		}
 	}
