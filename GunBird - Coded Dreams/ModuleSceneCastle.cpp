@@ -25,6 +25,11 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.h = 2108;
 
 	//First river
+	anim_1_river.PushBack({ 0, 0, 224, 120});
+	anim_1_river.PushBack({ 224, 0, 224, 120 });
+	anim_1_river.PushBack({ 0, 120, 224, 120 });
+	anim_1_river.PushBack({ 224, 120, 224, 120 });
+	anim_1_river.speed = 0.07f;
 
 	//Bridge
 	anim_bridge.PushBack({ 0, 0, 121, 35});
@@ -49,10 +54,11 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	texture_bg = App->textures->Load("assets/maps/castle_background.png");
-
+	//First river
+	texture_1_river = App->textures->Load("assets/maps/castle_first_river.png");
 	//Bridge
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
-	//First river
+
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	//first round torpedos:
@@ -120,6 +126,7 @@ update_status ModuleSceneCastle::Update()
 	// First river
 	Animation* current_1_river_animation = &anim_1_river;
 	SDL_Rect rect_1_river = current_1_river_animation->GetCurrentFrame();
+	App->render->Blit(texture_1_river, (App->render->camera.x + 2), (App->render->camera.y + 1714), &rect_1_river, 0.75f);
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
