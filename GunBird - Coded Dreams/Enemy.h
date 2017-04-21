@@ -18,6 +18,7 @@ public:
 	SDL_Texture* sprites = nullptr;
 	int lives;
 	bool extra_anim = false;
+	bool to_delete = false;
 
 public:
 	Enemy(int x, int y);
@@ -27,6 +28,7 @@ public:
 
 	virtual void Move() {};
 	virtual void ExtraAnim() {};
+	virtual void DeadAnim() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
 };
