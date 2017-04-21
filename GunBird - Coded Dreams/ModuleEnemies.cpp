@@ -63,11 +63,12 @@ update_status ModuleEnemies::Update()
 			else enemies[i]->Move();
 		}
 	}
+	
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(enemies[i]->sprites);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr && enemies[i]->extra_anim) enemies[i]->ExtraAnim();
+		if (enemies[i] != nullptr && enemies[i]->extra_anim && enemies[i]->lives > 0) enemies[i]->ExtraAnim();
 
 	return UPDATE_CONTINUE;
 }
@@ -79,7 +80,7 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if ((abs((int)App->render->camera.y) + SCREEN_HEIGHT + SPAWN_MARGIN) < enemies[i]->position.y || enemies[i]->to_delete)
+			if ((abs((int)App->render->camera.y) + SCREEN_HEIGHT + SPAWN_MARGIN) < enemies[i]->position.y)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];

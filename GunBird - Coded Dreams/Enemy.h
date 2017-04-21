@@ -18,7 +18,7 @@ public:
 	SDL_Texture* sprites = nullptr;
 	int lives;
 	bool extra_anim = false;
-	bool to_delete = false;
+	bool dead = false;
 
 public:
 	Enemy(int x, int y);
