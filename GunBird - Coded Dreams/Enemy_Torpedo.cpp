@@ -18,12 +18,12 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	anim.PushBack({ 30, 74, 25, 31 });
 	anim.PushBack({ 60, 74, 21, 31 });
 	anim.PushBack({ 84, 74, 15, 31 });
-	anim.speed = 0.3f;
+	anim.speed = 0.15f;
 
 	/*path.PushBack({ 1.5f, 1.85f }, 250);
 	path.PushBack({ 1.25f, 2.0f }, 50);*/
-	path.PushBack({ 1.25f, 1.0f }, 140);
-	path.PushBack({ 1.0f, 1.25f }, 140);
+	path.PushBack({ 1.5f, 1.25f }, 140);
+	path.PushBack({ 1.25f, 1.5f }, 140);
 
 	lives = 12;
 	animation = &anim;
