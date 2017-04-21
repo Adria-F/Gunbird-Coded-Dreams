@@ -19,9 +19,10 @@ public:
 	int lives;
 	bool extra_anim = false;
 	bool dead = false;
+	int wave;
 
 public:
-	Enemy(int x, int y);
+	Enemy(int x, int y, int wave = 1);
 	virtual ~Enemy();
 
 	const Collider* GetCollider() const;

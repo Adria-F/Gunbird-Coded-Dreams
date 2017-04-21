@@ -10,36 +10,87 @@
 #include <math.h>
 #include "SDL/include/SDL_timer.h"
 
+#define PI 3,14159265
+
 Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 {
 	sprites = App->textures->Load("assets/enemies/Humanoide_Robot.png");
-
-	//3
-	//7
-	//1
-	//6
-	//1
-	//2
-	//3
-	//4
-	//5
 	
-	anim.PushBack({ 152, 29, 75, 72 });//2
-	anim.PushBack({ 259, 132, 76, 71 });//7
-	anim.PushBack({ 258, 31, 75, 72 });//3
-	anim.PushBack({ 152, 29, 75, 72 });//2
-	anim.PushBack({ 46, 31, 75, 72 });//1
-	anim.PushBack({ 154, 133, 76, 72 });//6
-	anim.speed = 0.1f;
-	path.PushBack({ 0.0f, -0.25f }, 100);
+	anim_rightBack.PushBack({ 258, 31, 75, 72 });//3
+	anim_rightBack.PushBack({ 259, 132, 76, 71 });//7
+	anim_rightBack.PushBack({ 46, 31, 75, 72 });//1
+	anim_rightBack.speed = 0.15f;
+	anim_rightBack.loop = false;
+
+	rightLeg.PushBack({ 258, 31, 75, 72 });//3
+
+	anim_leftBack.PushBack({ 154, 133, 76, 72 });//6
+	anim_leftBack.PushBack({ 46, 31, 75, 72 });//1
+	anim_leftBack.PushBack({ 259, 132, 76, 71 });//7
+	anim_leftBack.speed = 0.15f;
+	anim_leftBack.loop = false;
+
+	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.PushBack({ 46, 31, 75, 72 });//1
+	sprint.PushBack({ 259, 132, 76, 71 });//7
+	sprint.PushBack({ 258, 31, 75, 72 });//3
+	sprint.PushBack({ 258, 31, 75, 72 });//3
+	sprint.PushBack({ 258, 31, 75, 72 });//3
+	sprint.PushBack({ 258, 31, 75, 72 });//3
+	sprint.PushBack({ 258, 31, 75, 72 });//3
+	sprint.PushBack({ 259, 132, 76, 71 });//7
+	sprint.PushBack({ 46, 31, 75, 72 });//1
+	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.speed = 0.30f;
+
+	leftLeg.PushBack({ 154, 133, 76, 72 });//6
+
+	path.PushBack({ 0.0f, 0.0f }, 200, &rightLeg); //right leg in front
+	path.PushBack({ 0.0f, -0.65f }, 18, &anim_rightBack); //move right leg to the back
+	path.PushBack({ 0.0f, 0.0f }, 200, &leftLeg); //left leg in front
+	path.PushBack({ 0.0f, -0.65f }, 18, &anim_leftBack); //move left leg to the back
+	path.PushBack({ 0.0f, 0.0f }, 200, &rightLeg);
+	path.PushBack({ 0.0f, -0.65f }, 18, &anim_rightBack);
+	path.PushBack({ 0.0f, 0.0f }, 200, &leftLeg);
+	path.PushBack({ 0.0f, -0.65f }, 225, &sprint);
+	path.PushBack({ 0.0f, 0.0f }, 200, &leftLeg); //left leg in front
+	path.PushBack({ 0.0f, 0.65f }, 18, &anim_leftBack); //move left leg to the back
+	path.PushBack({ 0.0f, 0.0f }, 200, &rightLeg); //right leg in front
+	path.PushBack({ 0.0f, -0.65f }, 18, &anim_rightBack); //move right leg to the back
+	path.PushBack({ 0.0f, 0.0f }, 200, &leftLeg); //left leg in front
+	path.PushBack({ 0.0f, 0.65f }, 18, &anim_leftBack); //move left leg to the back
+	path.PushBack({ 0.0f, 0.0f }, 200, &rightLeg); //right leg in front
+	path.PushBack({ 0.0f, -0.65f }, 18, &anim_rightBack); //move right leg to the back
+
+	extra_anim = true;
+	angles[0] = { 134, 242, 18, 16 }; // 0
+	angles[1] = { 157, 242, 17, 16 }; // 30
+	angles[2] = { 179, 242, 16, 16 }; // 45
+	angles[3] = { 203, 242, 16, 17 }; // 60
+	angles[4] = { 226, 242, 16, 18 }; // 90
+	angles[5] = { 247, 242, 16, 17 }; // 120
+	angles[6] = { 269, 242, 16, 17 }; // 135
+	angles[7] = { 292, 242, 17, 17 }; // 150
+	angles[8] = { 316, 242, 18, 17 }; // 180
+	angles[9] = { 339, 241, 17, 17 }; // 210
+	angles[10] = { 362, 241, 16, 17 }; // 225
+	angles[11] = { 386, 241, 16, 17 }; // 240
+	angles[12] = { 51, 241, 16, 18 }; // 270
+	angles[13] = { 71, 241, 16, 17 }; // 300
+	angles[14] = { 91, 241, 16, 16 }; // 315
+	angles[15] = { 113, 242, 17, 16 }; // 330
+
+	cannon_pos[0].x = 12;
+	cannon_pos[0].y = 15;
+	cannon_pos[1].x = 48;
+	cannon_pos[1].y = 15;
 
 	lives = 88;
 
-	animation = &anim;
-
 	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
-
-	
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -52,15 +103,8 @@ Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
 
 void Enemy_Humanoide_Robot::Move()
 {
-	move_now = SDL_GetTicks() - move_start_time;
-	/*step*/if (position.y >= 1370 && move_now > move_total_time)
-	{
-		move_start_time = SDL_GetTicks();
-		position = original_pos + path.GetCurrentPosition();
-	}
+	position = original_pos + path.GetCurrentPosition(&animation);
 
-	
-	
 	now = SDL_GetTicks() - start_time;
 
 	if (now > total_time && App->player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
@@ -77,4 +121,24 @@ void Enemy_Humanoide_Robot::Move()
 		App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 53, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 22);
 	}
 
+}
+
+void Enemy_Humanoide_Robot::ExtraAnim()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		vector.x = (App->player->position.x - (App->render->camera.x + position.x + cannon_pos[i].x));
+		vector.y = (App->player->position.y - (App->render->camera.y + position.y + cannon_pos[i].y));
+		angle = atan(vector.x / vector.y) * 180 / PI;
+		if (vector.y > 0) angle = 360 - 90 + angle;
+		else angle = 90 + angle;
+		if (angle >= 0 && angle < 30)
+		{
+			App->render->Blit(sprites, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[0]);
+		}
+		else
+		{
+			App->render->Blit(sprites, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[angle / 30 + (angle / 100) + 1]);
+		}
+	}
 }

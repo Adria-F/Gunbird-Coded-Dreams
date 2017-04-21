@@ -41,9 +41,16 @@ void ModuleAudio::Play(sound_type type)
 void ModuleAudio::Stop()
 {
 	Mix_HaltChannel(-1);
-	Mix_FreeMusic(music);
-	Mix_FreeChunk(effect);
-	music = nullptr;
+	if (music != nullptr)
+	{
+		Mix_FreeMusic(music);
+		music = nullptr;
+	}
+	if (effect != nullptr)
+	{
+		Mix_FreeChunk(effect);
+		effect = nullptr;
+	}
 }
 
 bool ModuleAudio::Load(const char* path, sound_type type)

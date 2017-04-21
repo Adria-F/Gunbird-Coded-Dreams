@@ -36,8 +36,14 @@ public:
 		return loops > 0;
 	}
 
+	int GetCurrentFrameNum() const
+	{
+		return current_frame / speed;
+	}
+
 	void Reset()
 	{
+		loops = 0;
 		current_frame = 0;
 	}
 };

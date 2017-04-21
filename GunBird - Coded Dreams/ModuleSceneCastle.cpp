@@ -50,12 +50,13 @@ bool ModuleSceneCastle::Start()
 
 	//Bridge
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
-
-	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
-	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
-	App->enemies->AddEnemy(TORPEDO, -45, 1435);
+	
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
 	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+
+	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
+	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
+	App->enemies->AddEnemy(TORPEDO, -45, 1435);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
