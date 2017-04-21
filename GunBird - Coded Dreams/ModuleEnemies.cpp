@@ -166,7 +166,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			{
 				delete enemies[i];
 				enemies[i] = nullptr;
-			}   
+			}
 			break;
 		}
 	}

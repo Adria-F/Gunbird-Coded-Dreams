@@ -48,18 +48,10 @@ public:
 	Animation anim_build1down;
 	SDL_Rect rect_build1down;
 
-	//flag1
-	Animation anim_flag1;	
-	SDL_Rect rect_flag1;
-
 	//building2
 	Animation anim_build2;
 	Collider* coll_build2;
 	SDL_Rect rect_building2;
-
-	//flag2
-	Animation anim_flag2;
-	SDL_Rect rect_flag2;
 
 	bool fading;
 };
