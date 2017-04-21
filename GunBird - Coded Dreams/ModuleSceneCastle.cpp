@@ -35,50 +35,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 125, 320, 117, 110 });
 	anim_bridge.PushBack({ 250, 322, 117, 110 });
 	anim_bridge.speed = 0.03f;
-
-	/*//General Turret
-	anim_gturret.PushBack({ 0, 0, 32, 32 });
-	anim_gturret.PushBack({ 34, 0, 32,32 });
-	anim_gturret.PushBack({ 68, 0, 32, 32 });
-	anim_gturret.PushBack({ 102, 0, 32, 32 });
-	anim_gturret.speed = 0.1f;*/
-
-	//Build1
-	/*
-	anim_build1.PushBack({ 0, 0, 64, 86 });
-	anim_build1.speed = 0.1f;
-	anim_flag1.PushBack({ 13, 95, 69, 23 });
-	anim_flag1.PushBack({ 13, 121, 69, 23 });
-	anim_flag1.PushBack({ 13, 146, 69, 23 });
-	anim_flag1.PushBack({ 13, 171, 69, 23 });
-	anim_flag1.PushBack({ 13, 196, 69, 23 });
-	anim_flag1.PushBack({ 88, 98, 69, 23 });
-	anim_flag1.PushBack({ 89, 127, 65, 21 });
-	anim_flag1.PushBack({ 89, 154, 65, 21 });
-	anim_flag1.speed = 0.07f;
-	*/
-	
-
-
-
-	//Build2
-	/*
-	anim_build2.PushBack({ 69, 0, 72, 83 });
-	anim_build2.speed = 0.1f;
-	anim_flag2.PushBack({ 13, 95, 69, 23 });
-	anim_flag2.PushBack({ 13, 121, 69, 23 });
-	anim_flag2.PushBack({ 13, 146, 69, 23 });
-	anim_flag2.PushBack({ 13, 171, 69, 23 });
-	anim_flag2.PushBack({ 13, 196, 69, 23 });
-	anim_flag2.PushBack({ 88, 98, 69, 23 });
-	anim_flag2.PushBack({ 89, 127, 65, 21 });
-	anim_flag2.PushBack({ 89, 154, 65, 21 });
-	anim_flag2.speed = 0.07f;
-	*/
-
-	
-
-
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
