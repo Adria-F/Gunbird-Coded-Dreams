@@ -23,6 +23,10 @@ Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 	flag_anim.PushBack({ 89, 127, 65, 21 });
 	flag_anim.PushBack({ 89, 154, 65, 21 });
 	flag_anim.speed = 0.07f;
+
+	dead_build1.PushBack({92, 186, 62, 52});
+	dead_build1.speed = 0.1f;
+
 	
 	lives = 10;
 
@@ -37,4 +41,11 @@ void Enemy_Building1::Move()
 void Enemy_Building1::ExtraAnim()
 {
 	App->render->Blit(sprites, App->render->camera.x + position.x + 30, App->render->camera.y + position.y - 12, &(flag_anim.GetCurrentFrame()));
+}
+
+void Enemy_Building1::DeadAnim()
+{
+	animation = &dead_build1;
+	position.y = 1450;
+	position.x;
 }

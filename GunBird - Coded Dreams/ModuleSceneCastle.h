@@ -26,12 +26,26 @@ public:
 	SDL_Texture* texture_bg = nullptr;
 	SDL_Rect rect_background;
 
+	/*//upper background
+	SDL_Texture* texture_bg_upper = nullptr;
+	SDL_Rect rect_background_upper;
+	*/
+
+	//First river
+	SDL_Texture* texture_1_river = nullptr;
+	Animation anim_1_river;
+	SDL_Rect rect_1_river;
+
+	//Second river
+	SDL_Texture* texture_2_river = nullptr;
+	Animation anim_2_river;
+	SDL_Rect rect_2_river;
+
 	//Bridge
 	SDL_Texture* texture_bridge = nullptr;
 	Animation anim_bridge;
 	SDL_Rect rect_bridge;
 	
-
 	//gturret
 	SDL_Texture* texture_gturret = nullptr;
 	Animation anim_gturret;

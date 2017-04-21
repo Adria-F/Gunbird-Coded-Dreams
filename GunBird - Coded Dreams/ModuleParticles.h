@@ -19,7 +19,8 @@ enum particle_type
 	P_MARION_BULLET,
 	P_ASH_BULLET,
 	P_UPGRADE,
-	P_SMALL_SHOT
+	P_SMALL_SHOT,
+	P_EXPLOSION
 };
 
 struct Particle
@@ -60,6 +61,7 @@ private:
 	SDL_Texture* ASH_bullet_texture = nullptr;
 	SDL_Texture* upgrade_texture = nullptr;
 	SDL_Texture* small_shot_texture = nullptr;
+	SDL_Texture* explosions_texture = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	fPoint vector;
 	float modul;
@@ -71,6 +73,7 @@ public:
 	Particle ASH_bullet_particle;
 	Particle upgrade_particle;
 	Particle small_shot_particle;
+	Particle explosions_particle;
 };
 
 #endif // __MODULEPARTICLES_H__

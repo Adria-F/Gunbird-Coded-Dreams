@@ -20,6 +20,7 @@ public:
 	bool extra_anim = false;
 	bool dead = false;
 	int wave;
+	int id = -1;
 
 public:
 	Enemy(int x, int y, int wave = 1);

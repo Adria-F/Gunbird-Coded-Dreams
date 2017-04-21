@@ -14,6 +14,7 @@ public:
 	Enemy_Antiaircraft(int x, int y);
 
 	void Move();
+	virtual void DeadAnim();
 };
 
 #endif // !__ANTIAIRCRAFT_H__
