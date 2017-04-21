@@ -18,10 +18,11 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	anim.PushBack({ 30, 74, 25, 31 });
 	anim.PushBack({ 60, 74, 21, 31 });
 	anim.PushBack({ 84, 74, 15, 31 });
-	anim.speed = 0.1f;
+	anim.speed = 0.3f;
 
-	path.PushBack({ 0.0f, 0.25f }, 100);
-	
+	path.PushBack({ 1.0f, 0.85f }, 250);
+	path.PushBack({ 0.75f, 1.0f }, 50);
+
 	lives = 12;
 	animation = &anim;
 
@@ -32,5 +33,5 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 
 void Enemy_Torpedo::Move()
 {
-
+	position = original_pos + path.GetCurrentPosition();
 }
