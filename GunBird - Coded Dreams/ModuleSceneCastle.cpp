@@ -24,6 +24,8 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.w = SCREEN_WIDTH;
 	rect_background.h = 2108;
 
+	//First river
+
 	//Bridge
 	anim_bridge.PushBack({ 0, 0, 121, 35});
 	anim_bridge.PushBack({ 125, 0, 116, 35 });
@@ -50,7 +52,7 @@ bool ModuleSceneCastle::Start()
 
 	//Bridge
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
-
+	//First river
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	//first round torpedos:
@@ -86,9 +88,11 @@ bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading Castle scene");
 	App->textures->Unload(texture_bg);
+	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_bridge);
 
 	texture_bg = nullptr;
+	texture_1_river = nullptr;
 	texture_bridge = nullptr;
 
 	App->audio->Stop();
@@ -107,11 +111,15 @@ update_status ModuleSceneCastle::Update()
 	// Draw everything --------------------------------------
 	//background
 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
-	
+
 	//bridge	
-	Animation* current_animation = &anim_bridge;
-	SDL_Rect rect_bridge = current_animation->GetCurrentFrame();
+	Animation* current_bridge_animation = &anim_bridge;
+	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
+
+	// First river
+	Animation* current_1_river_animation = &anim_1_river;
+	SDL_Rect rect_1_river = current_1_river_animation->GetCurrentFrame();
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
