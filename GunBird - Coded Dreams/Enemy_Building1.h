@@ -9,6 +9,7 @@ private:
 
 	Animation anim;
 	Animation flag_anim;
+	Animation dead_build1;
 
 public:
 
@@ -16,6 +17,7 @@ public:
 
 	void Move();
 	void ExtraAnim();
+	virtual void DeadAnim();
 };
 
 #endif // !__BUILDING1_H__

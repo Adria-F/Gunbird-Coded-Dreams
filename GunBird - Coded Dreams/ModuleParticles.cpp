@@ -32,6 +32,7 @@ bool ModuleParticles::Start()
 	ASH_bullet_texture = App->textures->Load("assets/characters/ash.png");
 	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
 	small_shot_texture = App->textures->Load("assets/enemies/basic_shoot.png");
+	explosions_texture = App->textures->Load("assets/enemies/Balloon");
 
 	// Marion Bullets
 	MARION_bullet_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -75,7 +76,17 @@ bool ModuleParticles::Start()
 	small_shot_particle.speed.y = 0;
 	small_shot_particle.anim.loop = true;
 	small_shot_particle.anim.speed = 0.5f;
+
+	// Balloon
+	explosions_particle.anim.PushBack({ 5, 117, 92, 86 });
+	explosions_particle.anim.PushBack({ 104, 114, 101, 93 });
+	explosions_particle.anim.PushBack({ 212, 109, 105, 102 });
+	explosions_particle.anim.PushBack({ 322, 110, 99, 101 });
+	explosions_particle.life = 10000;
+	explosions_particle.anim.loop = true;
+	explosions_particle.anim.speed = 1.0f;
 	
+
 	return true;
 }
 
@@ -87,11 +98,13 @@ bool ModuleParticles::CleanUp()
 	App->textures->Unload(ASH_bullet_texture);
 	App->textures->Unload(upgrade_texture);
 	App->textures->Unload(small_shot_texture);
+	App->textures->Unload(explosions_texture);
 
 	MARION_bullet_texture = nullptr;
 	ASH_bullet_texture = nullptr;
 	upgrade_texture = nullptr;
 	small_shot_texture = nullptr;
+	explosions_texture = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -134,6 +147,8 @@ update_status ModuleParticles::Update()
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			case P_SMALL_SHOT:
 				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			case P_EXPLOSION:
+				App->render->Blit(explosions_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			}
 			if (p->fx_played == false)
 			{
