@@ -53,7 +53,9 @@ bool ModuleSceneCastle::Start()
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
-	App->enemies->AddEnemy(TORPEDO, -45, 1435);
+	App->enemies->AddEnemy(TORPEDO, -45, 1400);
+	App->enemies->AddEnemy(TORPEDO, -45, 1390);
+
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
 	App->enemies->AddEnemy(BUILDING2, 75, 1165);
 

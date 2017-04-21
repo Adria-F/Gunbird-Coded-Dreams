@@ -20,13 +20,15 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 	anim.PushBack({ 84, 74, 15, 31 });
 	anim.speed = 0.3f;
 
-	path.PushBack({ 1.0f, 0.85f }, 250);
-	path.PushBack({ 0.75f, 1.0f }, 50);
+	/*path.PushBack({ 1.5f, 1.85f }, 250);
+	path.PushBack({ 1.25f, 2.0f }, 50);*/
+	path.PushBack({ 1.25f, 1.0f }, 140);
+	path.PushBack({ 1.0f, 1.25f }, 140);
 
 	lives = 12;
 	animation = &anim;
 
-	collider = App->collision->AddCollider({ 162, 1596, 19, 31 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 162, 1596, 22, 31 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
 	original_pos.x = x;
 	original_pos.y = y;
 }
