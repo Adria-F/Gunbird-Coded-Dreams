@@ -80,7 +80,7 @@ update_status ModulePlayer2::Update()
 
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
-		App->particles->AddParticle(App->particles->ASH_bullet_particle, particle_type::P_ASH_BULLET, position.x + 3, position.y - 45, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ASH_bullet_particle, particle_type::P_ASH_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 		start_time = SDL_GetTicks();
 		bullet_counter++;
 		if (bullet_counter == MAX_BULLETS)
