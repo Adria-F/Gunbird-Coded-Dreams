@@ -144,7 +144,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 		case ENEMY_TYPES::TORPEDO:
-			enemies[i] = new Enemy_Torpedo(info.x, info.y);
+			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave);
 			break;
 
 		case ENEMY_TYPES::HUMANOIDE_ROBOT:

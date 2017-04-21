@@ -59,6 +59,9 @@ bool ModuleSceneCastle::Start()
 	//Bridge
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png");
 
+	App->enemies->AddEnemy(BUILDING1, 145, 1415);
+	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1505);
 	//first wave torpedos:
@@ -68,10 +71,13 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, -45, 1370);
 
 	//second wave torpedos:
-	App->enemies->AddEnemy(TORPEDO, 365, 2000, 2);
-
-	App->enemies->AddEnemy(BUILDING1, 145, 1415);
-	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 55, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 65, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 75, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 95, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 105, 1200, 2);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
