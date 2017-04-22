@@ -53,6 +53,14 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 125, 320, 117, 110 });
 	anim_bridge.PushBack({ 250, 322, 117, 110 });
 	anim_bridge.speed = 0.03f;
+
+	//knight
+	anim_knight.PushBack({ 0, 0, 15, 24 }); //up
+	anim_knight.PushBack({ 20, 0, 14, 24 }); //up
+	anim_knight.PushBack({ 39, 0, 14, 24 }); //up
+	anim_knight.PushBack({ 59, 0, 14, 24 }); //up
+
+	anim_knight.speed = 0.03f;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -69,8 +77,7 @@ bool ModuleSceneCastle::Start()
 	texture_1_river = App->textures->Load("assets/maps/castle_first_river.png"); //First river
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
-
-	
+	texture_knight = App->textures->Load("assets/maps/Castle Knights.png"); //knights
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
@@ -110,7 +117,7 @@ App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 */
-//third wave torpedos 2.0
+    //third wave torpedos 2.0
 /*
 App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
@@ -157,12 +164,14 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_2_river);
 	App->textures->Unload(texture_bridge);
+	App->textures->Unload(texture_knight);
 
 	texture_bg = nullptr;
 	texture_bg_upper = nullptr;
 	texture_1_river = nullptr;
 	texture_2_river = nullptr;
 	texture_bridge = nullptr;
+	texture_knight = nullptr;
 
 	App->audio->Stop();
 	App->player->Disable();
@@ -198,6 +207,11 @@ update_status ModuleSceneCastle::Update()
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
 
+	//knights
+	Animation* current_knight_animation = &anim_knight;
+	SDL_Rect rect_knight = current_knight_animation->GetCurrentFrame();
+	App->render->Blit(texture_knight, (App->render->camera.x + 50), (App->render->camera.y + 1750), &rect_knight);
+
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
@@ -208,16 +222,21 @@ update_status ModuleSceneCastle::Update()
 	return UPDATE_CONTINUE;
 }
 
+
 void ModuleSceneCastle::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c2->type == COLLIDER_BUILDING)
 	{
 		if (c2 == coll_build1)
 		{
-			Animation* current_animation5 = &anim_build1down;
-			rect_building1 = current_animation5->GetCurrentFrame();
-			App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
-			coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
+		/*
+		Animation* current_animation5 = &anim_build1down;
+		rect_building1 = current_animation5->GetCurrentFrame();
+		App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
+		coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
+		*/
+		
 		}
 	}
 }
+

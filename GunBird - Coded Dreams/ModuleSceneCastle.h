@@ -30,7 +30,6 @@ public:
 	SDL_Texture* texture_bg_upper = nullptr;
 	SDL_Rect rect_background_upper;
 	
-
 	//First river
 	SDL_Texture* texture_1_river = nullptr;
 	Animation anim_1_river;
@@ -59,13 +58,18 @@ public:
 	SDL_Rect rect_building1;
 
 	//build1 down
-	Animation anim_build1down;
-	SDL_Rect rect_build1down;
+	//Animation anim_build1down;
+	//SDL_Rect rect_build1down;
 
 	//building2
 	Animation anim_build2;
 	Collider* coll_build2;
 	SDL_Rect rect_building2;
+
+	//knights
+	SDL_Texture* texture_knight = nullptr;
+	Animation anim_knight;
+	//SDL_Rect rect_knight;
 
 	bool fading;
 };
