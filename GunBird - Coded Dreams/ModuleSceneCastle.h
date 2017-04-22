@@ -26,10 +26,10 @@ public:
 	SDL_Texture* texture_bg = nullptr;
 	SDL_Rect rect_background;
 
-	/*//upper background
+	//upper background
 	SDL_Texture* texture_bg_upper = nullptr;
 	SDL_Rect rect_background_upper;
-	*/
+	
 
 	//First river
 	SDL_Texture* texture_1_river = nullptr;

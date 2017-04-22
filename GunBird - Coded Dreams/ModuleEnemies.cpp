@@ -178,7 +178,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->lives <= 0)
 			{
 				//Aqui haurem de crear una particula que sigui explosio
-				App->particles->AddParticle(App->particles->explosions_particle, particle_type::P_EXPLOSION, App->enemies->enemies[i]->position.x, App->enemies->enemies[i]->position.y, COLLIDER_BUILDING);
+				App->particles->AddParticle(App->particles->explosions_particle, particle_type::P_EXPLOSION, enemies[i]->position.x, enemies[i]->position.y);
 				
 				enemies[i]->dead = true;
 				

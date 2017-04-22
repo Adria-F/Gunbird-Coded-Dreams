@@ -24,10 +24,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	rect_background.w = SCREEN_WIDTH;
 	rect_background.h = 2108;
 
-	/*//Upper background
+	//Upper background
 	rect_background_upper.w = SCREEN_WIDTH;
 	rect_background_upper.h = 930;
-	*/
+	
 
 	//First river
 	anim_1_river.PushBack({ 0, 0, 224, 120});
@@ -74,7 +74,7 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	texture_bg = App->textures->Load("assets/maps/castle_background.png");
-	//texture_bg_upper = App->textures->Load("assests/maps/castle_bg_upper.png");
+	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper.png");
 	texture_1_river = App->textures->Load("assets/maps/castle_first_river.png"); //First river
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //First river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
@@ -126,13 +126,13 @@ bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading Castle scene");
 	App->textures->Unload(texture_bg);
-	//App->textures->Unload(texture_bg_upper);
+	App->textures->Unload(texture_bg_upper);
 	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_2_river);
 	App->textures->Unload(texture_bridge);
 
 	texture_bg = nullptr;
-	//texture_bg_upper = nullptr;
+	texture_bg_upper = nullptr;
 	texture_1_river = nullptr;
 	texture_2_river = nullptr;
 	texture_bridge = nullptr;
@@ -154,7 +154,7 @@ update_status ModuleSceneCastle::Update()
 	//background
 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 
-	//App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
+	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
 
 	// First river
 	Animation* current_1_river_animation = &anim_1_river;
