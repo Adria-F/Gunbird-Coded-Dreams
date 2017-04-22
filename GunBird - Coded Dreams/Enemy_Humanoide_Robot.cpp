@@ -16,37 +16,37 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 {
 	sprites = App->textures->Load("assets/enemies/Humanoide_Robot.png");
 	
-	anim_rightBack.PushBack({ 258, 31, 75, 72 });//3
-	anim_rightBack.PushBack({ 259, 132, 76, 71 });//7
-	anim_rightBack.PushBack({ 46, 31, 75, 72 });//1
+	anim_rightBack.PushBack({ 257, 31, 76, 73 });//3
+	anim_rightBack.PushBack({ 258, 132, 76, 73 });//7
+	anim_rightBack.PushBack({ 46, 31, 76, 73 });//1
 	anim_rightBack.speed = 0.15f;
 	anim_rightBack.loop = false;
 
-	rightLeg.PushBack({ 258, 31, 75, 72 });//3
+	rightLeg.PushBack({ 257, 31, 76, 73 });//3
 
-	anim_leftBack.PushBack({ 154, 133, 76, 72 });//6
-	anim_leftBack.PushBack({ 46, 31, 75, 72 });//1
-	anim_leftBack.PushBack({ 259, 132, 76, 71 });//7
+	anim_leftBack.PushBack({ 154, 132, 76, 73 });//6
+	anim_leftBack.PushBack({ 46, 31, 76, 73 });//1
+	anim_leftBack.PushBack({ 258, 132, 76, 73 });//7
 	anim_leftBack.speed = 0.15f;
 	anim_leftBack.loop = false;
 
-	sprint.PushBack({ 154, 133, 76, 72 });//6
-	sprint.PushBack({ 46, 31, 75, 72 });//1
-	sprint.PushBack({ 259, 132, 76, 71 });//7
-	sprint.PushBack({ 258, 31, 75, 72 });//3
-	sprint.PushBack({ 258, 31, 75, 72 });//3
-	sprint.PushBack({ 258, 31, 75, 72 });//3
-	sprint.PushBack({ 258, 31, 75, 72 });//3
-	sprint.PushBack({ 258, 31, 75, 72 });//3
-	sprint.PushBack({ 259, 132, 76, 71 });//7
-	sprint.PushBack({ 46, 31, 75, 72 });//1
-	sprint.PushBack({ 154, 133, 76, 72 });//6
-	sprint.PushBack({ 154, 133, 76, 72 });//6
-	sprint.PushBack({ 154, 133, 76, 72 });//6
-	sprint.PushBack({ 154, 133, 76, 72 });//6
+	sprint.PushBack({ 154, 132, 76, 73 });//6
+	sprint.PushBack({ 46, 31, 76, 73 });//1
+	sprint.PushBack({ 258, 132, 76, 73 });//7
+	sprint.PushBack({ 257, 31, 76, 73 });//3
+	sprint.PushBack({ 257, 31, 76, 73 });//3
+	sprint.PushBack({ 257, 31, 76, 73 });//3
+	sprint.PushBack({ 257, 31, 76, 73 });//3
+	sprint.PushBack({ 257, 31, 76, 73 });//3
+	sprint.PushBack({ 258, 132, 76, 73 });//7
+	sprint.PushBack({ 46, 31, 76, 73 });//1
+	sprint.PushBack({ 154, 132, 76, 73 });//6
+	sprint.PushBack({ 154, 132, 76, 73 });//6
+	sprint.PushBack({ 154, 132, 76, 73 });//6
+	sprint.PushBack({ 154, 132, 76, 73 });//6
 	sprint.speed = 0.30f;
 
-	leftLeg.PushBack({ 154, 133, 76, 72 });//6
+	leftLeg.PushBack({ 154, 132, 76, 73 });//6
 
 	path.PushBack({ 0.0f, 0.0f }, 200, &rightLeg); //right leg in front
 	path.PushBack({ 0.0f, -0.65f }, 18, &anim_rightBack); //move right leg to the back
@@ -69,18 +69,18 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	angles[0] = { 134, 242, 18, 16 }; // 0
 	angles[1] = { 157, 242, 17, 16 }; // 30
 	angles[2] = { 179, 242, 16, 16 }; // 45
-	angles[3] = { 203, 242, 16, 17 }; // 60
-	angles[4] = { 226, 242, 16, 18 }; // 90
-	angles[5] = { 247, 242, 16, 17 }; // 120
-	angles[6] = { 269, 242, 16, 17 }; // 135
-	angles[7] = { 292, 242, 17, 17 }; // 150
-	angles[8] = { 316, 242, 18, 17 }; // 180
-	angles[9] = { 339, 241, 17, 17 }; // 210
-	angles[10] = { 362, 241, 16, 17 }; // 225
-	angles[11] = { 386, 241, 16, 17 }; // 240
-	angles[12] = { 51, 241, 16, 18 }; // 270
-	angles[13] = { 71, 241, 16, 17 }; // 300
-	angles[14] = { 91, 241, 16, 16 }; // 315
+	angles[3] = { 203, 241, 16, 17 }; // 60
+	angles[4] = { 226, 240, 16, 18 }; // 90
+	angles[5] = { 247, 241, 16, 17 }; // 120
+	angles[6] = { 269, 242, 16, 16 }; // 135
+	angles[7] = { 292, 242, 17, 16 }; // 150
+	angles[8] = { 316, 242, 18, 16 }; // 180
+	angles[9] = { 339, 242, 17, 16 }; // 210
+	angles[10] = { 362, 242, 16, 16 }; // 225
+	angles[11] = { 386, 242, 16, 17 }; // 240
+	angles[12] = { 51, 242, 16, 18 }; // 270
+	angles[13] = { 71, 242, 16, 17 }; // 300
+	angles[14] = { 91, 242, 16, 16 }; // 315
 	angles[15] = { 113, 242, 17, 16 }; // 330
 
 	cannon_pos[0].x = 12;
@@ -138,7 +138,7 @@ void Enemy_Humanoide_Robot::ExtraAnim()
 		}
 		else
 		{
-			App->render->Blit(sprites, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[angle / 30 + (angle / 100) + 1]);
+			App->render->Blit(sprites, (App->render->camera.x + position.x + cannon_pos[i].x), (App->render->camera.y + position.y + cannon_pos[i].y) - ((vector.y < 0) ? (angles[angle / 30 + (angle / 100) + 1].h - 16) : 0), &angles[angle / 30 + (angle / 100) + 1]);
 		}
 	}
 }
