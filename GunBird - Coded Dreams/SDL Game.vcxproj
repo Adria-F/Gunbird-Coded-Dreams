@@ -77,6 +77,7 @@
     <ClInclude Include="Enemy_Building2.h" />
     <ClInclude Include="Enemy_Humanoide_Robot.h" />
     <ClInclude Include="Enemy_Knights.h" />
+    <ClInclude Include="Enemy_The_Trump.h" />
     <ClInclude Include="Enemy_Torpedo.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -111,6 +112,7 @@
     <ClCompile Include="Enemy_Building2.cpp" />
     <ClCompile Include="Enemy_Humanoide_Robot.cpp" />
     <ClCompile Include="Enemy_Knights.cpp" />
+    <ClCompile Include="Enemy_The_Trump.cpp" />
     <ClCompile Include="Enemy_Torpedo.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

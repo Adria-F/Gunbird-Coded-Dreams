@@ -11,6 +11,7 @@
 #include "Enemy_Building2.h"
 #include "Enemy_Flag2.h"
 #include "Enemy_Knights.h"
+#include "Enemy_The_Trump.h"
 #include "Enemy.h"
 
 #define SPAWN_MARGIN 75
@@ -159,6 +160,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::KNIGHTS:
 			enemies[i] = new Enemy_Knights(info.x, info.y, info.wave, info.id);
+			break;
+		case ENEMY_TYPES::THE_TRUMP:
+			enemies[i] = new Enemy_The_Trump(info.x, info.y, info.wave, info.id);
 			break;
 		}
 	}

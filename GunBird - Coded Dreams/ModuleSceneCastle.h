@@ -70,6 +70,9 @@ public:
 	//knights
 	SDL_Texture* texture_knight = nullptr;
 
+	//The Trump
+	SDL_Texture * texture_the_trump = nullptr;
+
 	//up
 	Animation anim_knight_up;
 	SDL_Rect rect_knight_up;

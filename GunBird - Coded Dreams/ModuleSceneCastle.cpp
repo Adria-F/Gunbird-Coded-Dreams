@@ -92,6 +92,7 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 	texture_knight = App->textures->Load("assets/maps/Castle Knights.png"); //knights
+	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
@@ -109,6 +110,9 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(KNIGHTS, 160, 1590);
 	App->enemies->AddEnemy(KNIGHTS, 140, 1590);
 	App->enemies->AddEnemy(KNIGHTS, 120, 1590);
+
+	//The_Trump
+	App->enemies->AddEnemy(THE_TRUMP, 73, 850, 1);
 
 	//first wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, -45, 1400);
@@ -231,13 +235,13 @@ update_status ModuleSceneCastle::Update()
 	Animation* last_bridge_frame = &last_bridge;
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	SDL_Rect last_bridge = last_bridge_frame->GetCurrentFrame();
+
 	if (-1266 > App->render->camera.y && App->render->camera.y > -1347 ) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1347), &rect_bridge);
 	}
 	if (App->render->camera.y > -1266) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 52), (App->render->camera.y + 1266), &last_bridge);
 	};
-
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
