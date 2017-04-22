@@ -55,13 +55,19 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.speed = 0.03f;
 
 	//knight
-	anim_knight_up.PushBack({ 0, 0, 15, 24 }); //up
-	anim_knight_up.PushBack({ 20, 0, 14, 24 }); //up
-	anim_knight_up.PushBack({ 39, 0, 14, 24 }); //up
-	anim_knight_up.PushBack({ 59, 0, 14, 24 }); //up
-
-
+	//up
+	anim_knight_up.PushBack({ 0, 0, 15, 24 }); 
+	anim_knight_up.PushBack({ 20, 0, 14, 24 });
+	anim_knight_up.PushBack({ 39, 0, 14, 24 });
+	anim_knight_up.PushBack({ 59, 0, 14, 24 });
 	anim_knight_up.speed = 0.1f;
+
+	//left
+	anim_knight_left.PushBack({ 0, 28, 11, 25 }); //1
+	anim_knight_left.PushBack({ 16, 29, 12, 24 }); //2
+	anim_knight_left.PushBack({ 33, 28, 11, 25 }); //3
+	anim_knight_left.PushBack({ 49, 29, 11, 24 }); //4
+	anim_knight_left.speed = 0.1f;
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -209,10 +215,19 @@ update_status ModuleSceneCastle::Update()
 	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
 
 	//knights
-	Animation* current_knight_animation = &anim_knight_up;
-	SDL_Rect rect_knight = current_knight_animation->GetCurrentFrame();
-	App->render->Blit(texture_knight, 70, (App->render->camera.y + 1750), &rect_knight);
-	rect_knight.y = rect_knight.y + 1;
+	//up
+	Animation* current_knight_animation_up = &anim_knight_up;
+	rect_knight_up = current_knight_animation_up->GetCurrentFrame();
+	App->render->Blit(texture_knight, 75, (App->render->camera.y + 1750), &rect_knight_up);
+	App->render->Blit(texture_knight, 105, (App->render->camera.y + 1750), &rect_knight_up);
+	
+	//left
+	Animation* current_knight_animation_left = &anim_knight_left;
+	rect_knight_left = current_knight_animation_left->GetCurrentFrame();
+	App->render->Blit(texture_knight, 100, (App->render->camera.y + 1590), &rect_knight_left);
+	App->render->Blit(texture_knight, 85, (App->render->camera.y + 1590), &rect_knight_left);
+	App->render->Blit(texture_knight, 70, (App->render->camera.y + 1590), &rect_knight_left);
+
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
