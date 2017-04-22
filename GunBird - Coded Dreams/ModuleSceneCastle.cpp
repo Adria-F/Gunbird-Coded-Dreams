@@ -86,13 +86,13 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(BUILDING2, 75, 1165);
 
 	//second wave torpedos:
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2); 
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2); 
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 990, 2);
 
 	//third wave torpedos
 /*
