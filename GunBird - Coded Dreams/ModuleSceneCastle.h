@@ -68,8 +68,8 @@ public:
 
 	//knights
 	SDL_Texture* texture_knight = nullptr;
-	Animation anim_knight;
-	//SDL_Rect rect_knight;
+	Animation anim_knight_up;
+	SDL_Rect rect_knight_up;
 
 	bool fading;
 };
