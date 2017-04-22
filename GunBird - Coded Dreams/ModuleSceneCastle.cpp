@@ -51,7 +51,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 0, 205 , 110, 106 });
 	anim_bridge.PushBack({ 0, 320, 117, 110 });
 	anim_bridge.PushBack({ 125, 320, 117, 110 });
-	anim_bridge.PushBack({ 250, 322, 117, 110 });
+	anim_bridge.PushBack({ 241, 250, 117, 165 });
 	anim_bridge.speed = 0.03f;
 
 	//knight
