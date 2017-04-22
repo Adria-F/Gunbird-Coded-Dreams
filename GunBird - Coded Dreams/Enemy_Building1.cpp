@@ -48,4 +48,5 @@ void Enemy_Building1::DeadAnim()
 	animation = &dead_build1;
 	position.y = 1450;
 	position.x;
+	collider->to_delete = true;
 }

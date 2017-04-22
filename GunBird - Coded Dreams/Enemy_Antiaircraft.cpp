@@ -27,8 +27,3 @@ void Enemy_Antiaircraft::Move()
 {
 
 }
-
-void Enemy_Antiaircraft::DeadAnim()
-{
-
-}

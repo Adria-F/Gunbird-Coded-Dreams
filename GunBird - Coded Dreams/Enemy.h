@@ -30,7 +30,7 @@ public:
 
 	virtual void Move() {};
 	virtual void ExtraAnim() {};
-	virtual void DeadAnim() {};
+	virtual void DeadAnim();
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
 };

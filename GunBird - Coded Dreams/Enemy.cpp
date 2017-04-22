@@ -44,3 +44,9 @@ void Enemy::OnCollision(Collider* collider)
 		Draw(sprites);
 	}
 }
+
+void Enemy::DeadAnim()
+{
+	animation = nullptr;
+	collider->to_delete = true;
+}
