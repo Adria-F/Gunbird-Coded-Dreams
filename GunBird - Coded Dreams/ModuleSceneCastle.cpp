@@ -70,8 +70,7 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 
-	App->enemies->AddEnemy(BUILDING1, 145, 1415);
-	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+	
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
@@ -82,17 +81,53 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, -45, 1380);
 	App->enemies->AddEnemy(TORPEDO, -45, 1370);
 
+	//buildings
+	App->enemies->AddEnemy(BUILDING1, 145, 1415);
+	App->enemies->AddEnemy(BUILDING2, 75, 1165);
+
 	//second wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2); 
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 
-	/* 
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 65, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 75, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 95, 1200, 2);
-	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 105, 1200, 2);
-	*/
+	//third wave torpedos
+/*
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+*/
+//third wave torpedos 2.0
+/*
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
+*/
+	//PUT OTHER ENEMIES UNDER THE LAST ENEMY!!
+
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;

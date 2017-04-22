@@ -137,6 +137,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 	for (Enemy* curr = enemies[0]; enemies[count] != nullptr; curr++)
 		count++;
+
 	int id = count;
 
 	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
