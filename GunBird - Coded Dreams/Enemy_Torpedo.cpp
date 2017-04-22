@@ -30,7 +30,8 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	else if (wave == 2)
 	{
-		path.PushBack({ -1.25f, -(App->render->cam_speed) }, 40 + (25 * id));
+		path.PushBack({ 0.0f, 0.0f }, 250);
+		path.PushBack({ -1.25f,-(App->render->cam_speed) }, 40 + (25 * id));
 		path.PushBack({ 0.0f, -(App->render->cam_speed) }, 500);
 		
 		/*if (6 < id < 14 )
