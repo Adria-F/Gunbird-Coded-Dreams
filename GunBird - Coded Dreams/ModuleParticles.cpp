@@ -84,7 +84,7 @@ bool ModuleParticles::Start()
 	explosions_particle.anim.PushBack({ 322, 110, 99, 101 });
 	explosions_particle.life = 10000;
 	explosions_particle.speed.y = App->render->cam_speed;
-	explosions_particle.anim.loop = true;
+	explosions_particle.anim.loop = false;
 	explosions_particle.anim.speed = 1.0f;
 	
 
