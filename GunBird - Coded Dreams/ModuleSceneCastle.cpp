@@ -96,6 +96,20 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
 
+	//knights
+	//wave1
+	App->enemies->AddEnemy(KNIGHTS, 80, 1910);
+	App->enemies->AddEnemy(KNIGHTS, 65, 1890);
+
+	//wave 2
+	App->enemies->AddEnemy(KNIGHTS, 80, 1820, 2);
+	App->enemies->AddEnemy(KNIGHTS, 95, 1800, 2);
+
+	//wave 3
+	App->enemies->AddEnemy(KNIGHTS, 160, 1590);
+	App->enemies->AddEnemy(KNIGHTS, 140, 1590);
+	App->enemies->AddEnemy(KNIGHTS, 120, 1590);
+
 	//first wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, -45, 1400);
 	App->enemies->AddEnemy(TORPEDO, -45, 1390);
@@ -114,22 +128,6 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 5);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 6);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 7);
-
-	//knights
-	//wave1
-	App->enemies->AddEnemy(KNIGHTS, 80, 1910);
-	App->enemies->AddEnemy(KNIGHTS, 65, 1890);
-
-	//wave 2
-	App->enemies->AddEnemy(KNIGHTS, 80, 1820, 2);
-	App->enemies->AddEnemy(KNIGHTS, 95, 1800, 2);
-
-	//wave 3
-	App->enemies->AddEnemy(KNIGHTS, 160, 1590);
-	App->enemies->AddEnemy(KNIGHTS, 140, 1590);
-	App->enemies->AddEnemy(KNIGHTS, 120, 1590);
-	
-
 
 	//third wave torpedos
 /*
