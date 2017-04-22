@@ -60,6 +60,7 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_knight_up.PushBack({ 39, 0, 14, 24 }); //up
 	anim_knight_up.PushBack({ 59, 0, 14, 24 }); //up
 
+
 	anim_knight_up.speed = 0.1f;
 }
 
