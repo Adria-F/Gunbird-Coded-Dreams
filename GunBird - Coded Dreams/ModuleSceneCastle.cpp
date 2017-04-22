@@ -26,9 +26,8 @@ ModuleSceneCastle::ModuleSceneCastle()
 
 	//Upper background
 	rect_background_upper.w = SCREEN_WIDTH;
-	rect_background_upper.h = 930;
+	rect_background_upper.h = 2108;
 	
-
 	//First river
 	anim_1_river.PushBack({ 0, 0, 224, 120});
 	anim_1_river.PushBack({ 224, 0, 224, 120 });
@@ -37,20 +36,12 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_1_river.speed = 0.07f;
 
 	//Second river
-	anim_2_river.PushBack({ 0, 0, 224, 95 });
-	anim_2_river.PushBack({ 224, 0, 224, 95 });
-	anim_2_river.PushBack({ 448, 0, 224, 95 });
-	anim_2_river.PushBack({ 672, 0, 224, 95 });
-	anim_2_river.speed = 0.07f;
-
-	/*
 	anim_2_river.PushBack({ 0, 0, 224, 256 });
 	anim_2_river.PushBack({ 224, 0, 224, 256 });
 	anim_2_river.PushBack({ 448, 0, 224, 256 });
 	anim_2_river.PushBack({ 672, 0, 224, 256 });
 	anim_2_river.speed = 0.07f;
-	*/
-
+	
 	//Bridge
 	anim_bridge.PushBack({ 0, 0, 121, 35});
 	anim_bridge.PushBack({ 125, 0, 116, 35 });
@@ -73,10 +64,10 @@ bool ModuleSceneCastle::Start()
 	LOG("Loading castle scene");
 	LOG("Loading background assets");
 	bool ret = true;
-	texture_bg = App->textures->Load("assets/maps/castle_background.png");
+	texture_bg = App->textures->Load("assets/maps/castle_bg.png");
 	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper.png");
 	texture_1_river = App->textures->Load("assets/maps/castle_first_river.png"); //First river
-	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //First river
+	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 
 	App->enemies->AddEnemy(BUILDING1, 145, 1415);
@@ -94,6 +85,7 @@ bool ModuleSceneCastle::Start()
 	//second wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 85, 1200, 2);
+
 	/* 
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 65, 1200, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 75, 1200, 2);
@@ -154,8 +146,6 @@ update_status ModuleSceneCastle::Update()
 	//background
 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 
-	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
-
 	// First river
 	Animation* current_1_river_animation = &anim_1_river;
 	SDL_Rect rect_1_river = current_1_river_animation->GetCurrentFrame();
@@ -165,6 +155,8 @@ update_status ModuleSceneCastle::Update()
 	Animation* current_2_river_animation = &anim_2_river;
 	SDL_Rect rect_2_river = current_2_river_animation->GetCurrentFrame();
 	App->render->Blit(texture_2_river, (App->render->camera.x + 1), (App->render->camera.y + 1341), &rect_2_river, 0.75f);
+
+	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
 
 	//bridge	
 	Animation* current_bridge_animation = &anim_bridge;
