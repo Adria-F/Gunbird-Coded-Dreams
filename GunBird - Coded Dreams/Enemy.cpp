@@ -35,4 +35,8 @@ void Enemy::OnCollision(Collider* collider)
 	{
 		lives -= 1;
 	}
+	else if (collider->type == COLLIDER_BUILDING)
+	{
+		Draw(sprites);
+	}
 }
