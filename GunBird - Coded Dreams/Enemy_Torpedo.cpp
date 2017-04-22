@@ -6,7 +6,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 
-Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave)
+Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
 	sprites = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
 
@@ -30,7 +30,10 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave)
 
 	else if (wave == 2)
 	{
-		if (6 < id < 14 )
+		path.PushBack({ -1.25f, -(App->render->cam_speed) }, 40 + (25 * id));
+		path.PushBack({ 0.0f, -(App->render->cam_speed) }, 500);
+		
+		/*if (6 < id < 14 )
 		{
 			if (id == 7)
 			{
@@ -64,12 +67,12 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave)
 				path.PushBack({ -1.25f, 0.0f }, 190);
 				path.PushBack({ 0.0f, 0.0f }, 500);
 			}	
-			else if (id == 12)
+			else if (id == 13)
 			{
 				path.PushBack({ -1.25f, 0.0f }, 215);
 				path.PushBack({ 0.0f, 0.0f }, 500);
 			}
-		}
+		}*/
 		
 	}
 	else if (wave == 3)

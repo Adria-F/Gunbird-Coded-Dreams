@@ -20,7 +20,7 @@ class Enemy;
 struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
-	int x, y, wave;
+	int x, y, wave, id;
 };
 
 class ModuleEnemies : public Module
@@ -37,7 +37,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	bool AddEnemy(ENEMY_TYPES type, int x, int y, int wave = 1);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, int wave = 1, int id = 0);
 
 private:
 

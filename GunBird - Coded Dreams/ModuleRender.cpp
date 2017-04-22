@@ -49,11 +49,9 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()
 {
-	float speed = 0.5;
-
 	if (camera.y < 0 && moving_scene)
 	{
-		camera.y += speed;
+		camera.y += cam_speed;
 	}
 	if (App->debug->debugging)
 	{

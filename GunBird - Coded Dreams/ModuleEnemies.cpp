@@ -106,7 +106,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, int wave)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, int wave, int id)
 {
 	bool ret = false;
 
@@ -118,6 +118,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, int wave)
 			queue[i].x = x;
 			queue[i].y = y;
 			queue[i].wave = wave;
+			queue[i].id = id;
 			ret = true;
 			break;
 		}
@@ -130,13 +131,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	int count = 0;
-
-	for (Enemy* curr = enemies[0]; enemies[count] != nullptr; curr++)
-		count++;
-
-	int id = count;
-
 	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
 	if(i != MAX_ENEMIES)
@@ -148,7 +142,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 		case ENEMY_TYPES::TORPEDO:
-			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave, id);
+			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave, info.id);
 			break;
 
 		case ENEMY_TYPES::HUMANOIDE_ROBOT:

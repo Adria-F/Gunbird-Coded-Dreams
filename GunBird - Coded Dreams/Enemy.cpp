@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 
-Enemy::Enemy(int x, int y, int wave) : position(x, y), wave(wave)
+Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), wave(wave), id (id)
 {}
 
 Enemy::~Enemy()

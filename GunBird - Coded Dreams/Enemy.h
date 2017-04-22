@@ -23,7 +23,7 @@ public:
 	int id = -1;
 
 public:
-	Enemy(int x, int y, int wave = 1);
+	Enemy(int x, int y, int wave = 1, int id = 0);
 	virtual ~Enemy();
 
 	const Collider* GetCollider() const;
