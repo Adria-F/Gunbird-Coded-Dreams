@@ -10,6 +10,7 @@
 #include "Enemy_Building1.h"
 #include "Enemy_Building2.h"
 #include "Enemy_Flag2.h"
+#include "Enemy_Knights.h"
 #include "Enemy.h"
 
 #define SPAWN_MARGIN 75
@@ -155,6 +156,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::BUILDING2:
 			enemies[i] = new Enemy_Building2(info.x, info.y);
+			break;
+		case ENEMY_TYPES::KNIGHTS:
+			enemies[i] = new Enemy_Knights(info.x, info.y, info.wave, info.id);
 			break;
 		}
 	}

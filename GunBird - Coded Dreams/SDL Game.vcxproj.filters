@@ -18,6 +18,9 @@
     <Filter Include="Modules\Enemies\Buildings">
       <UniqueIdentifier>{487bfa0d-c568-4632-bf35-de7f00ca2c44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Animations">
+      <UniqueIdentifier>{768558ee-abb7-45f1-801e-8e4809867a6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -116,6 +119,9 @@
     <ClInclude Include="Enemy_Torpedo.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Knights.h">
+      <Filter>Modules\Enemies\Animations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -201,6 +207,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_Torpedo.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Knights.cpp">
+      <Filter>Modules\Enemies\Animations</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

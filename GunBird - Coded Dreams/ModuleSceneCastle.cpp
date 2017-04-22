@@ -54,9 +54,11 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 241, 250, 117, 165 });
 	anim_bridge.speed = 0.03f;
 
+	
+	/*
 	//knight
 	//up
-	anim_knight_up.PushBack({ 0, 0, 15, 24 }); 
+	anim_knight_up.PushBack({ 0, 0, 15, 24 });
 	anim_knight_up.PushBack({ 20, 0, 14, 24 });
 	anim_knight_up.PushBack({ 39, 0, 14, 24 });
 	anim_knight_up.PushBack({ 59, 0, 14, 24 });
@@ -68,6 +70,9 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_knight_left.PushBack({ 33, 28, 11, 25 }); //3
 	anim_knight_left.PushBack({ 49, 29, 11, 24 }); //4
 	anim_knight_left.speed = 0.1f;
+	*/
+
+
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -107,6 +112,22 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 5);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 6);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH + 45, 1025, 2, 7);
+
+	//knights
+	//wave1
+	App->enemies->AddEnemy(KNIGHTS, 80, 1910);
+	App->enemies->AddEnemy(KNIGHTS, 65, 1890);
+
+	//wave 2
+	App->enemies->AddEnemy(KNIGHTS, 80, 1820, 2);
+	App->enemies->AddEnemy(KNIGHTS, 95, 1800, 2);
+
+	//wave 3
+	App->enemies->AddEnemy(KNIGHTS, 160, 1590);
+	App->enemies->AddEnemy(KNIGHTS, 140, 1590);
+	App->enemies->AddEnemy(KNIGHTS, 120, 1590);
+	
+
 
 	//third wave torpedos
 /*
@@ -171,14 +192,12 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_2_river);
 	App->textures->Unload(texture_bridge);
-	App->textures->Unload(texture_knight);
 
 	texture_bg = nullptr;
 	texture_bg_upper = nullptr;
 	texture_1_river = nullptr;
 	texture_2_river = nullptr;
 	texture_bridge = nullptr;
-	texture_knight = nullptr;
 
 	App->audio->Stop();
 	App->player->Disable();
@@ -213,20 +232,6 @@ update_status ModuleSceneCastle::Update()
 	Animation* current_bridge_animation = &anim_bridge;
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
-
-	//knights
-	//up
-	Animation* current_knight_animation_up = &anim_knight_up;
-	rect_knight_up = current_knight_animation_up->GetCurrentFrame();
-	App->render->Blit(texture_knight, 75, (App->render->camera.y + 1750), &rect_knight_up);
-	App->render->Blit(texture_knight, 105, (App->render->camera.y + 1750), &rect_knight_up);
-	
-	//left
-	Animation* current_knight_animation_left = &anim_knight_left;
-	rect_knight_left = current_knight_animation_left->GetCurrentFrame();
-	App->render->Blit(texture_knight, 100, (App->render->camera.y + 1590), &rect_knight_left);
-	App->render->Blit(texture_knight, 85, (App->render->camera.y + 1590), &rect_knight_left);
-	App->render->Blit(texture_knight, 70, (App->render->camera.y + 1590), &rect_knight_left);
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
