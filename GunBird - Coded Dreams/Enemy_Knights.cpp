@@ -51,7 +51,7 @@ Enemy_Knights::~Enemy_Knights()
 
 void Enemy_Knights::Move()
 {
-	if (wave == 1)
+	if (wave == 1 || wave == 3)
 	{
 		position = original_pos + path.GetCurrentPosition();
 	}
@@ -59,9 +59,6 @@ void Enemy_Knights::Move()
 	{
 		position = original_pos + path.GetCurrentPosition();
 	}
-	else if (wave == 3)
-	{
-		position = original_pos + path.GetCurrentPosition();
-	}
+
 
 }
