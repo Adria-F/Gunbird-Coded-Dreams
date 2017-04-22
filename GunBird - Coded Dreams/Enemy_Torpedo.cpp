@@ -30,50 +30,11 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	else if (wave == 2)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 250);
-		path.PushBack({ -1.25f,-(App->render->cam_speed) }, 40 + (25 * id));
+		path.PushBack({ 0.0f, 0.0f }, 200);
+		path.PushBack({ -3.0f,-(App->render->cam_speed) }, 15);
+		path.PushBack({ -3.1f,-(App->render->cam_speed) },(10 * id));
 		path.PushBack({ 0.0f, -(App->render->cam_speed) }, 500);
 		
-		/*if (6 < id < 14 )
-		{
-			if (id == 7)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 65);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-
-			else if (id == 8)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 90);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-			
-			else if (id == 9)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 115);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-			else if (id == 10)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 140);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-			else if (id == 11)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 165);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-			else if (id == 12)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 190);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}	
-			else if (id == 13)
-			{
-				path.PushBack({ -1.25f, 0.0f }, 215);
-				path.PushBack({ 0.0f, 0.0f }, 500);
-			}
-		}*/
 		
 	}
 	else if (wave == 3)
