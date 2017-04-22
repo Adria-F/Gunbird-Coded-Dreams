@@ -34,12 +34,13 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 		path.PushBack({ -3.0f,-(App->render->cam_speed) }, 15);
 		path.PushBack({ -3.1f,-(App->render->cam_speed) },(10 * id));
 		path.PushBack({ 0.0f, -(App->render->cam_speed) }, 100);
-		path.PushBack({ 0.0f, 2.2f }, 200);
+		path.PushBack({ 0.0f, 2.3f }, 200);
 		
 		
 	}
 	else if (wave == 3)
 	{
+		path.PushBack({ 0.0f, 2.3f }, 150);
 
 	}
 	lives = 12;
