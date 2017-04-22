@@ -51,8 +51,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 0, 205 , 110, 106 });
 	anim_bridge.PushBack({ 0, 320, 117, 110 });
 	anim_bridge.PushBack({ 125, 320, 117, 110 });
-	anim_bridge.PushBack({ 241, 250, 117, 165 });
-	anim_bridge.speed = 0.03f;
+	//anim_bridge.PushBack({ 241, 250, 117, 165 });
+	anim_bridge.speed = 0.02f;
+
+	last_bridge.PushBack({ 241,250,117,165 });
 
 	
 	/*
@@ -230,8 +232,16 @@ update_status ModuleSceneCastle::Update()
 
 	//bridge	
 	Animation* current_bridge_animation = &anim_bridge;
+	Animation* last_bridge_frame = &last_bridge;
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
-	App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1346), &rect_bridge);
+	SDL_Rect last_bridge = last_bridge_frame->GetCurrentFrame();
+	if (-1266 > App->render->camera.y && App->render->camera.y > -1347 ) {
+		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1347), &rect_bridge);
+	}
+	if (App->render->camera.y > -1266) {
+		App->render->Blit(texture_bridge, (App->render->camera.x + 52), (App->render->camera.y + 1266), &last_bridge);
+	};
+
 
 	//Fade To Black ---------------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

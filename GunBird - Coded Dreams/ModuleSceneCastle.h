@@ -43,6 +43,7 @@ public:
 	//Bridge
 	SDL_Texture* texture_bridge = nullptr;
 	Animation anim_bridge;
+	Animation last_bridge;
 	SDL_Rect rect_bridge;
 	
 	//gturret
