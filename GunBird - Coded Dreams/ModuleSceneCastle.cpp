@@ -3,8 +3,8 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleSceneCastle.h"
-#include "ModulePlayer.h"
-#include "ModulePlayer2.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include "ModuleSceneMine.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -175,8 +175,8 @@ bool ModuleSceneCastle::Start()
 	App->audio->Load("assets/music/castle-welcome_title.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
 
-	App->player->Enable();
-	App->player2->Enable();
+	App->marion->Enable();
+	App->ash->Enable();
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
@@ -203,8 +203,8 @@ bool ModuleSceneCastle::CleanUp()
 	texture_bridge = nullptr;
 
 	App->audio->Stop();
-	App->player->Disable();
-	App->player2->Disable();
+	App->marion->Disable();
+	App->ash->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();

@@ -3,8 +3,8 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
-#include "ModulePlayer.h"
-#include "ModulePlayer2.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include <math.h>
@@ -84,7 +84,7 @@ void ModulePowerUp::AddPowerUp(powerup_type type, int x, int y)
 
 void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c2->callback == App->player)
+	if (c2->callback == App->marion)
 	{
 		App->audio->Load("assets/music/upgrade_marion.wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
@@ -98,7 +98,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		}
 		App->particles->OnCollision(c1, c2);
 	}
-	else if (c2->callback == App->player2)
+	else if (c2->callback == App->ash)
 	{
 		App->audio->Load("assets/music/upgrade_ash.wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);

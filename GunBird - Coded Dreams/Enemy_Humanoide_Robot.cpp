@@ -6,7 +6,8 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 #include "Path.h"
-#include "ModulePlayer.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include <math.h>
 #include "SDL/include/SDL_timer.h"
 
@@ -107,17 +108,28 @@ Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
 
 void Enemy_Humanoide_Robot::Move()
 {
+	vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
+	vector.y = (App->marion->position.y - (App->render->camera.y + position.y));
+	distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+	vector.x = (App->ash->position.x - (App->render->camera.x + position.x));
+	vector.y = (App->ash->position.y - (App->render->camera.y + position.y));
+	distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+	if (distance[0] < distance[1])
+		player = App->marion;
+	else
+		player = App->ash;
+	
 	position = original_pos + path.GetCurrentPosition(&animation);
 
 	now = SDL_GetTicks() - start_time;
 
-	if (now > total_time && App->player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
+	if (now > total_time && player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
 	{		
 		second_shot = true;
 		App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, -22);
 		App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 53, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 22);
 	}
-	if (now > total_time + 150 && App->player->position.y - 64 > this->collider->rect.y + 50)
+	if (now > total_time + 150 && player->position.y - 64 > this->collider->rect.y + 50)
 	{
 		start_time = SDL_GetTicks();
 		second_shot = false;
@@ -128,11 +140,11 @@ void Enemy_Humanoide_Robot::Move()
 }
 
 void Enemy_Humanoide_Robot::ExtraAnim()
-{
+{	
 	for (int i = 0; i < 2; i++)
 	{
-		vector.x = (App->player->position.x - (App->render->camera.x + position.x + cannon_pos[i].x));
-		vector.y = (App->player->position.y - (App->render->camera.y + position.y + cannon_pos[i].y));
+		vector.x = (player->position.x - (App->render->camera.x + position.x + cannon_pos[i].x));
+		vector.y = (player->position.y - (App->render->camera.y + position.y + cannon_pos[i].y));
 		angle = atan(vector.x / vector.y) * 180 / PI;
 		if (vector.y > 0) angle = 360 - 90 + angle;
 		else angle = 90 + angle;

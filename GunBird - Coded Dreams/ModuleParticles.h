@@ -66,6 +66,7 @@ private:
 	fPoint vector;
 	float modul;
 	float y_phase;
+	int distance[2];
 
 public:
 

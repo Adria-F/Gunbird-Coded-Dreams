@@ -101,12 +101,6 @@
     <ClInclude Include="Enemy_Humanoide_Robot.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer2.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Building1.h">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
@@ -121,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="Enemy_The_Trump.h">
       <Filter>Modules\Enemies\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleMarion.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAsh.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -190,12 +193,6 @@
     <ClCompile Include="Enemy_Humanoide_Robot.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer2.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Building2.cpp">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
@@ -210,6 +207,12 @@
     </ClCompile>
     <ClCompile Include="Enemy_The_Trump.cpp">
       <Filter>Modules\Enemies\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleMarion.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAsh.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

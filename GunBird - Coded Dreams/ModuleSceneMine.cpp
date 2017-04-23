@@ -3,7 +3,7 @@
 #include "ModuleSceneMine.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModulePlayer.h"
+#include "ModuleMarion.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -45,7 +45,7 @@ bool ModuleSceneMine::Start()
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
 
-	App->player->Enable();
+	App->marion->Enable();
 	App->collision->Enable();
 	fading = false;
 
@@ -63,7 +63,7 @@ bool ModuleSceneMine::CleanUp()
 	graphics_background_text = nullptr;
 	
 	App->audio->Stop();
-	App->player->Disable();
+	App->marion->Disable();
 	App->collision->Disable();
 
 	return true;

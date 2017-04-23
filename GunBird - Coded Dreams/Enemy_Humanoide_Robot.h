@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "Path.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 class Enemy_Humanoide_Robot : public Enemy
 {
@@ -14,6 +15,7 @@ private:
 	bool step = false;
 	bool killed = 0;
 	fPoint vector;
+	int distance[2];
 	fPoint cannon_pos[2];
 	int angle;
 
@@ -34,6 +36,7 @@ private:
 	Animation rightLeg;
 	Animation sprint;
 	Animation dead_robot;
+	ModulePlayer* player;
 
 	SDL_Rect angles[16];
 

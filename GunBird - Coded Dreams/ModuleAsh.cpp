@@ -3,7 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModulePlayer2.h"
+#include "ModuleAsh.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePowerUp.h"
@@ -11,7 +11,7 @@
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModulePlayer2::ModulePlayer2()
+ModuleAsh::ModuleAsh()
 {
 
 	// idle animation
@@ -36,11 +36,11 @@ ModulePlayer2::ModulePlayer2()
 	//left.PushBack({ 90, 97, 17, 32 });
 }
 
-ModulePlayer2::~ModulePlayer2()
+ModuleAsh::~ModuleAsh()
 {}
 
 // Load assets
-bool ModulePlayer2::Start()
+bool ModuleAsh::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
@@ -56,7 +56,7 @@ bool ModulePlayer2::Start()
 	return ret;
 }
 
-bool ModulePlayer2::CleanUp()
+bool ModuleAsh::CleanUp()
 {
 	bool ret = true;
 	App->textures->Unload(graphics);
@@ -68,7 +68,7 @@ bool ModulePlayer2::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer2::Update()
+update_status ModuleAsh::Update()
 {
 	now = SDL_GetTicks() - start_time;
 
@@ -93,11 +93,11 @@ update_status ModulePlayer2::Update()
 
 	int speed = 3;
 
-	if (going_ASH_up && position.y > 32)
+	if (going_up && position.y > 32)
 	{
 		position.y -= speed;
 	}
-	if (going_ASH_left)
+	if (going_left)
 	{
 		current_animation = &right;
 		if (position.x > 0)
@@ -105,11 +105,11 @@ update_status ModulePlayer2::Update()
 			position.x -= speed;
 		}
 	}
-	if (going_ASH_down && position.y < SCREEN_HEIGHT)
+	if (going_down && position.y < SCREEN_HEIGHT)
 	{
 		position.y += speed;
 	}
-	if (going_ASH_right)
+	if (going_right)
 	{
 		current_animation = &left;
 		if (position.x < SCREEN_WIDTH - 18)
@@ -137,7 +137,7 @@ update_status ModulePlayer2::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
+void ModuleAsh::OnCollision(Collider* c1, Collider* c2)
 {
 
 	drop_timer_start = SDL_GetTicks();

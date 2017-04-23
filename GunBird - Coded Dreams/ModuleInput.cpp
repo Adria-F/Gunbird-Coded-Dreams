@@ -6,8 +6,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleDebugMode.h"
 #include "ModuleParticles.h"
-#include "ModulePlayer.h"
-#include "ModulePlayer2.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -87,39 +87,39 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->going_MARION_up = true;
-		App->player->going_MARION_down = false;
+		App->marion->going_up = true;
+		App->marion->going_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
 	{
-		App->player->going_MARION_up = false;
+		App->marion->going_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->going_MARION_left = true;
-		App->player->going_MARION_right = false;
+		App->marion->going_left = true;
+		App->marion->going_right = false;
 	}
 	if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
 	{
-		App->player->going_MARION_left = false;
+		App->marion->going_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->going_MARION_down = true;
-		App->player->going_MARION_up = false;
+		App->marion->going_down = true;
+		App->marion->going_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
 	{
-		App->player->going_MARION_down = false;
+		App->marion->going_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->going_MARION_right = true;
-		App->player->going_MARION_left = false;
+		App->marion->going_right = true;
+		App->marion->going_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
 	{
-		App->player->going_MARION_right = false;
+		App->marion->going_right = false;
 	}
 
 	//------------------------------------------------------------------------------------------ Jeff
@@ -127,39 +127,39 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going_ASH_up= true;
-		App->player2->going_ASH_down = false;
+		App->ash->going_up= true;
+		App->ash->going_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going_ASH_up = false;
+		App->ash->going_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going_ASH_left = true;
-		App->player2->going_ASH_right = false;
+		App->ash->going_left = true;
+		App->ash->going_right = false;
 	}
 	if (keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going_ASH_left = false;
+		App->ash->going_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going_ASH_down = true;
-		App->player2->going_ASH_up = false;
+		App->ash->going_down = true;
+		App->ash->going_up = false;
 	}
 	if (keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going_ASH_down = false;
+		App->ash->going_down = false;
 	}
 	if (keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_DOWN)
 	{
-		App->player2->going_ASH_right = true;
-		App->player2->going_ASH_left = false;
+		App->ash->going_right = true;
+		App->ash->going_left = false;
 	}
 	if (keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
 	{
-		App->player2->going_ASH_right = false;
+		App->ash->going_right = false;
 	}
 	return update_status::UPDATE_CONTINUE;
 }

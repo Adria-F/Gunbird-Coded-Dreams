@@ -11,7 +11,8 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleHighscores.h"
 #include "ModulePlayer.h"
-#include "ModulePlayer2.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -196,8 +197,20 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 				switch (type)
 				{
 				case P_SMALL_SHOT:
-					y_phase = 16 + (((x - App->player->position.x) / (y - App->player->position.y)) * 12);
-					if (App->player->position.x - x < 0)
+					ModulePlayer* player;
+					vector.x = (App->marion->position.x - (App->render->camera.x + x));
+					vector.y = (App->marion->position.y - (App->render->camera.y + y));
+					distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+					vector.x = (App->ash->position.x - (App->render->camera.x + x));
+					vector.y = (App->ash->position.y - (App->render->camera.y + y));
+					distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+					if (distance[0] < distance[1])
+						player = App->marion;
+					else
+						player = App->ash;
+					
+					y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12);
+					if (player->position.x - x < 0)
 					{
 						if (x_phase < 0)
 						{
@@ -211,8 +224,8 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 							y_phase = -y_phase;
 						}
 					}
-					vector.x = App->player->position.x + 10 + x_phase - x;
-					vector.y = App->player->position.y - 16 + y_phase - y;
+					vector.x = player->position.x + 10 + x_phase - x;
+					vector.y = player->position.y - 16 + y_phase - y;
 					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
 					vector.x /= modul;
 					vector.y /= modul;
@@ -234,13 +247,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
-		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->player)
+		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
 		}
 
-		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->player2)
+		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);

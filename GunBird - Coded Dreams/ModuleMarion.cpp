@@ -3,7 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
-#include "ModulePlayer.h"
+#include "ModuleMarion.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePowerUp.h"
@@ -11,7 +11,7 @@
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModulePlayer::ModulePlayer()
+ModuleMarion::ModuleMarion()
 {
 
 	// idle animation (arcade sprite sheet)
@@ -72,10 +72,10 @@ ModulePlayer::ModulePlayer()
 	stele3.speed = 0.1f;
 }
 
-ModulePlayer::~ModulePlayer()
+ModuleMarion::~ModuleMarion()
 {}
 // Load assets
-bool ModulePlayer::Start()
+bool ModuleMarion::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
@@ -91,7 +91,7 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
-bool ModulePlayer::CleanUp()
+bool ModuleMarion::CleanUp()
 {
 	bool ret = true;
 	App->textures->Unload(graphics);
@@ -103,7 +103,7 @@ bool ModulePlayer::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer::Update()
+update_status ModuleMarion::Update()
 {
 	now = SDL_GetTicks() - start_time;
 
@@ -132,11 +132,11 @@ update_status ModulePlayer::Update()
 
 	int speed = 3;
 
-	if(going_MARION_up && position.y > 32)
+	if(going_up && position.y > 32)
 	{
 		position.y -= speed;
 	}
-	if (going_MARION_left)
+	if (going_left)
 	{
 		current_animation = &left;
 
@@ -145,11 +145,11 @@ update_status ModulePlayer::Update()
 			position.x -= speed;
 		}
 	}
-	if (going_MARION_down && position.y < SCREEN_HEIGHT)
+	if (going_down && position.y < SCREEN_HEIGHT)
 	{
 		position.y += speed;
 	}
-	if (going_MARION_right)
+	if (going_right)
 	{
 		current_animation = &right;
 		if (position.x < SCREEN_WIDTH - 18)
@@ -184,7 +184,7 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+void ModuleMarion::OnCollision(Collider* c1, Collider* c2)
 {
 
 	drop_timer_start = SDL_GetTicks();

@@ -1,5 +1,5 @@
-#ifndef __ModulePlayer_H__
-#define __ModulePlayer_H__
+#ifndef __MODULE_PLAYER_H__
+#define __MODULE_PLAYER_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -12,14 +12,12 @@ struct Collider;
 class ModulePlayer : public Module
 {
 public:
-	ModulePlayer();
-	~ModulePlayer();
 
-	bool Start();
-	update_status Update();
-	bool CleanUp();
+	virtual bool Start() = 0;
+	virtual update_status Update() = 0;
+	virtual bool CleanUp() = 0;
 
-	void OnCollision(Collider* c1, Collider* c2);
+	virtual void OnCollision(Collider* c1, Collider* c2) = 0;
 
 public:
 
@@ -27,20 +25,18 @@ public:
 	Animation idle;
 	Animation left;
 	Animation right;
-	Animation stele1;
-	Animation stele2;
-	Animation stele3;
 	iPoint position;
+
 	Collider* Pcollider;
 	int bullet_counter;
 	bool shot;
 
-	bool going_MARION_up;
-	bool going_MARION_left;
-	bool going_MARION_down;
-	bool going_MARION_right;
+	bool going_up;
+	bool going_left;
+	bool going_down;
+	bool going_right;
 
-private:
+protected:
 
 	Uint32 start_time = 0;
 	Uint32 total_time = (Uint32)(2.0f * 0.5f * 100.0f);
@@ -52,4 +48,4 @@ private:
 	Uint32 drop_timer_now;
 };
 
-#endif
+#endif // !__MODULE_PLAYER_H__

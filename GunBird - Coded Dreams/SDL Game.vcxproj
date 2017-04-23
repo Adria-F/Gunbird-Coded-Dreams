@@ -90,8 +90,9 @@
     <ClInclude Include="ModuleHighscores.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="ModuleMarion.h" />
+    <ClInclude Include="ModuleAsh.h" />
     <ClInclude Include="ModulePlayer.h" />
-    <ClInclude Include="ModulePlayer2.h" />
     <ClInclude Include="ModulePowerUp.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneMine.h" />
@@ -123,8 +124,8 @@
     <ClCompile Include="ModuleHighscores.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
-    <ClCompile Include="ModulePlayer.cpp" />
-    <ClCompile Include="ModulePlayer2.cpp" />
+    <ClCompile Include="ModuleMarion.cpp" />
+    <ClCompile Include="ModuleAsh.cpp" />
     <ClCompile Include="ModulePowerUp.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneMine.cpp" />

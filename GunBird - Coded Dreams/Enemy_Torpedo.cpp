@@ -6,6 +6,8 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include <math.h>
 
 Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
@@ -44,8 +46,20 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	{
 		if (id == 2 || id == 3)
 		{
-			vector.x = App->player->position.x + 10 - x - 15;
-			vector.y = App->player->position.y - 16 - y + 15;
+			ModulePlayer* player;
+			vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
+			vector.y = (App->marion->position.y - (App->render->camera.y + position.y));
+			distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			vector.x = (App->ash->position.x - (App->render->camera.x + position.x));
+			vector.y = (App->ash->position.y - (App->render->camera.y + position.y));
+			distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			if (distance[0] < distance[1])
+				player = App->marion;
+			else
+				player = App->ash;
+			
+			vector.x = player->position.x + 10 - x - 15;
+			vector.y = player->position.y - 16 - y + 15;
 			if (id == 3)
 			{
 				vector.x += (vector.x < 0) ? 30 : -30;

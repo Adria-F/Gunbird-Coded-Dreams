@@ -16,6 +16,7 @@ private:
 	float modul;
 	fPoint vector;
 	fPoint speed;
+	int distance[2];
 
 public:
 

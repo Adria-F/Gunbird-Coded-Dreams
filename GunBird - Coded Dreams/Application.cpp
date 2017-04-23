@@ -5,8 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleSceneMine.h"
-#include "ModulePlayer.h"
-#include "ModulePlayer2.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleWelcomeTitle.h"
@@ -31,8 +31,8 @@ Application::Application()
 	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = selection = new ModuleSelection();
 	modules[i++] = enemies = new ModuleEnemies();
-	modules[i++] = player = new ModulePlayer();
-	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = marion = new ModuleMarion();
+	modules[i++] = ash = new ModuleAsh();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
 	modules[i++] = powerup = new ModulePowerUp();
@@ -52,8 +52,8 @@ bool Application::Init()
 	bool ret = true;
 
 	// Player will be enabled on the first update of a new scene
-	player->Disable();
-	player2->Disable();
+	marion->Disable();
+	ash->Disable();
 	// Disable the map that you do not start with
 	scene_castle->Disable();
 	highscores->Disable();
