@@ -92,7 +92,7 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	cannon_pos[1].x = 48;
 	cannon_pos[1].y = 15;
 
-	lives = 1; //88;
+	lives = 88;
 
 	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
 
