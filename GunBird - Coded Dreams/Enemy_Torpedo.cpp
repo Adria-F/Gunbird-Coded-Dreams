@@ -5,6 +5,8 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
+#include "ModulePlayer.h"
+#include <math.h>
 
 Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
@@ -40,7 +42,23 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	}
 	else if (wave == 3)
 	{
-		path.PushBack({ 0.0f, 2.3f }, 150);
+		if (id == 2 || id == 3)
+		{
+			vector.x = App->player->position.x + 10 - x - 15;
+			vector.y = App->player->position.y - 16 - y + 15;
+			if (id == 3)
+			{
+				vector.x += (vector.x < 0) ? 30 : -30;
+			}
+			modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			vector.x /= modul;
+			vector.y /= modul;
+			speed.x = vector.x * 2.3f;
+			speed.y = vector.y * -2.3f;
+			path.PushBack({ speed.x , speed.y }, 150);
+		}
+		else
+			path.PushBack({ 0.0f, 2.3f }, 150);
 
 	}
 	lives = 12;

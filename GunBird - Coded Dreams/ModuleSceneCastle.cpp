@@ -162,10 +162,10 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 5, 425, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 53, 425, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 149, 425, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 425, 3, 2);
+	App->enemies->AddEnemy(TORPEDO, 197, 425, 3, 3);
 	App->enemies->AddEnemy(TORPEDO, 75, 410, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 123, 410, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 2);
+	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 3);
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;

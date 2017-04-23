@@ -13,6 +13,9 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation anim;
+	float modul;
+	fPoint vector;
+	fPoint speed;
 
 public:
 
