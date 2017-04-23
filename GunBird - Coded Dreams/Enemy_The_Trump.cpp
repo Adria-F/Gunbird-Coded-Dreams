@@ -33,11 +33,36 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		anim_pilot_idle.PushBack({ 20, 113, 15, 25 });
 		anim_pilot_idle.speed = 0.1f;
 
+		//idle girl
+		anim_girl_idle.PushBack({ 170, 166, 13, 23 });
+		anim_girl_idle.PushBack({ 189, 166, 13 ,22 });
+		anim_girl_idle.speed = 0.1f;
+
+		//turning pilot
+		anim_girl_turning.PushBack({ 170, 110, 11, 22 });
+		anim_girl_turning.PushBack({ 170, 110, 11, 22 });
+		anim_girl_turning.speed = 0.1f;
+
+
+
 		//path
-		path.PushBack({ 0.0f, -0.6f }, 100, &anim_pilot_up);
-		path.PushBack({ 0.6f, 0.0f }, 55, &anim_pilot_right);
-		path.PushBack({ 0.0f, 0.0f }, 100, &anim_pilot_idle);
-		path.PushBack({ 0.0f, -0.6f }, 10, &anim_pilot_up);
+		if (wave == 1)
+		{
+			path.PushBack({ 0.0f, -0.6f }, 100, &anim_pilot_up);
+			path.PushBack({ 0.6f, 0.0f }, 55, &anim_pilot_right);
+			path.PushBack({ 0.0f, 0.0f }, 100, &anim_pilot_idle);
+			path.PushBack({ 0.0f, -0.6f }, 10, &anim_pilot_up);
+		}
+
+		if (wave == 2)
+		{
+			path.PushBack({ 0.0f, -0.6f }, 100, &anim_pilot_up);
+			path.PushBack({ 0.6f, 0.0f }, 55, &anim_pilot_right);
+			path.PushBack({ 0.0f, 0.0f }, 100, &anim_pilot_idle);
+			path.PushBack({ 0.0f, -0.6f }, 10, &anim_pilot_up);
+		}
+
+
 
 
 	/*if (App->render->camera.y < 850 && App->render->camera.y <= 801)
