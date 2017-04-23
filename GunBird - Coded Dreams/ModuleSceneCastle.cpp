@@ -149,21 +149,21 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 99, 500, 3, 2);
 
     //third wave torpedos 2.0
-/*
-	App->enemies->AddEnemy(TORPEDO, 75, 550, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 123, 550, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 520, 3, 2);
-	App->enemies->AddEnemy(TORPEDO, 75, 505, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 123, 505, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 99, 500, 3, 2);
-*/
+
+	App->enemies->AddEnemy(TORPEDO, 75, 455, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 123, 455, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 5, 440, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 440, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 440, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 440, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 5, 425, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 425, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 425, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 425, 3, 2);
+	App->enemies->AddEnemy(TORPEDO, 75, 410, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 123, 410, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 2);
+
 
 
 	App->render->moving_scene = true;

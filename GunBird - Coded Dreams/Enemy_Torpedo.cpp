@@ -20,7 +20,7 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	anim.PushBack({ 84, 74, 15, 31 });
 	anim.speed = 0.15f;
 	
-	this->id = id;
+	//this->id = id;
 
 	if (wave == 1)
 	{
