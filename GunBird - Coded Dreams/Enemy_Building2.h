@@ -8,6 +8,7 @@ private:
 
 	Animation anim;
 	Animation flag_anim;
+	Animation dead_build2;
 
 public:
 
@@ -15,6 +16,7 @@ public:
 
 	void Move();
 	void ExtraAnim();
+	void Enemy_Building2::DeadAnim();
 };
 
 #endif // !__BUILDING1_H__

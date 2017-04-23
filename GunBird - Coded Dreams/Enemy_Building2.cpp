@@ -21,8 +21,11 @@ Enemy_Building2::Enemy_Building2(int x, int y) : Enemy(x, y)
 	flag_anim.PushBack({ 13, 196, 69, 23 });
 	flag_anim.PushBack({ 88, 98, 69, 23 });
 	flag_anim.PushBack({ 89, 127, 65, 21 });
-	flag_anim.PushBack({ 89, 154, 65, 21 });
+	flag_anim.PushBack({ 89, 154, 65, 21 }); 
 	flag_anim.speed = 0.07f;
+
+	dead_build2.PushBack({145, 0, 66,  62});
+	dead_build2.speed = 0.1f;
 
 	lives = 25;
 
@@ -37,4 +40,10 @@ void Enemy_Building2::ExtraAnim()
 	App->render->Blit(sprites, App->render->camera.x + position.x + 34, App->render->camera.y + position.y - 12, &(flag_anim.GetCurrentFrame()));
 }
 
-
+void Enemy_Building2::DeadAnim()
+{
+	animation = &dead_build2;
+	position.y = 1190;
+	position.x = 80;
+	collider->to_delete = true;
+}
