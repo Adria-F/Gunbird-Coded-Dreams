@@ -97,7 +97,6 @@
     <ClInclude Include="ModuleSceneMine.h" />
     <ClInclude Include="ModuleSceneCastle.h" />
     <ClInclude Include="ModuleSelection.h" />
-    <ClInclude Include="ModuleShooting.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWelcomeTitle.h" />
     <ClInclude Include="ModuleWindow.h" />
@@ -131,7 +130,6 @@
     <ClCompile Include="ModuleSceneMine.cpp" />
     <ClCompile Include="ModuleSceneCastle.cpp" />
     <ClCompile Include="ModuleSelection.cpp" />
-    <ClCompile Include="ModuleShooting.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWelcomeTitle.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />

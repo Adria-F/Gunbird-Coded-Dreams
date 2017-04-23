@@ -13,7 +13,6 @@
 #include "ModuleHighscores.h"
 #include "ModuleSelection.h"
 #include "ModuleDebugMode.h"
-#include "ModuleShooting.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
@@ -36,7 +35,6 @@ Application::Application()
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
-	modules[i++] = shooting = new ModuleShooting();
 	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();

@@ -1,3 +1,4 @@
+/*
 #ifndef __MODULESHOOTING_H__
 #define __MODULESHOOTING_H__
 
@@ -10,19 +11,21 @@ struct SDL_Texture;
 class ModuleShooting : public Module
 {
 public:
-	ModuleShooting();
-	~ModuleShooting();
+ModuleShooting();
+~ModuleShooting();
 
-	bool Start();
-	update_status Update();
-	bool CleanUp();
+bool Start();
+update_status Update();
+bool CleanUp();
 
 public:
 
-	SDL_Texture* texture_bullet = nullptr;
-	SDL_Texture* texture_enemy_medium_bullet = nullptr;
-	SDL_Rect rect_bullet;
-	SDL_Rect rect_enemy_medium_bullet;
+SDL_Texture* texture_bullet = nullptr;
+SDL_Texture* texture_enemy_medium_bullet = nullptr;
+SDL_Rect rect_bullet;
+SDL_Rect rect_enemy_medium_bullet;
 };
 
 #endif
+*/
+
