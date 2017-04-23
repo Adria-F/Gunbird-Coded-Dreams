@@ -115,7 +115,7 @@ bool ModuleSceneCastle::Start()
 
 	//The_Trump 1st boy then girl:
 	App->enemies->AddEnemy(THE_TRUMP, 5, 719, 2);
-	App->enemies->AddEnemy(THE_TRUMP, 12, 703, 2);
+	App->enemies->AddEnemy(THE_TRUMP, 12, 703, 3);
 
 
 	//first wave torpedos:

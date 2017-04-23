@@ -34,16 +34,38 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		anim_pilot_idle.speed = 0.1f;
 
 		//idle girl
+		anim_girl_idle.PushBack({ 189, 166, 13 ,23 });
 		anim_girl_idle.PushBack({ 170, 166, 13, 23 });
-		anim_girl_idle.PushBack({ 189, 166, 13 ,22 });
 		anim_girl_idle.speed = 0.1f;
 
-		//turning pilot
+		//turning girl
 		anim_girl_turning.PushBack({ 170, 110, 11, 22 });
-		anim_girl_turning.PushBack({ 170, 110, 11, 22 });
+		anim_girl_turning.PushBack({ 185, 82, 10, 21 });
 		anim_girl_turning.speed = 0.1f;
 
+		//Up girl
+		anim_girl_up.PushBack({ 170, 27, 12, 21});
+		anim_girl_up.PushBack({ 188, 27, 14, 22 });
+		anim_girl_up.PushBack({ 208, 27, 14, 22 });
+		anim_girl_up.PushBack({ 228, 27, 13, 21 });
+		anim_girl_up.speed = 0.2f;
 
+		//idle boy
+		anim_boy_idle.PushBack({ 103, 110, 12, 22 });
+		anim_boy_idle.PushBack({ 85, 110, 12, 23 });
+		anim_boy_idle.speed = 0.1f;
+
+		//turning boy
+		anim_boy_turning.PushBack({ 85, 139, 11, 23 });
+		anim_boy_turning.PushBack({ 134, 83, 10, 20 });
+		anim_boy_turning.speed = 0.1f;
+
+		//Up boy
+		anim_boy_up.PushBack({ 85, 28, 14, 22 });
+		anim_boy_up.PushBack({ 105, 28, 13, 21 });
+		anim_boy_up.PushBack({ 124, 28, 14, 22 });
+		anim_boy_up.PushBack({ 144, 28, 13, 21 });
+		anim_boy_up.speed = 0.2f;
 
 		//path
 		if (wave == 1)
@@ -54,26 +76,20 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 			path.PushBack({ 0.0f, -0.6f }, 10, &anim_pilot_up);
 		}
 
-		if (wave == 2)
+		else if (wave == 2)
 		{
-			path.PushBack({ 0.0f, -0.6f }, 100, &anim_pilot_up);
-			path.PushBack({ 0.6f, 0.0f }, 55, &anim_pilot_right);
-			path.PushBack({ 0.0f, 0.0f }, 100, &anim_pilot_idle);
-			path.PushBack({ 0.0f, -0.6f }, 10, &anim_pilot_up);
+			path.PushBack({ 0.0f, 0.0f }, 300, &anim_boy_idle);
+			path.PushBack({ 0.0f, 0.0f }, 20, &anim_boy_turning);
+			path.PushBack({ 0.0f, -0.6f }, 500, &anim_boy_up);
+		}
+		
+		if (wave == 3)
+		{
+			path.PushBack({ 0.0f, 0.0f }, 280, &anim_girl_idle);
+			path.PushBack({ 0.0f, 0.0f }, 20, &anim_girl_turning);
+			path.PushBack({ 0.0f, -0.6f }, 500, &anim_girl_up);
 		}
 
-
-
-
-	/*if (App->render->camera.y < 850 && App->render->camera.y <= 801)
-	{
-		animation = &anim_pilot;
-	}
-	else if (App->render->camera.y < 800)
-	{
-		animation = &anim_pilot;
-	}
-	*/
 
 	collider = App->collision->AddCollider({ 0, 0 }, COLLIDER_WALL);
 
