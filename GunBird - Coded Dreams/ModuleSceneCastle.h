@@ -58,17 +58,10 @@ public:
 	Collider* coll_build1;
 	SDL_Rect rect_building1;
 
-	//build1 down
-	//Animation anim_build1down;
-	//SDL_Rect rect_build1down;
-
 	//building2
 	Animation anim_build2;
 	Collider* coll_build2;
 	SDL_Rect rect_building2;
-
-	//knights
-	SDL_Texture* texture_knight = nullptr;
 
 	//The Trump
 	SDL_Texture * texture_the_trump = nullptr;

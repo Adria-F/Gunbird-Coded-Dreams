@@ -91,7 +91,6 @@ bool ModuleSceneCastle::Start()
 	texture_1_river = App->textures->Load("assets/maps/castle_first_river.png"); //First river
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
-	texture_knight = App->textures->Load("assets/maps/Castle Knights.png"); //knights
 	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
@@ -149,7 +148,6 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 99, 500, 3, 2);
 
     //third wave torpedos 2.0
-
 	App->enemies->AddEnemy(TORPEDO, 75, 455, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 123, 455, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 5, 440, 3, 1);
@@ -163,8 +161,6 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 75, 410, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 123, 410, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 2);
-
-
 
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
@@ -216,7 +212,7 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------
 	//background
-	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
+ 	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 
 	// First river
 	Animation* current_1_river_animation = &anim_1_river;
@@ -229,8 +225,8 @@ update_status ModuleSceneCastle::Update()
 	App->render->Blit(texture_2_river, (App->render->camera.x + 1), (App->render->camera.y + 1341), &rect_2_river, 0.75f);
 
 	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
-
-	//bridge	
+	
+	//bridge
 	Animation* current_bridge_animation = &anim_bridge;
 	Animation* last_bridge_frame = &last_bridge;
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
@@ -252,6 +248,8 @@ update_status ModuleSceneCastle::Update()
 
 	return UPDATE_CONTINUE;
 }
+
+
 
 
 void ModuleSceneCastle::OnCollision(Collider* c1, Collider* c2)

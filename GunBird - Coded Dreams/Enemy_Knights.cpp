@@ -10,9 +10,14 @@
 Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
 	sprites = App->textures->Load("assets/maps/Castle Knights.png");
-
+	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper.png");
+	rect_background_upper.w = SCREEN_WIDTH;
+	rect_background_upper.h = 2108;
+	rect_background_upper.x = 0;
+	rect_background_upper.y = 0;
 	//knights
 	this->id = id;
+	lives = 1;
 
 	if (wave == 1)
 	{
@@ -39,9 +44,13 @@ Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	}
 
+	collider = App->collision->AddCollider({ 0, 0 }, COLLIDER_WALL);
+
 	animation = &anim;
 	original_pos.x = x;
 	original_pos.y = y;
+
+	extra_anim = true;
 }
 
 
@@ -58,7 +67,11 @@ void Enemy_Knights::Move()
 	else if (position.y >= 1610 && wave == 2)
 	{
 		position = original_pos + path.GetCurrentPosition();
+ 		
 	}
+}
 
-
+void Enemy_Knights::ExtraAnim()
+{
+	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
 }

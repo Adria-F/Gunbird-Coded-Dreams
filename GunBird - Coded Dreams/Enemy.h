@@ -11,7 +11,7 @@ class Enemy
 {
 protected:
 	Animation* animation = nullptr;
-	Collider* collider = nullptr;
+	
 
 public:
 	iPoint position;
@@ -21,6 +21,7 @@ public:
 	bool dead = false;
 	int wave;
 	int id = -1;
+	Collider* collider = nullptr;
 
 public:
 	Enemy(int x, int y, int wave = 1, int id = 0);

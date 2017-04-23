@@ -10,7 +10,9 @@ class Enemy_The_Trump : public Enemy
 private:
 	Path path;
 	iPoint original_pos;
-	Animation anim_pilot;
+	Animation anim_pilot_up;
+	Animation anim_pilot_right;
+	Animation anim_pilot_idle;
 
 public:
 	Enemy_The_Trump(int x, int y, int wave, int id);
