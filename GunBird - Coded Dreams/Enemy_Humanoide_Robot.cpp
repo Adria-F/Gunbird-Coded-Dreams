@@ -30,6 +30,10 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	anim_leftBack.speed = 0.15f;
 	anim_leftBack.loop = false;
 
+	dead_robot.PushBack({ 262, 363, 62, 54 });
+	dead_robot.speed = 0.1f;
+	dead_robot.loop = false;
+
 	sprint.PushBack({ 154, 132, 76, 73 });//6
 	sprint.PushBack({ 46, 31, 76, 73 });//1
 	sprint.PushBack({ 258, 132, 76, 73 });//7
@@ -88,7 +92,7 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	cannon_pos[1].x = 48;
 	cannon_pos[1].y = 15;
 
-	lives = 88;
+	lives = 1; //88;
 
 	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -141,4 +145,17 @@ void Enemy_Humanoide_Robot::ExtraAnim()
 			App->render->Blit(sprites, (App->render->camera.x + position.x + cannon_pos[i].x), (App->render->camera.y + position.y + cannon_pos[i].y) - ((vector.y < 0) ? (angles[angle / 30 + (angle / 100) + 1].h - 16) : 0), &angles[angle / 30 + (angle / 100) + 1]);
 		}
 	}
+}
+
+void Enemy_Humanoide_Robot::DeadAnim()
+{
+
+	animation = &dead_robot;
+	if (killed == 0)
+	{
+		position.y = position.y + 25;
+		position.x = position.x + 7;
+		killed = 1;
+	}
+	collider->to_delete = true;
 }

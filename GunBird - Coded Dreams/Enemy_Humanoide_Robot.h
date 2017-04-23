@@ -12,6 +12,7 @@ private:
 
 	bool second_shot = false;
 	bool step = false;
+	bool killed = 0;
 	fPoint vector;
 	fPoint cannon_pos[2];
 	int angle;
@@ -32,6 +33,7 @@ private:
 	Animation anim_rightBack;
 	Animation rightLeg;
 	Animation sprint;
+	Animation dead_robot;
 
 	SDL_Rect angles[16];
 
@@ -42,5 +44,6 @@ public:
 
 	void Move();
 	void ExtraAnim();
+	virtual void DeadAnim();
 };
 #endif
