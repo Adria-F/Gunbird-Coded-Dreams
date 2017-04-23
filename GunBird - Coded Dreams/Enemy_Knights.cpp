@@ -73,5 +73,10 @@ void Enemy_Knights::Move()
 
 void Enemy_Knights::ExtraAnim()
 {
-	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
+	if (id == 1)
+	{
+
+	}
+	else
+		App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
 }

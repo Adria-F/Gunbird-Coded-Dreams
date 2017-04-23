@@ -106,9 +106,9 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(KNIGHTS, 95, 1800, 2);
 
 	//wave 3
-	App->enemies->AddEnemy(KNIGHTS, 160, 1590);
-	App->enemies->AddEnemy(KNIGHTS, 140, 1590);
-	App->enemies->AddEnemy(KNIGHTS, 120, 1590);
+	App->enemies->AddEnemy(KNIGHTS, 160, 1590, 1, 1);
+	App->enemies->AddEnemy(KNIGHTS, 140, 1590, 1, 1);
+	App->enemies->AddEnemy(KNIGHTS, 120, 1590, 1, 1);
 
 	//The_Trump
 	App->enemies->AddEnemy(THE_TRUMP, 73, 850, 1);
