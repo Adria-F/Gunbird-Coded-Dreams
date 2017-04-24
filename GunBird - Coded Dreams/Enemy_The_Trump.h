@@ -8,6 +8,9 @@
 class Enemy_The_Trump : public Enemy
 {
 private:
+	SDL_Texture* texture_bg_upper = nullptr;
+	SDL_Texture* texture_bg_upper2 = nullptr;
+	SDL_Rect rect_background_upper;
 	Path path;
 	iPoint original_pos;
 	Animation anim_pilot_up;
@@ -24,6 +27,7 @@ public:
 	Enemy_The_Trump(int x, int y, int wave, int id);
 	~Enemy_The_Trump();
 	void Move();
+	void ExtraAnim();
 
 };
 

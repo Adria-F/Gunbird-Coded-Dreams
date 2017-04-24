@@ -10,7 +10,12 @@
 Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
 	sprites = App->textures->Load("assets/maps/castle_the_trump.png");
-
+	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper.png");
+	texture_bg_upper2 = App->textures->Load("assets/maps/castle_bg_upper2.png");
+	rect_background_upper.w = SCREEN_WIDTH;
+	rect_background_upper.h = 2108;
+	rect_background_upper.x = 0;
+	rect_background_upper.y = 0;
 	//the_trump
 	this->id = id;
 
@@ -95,6 +100,9 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 
 	original_pos.x = x;
 	original_pos.y = y;
+
+	extra_anim = true;
+	lives = 1;
 }
 
 
@@ -104,7 +112,24 @@ Enemy_The_Trump::~Enemy_The_Trump()
 
 void Enemy_The_Trump::Move()
 {
-	
+	if (id == 1 && position.y >= 725)
+	{
 		position = original_pos + path.GetCurrentPosition(&animation);
-	
+	}
+	else if (id == 2 && position.y >= 600)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+}
+
+void Enemy_The_Trump::ExtraAnim()
+{
+	if (id == 1)
+	{
+		App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
+	}
+	else
+	{
+		App->render->Blit(texture_bg_upper2, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
+	}
 }

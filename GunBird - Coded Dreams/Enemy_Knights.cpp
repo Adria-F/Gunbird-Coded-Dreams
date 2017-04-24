@@ -17,7 +17,6 @@ Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	rect_background_upper.y = 0;
 	//knights
 	this->id = id;
-	lives = 1;
 
 	if (wave == 1)
 	{
@@ -51,6 +50,7 @@ Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	original_pos.y = y;
 
 	extra_anim = true;
+	lives = 1;
 }
 
 
@@ -60,14 +60,9 @@ Enemy_Knights::~Enemy_Knights()
 
 void Enemy_Knights::Move()
 {
-	if (wave == 1 || wave == 3)
+	if (position.y >= 1590)
 	{
 		position = original_pos + path.GetCurrentPosition();
-	}
-	else if (position.y >= 1610 && wave == 2)
-	{
-		position = original_pos + path.GetCurrentPosition();
- 		
 	}
 }
 
