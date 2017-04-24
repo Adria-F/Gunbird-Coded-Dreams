@@ -36,6 +36,9 @@ public:
 	bool going_down;
 	bool going_right;
 
+	int score;
+	int shot_lvl;
+
 protected:
 
 	Uint32 start_time = 0;

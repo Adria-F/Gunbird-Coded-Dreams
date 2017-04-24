@@ -38,7 +38,17 @@ void Enemy::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_PLAYER_SHOT)
 	{
-		lives -= 1;
+		for (int i = 0; i < MAX_ACTIVE_PARTICLES; i++)
+		{
+			if (App->particles->active[i] != nullptr)
+			{
+				if (App->particles->active[i]->collider == collider)
+				{
+					lives -= App->particles->active[i]->damage;
+					break;
+				}
+			}
+		}
 	}
 	else if (collider->type == COLLIDER_BUILDING)
 	{

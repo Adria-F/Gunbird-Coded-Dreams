@@ -101,6 +101,7 @@
     <ClInclude Include="ModuleSceneCastle.h" />
     <ClInclude Include="ModuleSelection.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleUI.h" />
     <ClInclude Include="ModuleWelcomeTitle.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -136,6 +137,7 @@
     <ClCompile Include="ModuleSceneCastle.cpp" />
     <ClCompile Include="ModuleSelection.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleUI.cpp" />
     <ClCompile Include="ModuleWelcomeTitle.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

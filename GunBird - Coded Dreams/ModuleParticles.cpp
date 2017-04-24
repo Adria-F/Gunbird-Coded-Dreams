@@ -41,6 +41,7 @@ bool ModuleParticles::Start()
 	MARION_bullet_particle.speed.y = -8;
 	MARION_bullet_particle.anim.loop = false;
 	MARION_bullet_particle.anim.speed = 0.5f;
+	MARION_bullet_particle.damage = 1;
 
 	// Ash Bullets
 	ASH_bullet_particle.anim.PushBack({ 175, 29, 9, 29});
@@ -48,6 +49,7 @@ bool ModuleParticles::Start()
 	ASH_bullet_particle.speed.y = -8;
 	ASH_bullet_particle.anim.loop = false;
 	ASH_bullet_particle.anim.speed = 0.5f;
+	ASH_bullet_particle.damage = 1;
 
 	// Upgrade
 	upgrade_particle.anim.PushBack({ 4, 31, 22, 13 });
@@ -278,7 +280,7 @@ Particle::Particle()
 
 Particle::Particle(const Particle& p) :
 	anim(p.anim), position(p.position), speed(p.speed),
-	fx(p.fx), born(p.born), life(p.life)
+	fx(p.fx), born(p.born), life(p.life), damage(p.damage)
 {}
 
 Particle::~Particle()
