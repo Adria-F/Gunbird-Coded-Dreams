@@ -14,15 +14,15 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 {
 	sprites = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
 
-	anim.PushBack({ 0, 37, 19, 31 });
-	anim.PushBack({ 23, 38, 15, 31 });
-	anim.PushBack({ 42, 38, 21, 31});
-	anim.PushBack({ 65, 38, 25, 31 });
-	anim.PushBack({ 0, 74, 27, 31 });
-	anim.PushBack({ 30, 74, 25, 31 });
-	anim.PushBack({ 60, 74, 21, 31 });
-	anim.PushBack({ 84, 74, 15, 31 });
-	anim.speed = 0.15f;
+	anim.PushBack({ 0, 37, 28, 32 });
+	anim.PushBack({ 29, 38, 28, 32 });
+	anim.PushBack({ 57, 38, 28, 32 });
+	anim.PushBack({ 84, 38, 28, 32 });
+	anim.PushBack({ 0, 74, 28, 32 });
+	anim.PushBack({ 29, 74, 28, 32 });
+	anim.PushBack({ 57, 74, 28, 32 });
+	anim.PushBack({ 84, 74, 28, 32 });
+	anim.speed = 0.4f;
 	
 	//this->id = id;
 
