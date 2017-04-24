@@ -250,7 +250,8 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					p->speed.y = vector.y * SMALL_SHOT_SPEED;
 
 				case P_BIG_SHOT:
-					;
+					vector.x = (App->render->camera.x + x);
+					vector.y = (App->render->camera.y + y);
 				}
 			}
 			active[i] = p;

@@ -34,6 +34,6 @@ void Enemy_Antiaircraft::Move()
 	if (now2 > total_time2)
 	{
 		start_time2 = SDL_GetTicks();
-		//App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, -22);
+		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 25);
 	}
 }
