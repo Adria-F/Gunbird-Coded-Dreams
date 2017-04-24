@@ -29,19 +29,27 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	MARION_bullet_texture = App->textures->Load("assets/characters/marion.png");
+	MARION_bullet_p1_texture = App->textures->Load("assets/characters/marion.png");
+	MARION_bullet_p2_texture = App->textures->Load("assets/characters/marion.png");
 	ASH_bullet_texture = App->textures->Load("assets/characters/ash.png");
 	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
 	small_shot_texture = App->textures->Load("assets/enemies/basic_shoot.png");
 	explosions_texture = App->textures->Load("assets/enemies/Balloon.png");
 
 	// Marion Bullets
-	MARION_bullet_particle.anim.PushBack({ 166, 127, 7, 30 });
-	MARION_bullet_particle.life = 10000;
-	MARION_bullet_particle.speed.y = -8;
-	MARION_bullet_particle.anim.loop = false;
-	MARION_bullet_particle.anim.speed = 0.5f;
-	MARION_bullet_particle.damage = 1;
+	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
+	MARION_bullet_p1_particle.life = 10000;
+	MARION_bullet_p1_particle.speed.y = -8;
+	MARION_bullet_p1_particle.anim.loop = false;
+	MARION_bullet_p1_particle.anim.speed = 0.5f;
+	MARION_bullet_p1_particle.damage = 1;
+
+	MARION_bullet_p2_particle.anim.PushBack({ 192, 127, 15, 29 });
+	MARION_bullet_p2_particle.life = 10000;
+	MARION_bullet_p2_particle.speed.y = -8;
+	MARION_bullet_p2_particle.anim.loop = false;
+	MARION_bullet_p2_particle.anim.speed = 0.5f;
+	MARION_bullet_p2_particle.damage = 2;
 
 	// Ash Bullets
 	ASH_bullet_particle.anim.PushBack({ 175, 29, 9, 29});
@@ -90,7 +98,6 @@ bool ModuleParticles::Start()
 	explosions_particle.anim.loop = false;
 	explosions_particle.anim.speed = 1.0f;
 	
-
 	return true;
 }
 
@@ -98,13 +105,15 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(MARION_bullet_texture);
+	App->textures->Unload(MARION_bullet_p1_texture);
+	App->textures->Unload(MARION_bullet_p2_texture);
 	App->textures->Unload(ASH_bullet_texture);
 	App->textures->Unload(upgrade_texture);
 	App->textures->Unload(small_shot_texture);
 	App->textures->Unload(explosions_texture);
 
-	MARION_bullet_texture = nullptr;
+	MARION_bullet_p1_texture = nullptr;
+	MARION_bullet_p2_texture = nullptr;
 	ASH_bullet_texture = nullptr;
 	upgrade_texture = nullptr;
 	small_shot_texture = nullptr;
@@ -141,8 +150,11 @@ update_status ModuleParticles::Update()
 		{
 			switch (p->type)
 			{
-			case P_MARION_BULLET:
-				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			case P_MARION_BULLET_P1:
+				App->render->Blit(MARION_bullet_p1_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_BULLET_P2:
+				App->render->Blit(MARION_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET:
 				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
@@ -286,7 +298,9 @@ Particle::Particle(const Particle& p) :
 Particle::~Particle()
 {
 	if (collider != nullptr)
+	{
 		collider->to_delete = true;
+	}
 }
 
 bool Particle::Update()
@@ -296,17 +310,24 @@ bool Particle::Update()
 	if (life > 0)
 	{
 		if ((SDL_GetTicks() - born) > life)
+		{
 			ret = false;
+		}
 	}
 	else
+	{
 		if (anim.Finished())
+		{
 			ret = false;
-
+		}
+	}
 	position.x += speed.x;
 	position.y += speed.y;
 
 	if (collider != nullptr)
+	{
 		collider->SetPos(position.x, position.y);
+	}
 
 	return ret;
 }
