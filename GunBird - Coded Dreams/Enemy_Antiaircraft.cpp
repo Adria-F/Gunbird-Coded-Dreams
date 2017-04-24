@@ -42,10 +42,10 @@ void Enemy_Antiaircraft::Move()
 	if (now2 > total_time2)
 	{
 		start_time2 = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 90);
-		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 0);
-		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 180);
-		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 270);
+		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
+		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
+		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
+		App->particles->AddParticle(App->particles->small_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
 	}
 }
 
