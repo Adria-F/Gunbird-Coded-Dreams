@@ -115,7 +115,7 @@ update_status ModuleMarion::Update()
 	
 	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 	{
-        App->particles->AddParticle(App->particles->MARION_bullet_particle, particle_type::P_MARION_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+        App->particles->AddParticle(App->particles->MARION_bullet_p1_particle, particle_type::P_MARION_BULLET_P1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 		start_time = SDL_GetTicks();
 		bullet_counter++;
 		if (bullet_counter == MAX_BULLETS)
