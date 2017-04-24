@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
 #include "ModuleMarion.h"
 #include "ModuleAsh.h"
 #include "ModuleAudio.h"
@@ -93,6 +94,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			if (powerups[i] != nullptr && powerups[i]->collider == c1)
 			{
 				powerups[i] = nullptr;
+				App->marion->shot_lvl += 1;
 				break;
 			}
 		}
@@ -107,6 +109,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			if (powerups[i] != nullptr && powerups[i]->collider == c1)
 			{
 				powerups[i] = nullptr;
+				App->ash->shot_lvl += 1;
 				break;
 			}
 		}

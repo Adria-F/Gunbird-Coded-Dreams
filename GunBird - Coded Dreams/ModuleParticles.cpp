@@ -174,6 +174,7 @@ update_status ModuleParticles::Update()
 				App->render->Blit(explosions_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			}
+
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -319,7 +320,7 @@ Particle::~Particle()
 {
 	if (collider != nullptr)
 	{
-		collider->to_delete = true;
+	collider->to_delete = true;
 	}
 }
 

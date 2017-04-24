@@ -37,7 +37,8 @@ public:
 	bool going_right;
 
 	uint points = 0;
-	int shot_lvl;
+	int shot_lvl = 1;
+
 
 protected:
 

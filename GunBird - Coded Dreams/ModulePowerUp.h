@@ -2,6 +2,7 @@
 #define __MODULEPOWERUP_H__
 
 #include "Module.h"
+#include "ModulePlayer.h"
 
 #define MAX_POWERUP 5
 
