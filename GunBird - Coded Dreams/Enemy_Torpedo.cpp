@@ -76,6 +76,7 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	}
 	lives = 12;
+	points = 200;
 	animation = &anim;
 
 	collider = App->collision->AddCollider({ 162, 1596, 22, 31 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);

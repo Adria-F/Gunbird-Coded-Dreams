@@ -29,6 +29,7 @@ Enemy_Building2::Enemy_Building2(int x, int y) : Enemy(x, y)
 	dead_build2.speed = 0.1f;
 
 	lives = 25;
+	points = 3000;
 
 	collider = App->collision->AddCollider({ 75, 1165, 72, 83 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }

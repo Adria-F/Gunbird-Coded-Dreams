@@ -36,7 +36,7 @@ public:
 	bool going_down;
 	bool going_right;
 
-	uint score = 13;
+	uint points = 0;
 	int shot_lvl;
 
 protected:

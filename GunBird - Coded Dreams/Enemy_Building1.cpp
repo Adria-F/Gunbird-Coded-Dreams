@@ -30,6 +30,7 @@ Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 
 	
 	lives = 10;
+	points = 3000;
 
 	collider = App->collision->AddCollider({ 145, 1415, 64, 86 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }

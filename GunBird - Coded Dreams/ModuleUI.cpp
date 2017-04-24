@@ -24,13 +24,13 @@ update_status ModuleUI::Update()
 {
 	if (App->marion->IsEnabled())
 	{
-		sprintf_s(score_text, 10, "%7d", App->marion->score);
+		sprintf_s(score_text, 10, "%7d", App->marion->points);
 		App->fonts->BlitText(0, 5, font_score, "uP:");
 		App->fonts->BlitText(25, 5, font_score, score_text);
 	}
 	if (App->ash->IsEnabled())
 	{
-		sprintf_s(score_text, 10, "%7d", App->ash->score);
+		sprintf_s(score_text, 10, "%7d", App->ash->points);
 		App->fonts->BlitText(130, 5, font_score, "dP:");
 		App->fonts->BlitText(155, 5, font_score, score_text);
 	}

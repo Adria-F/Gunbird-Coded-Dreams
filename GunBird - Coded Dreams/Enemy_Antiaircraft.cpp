@@ -23,6 +23,7 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	animation = &anim;
 
 	lives = 24;
+	points = 600;
 
 	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
 }

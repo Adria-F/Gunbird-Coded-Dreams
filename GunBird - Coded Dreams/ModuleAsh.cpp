@@ -46,6 +46,8 @@ bool ModuleAsh::Start()
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
 
+	points = 0;
+
 	position.x = 150;
 	position.y = 266;
 

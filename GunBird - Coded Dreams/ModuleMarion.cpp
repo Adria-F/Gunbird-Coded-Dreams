@@ -82,6 +82,8 @@ bool ModuleMarion::Start()
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
 
+	points = 0;
+
 	position.x = 50;
 	position.y = 266;
 

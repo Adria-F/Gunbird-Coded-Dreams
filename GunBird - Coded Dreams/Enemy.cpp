@@ -4,6 +4,8 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 
 Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), wave(wave), id (id)
 {}
@@ -45,6 +47,17 @@ void Enemy::OnCollision(Collider* collider)
 				if (App->particles->active[i]->collider == collider)
 				{
 					lives -= App->particles->active[i]->damage;
+					if (lives <= 0)
+					{
+						if (App->particles->active[i]->type == P_MARION_BULLET_P1)
+						{
+							App->marion->points += points;
+						}
+						if (App->particles->active[i]->type == P_ASH_BULLET)
+						{
+							App->ash->points += points;
+						}
+					}
 					break;
 				}
 			}

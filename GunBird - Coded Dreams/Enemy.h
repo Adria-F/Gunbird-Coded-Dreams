@@ -21,6 +21,7 @@ public:
 	bool dead = false;
 	int wave;
 	int id = -1;
+	int points = 0;
 	Collider* collider = nullptr;
 
 public:
