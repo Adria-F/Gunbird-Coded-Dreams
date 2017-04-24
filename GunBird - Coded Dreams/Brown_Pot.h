@@ -7,15 +7,19 @@ class Brown_Pot : public Enemy
 {
 private:
 
-	Animation anim;
-	
+
+	SDL_Texture* texture_pot = nullptr;
+	Animation pot_anim;
+	SDL_Rect rect_pot;
+
 	Animation dead_pot;
 
 public:
 
 	Brown_Pot(int x, int y);
-
-	virtual void DeadAnim();
+	void Render();
+	void CleanUp();
+	
 };
 
 #endif // !__POT_H__

@@ -170,7 +170,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 		case ENEMY_TYPES::POT:
-			enemies[i]=new Brown_Pot(info.x ,info.y, info.wave, info.id);
+			enemies[i]=new Brown_Pot(info.x ,info.y);
+			break;
 		}
 	}
 }

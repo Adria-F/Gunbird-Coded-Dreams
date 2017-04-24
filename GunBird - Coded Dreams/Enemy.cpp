@@ -28,6 +28,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 	if (animation != nullptr)
 	{
 		App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
+	
 		if (extra_anim && lives > 0)
 			ExtraAnim();
 	}

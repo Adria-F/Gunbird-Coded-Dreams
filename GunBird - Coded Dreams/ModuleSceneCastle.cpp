@@ -57,6 +57,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	last_bridge.PushBack({ 241,250,117,165 });
 
 	
+
+	pot_anim.PushBack({ 342, 202, 36, 53 });
+
+	
 	/*
 	//knight
 	//up
@@ -92,6 +96,10 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
+	texture_pot = App->textures->Load("assets/maps/pot.png");
+
+	//pot
+	App->enemies->AddEnemy(POT, 8, 840 );
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
@@ -167,6 +175,9 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 123, 410, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 3);
 
+
+
+
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
 	App->render->camera.y = -1782;
@@ -180,6 +191,7 @@ bool ModuleSceneCastle::Start()
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
+	
 
 	fading = false;
 
@@ -195,7 +207,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_2_river);
 	App->textures->Unload(texture_bridge);
-
+	
 	texture_bg = nullptr;
 	texture_bg_upper = nullptr;
 	texture_1_river = nullptr;
@@ -217,6 +229,7 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------
 	//background
+
  	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 
 	// First river
@@ -231,15 +244,17 @@ update_status ModuleSceneCastle::Update()
 
 	App->render->Blit(texture_bg_upper, App->render->camera.x, App->render->camera.y, &rect_background_upper, 0.75f);
 	
-	//bridge
+	//Bridge
+
 	Animation* current_bridge_animation = &anim_bridge;
 	Animation* last_bridge_frame = &last_bridge;
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	SDL_Rect last_bridge = last_bridge_frame->GetCurrentFrame();
 
-	if (-1266 > App->render->camera.y && App->render->camera.y > -1347 ) {
+	if (-1266 > App->render->camera.y && App->render->camera.y > -1347) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1347), &rect_bridge);
 	}
+
 	if (App->render->camera.y > -1266) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 52), (App->render->camera.y + 1266), &last_bridge);
 	};
@@ -251,6 +266,15 @@ update_status ModuleSceneCastle::Update()
 		fading = true;
 	}
 
+	//pot
+
+	Animation* pot_animation = &pot_anim;
+
+	SDL_Rect rect_pot = pot_animation->GetCurrentFrame();
+
+	App->render->Blit(texture_pot, (App->render->camera.x + 8), (App->render->camera.y + 840), &rect_pot);
+
+	
 	return UPDATE_CONTINUE;
 }
 

@@ -24,7 +24,7 @@ class ModuleParticles;
 class ModuleCollision;
 class ModulePowerUp;
 class ModuleEnemies;
-class Pot;
+
 
 class Application
 {
@@ -49,7 +49,7 @@ public:
 	ModuleCollision* collision;
 	ModulePowerUp* powerup;
 	ModuleEnemies* enemies;
-	Pot* pot;
+	
 
 public:
 
