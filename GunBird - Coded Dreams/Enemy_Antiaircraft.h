@@ -9,6 +9,9 @@ private:
 
 	Animation anim;
 
+	Uint32 start_time2 = 0;
+	Uint32 total_time2 = (Uint32)(2.0f * 0.5f * 750.0f);
+	Uint32 now2;
 public:
 
 	Enemy_Antiaircraft(int x, int y);

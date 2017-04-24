@@ -5,6 +5,7 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
+#include "ModuleEnemies.h"
 
 Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 {
@@ -45,8 +46,11 @@ void Enemy_Building1::ExtraAnim()
 
 void Enemy_Building1::DeadAnim()
 {
+
 	animation = &dead_build1;
 	position.y = 1450;
 	position.x;
 	collider->to_delete = true;
+	dead = 1;
+
 }

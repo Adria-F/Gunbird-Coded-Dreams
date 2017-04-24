@@ -5,6 +5,7 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
+#include "Enemy_Building1.h"
 
 
 Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
@@ -15,37 +16,56 @@ Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	rect_background_upper.h = 2108;
 	rect_background_upper.x = 0;
 	rect_background_upper.y = 0;
-	//knights
+
+	//left
+	anim_left.PushBack({ 0, 29, 11, 25 }); //1
+	anim_left.PushBack({ 16, 29, 12, 24 }); //2
+	anim_left.PushBack({ 33, 29, 11, 25 }); //3
+	anim_left.PushBack({ 49, 29, 11, 24 }); //4
+	anim_left.speed = 0.2f;
+
+	//up
+	anim_up.PushBack({ 0, 0, 15, 24 });
+	anim_up.PushBack({ 20, 0, 14, 24 });
+	anim_up.PushBack({ 39, 0, 14, 24 });
+	anim_up.PushBack({ 59, 0, 14, 24 });
+	anim_up.speed = 0.2f;
+
+	//down
+	anim_down.PushBack({ 0, 86, 15, 23 });
+	anim_down.PushBack({ 20, 86, 15, 24 });
+	anim_down.PushBack({ 40, 86, 14, 23 });
+	anim_down.PushBack({ 60, 86, 15, 24 });
+	anim_down.speed = 0.2f;
+
+	//confused
+	anim_confused.PushBack({ 20, 0, 14, 23 }); //up
+	anim_confused.PushBack({ 16, 58, 12, 24 }); //right
+	anim_confused.PushBack({ 20, 86, 15, 24 }); //down
+	anim_confused.PushBack({ 16, 29, 12, 24 }); //left
+	anim_confused.speed = 0.2f;
+
 	this->id = id;
 
 	if (wave == 1)
 	{
-		//left
-		anim.PushBack({ 0, 29, 11, 25 }); //1
-		anim.PushBack({ 16, 29, 12, 24 }); //2
-		anim.PushBack({ 33, 29, 11, 25 }); //3
-		anim.PushBack({ 49, 29, 11, 24 }); //4
-		anim.speed = 0.2f;
-		path.PushBack({ -0.4f, 0.0f }, -140);
+		
+		path.PushBack({ -0.4f, 0.0f }, 140, &anim_left);
 	}
 	else if (wave == 2)
 	{
-		//up
-		anim.PushBack({ 0, 0, 15, 24 });
-		anim.PushBack({ 20, 0, 14, 24 });
-		anim.PushBack({ 39, 0, 14, 24 });
-		anim.PushBack({ 59, 0, 14, 24 });
-		anim.speed = 0.2f;
-		path.PushBack({ 0.0f, -0.4f }, -140);
+	
+		path.PushBack({ 0.0f, -0.4f }, 140, &anim_up);
 	}
 	else if (wave == 3)
 	{
-
+		
+		path.PushBack({ 0.0f, 0.8f }, 100, &anim_down);
+		path.PushBack({ 0.0f, 0.0f }, 1000, &anim_confused);
 	}
 
 	collider = App->collision->AddCollider({ 0, 0 }, COLLIDER_WALL);
 
-	animation = &anim;
 	original_pos.x = x;
 	original_pos.y = y;
 
@@ -60,9 +80,17 @@ Enemy_Knights::~Enemy_Knights()
 
 void Enemy_Knights::Move()
 {
-	if (position.y >= 1590)
+	if (wave == 1)
 	{
-		position = original_pos + path.GetCurrentPosition();
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	if (wave == 2 && position.y >= 1590)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	if (wave == 3)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
 	}
 }
 

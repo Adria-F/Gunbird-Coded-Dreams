@@ -6,6 +6,7 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 
+
 Enemy_Building2::Enemy_Building2(int x, int y) : Enemy(x, y)
 {
 	sprites = App->textures->Load("assets/maps/Castle_Sprites.png");

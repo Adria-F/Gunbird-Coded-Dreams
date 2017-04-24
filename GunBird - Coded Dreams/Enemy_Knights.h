@@ -12,7 +12,12 @@ private:
 	SDL_Rect rect_background_upper;
 	Path path;
 	iPoint original_pos;
-	Animation anim;
+	Animation anim_left;
+	Animation anim_right;
+	Animation anim_up;
+	Animation anim_down;
+	Animation anim_confused;
+
 public:
 	Enemy_Knights(int x, int y, int wave, int id);
 	~Enemy_Knights();
