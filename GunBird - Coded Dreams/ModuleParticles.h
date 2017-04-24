@@ -21,6 +21,7 @@ enum particle_type
 	P_ASH_BULLET,
 	P_UPGRADE,
 	P_SMALL_SHOT,
+	P_BIG_SHOT,
 	P_EXPLOSION
 };
 

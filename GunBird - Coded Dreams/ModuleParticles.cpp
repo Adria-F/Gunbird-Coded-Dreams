@@ -165,6 +165,9 @@ update_status ModuleParticles::Update()
 			case P_SMALL_SHOT:
 				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
+			case P_BIG_SHOT:
+				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
 			case P_EXPLOSION:
 				App->render->Blit(explosions_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
@@ -245,6 +248,9 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					vector.y /= modul;
 					p->speed.x = vector.x * SMALL_SHOT_SPEED;
 					p->speed.y = vector.y * SMALL_SHOT_SPEED;
+
+				case P_BIG_SHOT:
+					;
 				}
 			}
 			active[i] = p;
