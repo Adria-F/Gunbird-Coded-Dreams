@@ -17,6 +17,7 @@
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
 #include "ModuleEnemies.h"
+#include "ModuleFonts.h"
 
 
 Application::Application()
@@ -39,6 +40,7 @@ Application::Application()
 	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	
 }

@@ -128,6 +128,9 @@
     <ClInclude Include="Brown_Pot.h">
       <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -219,6 +222,9 @@
     </ClCompile>
     <ClCompile Include="Brown_Pot.cpp">
       <Filter>Modules\Enemies\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

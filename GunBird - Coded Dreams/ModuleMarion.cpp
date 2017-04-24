@@ -80,7 +80,7 @@ bool ModuleMarion::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
-	
+
 	position.x = 50;
 	position.y = 266;
 

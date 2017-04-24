@@ -27,6 +27,7 @@ public:
 	Animation stele1;
 	Animation stele2;
 	Animation stele3;
+	int font_score = -1;
 
 };
 
