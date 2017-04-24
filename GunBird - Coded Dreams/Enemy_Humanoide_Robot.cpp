@@ -124,7 +124,7 @@ void Enemy_Humanoide_Robot::Move()
 
 	now = SDL_GetTicks() - start_time;
 
-	if (now > total_time && player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
+		if (now > total_time && player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
 	{		
 		second_shot = true;
 		App->particles->AddParticle(App->particles->small_shot_particle, P_SMALL_SHOT, App->render->camera.x + position.x + 15, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, -22);

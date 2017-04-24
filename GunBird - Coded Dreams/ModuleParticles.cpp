@@ -37,6 +37,7 @@ bool ModuleParticles::Start()
 	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
 	small_shot_texture = App->textures->Load("assets/enemies/basic_shoot.png");
 	explosions_texture = App->textures->Load("assets/enemies/Balloon.png");
+	big_shot_texture = App->textures->Load("assets/enemies/antiarcraft_bullets.png");
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -90,7 +91,7 @@ bool ModuleParticles::Start()
 	small_shot_particle.anim.loop = true;
 	small_shot_particle.anim.speed = 0.5f;
 
-	// Balloon
+	// Balloon exploison
 	explosions_particle.anim.PushBack({ 5, 117, 92, 86 });
 	explosions_particle.anim.PushBack({ 104, 114, 101, 93 });
 	explosions_particle.anim.PushBack({ 212, 109, 105, 102 });
@@ -99,6 +100,15 @@ bool ModuleParticles::Start()
 	explosions_particle.speed.y = App->render->cam_speed;
 	explosions_particle.anim.loop = false;
 	explosions_particle.anim.speed = 1.0f;
+
+	// Big shot 
+	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
+	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });
+	big_shot_particle.life = 100000;
+	big_shot_particle.speed.x = 0;
+	big_shot_particle.speed.y = 0;
+	big_shot_particle.anim.loop = true;
+	big_shot_particle.anim.speed = 0.5f;
 	
 	return true;
 }
@@ -113,6 +123,7 @@ bool ModuleParticles::CleanUp()
 	App->textures->Unload(upgrade_texture);
 	App->textures->Unload(small_shot_texture);
 	App->textures->Unload(explosions_texture);
+	App->textures->Unload(big_shot_texture);
 
 	MARION_bullet_p1_texture = nullptr;
 	MARION_bullet_p2_texture = nullptr;
@@ -120,6 +131,7 @@ bool ModuleParticles::CleanUp()
 	upgrade_texture = nullptr;
 	small_shot_texture = nullptr;
 	explosions_texture = nullptr;
+	big_shot_texture = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -168,7 +180,7 @@ update_status ModuleParticles::Update()
 				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_BIG_SHOT:
-				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(big_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_EXPLOSION:
 				App->render->Blit(explosions_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
