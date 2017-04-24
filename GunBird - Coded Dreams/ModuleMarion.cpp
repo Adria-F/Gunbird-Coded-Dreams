@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePowerUp.h"
+#include "ModuleFonts.h"
 #include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
