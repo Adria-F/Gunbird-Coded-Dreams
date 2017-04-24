@@ -104,16 +104,7 @@ Enemy_The_Trump::~Enemy_The_Trump()
 
 void Enemy_The_Trump::Move()
 {
-	if (false || App->render->camera.y > -800 && App->render->camera.y < -600)
-	{
+	
 		position = original_pos + path.GetCurrentPosition(&animation);
-	}
-	/*else if (App->render->camera.y > -735 && App->render->camera.y < -718)
-	{
-		position.x = position.x + 1.0f; //goes to the right
-	}
-	else if (App->render->camera.y > -575 && App->render->camera.y < -550)
-	{
-		position.y -= 1.0f;
-	}*/
+	
 }
