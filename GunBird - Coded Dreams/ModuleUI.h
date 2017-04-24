@@ -10,11 +10,13 @@ public:
 	ModuleUI();
 	~ModuleUI();
 
+	bool Start();
 	update_status Update();
 
 private:
 
-	int font_score;
+	char score_text[10];
+	int font_score = -1;
 
 };
 

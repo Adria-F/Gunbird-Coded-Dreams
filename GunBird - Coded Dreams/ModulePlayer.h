@@ -36,7 +36,7 @@ public:
 	bool going_down;
 	bool going_right;
 
-	int score;
+	uint score = 13;
 	int shot_lvl;
 
 protected:
