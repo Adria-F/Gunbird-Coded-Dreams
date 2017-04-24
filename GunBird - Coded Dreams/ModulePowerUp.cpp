@@ -45,7 +45,7 @@ update_status ModulePowerUp::Update()
 	
 	for (int i = 0; i < MAX_POWERUP; i++)
 	{
-		if (powerups[i] != nullptr)
+		if (powerups[i] != nullptr && powerups[i]->type == P_UPGRADE)
 		{
 			if (powerups[i]->position.y <= 50 || powerups[i]->position.y >= (SCREEN_HEIGHT - 50 - 13))
 			{

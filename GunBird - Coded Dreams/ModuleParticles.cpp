@@ -16,6 +16,8 @@
 
 #include "SDL/include/SDL_timer.h"
 
+#define PI 3.14159265
+
 ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -248,10 +250,21 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					vector.y /= modul;
 					p->speed.x = vector.x * SMALL_SHOT_SPEED;
 					p->speed.y = vector.y * SMALL_SHOT_SPEED;
+				break;
 
 				case P_BIG_SHOT:
-					vector.x = (App->render->camera.x + x);
-					vector.y = (App->render->camera.y + y);
+					
+					vector.x = (x_phase < 90 || x_phase > 270)? 1 : -1;
+					vector.y = vector.x * tan(x_phase * PI / 180);
+					vector.y = -vector.y;
+
+					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+					vector.x /= modul;
+					vector.y /= modul;
+					p->speed.x = vector.x * SMALL_SHOT_SPEED;
+					p->speed.y = vector.y * SMALL_SHOT_SPEED;
+					
+					break;
 				}
 			}
 			active[i] = p;
