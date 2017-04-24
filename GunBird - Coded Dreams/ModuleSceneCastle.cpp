@@ -56,11 +56,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 
 	last_bridge.PushBack({ 241,250,117,165 });
 
-	
-
-	pot_anim.PushBack({ 342, 202, 36, 53 });
-
-	
 	/*
 	//knight
 	//up
@@ -96,10 +91,12 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
-	texture_pot = App->textures->Load("assets/maps/pot.png");
 
 	//pot
 	App->enemies->AddEnemy(POT, 8, 840 );
+	App->enemies->AddEnemy(POT, 185, 840);
+	App->enemies->AddEnemy(POT, 8, 1058);
+	App->enemies->AddEnemy(POT, 185, 1058);
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
@@ -266,14 +263,7 @@ update_status ModuleSceneCastle::Update()
 		fading = true;
 	}
 
-	//pot
-
-	Animation* pot_animation = &pot_anim;
-
-	SDL_Rect rect_pot = pot_animation->GetCurrentFrame();
-
-	App->render->Blit(texture_pot, (App->render->camera.x + 8), (App->render->camera.y + 840), &rect_pot);
-
+	
 	
 	return UPDATE_CONTINUE;
 }
