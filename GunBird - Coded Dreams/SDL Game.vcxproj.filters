@@ -125,6 +125,9 @@
     <ClInclude Include="ModulePlayer.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Brown_Pot.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -213,6 +216,9 @@
     </ClCompile>
     <ClCompile Include="ModuleAsh.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Brown_Pot.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

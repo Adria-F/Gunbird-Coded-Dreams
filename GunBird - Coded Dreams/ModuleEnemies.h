@@ -14,7 +14,8 @@ enum ENEMY_TYPES
 	BUILDING2,
 	TORPEDO,
 	KNIGHTS,
-	THE_TRUMP
+	THE_TRUMP,
+	POT
 };
 
 class Enemy;

@@ -17,6 +17,7 @@
 #include "ModuleCollision.h"
 #include "ModulePowerUp.h"
 #include "ModuleEnemies.h"
+#include "Brown_Pot.h"
 
 Application::Application()
 {
@@ -39,6 +40,7 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = pot = new Brown_Pot();
 }
 
 Application::~Application()
@@ -64,6 +66,7 @@ bool Application::Init()
 	powerup->Disable();
 	particles->Disable();
 	enemies->Disable();
+	pot->Disable();
 
 	
 	//testing the shooting mechanic

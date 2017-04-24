@@ -70,6 +70,10 @@ public:
 	Animation anim_knight_up;
 	SDL_Rect rect_knight_up;
 
+	//Pot
+	SDL_Texture* texture_pot = nullptr;
+	SDL_Rect rect_pot;
+
 	bool fading;
 };
 
