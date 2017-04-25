@@ -8,9 +8,11 @@
 
 Enemy_Brown_Pot::Enemy_Brown_Pot(int x, int y) : Enemy(x, y)
 {
-	NormalSprite = App->textures->Load("assets/maps/pot.png");
+	NormalSprite = App->textures->Load("assets/enemies/pot.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_pot.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_pot.png");
 	
-	anim.PushBack({ 342, 202, 36, 53 });
+	anim.PushBack({ 0, 0, 36, 53 });
 	anim.speed = 0.2f;
 	animation = &anim;
 
@@ -23,5 +25,9 @@ Enemy_Brown_Pot::Enemy_Brown_Pot(int x, int y) : Enemy(x, y)
 Enemy_Brown_Pot::~Enemy_Brown_Pot()
 {
 	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
 	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
 }
