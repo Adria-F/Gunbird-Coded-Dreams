@@ -15,8 +15,8 @@
 Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 {
 	NormalSprite = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
-	RedSprite = App->textures->Load("assets/enemies/hittenhitten_red_General_Torpedo _ Castle mortar.png");
-	WhiteSprite = App->textures->Load("assets/enemies/hittenhitten_white_General_Torpedo _ Castle mortar.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_General_Torpedo _ Castle mortar.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_General_Torpedo _ Castle mortar.png");
 
 	extra_anim = true;
 	//animation
@@ -50,6 +50,16 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	points = 600;
 
 	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_ENEMY, (Module*)App->enemies);
+}
+
+Enemy_Antiaircraft::~Enemy_Antiaircraft()
+{
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
 }
 
 void Enemy_Antiaircraft::Move()

@@ -44,23 +44,14 @@ public:
 	Animation last_bridge;
 	SDL_Rect rect_bridge;
 	
-	
+
+	bool lost = false;
+
 	//gturret
 	SDL_Texture* texture_gturret = nullptr;
 	Animation anim_gturret;
 	Collider* coll_gturret;
 	SDL_Rect rect_gturret;
-
-	//building1
-	SDL_Texture* texture_buildings = nullptr;
-	Animation anim_build1;
-	Collider* coll_build1;
-	SDL_Rect rect_building1;
-
-	//building2
-	Animation anim_build2;
-	Collider* coll_build2;
-	SDL_Rect rect_building2;
 
 	//The Trump
 	SDL_Texture * texture_the_trump = nullptr;

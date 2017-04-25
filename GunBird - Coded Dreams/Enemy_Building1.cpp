@@ -39,6 +39,16 @@ Enemy_Building1::Enemy_Building1(int x, int y): Enemy(x, y)
 	collider = App->collision->AddCollider({ 145, 1415, 64, 86 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }
 
+Enemy_Building1::~Enemy_Building1()
+{
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
+}
+
 void Enemy_Building1::Move()
 {
 	
@@ -51,9 +61,10 @@ void Enemy_Building1::ExtraAnim(SDL_Texture* texture)
 
 void Enemy_Building1::DeadAnim()
 {
-		animation = &dead_build1;
-		position.y = 1450;
-		position.x;
-		collider->to_delete = true;
-		//dead = 1;
+
+	animation = &dead_build1;
+	position.y = 1450;
+	position.x;
+	//collider->to_delete = true;
+
 }

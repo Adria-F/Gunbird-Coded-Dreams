@@ -41,6 +41,8 @@ update_status ModuleFadeToBlack::Update()
 			{
 				this->module_off->Disable();
 				this->module_on->Enable();
+				if (App->scene_castle->lost)
+					App->scene_castle->lost = false;
 
 				total_time += total_time;
 				start_time = SDL_GetTicks();

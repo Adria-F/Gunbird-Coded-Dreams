@@ -21,6 +21,8 @@ private:
 
 	int marion_score;
 	int ash_score;
+	int marion_top_score;
+	int ash_top_score;
 	char score_text[10];
 	int font_score = -1;
 	int highscores_score = -1;
@@ -28,6 +30,10 @@ private:
 	SDL_Texture* marion_texture;
 	Animation ash_anim;
 	SDL_Texture* ash_texture;
+	SDL_Texture* game_over = nullptr;
+	SDL_Rect game_over_bckg;
+	SDL_Texture* char_lives = nullptr;
+	SDL_Rect char_pos;
 
 };
 

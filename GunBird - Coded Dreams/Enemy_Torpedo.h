@@ -21,6 +21,7 @@ private:
 public:
 
 	Enemy_Torpedo(int x, int y, int wave, int id);
+	~Enemy_Torpedo();
 
 	void Move();
 };

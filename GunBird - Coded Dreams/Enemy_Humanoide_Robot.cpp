@@ -107,7 +107,12 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 
 Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
 {
-
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
 }
 
 void Enemy_Humanoide_Robot::Move()

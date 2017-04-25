@@ -34,6 +34,7 @@ private:
 public:
 
 	Enemy_Antiaircraft(int x, int y);
+	~Enemy_Antiaircraft();
 
 	void Move();
 	void ExtraAnim(SDL_Texture* texture);

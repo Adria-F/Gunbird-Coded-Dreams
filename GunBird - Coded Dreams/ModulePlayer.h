@@ -43,7 +43,11 @@ public:
 
 	uint points = 0;
 	int shot_lvl = 1;
+	int lives = 3;
 
+	Uint32 hit_timer_start = 0;
+	Uint32 hit_timer_total = (Uint32)(2.0f * 0.5f * 100.0f);
+	Uint32 hit_timer_now;
 
 protected:
 
@@ -55,6 +59,7 @@ protected:
 	Uint32 drop_timer_start = 0;
 	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 1000.0f);
 	Uint32 drop_timer_now;
+
 };
 
 #endif // !__MODULE_PLAYER_H__

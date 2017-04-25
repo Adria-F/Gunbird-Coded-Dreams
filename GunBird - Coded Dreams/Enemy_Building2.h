@@ -13,6 +13,7 @@ private:
 public:
 
 	Enemy_Building2(int x, int y);
+	~Enemy_Building2();
 
 	void Move();
 	void ExtraAnim(SDL_Texture* texture);

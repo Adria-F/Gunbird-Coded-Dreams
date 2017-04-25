@@ -228,6 +228,11 @@ bool ModuleParticles::CleanUp()
 	App->textures->Unload(small_shot_texture);
 	App->textures->Unload(explosions_texture);
 	App->textures->Unload(big_shot_texture);
+	
+	App->textures->Unload(explosion_building1_texture);
+	App->textures->Unload(explosion_antiaircraft_texture);
+	App->textures->Unload(explosion_torpedo_texture);
+	App->textures->Unload(explosion_pot_texture);
 
 	MARION_bullet_p1_texture = nullptr;
 	MARION_bullet_p2_texture = nullptr;
@@ -239,6 +244,11 @@ bool ModuleParticles::CleanUp()
 	small_shot_texture = nullptr;
 	explosions_texture = nullptr;
 	big_shot_texture = nullptr;
+
+	explosion_building1_texture = nullptr;
+	explosion_antiaircraft_texture = nullptr;
+	explosion_torpedo_texture = nullptr;
+	explosion_pot_texture = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -421,13 +431,25 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
 		{
-			App->render->moving_scene = false;
-			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			App->marion->hit_timer_now = SDL_GetTicks() - App->marion->hit_timer_start;
+			if (App->marion->hit_timer_now >= App->marion->hit_timer_total)
+			{
+				App->marion->hit_timer_start = SDL_GetTicks();
+				App->marion->lives -= 1;
+			}
+			if (App->marion->lives == 0)
+				App->marion->Disable();
 		}
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
-			App->render->moving_scene = false;
-			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			App->ash->hit_timer_now = SDL_GetTicks() - App->ash->hit_timer_start;
+			if (App->ash->hit_timer_now >= App->ash->hit_timer_total)
+			{
+				App->ash->hit_timer_start = SDL_GetTicks();
+				App->ash->lives -= 1;
+			}
+			if (App->ash->lives == 0)
+				App->ash->Disable();
 		}
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
