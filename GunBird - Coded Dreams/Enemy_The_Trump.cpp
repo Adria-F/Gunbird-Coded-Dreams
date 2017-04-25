@@ -90,7 +90,7 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		
 		else if (wave == 3)
 		{
-			path.PushBack({ 0.0f, 0.0f }, 1000, &anim_girl_idle);
+			path.PushBack({ 0.0f, 0.0f }, 975, &anim_girl_idle);
 			path.PushBack({ 0.0f, 0.0f }, 20, &anim_girl_turning);
 			path.PushBack({ 0.0f, -0.6f }, 300, &anim_girl_up);
 		}
