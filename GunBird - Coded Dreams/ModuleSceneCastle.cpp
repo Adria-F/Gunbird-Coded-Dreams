@@ -51,9 +51,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 125, 65 , 121, 72 });
 	anim_bridge.PushBack({ 0, 205 , 110, 106 });
 	anim_bridge.PushBack({ 0, 320, 117, 110 });
-	anim_bridge.PushBack({ 125, 320, 117, 110 });
+	anim_bridge.PushBack({ 125, 325, 117, 110 });
 	//anim_bridge.PushBack({ 241, 250, 117, 165 });
-	anim_bridge.speed = 0.02f;
+	anim_bridge.speed = 0.031f;
+	anim_bridge.Reset();
 
 	last_bridge.PushBack({ 241,250,117,165 });
 
@@ -255,12 +256,12 @@ update_status ModuleSceneCastle::Update()
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	SDL_Rect last_bridge = last_bridge_frame->GetCurrentFrame();
 
-	if (-1266 > App->render->camera.y && App->render->camera.y > -1347) {
-		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1347), &rect_bridge);
+	if (-1266 > App->render->camera.y && App->render->camera.y > -1350) {
+		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1340), &rect_bridge);
 	}
 
 	if (App->render->camera.y > -1266) {
-		App->render->Blit(texture_bridge, (App->render->camera.x + 52), (App->render->camera.y + 1266), &last_bridge);
+		App->render->Blit(texture_bridge, (App->render->camera.x + 54), (App->render->camera.y + 1263), &last_bridge);
 	};
 
 	//Fade To Black ---------------------------------------------
