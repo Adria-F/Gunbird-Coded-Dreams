@@ -30,6 +30,8 @@ private:
 	SDL_Texture* marion_texture;
 	Animation ash_anim;
 	SDL_Texture* ash_texture;
+	SDL_Texture* game_over = nullptr;
+	SDL_Rect game_over_bckg;
 
 };
 

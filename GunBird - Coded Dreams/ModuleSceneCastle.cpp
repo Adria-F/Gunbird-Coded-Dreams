@@ -53,9 +53,6 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 0, 320, 117, 110 });
 	anim_bridge.PushBack({ 125, 325, 117, 110 });
 	anim_bridge.speed = 0.1f;
-	
-	game_over_bckg.w = SCREEN_WIDTH;
-	game_over_bckg.h = SCREEN_HEIGHT;
 
 	last_bridge.PushBack({ 241,250,117,165 });
 }
@@ -75,7 +72,7 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
-	game_over = App->textures->Load("assets/UI/game over.png");
+
 
 	//pot
 	App->enemies->AddEnemy(POT, 8, 840 );
@@ -209,6 +206,17 @@ bool ModuleSceneCastle::CleanUp()
 // Update: draw background
 update_status ModuleSceneCastle::Update()
 {
+	if (lost)
+	{
+		App->render->moving_scene = false;
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
+		{
+			App->render->print_screen = true;
+			App->fade->FadeToBlack(this, App->highscores, 0.5f);
+			fading = true;
+		}
+	}
+	
 	// Draw everything --------------------------------------
 	//background
 	if (App->render->camera.y >= -357)
@@ -248,7 +256,7 @@ update_status ModuleSceneCastle::Update()
 
 	//Fade To Black ---------------------------------------------
 	if (App->marion->IsEnabled() == false && App->ash->IsEnabled() == false)
-		App->fade->FadeToBlack(App->scene_castle, App->highscores);
+		lost = true;
 
 	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{

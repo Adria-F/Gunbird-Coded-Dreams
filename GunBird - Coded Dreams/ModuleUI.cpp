@@ -56,6 +56,8 @@ ModuleUI::ModuleUI()
 	ash_anim.PushBack({ 39, 97, 14, 32 });
 	ash_anim.speed = 0.1f;
 
+	game_over_bckg.w = SCREEN_WIDTH;
+	game_over_bckg.h = SCREEN_HEIGHT;
 
 }
 
@@ -69,6 +71,7 @@ bool ModuleUI::Start()
 	highscores_score = App->fonts->Load("assets/UI/highscores_fonts.png", "01234.56789 ", 2);
 	marion_texture = App->textures->Load("assets/characters/marion.png");
 	ash_texture = App->textures->Load("assets/characters/ash.png");
+	game_over = App->textures->Load("assets/UI/game over.png");
 
 	return true;
 }
@@ -113,8 +116,11 @@ update_status ModuleUI::Update()
 		}
 		sprintf_s(score_text, 10, "%7d", App->ash->points);
 	}
-
-	if (App->scene_castle->IsEnabled())
+	if (App->scene_castle->lost)
+	{
+		App->render->Blit(game_over, 0, 0, &game_over_bckg);
+	}
+	else if (App->scene_castle->IsEnabled())
 	{
 		App->fonts->BlitText(130, 5, font_score, "dP:");
 		App->fonts->BlitText(155, 5, font_score, score_text);

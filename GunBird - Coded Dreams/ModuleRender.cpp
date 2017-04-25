@@ -42,7 +42,7 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	if (App->scene_castle->lost == false)
+	if (print_screen)
 		SDL_RenderClear(renderer);
 
 	return update_status::UPDATE_CONTINUE;
@@ -80,7 +80,14 @@ update_status ModuleRender::Update()
 
 update_status ModuleRender::PostUpdate()
 {
-	SDL_RenderPresent(renderer);
+	if (print_screen)
+	{
+		SDL_RenderPresent(renderer);
+		if (App->scene_castle->lost && App->scene_castle->fading == false)
+		{
+			print_screen = false;
+		}
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
