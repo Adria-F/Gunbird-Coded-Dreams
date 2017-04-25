@@ -84,10 +84,14 @@ void Enemy_Antiaircraft::Move()
 
 void Enemy_Antiaircraft::ExtraAnim()
 {
-	App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
-	if (open_anim.Finished())
+	if (App->render->camera.y >= -1530)
 	{
-		animation = &anim;
-		animation->GetCurrentFrame();
+		App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
+		if (open_anim.Finished())
+		{
+			animation = &anim;
+			animation->GetCurrentFrame();
+		}
 	}
+	
 }
