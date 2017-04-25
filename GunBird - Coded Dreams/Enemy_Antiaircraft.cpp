@@ -60,7 +60,7 @@ void Enemy_Antiaircraft::Move()
 		{
 
 			now = SDL_GetTicks() - start_time;
-			if (now > total_time  && shot_sequ == 0)
+			if (now > total_time  && shot_sequ == 0 && player->position.y - 64 > this->collider->rect.y)
 			{
 				start_time = SDL_GetTicks();
 				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
@@ -69,7 +69,7 @@ void Enemy_Antiaircraft::Move()
 				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
 				++shot_sequ;
 			}
-			else if (now > total_time  && shot_sequ == 1)
+			else if (now > total_time  && shot_sequ == 1 && player->position.y - 64 > this->collider->rect.y)
 			{
 				start_time = SDL_GetTicks();
 				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 30);

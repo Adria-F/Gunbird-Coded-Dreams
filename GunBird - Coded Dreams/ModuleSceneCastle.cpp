@@ -52,30 +52,10 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 0, 205 , 110, 106 });
 	anim_bridge.PushBack({ 0, 320, 117, 110 });
 	anim_bridge.PushBack({ 125, 325, 117, 110 });
-	//anim_bridge.PushBack({ 241, 250, 117, 165 });
 	anim_bridge.speed = 0.1f;
 	
 
 	last_bridge.PushBack({ 241,250,117,165 });
-
-	/*
-	//knight
-	//up
-	anim_knight_up.PushBack({ 0, 0, 15, 24 });
-	anim_knight_up.PushBack({ 20, 0, 14, 24 });
-	anim_knight_up.PushBack({ 39, 0, 14, 24 });
-	anim_knight_up.PushBack({ 59, 0, 14, 24 });
-	anim_knight_up.speed = 0.1f;
-
-	//left
-	anim_knight_left.PushBack({ 0, 28, 11, 25 }); //1
-	anim_knight_left.PushBack({ 16, 29, 12, 24 }); //2
-	anim_knight_left.PushBack({ 33, 28, 11, 25 }); //3
-	anim_knight_left.PushBack({ 49, 29, 11, 24 }); //4
-	anim_knight_left.speed = 0.1f;
-	*/
-
-
 }
 
 ModuleSceneCastle::~ModuleSceneCastle()
@@ -100,7 +80,7 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(POT, 8, 1058);
 	App->enemies->AddEnemy(POT, 185, 1058);
 
-	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1596);
+	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1597);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
 
 	//knights
@@ -147,32 +127,32 @@ bool ModuleSceneCastle::Start()
 	//third wave torpedos:
 	App->enemies->AddEnemy(TORPEDO, 75, 550, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 123, 550, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 535, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 520, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 520, 3, 2);
-	App->enemies->AddEnemy(TORPEDO, 75, 505, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 123, 505, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 99, 500, 3, 2);
+	App->enemies->AddEnemy(TORPEDO, 5, 540, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 540, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 540, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 540, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 5, 530, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 530, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 530, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 530, 3, 2);
+	App->enemies->AddEnemy(TORPEDO, 75, 520, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 123, 520, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 99, 515, 3, 2);
 
     //third wave torpedos 2.0
 	App->enemies->AddEnemy(TORPEDO, 75, 455, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 123, 455, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 440, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 440, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 440, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 440, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 5, 425, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 53, 425, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 149, 425, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 197, 425, 3, 3);
-	App->enemies->AddEnemy(TORPEDO, 75, 410, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 123, 410, 3, 1);
-	App->enemies->AddEnemy(TORPEDO, 99, 405, 3, 3);
+	App->enemies->AddEnemy(TORPEDO, 5, 445, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 445, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 445, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 445, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 5, 435, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 53, 435, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 149, 435, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 197, 435, 3, 3);
+	App->enemies->AddEnemy(TORPEDO, 75, 425, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 123, 425, 3, 1);
+	App->enemies->AddEnemy(TORPEDO, 99, 420, 3, 3);
 
 
 
