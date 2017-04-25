@@ -102,6 +102,11 @@ bool ModuleMarion::CleanUp()
 	App->textures->Unload(graphics);
 	graphics = nullptr;
 
+	if (Pcollider != nullptr)
+	{
+		Pcollider->to_delete = true;
+	}
+
 	App->powerup->Disable();
 
 	return ret;

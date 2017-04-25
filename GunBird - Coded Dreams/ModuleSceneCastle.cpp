@@ -215,7 +215,6 @@ bool ModuleSceneCastle::CleanUp()
 	App->audio->Stop();
 	App->marion->Disable();
 	App->ash->Disable();
-	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
 
@@ -255,7 +254,7 @@ update_status ModuleSceneCastle::Update()
 	SDL_Rect rect_bridge = current_bridge_animation->GetCurrentFrame();
 	SDL_Rect last_bridge = last_bridge_frame->GetCurrentFrame();
 
-	if (-1266 > App->render->camera.y && App->render->camera.y > -1347) {
+	if (-1266 > App->render->camera.y && App->render->camera.y > -1347) {//-1266 -1347
 		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1347), &rect_bridge);
 	}
 
