@@ -76,12 +76,12 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if (keyboard[SDL_SCANCODE_SPACE])
+	if (keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) //Josep Pi: l'he posat perque no es repeteixi varies vegades el so "gunbardo"
 	{
 		if (App->fade->GetFadeState() == false)
 		{
 			App->audio->Load("assets/effects/gunbird_101 [VOICE] Coin (Credit Inserted).wav", App->audio->EFFECT);
-			App->audio->Play(App->audio->EFFECT);
+			//App->audio->Play(App->audio->EFFECT); //"gunbardo"
 		}
 	}
 
