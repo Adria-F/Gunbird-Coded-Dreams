@@ -29,7 +29,7 @@ bool ModuleHighscores::Start()
 	App->render->moving_scene = false;
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	graphics = App->textures->Load("assets/maps/highscore_nameregist.png");
+	graphics = App->textures->Load("assets/UI/highscores_3.png");
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/highscore.ogg", App->audio->MUSIC);

@@ -15,6 +15,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleDebugMode.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -227,6 +228,12 @@ update_status ModuleSceneCastle::Update()
 	// Draw everything --------------------------------------
 	//background
 
+	if (App->render->camera.y == -357)
+	{
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
+		fading = true;
+	}
+
  	App->render->Blit(texture_bg, App->render->camera.x, App->render->camera.y, &rect_background, 0.75f);
 
 	// First river
@@ -257,13 +264,16 @@ update_status ModuleSceneCastle::Update()
 	};
 
 	//Fade To Black ---------------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
+	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
 	}
-
-	
+	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_BACKSPACE] && fading == false && App->fade->GetFadeState() == false)
+	{
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
+		fading = true;
+	}
 	
 	return UPDATE_CONTINUE;
 }

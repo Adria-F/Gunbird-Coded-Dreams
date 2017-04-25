@@ -2,6 +2,9 @@
 #define __MODULE_UI_H__
 
 #include "Module.h"
+#include "Animation.h"
+
+struct SDL_Texture;
 
 class ModuleUI : public Module
 {
@@ -15,8 +18,15 @@ public:
 
 private:
 
+	int marion_score;
+	int ash_score;
 	char score_text[10];
 	int font_score = -1;
+	int highscores_score = -1;
+	Animation marion_anim;
+	SDL_Texture* marion_texture;
+	Animation ash_anim;
+	SDL_Texture* ash_texture;
 
 };
 

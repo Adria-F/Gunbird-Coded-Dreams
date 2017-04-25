@@ -13,6 +13,7 @@
 #include "ModulePlayer.h"
 #include "ModuleMarion.h"
 #include "ModuleAsh.h"
+#include "ModuleDebugMode.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -294,13 +295,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
-		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
+		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
 		}
 
-		if (c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
+		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);

@@ -54,7 +54,7 @@ bool ModuleDebugMode::CleanUp()
 
 update_status ModuleDebugMode::Update()
 {
-	App->render->Blit(debugging_on, 0, 0, &notifier);
+	App->render->Blit(debugging_on, 0, SCREEN_HEIGHT - notifier.h, &notifier);
 	
 	return UPDATE_CONTINUE;
 }
