@@ -21,10 +21,13 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* texture_graphics = nullptr;
+	SDL_Texture* texture_onhit = nullptr;
+
 	Animation idle;
 	Animation left;
 	Animation right;
+	Animation onhit;
 	iPoint position;
 
 	Collider* Pcollider;
@@ -35,6 +38,8 @@ public:
 	bool going_left;
 	bool going_down;
 	bool going_right;
+	bool going_onhit = false;
+	bool going_onhit_check = false;
 
 	uint points = 0;
 	int shot_lvl = 1;

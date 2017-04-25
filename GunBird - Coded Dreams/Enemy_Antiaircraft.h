@@ -17,7 +17,7 @@ private:
 	ModulePlayer* player;
 
 	Uint32 start_time = 0;
-	Uint32 total_time = (Uint32)(2.0f * 0.5f * 90.0f);
+	Uint32 total_time = (Uint32)(2.0f * 0.5f * 100.0f);
 	Uint32 now;
 
 	Uint32 reload_start_time = 0;

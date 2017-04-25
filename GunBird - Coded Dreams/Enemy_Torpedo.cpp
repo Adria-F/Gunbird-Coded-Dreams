@@ -31,8 +31,8 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	if (wave == 1)
 	{
-		path.PushBack({ 1.5f, 1.25f }, 140);
-		path.PushBack({ 1.25f, 1.5f }, 140);
+		path.PushBack({ 1.5f, 1.5f }, 100);
+		path.PushBack({ 1.5f, 1.75f }, 140);
 	}
 
 	else if (wave == 2)

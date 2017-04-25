@@ -34,6 +34,26 @@ ModuleAsh::ModuleAsh()
 
 	//left.PushBack({ 63, 97, 17, 32 });
 	//left.PushBack({ 90, 97, 17, 32 });
+
+	//onhit flying enemies (Torpedo)
+	onhit.PushBack({ 52, 43, 31, 31 });
+	onhit.PushBack({ 90, 44, 31, 31 });
+	onhit.PushBack({ 131, 47, 31, 31 });
+	onhit.PushBack({ 168, 46, 31, 31 });
+	onhit.PushBack({ 206, 46, 31, 31 });
+	onhit.PushBack({ 16, 84, 31, 31 });
+	onhit.PushBack({ 54, 84, 31, 31 });
+	onhit.PushBack({ 92, 84, 31, 31 });
+	onhit.PushBack({ 130, 84, 31, 31 });
+
+	onhit.PushBack({ 15, 2, 31, 31 });
+	onhit.PushBack({ 50, 4, 31, 31 });
+	onhit.PushBack({ 89, 4, 31, 31 });
+	onhit.PushBack({ 125, 6, 31, 31 });
+	onhit.PushBack({ 166, 7, 31, 31 });
+	onhit.PushBack({ 203, 8, 31, 31 });
+	onhit.PushBack({ 16, 41, 31, 31 });
+	onhit.speed = 0.25f;
 }
 
 ModuleAsh::~ModuleAsh()
@@ -44,7 +64,8 @@ bool ModuleAsh::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
+	texture_graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
+	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png");
 
 	points = 0;
 
@@ -63,8 +84,12 @@ bool ModuleAsh::Start()
 bool ModuleAsh::CleanUp()
 {
 	bool ret = true;
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	App->textures->Unload(texture_graphics);
+	App->textures->Unload(texture_onhit);
+
+	texture_graphics = nullptr;
+	texture_onhit = nullptr;
+
 	if (Pcollider != nullptr)
 	{
 		Pcollider->to_delete = true;
@@ -115,6 +140,7 @@ update_status ModuleAsh::Update()
 	}
 
 	Animation* current_animation = &idle;
+	Animation* onhit_animation4 = &onhit;
 
 	int speed = 3;
 
@@ -154,19 +180,37 @@ update_status ModuleAsh::Update()
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect oh = onhit_animation4->GetCurrentFrame();
 
 	Pcollider->SetPos(position.x, position.y - r.h);
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(texture_graphics, position.x, position.y - r.h, &r);
+
+	if (going_onhit == true)
+	{
+		App->render->Blit(texture_onhit, position.x - 7, position.y - 30, &oh);
+		going_onhit = false;
+	}
 
 	return UPDATE_CONTINUE;
 }
 
 void ModuleAsh::OnCollision(Collider* c1, Collider* c2)
 {
+	if (shot_lvl < 1) {
+		shot_lvl = 1;
+	}
+
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
+		//activate onhit animation
+		going_onhit = true;
+
+		//sound when hit flying enemy (Torpedo)
+		App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
+
 		if (drop && shot_lvl > 1)
 		{
 			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
