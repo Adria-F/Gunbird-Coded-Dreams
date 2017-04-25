@@ -85,16 +85,15 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		{
 			path.PushBack({ 0.0f, 0.0f }, 1000, &anim_boy_idle);
 			path.PushBack({ 0.0f, 0.0f }, 20, &anim_boy_turning);
-			path.PushBack({ 0.0f, -0.6f }, 500, &anim_boy_up);
+			path.PushBack({ 0.0f, -0.6f }, 300, &anim_boy_up);
 		}
 		
-		if (wave == 3)
+		else if (wave == 3)
 		{
 			path.PushBack({ 0.0f, 0.0f }, 1000, &anim_girl_idle);
 			path.PushBack({ 0.0f, 0.0f }, 20, &anim_girl_turning);
-			path.PushBack({ 0.0f, -0.6f }, 500, &anim_girl_up);
+			path.PushBack({ 0.0f, -0.6f }, 300, &anim_girl_up);
 		}
-
 
 	collider = App->collision->AddCollider({ 0, 0 }, COLLIDER_WALL);
 
@@ -111,12 +110,12 @@ Enemy_The_Trump::~Enemy_The_Trump()
 }
 
 void Enemy_The_Trump::Move()
-{
+{ 
 	if (id == 1 && App->render->camera.y >= -725)
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
-	else if (id == 2)
+	if (id == 2 && App->render->camera.y <= -420)
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
