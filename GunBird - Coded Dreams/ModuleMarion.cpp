@@ -73,6 +73,41 @@ ModuleMarion::ModuleMarion()
 	stele3.PushBack({ 279, 16, 11, 11 });
 	stele3.speed = 0.1f;
 
+	stele1.PushBack({ 168, 15, 11, 11 });
+	stele1.PushBack({ 183, 15, 11, 11 });
+	stele1.PushBack({ 198, 15, 11, 11 });
+	stele1.PushBack({ 213, 15, 11, 11 });
+	stele1.PushBack({ 228, 15, 11, 11 });
+	stele1.PushBack({ 243, 15, 11, 11 });
+	stele1.PushBack({ 258, 15, 11, 11 });
+	stele1.PushBack({ 273, 15, 11, 11 });
+	
+	stele1.speed = 0.33f;
+
+
+	stele2.PushBack({ 168, 30, 11, 11 });
+	stele2.PushBack({ 183, 30, 11, 11 });
+	stele2.PushBack({ 198, 30, 11, 11 });
+	stele2.PushBack({ 213, 30, 11, 11 });
+	stele2.PushBack({ 228, 30, 11, 11 });
+	stele2.PushBack({ 243, 30, 11, 11 });
+	stele2.PushBack({ 258, 30, 11, 11 });
+	stele2.PushBack({ 273, 30, 11, 11 });
+	
+	stele2.speed = 0.33f;
+	
+
+	stele3.PushBack({ 168, 45, 11, 11 });
+	stele3.PushBack({ 183, 45, 11, 11 });
+	stele3.PushBack({ 198, 45, 11, 11 });
+	stele3.PushBack({ 213, 45, 11, 11 });
+	stele3.PushBack({ 228, 45, 11, 11 });
+	stele3.PushBack({ 243, 45, 11, 11 });
+	stele3.PushBack({ 258, 45, 11, 11 });
+	stele3.PushBack({ 273, 45, 11, 11 });
+	
+	stele3.speed = 0.33f;
+
 	//onhit flying enemies (Torpedo)
 	onhit.PushBack({ 52, 43, 31, 31 });
 	onhit.PushBack({ 90, 44, 31, 31 });
@@ -176,9 +211,7 @@ update_status ModuleMarion::Update()
 	}
 	
 	Animation* current_animation = &idle;
-	Animation* stele_animation1 = &stele1;
-	Animation* stele_animation2 = &stele2;
-	Animation* stele_animation3 = &stele3;
+
 	Animation* onhit_animation4 = &onhit;
 
 	int speed = 3;
@@ -220,9 +253,13 @@ update_status ModuleMarion::Update()
 	
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
+	Animation* stele_animation1 = &stele1;
 	SDL_Rect s1 = stele_animation1->GetCurrentFrame();
+	Animation* stele_animation2 = &stele2;
 	SDL_Rect s2 = stele_animation2->GetCurrentFrame();
+	Animation* stele_animation3 = &stele3;
 	SDL_Rect s3 = stele_animation3->GetCurrentFrame();
+
 	SDL_Rect oh = onhit_animation4->GetCurrentFrame();
 
 	Pcollider->SetPos(position.x, position.y - r.h);
@@ -234,10 +271,15 @@ update_status ModuleMarion::Update()
 	App->render->Blit(texture_graphics, position.x, position.y - r.h, &r);
 //!>>>>>>> origin/master
 	//Stele render
-	App->render->Blit(texture_graphics, position.x + 4, position.y - s1.h + 10, &s1);
-	App->render->Blit(texture_graphics, position.x + 4, position.y - s2.h + 15, &s2);
-	App->render->Blit(texture_graphics, position.x + 4, position.y - s3.h + 20, &s3);
 	
+	
+		App->render->Blit(texture_graphics, position.x + 4, position.y - s1.h + 10, &s1, 0.5f);
+	
+
+		App->render->Blit(texture_graphics, position.x + 4, position.y - s2.h + 15, &s2, 0.5f);
+
+		App->render->Blit(texture_graphics, position.x + 4, position.y - s3.h + 20, &s3, 0.5f);
+
 	if (going_onhit == true)
 	{
 		App->render->Blit(texture_onhit, position.x - 7, position.y - 30, &oh);

@@ -23,7 +23,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:
-
 	Animation stele1;
 	Animation stele2;
 	Animation stele3;
