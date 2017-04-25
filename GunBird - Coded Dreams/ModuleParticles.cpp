@@ -42,6 +42,9 @@ bool ModuleParticles::Start()
 	small_shot_texture = App->textures->Load("assets/enemies/basic_shoot.png");
 	explosions_texture = App->textures->Load("assets/enemies/Balloon.png");
 	big_shot_texture = App->textures->Load("assets/enemies/antiarcraft_bullets.png");
+	explosion_building1_texture = App->textures->Load("assets/enemies/explosions/castle_flags_explosion.png");
+	explosion_antiaircraft_texture = App->textures->Load("assets/enemies/explosions/castle_antiaircraft_explosion.png");
+	explosion_torpedo_texture = App->textures->Load("assets/enemies/explosions/castle_torpedo_explosion.png");
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -120,14 +123,63 @@ bool ModuleParticles::Start()
 		explosions_particle.anim.PushBack({ 104, 114, 101, 93 });
 		explosions_particle.anim.PushBack({ 212, 109, 105, 102 });
 		explosions_particle.anim.PushBack({ 322, 110, 99, 101 });
-		explosions_particle.life = 100;
+		explosions_particle.life = 100000;
 		explosions_particle.speed.y = App->render->cam_speed;
 		explosions_particle.anim.loop = false;
 		explosions_particle.anim.speed = 1.0f;
 
 		// Building 1 exploison
+		exploison_building1_particle.anim.PushBack({ 13, 17, 104, 102 });
+		exploison_building1_particle.anim.PushBack({ 13, 17, 104, 102 });
+		exploison_building1_particle.life = 100000;
+		exploison_building1_particle.speed.y = App->render->cam_speed;
+		exploison_building1_particle.anim.loop = false;
+		exploison_building1_particle.anim.speed = 1.0f;
 
+		// Torpedo explosion
+		exploison_torpedo_particle.anim.PushBack({ 5, 117, 92, 86 });
+		exploison_torpedo_particle.life = 10000;
+		exploison_torpedo_particle.speed.y = App->render->cam_speed;
+		exploison_torpedo_particle.anim.loop = false;
+		exploison_torpedo_particle.anim.speed = 1.0f;
 
+		// Antiaircraft explosion
+		exploison_antiaricraft_particle.anim.PushBack({ 18, 27, 56, 56 });
+		exploison_antiaricraft_particle.anim.PushBack({ 88, 27, 56, 56 });
+		exploison_antiaricraft_particle.anim.PushBack({ 148, 18, 74, 74 });
+		exploison_antiaricraft_particle.anim.PushBack({ 226, 18, 74, 74 });
+		exploison_antiaricraft_particle.anim.PushBack({ 303, 18, 74, 74 });
+		exploison_antiaricraft_particle.anim.PushBack({ 13, 104, 67, 66 });
+		exploison_antiaricraft_particle.anim.PushBack({ 151, 105, 67 , 66 });
+		exploison_antiaricraft_particle.anim.PushBack({ 224, 107 , 67, 66 });
+		exploison_antiaricraft_particle.anim.PushBack({ 302, 107 , 67, 66 });
+		exploison_antiaricraft_particle.anim.PushBack({ 11, 197 , 63, 73 });
+		exploison_antiaricraft_particle.anim.PushBack({ 160, 199 , 63, 73 });
+		exploison_antiaricraft_particle.anim.PushBack({ 228, 199 , 67, 66 });
+		exploison_antiaricraft_particle.life = 10000;
+		exploison_antiaricraft_particle.speed.y = App->render->cam_speed;
+		exploison_antiaricraft_particle.anim.loop = false;
+		exploison_antiaricraft_particle.anim.speed = 1.0f;
+
+		//pot explosion
+		exploison_pot_particle.anim.PushBack({ 37, 20, 56, 56 });
+		exploison_pot_particle.anim.PushBack({ 97, 20, 56, 56 });
+		exploison_pot_particle.anim.PushBack({ 169, 11, 74, 74 });
+		exploison_pot_particle.anim.PushBack({ 241, 16, 74, 74 });
+		exploison_pot_particle.anim.PushBack({ 320, 14, 74, 74 });
+		exploison_pot_particle.anim.PushBack({ 25, 99, 67, 66 });
+		exploison_pot_particle.anim.PushBack({ 101, 98, 67 , 66 });
+		exploison_pot_particle.anim.PushBack({ 172, 99 , 67, 66 });
+		exploison_pot_particle.anim.PushBack({ 247, 99 , 67, 66 });
+		exploison_pot_particle.anim.PushBack({ 324, 100 , 63, 73 });
+		exploison_pot_particle.anim.PushBack({ 28, 190 , 63, 73 });
+		exploison_pot_particle.anim.PushBack({ 105, 191 , 67, 66 });
+		exploison_pot_particle.anim.PushBack({ 182, 192 , 63, 73 });
+		exploison_pot_particle.anim.PushBack({ 255, 191 , 67, 66 });
+		exploison_pot_particle.life = 10000;
+		exploison_pot_particle.speed.y = App->render->cam_speed;
+		exploison_pot_particle.anim.loop = false;
+		exploison_pot_particle.anim.speed = 1.0f;
 	}
 	
 	return true;
@@ -215,6 +267,18 @@ update_status ModuleParticles::Update()
 				break;
 			case P_EXPLOSION:
 				App->render->Blit(explosions_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_EXPLOSION_BUILDING1:
+				App->render->Blit(explosion_building1_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_EXPLOSION_TORPEDO:
+				App->render->Blit(explosion_torpedo_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_EXPLOSION_ANTIAIRCRAFT:
+				App->render->Blit(explosion_antiaircraft_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_EXPLOSION_POT:
+				App->render->Blit(explosion_pot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			}
 

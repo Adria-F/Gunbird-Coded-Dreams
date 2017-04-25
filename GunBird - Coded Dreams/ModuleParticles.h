@@ -24,7 +24,11 @@ enum particle_type
 	P_UPGRADE,
 	P_SMALL_SHOT,
 	P_BIG_SHOT,
-	P_EXPLOSION
+	P_EXPLOSION,
+	P_EXPLOSION_BUILDING1,
+	P_EXPLOSION_TORPEDO,
+	P_EXPLOSION_ANTIAIRCRAFT,
+	P_EXPLOSION_POT
 };
 
 struct Particle
@@ -72,7 +76,11 @@ public:
 	SDL_Texture* small_shot_texture = nullptr;
 	SDL_Texture* explosions_texture = nullptr;
 	SDL_Texture* big_shot_texture = nullptr;
-	SDL_Texture* exploison_building1_texture = nullptr;
+	SDL_Texture* explosion_building1_texture = nullptr;
+	SDL_Texture* explosion_torpedo_texture = nullptr;
+	SDL_Texture* explosion_antiaircraft_texture = nullptr;
+	SDL_Texture* explosion_pot_texture = nullptr;
+
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	fPoint vector;
 	float modul;
@@ -92,6 +100,9 @@ public:
 	Particle explosions_particle;
 	Particle big_shot_particle;
 	Particle exploison_building1_particle;
+	Particle exploison_torpedo_particle;
+	Particle exploison_antiaricraft_particle;
+	Particle exploison_pot_particle;
 };
 
 #endif // __MODULEPARTICLES_H__
