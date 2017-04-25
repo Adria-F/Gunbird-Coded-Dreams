@@ -416,13 +416,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
-			break;
 		}
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
-			break;
 		}
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
