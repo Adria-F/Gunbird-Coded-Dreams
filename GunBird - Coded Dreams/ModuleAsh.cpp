@@ -97,6 +97,7 @@ update_status ModuleAsh::Update()
 			}
 		}
 	}
+	//test
 	else if (shot_lvl >= 2)
 	{
 		if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
