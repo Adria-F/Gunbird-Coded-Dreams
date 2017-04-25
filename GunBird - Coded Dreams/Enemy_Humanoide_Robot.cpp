@@ -15,11 +15,10 @@
 
 Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 {
-	sprites = App->textures->Load("assets/enemies/Humanoide_Robot.png");
+	NormalSprite = App->textures->Load("assets/enemies/Humanoide_Robot.png");
 	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_Humanoide_Robot.png");
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Humanoide_Robot.png");
 
-	
 	anim_rightBack.PushBack({ 257, 31, 76, 73 });//3
 	anim_rightBack.PushBack({ 258, 132, 76, 73 });//7
 	anim_rightBack.PushBack({ 46, 31, 76, 73 });//1
@@ -97,6 +96,7 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 	cannon_pos[1].y = 15;
 
 	lives = 88;
+	initial_hp = 88;
 	points = 4000;
 
 	collider = App->collision->AddCollider({ 150, 1505, 75, 50 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -112,6 +112,8 @@ Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
 
 void Enemy_Humanoide_Robot::Move()
 {
+	position = original_pos + path.GetCurrentPosition(&animation);
+
 	vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
 	vector.y = (App->marion->position.y - (App->render->camera.y + position.y));
 	distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
@@ -123,8 +125,6 @@ void Enemy_Humanoide_Robot::Move()
 	else
 		player = App->ash;
 	
-	position = original_pos + path.GetCurrentPosition(&animation);
-
 	now = SDL_GetTicks() - start_time;
 
 		if (now > total_time && player->position.y -64 > this->collider->rect.y + 50 && second_shot == false)
@@ -143,7 +143,7 @@ void Enemy_Humanoide_Robot::Move()
 
 }
 
-void Enemy_Humanoide_Robot::ExtraAnim()
+void Enemy_Humanoide_Robot::ExtraAnim(SDL_Texture* texture)
 {	
 	for (int i = 0; i < 2; i++)
 	{
@@ -154,11 +154,11 @@ void Enemy_Humanoide_Robot::ExtraAnim()
 		else angle = 90 + angle;
 		if (angle >= 0 && angle < 30)
 		{
-			App->render->Blit(sprites, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[0]);
+			App->render->Blit(texture, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[0]);
 		}
 		else
 		{
-			App->render->Blit(sprites, (App->render->camera.x + position.x + cannon_pos[i].x), (App->render->camera.y + position.y + cannon_pos[i].y) - ((vector.y < 0) ? (angles[angle / 30 + (angle / 100) + 1].h - 16) : 0), &angles[angle / 30 + (angle / 100) + 1]);
+			App->render->Blit(texture, (App->render->camera.x + position.x + cannon_pos[i].x), (App->render->camera.y + position.y + cannon_pos[i].y) - ((vector.y < 0) ? (angles[angle / 30 + (angle / 100) + 1].h - 16) : 0), &angles[angle / 30 + (angle / 100) + 1]);
 		}
 	}
 }

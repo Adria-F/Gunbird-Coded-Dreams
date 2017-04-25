@@ -31,7 +31,7 @@ public:
 	Enemy_Antiaircraft(int x, int y);
 
 	void Move();
-	void ExtraAnim();
+	void ExtraAnim(SDL_Texture* texture);
 };
 
 #endif // !__ANTIAIRCRAFT_H__

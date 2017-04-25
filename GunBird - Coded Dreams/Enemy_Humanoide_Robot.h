@@ -46,7 +46,7 @@ public:
 	~Enemy_Humanoide_Robot();
 
 	void Move();
-	void ExtraAnim();
+	void ExtraAnim(SDL_Texture* texture);
 	virtual void DeadAnim();
 };
 #endif

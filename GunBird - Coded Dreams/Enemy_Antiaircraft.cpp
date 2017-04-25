@@ -14,8 +14,10 @@
 
 Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 {
-	sprites = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
-	
+	NormalSprite = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
+	RedSprite = App->textures->Load("assets/enemies/hittenhitten_red_General_Torpedo _ Castle mortar.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hittenhitten_white_General_Torpedo _ Castle mortar.png");
+
 	anim.PushBack({ 0, 0, 32, 32 });
 	anim.PushBack({ 34, 0, 32, 32 });
 	anim.PushBack({ 68, 0, 32, 32 });
@@ -33,6 +35,7 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	animation = &open_anim;
 
 	lives = 24;
+	initial_hp = 24;
 	points = 600;
 
 	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -98,7 +101,7 @@ void Enemy_Antiaircraft::Move()
 	}
 }
 
-void Enemy_Antiaircraft::ExtraAnim()
+void Enemy_Antiaircraft::ExtraAnim(SDL_Texture* texture)
 {
 	if (App->render->camera.y >= -1590)
 	{

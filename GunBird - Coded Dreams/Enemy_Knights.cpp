@@ -10,7 +10,7 @@
 
 Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
-	sprites = App->textures->Load("assets/maps/Castle Knights.png");
+	NormalSprite = App->textures->Load("assets/maps/Castle Knights.png");
 	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper1.png");
 	rect_background_upper.w = SCREEN_WIDTH;
 	rect_background_upper.h = 2108;
@@ -94,7 +94,7 @@ void Enemy_Knights::Move()
 	}
 }
 
-void Enemy_Knights::ExtraAnim()
+void Enemy_Knights::ExtraAnim(SDL_Texture* texture)
 {
 	if (id == 1)
 	{

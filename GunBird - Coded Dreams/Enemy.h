@@ -16,9 +16,15 @@ protected:
 public:
 	iPoint position;
 	SDL_Texture* sprites = nullptr;
+	SDL_Texture* NormalSprite = nullptr;
 	SDL_Texture* RedSprite = nullptr;
 	SDL_Texture* WhiteSprite = nullptr;
+	Uint32 Red_now;
+	Uint32 Red_Start_time;
+	Uint32 Red_Total_time = (Uint32)(2.0f * 0.5f * 700.0f);
 	int lives;
+	int initial_hp;
+	bool hit;
 	bool extra_anim = false;
 	bool dead = false;
 	int wave;
@@ -33,7 +39,7 @@ public:
 	const Collider* GetCollider() const;
 
 	virtual void Move() {};
-	virtual void ExtraAnim() {};
+	virtual void ExtraAnim(SDL_Texture* texture) {};
 	virtual void DeadAnim();
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);

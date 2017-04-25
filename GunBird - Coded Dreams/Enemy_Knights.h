@@ -22,7 +22,7 @@ public:
 	Enemy_Knights(int x, int y, int wave, int id);
 	~Enemy_Knights();
 	void Move();
-	void ExtraAnim();
+	void ExtraAnim(SDL_Texture* texture);
 
 };
 

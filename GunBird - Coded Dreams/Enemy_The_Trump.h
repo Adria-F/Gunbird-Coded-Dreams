@@ -27,7 +27,7 @@ public:
 	Enemy_The_Trump(int x, int y, int wave, int id);
 	~Enemy_The_Trump();
 	void Move();
-	void ExtraAnim();
+	void ExtraAnim(SDL_Texture* texture);
 
 };
 

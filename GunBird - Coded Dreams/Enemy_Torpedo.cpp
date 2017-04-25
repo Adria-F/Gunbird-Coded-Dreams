@@ -12,7 +12,10 @@
 
 Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
-	sprites = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
+	NormalSprite = App->textures->Load("assets/enemies/General_Torpedo _ Castle mortar.png");
+	RedSprite = App->textures->Load("assets/enemies/hittenhitten_red_General_Torpedo _ Castle mortar.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hittenhitten_white_General_Torpedo _ Castle mortar.png");
+
 
 	anim.PushBack({ 0, 37, 28, 32 });
 	anim.PushBack({ 29, 38, 28, 32 });
@@ -76,6 +79,7 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 	}
 	lives = 12;
+	initial_hp = 12;
 	points = 200;
 	animation = &anim;
 

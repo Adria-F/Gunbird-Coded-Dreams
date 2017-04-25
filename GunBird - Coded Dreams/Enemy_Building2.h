@@ -15,7 +15,7 @@ public:
 	Enemy_Building2(int x, int y);
 
 	void Move();
-	void ExtraAnim();
+	void ExtraAnim(SDL_Texture* texture);
 	void Enemy_Building2::DeadAnim();
 };
 

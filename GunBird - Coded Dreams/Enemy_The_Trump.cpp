@@ -9,7 +9,7 @@
 
 Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, wave, id)
 {
-	sprites = App->textures->Load("assets/maps/castle_the_trump.png");
+	NormalSprite = App->textures->Load("assets/maps/castle_the_trump.png");
 	texture_bg_upper = App->textures->Load("assets/maps/castle_bg_upper.png");
 	texture_bg_upper2 = App->textures->Load("assets/maps/castle_bg_upper2.png");
 	rect_background_upper.w = SCREEN_WIDTH;
@@ -122,7 +122,7 @@ void Enemy_The_Trump::Move()
 	}
 }
 
-void Enemy_The_Trump::ExtraAnim()
+void Enemy_The_Trump::ExtraAnim(SDL_Texture* texture)
 {
 	if (id == 1)
 	{
