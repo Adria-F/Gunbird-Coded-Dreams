@@ -16,6 +16,8 @@ protected:
 public:
 	iPoint position;
 	SDL_Texture* sprites = nullptr;
+	SDL_Texture* RedSprite = nullptr;
+	SDL_Texture* WhiteSprite = nullptr;
 	int lives;
 	bool extra_anim = false;
 	bool dead = false;

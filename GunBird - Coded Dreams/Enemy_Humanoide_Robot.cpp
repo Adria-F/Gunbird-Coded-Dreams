@@ -16,6 +16,9 @@
 Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 {
 	sprites = App->textures->Load("assets/enemies/Humanoide_Robot.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_Humanoide_Robot.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Humanoide_Robot.png");
+
 	
 	anim_rightBack.PushBack({ 257, 31, 76, 73 });//3
 	anim_rightBack.PushBack({ 258, 132, 76, 73 });//7
