@@ -59,6 +59,9 @@ ModuleUI::ModuleUI()
 	game_over_bckg.w = SCREEN_WIDTH;
 	game_over_bckg.h = SCREEN_HEIGHT;
 
+	char_pos.w = 15;
+	char_pos.h = 13;
+
 }
 
 ModuleUI::~ModuleUI()
@@ -72,6 +75,7 @@ bool ModuleUI::Start()
 	marion_texture = App->textures->Load("assets/characters/marion.png");
 	ash_texture = App->textures->Load("assets/characters/ash.png");
 	game_over = App->textures->Load("assets/UI/game over.png");
+	char_lives = App->textures->Load("assets/UI/ash_marion_ui.png");
 
 	return true;
 }
@@ -99,9 +103,15 @@ update_status ModuleUI::Update()
 			marion_top_score = marion_score;
 		}
 		sprintf_s(score_text, 10, "%7d", App->marion->points);
+		char_pos.x = 8;
+		char_pos.y = 12;
+		for (int i = 0; i < App->marion->lives; i++)
+		{
+			App->render->Blit(char_lives, 5 + ((char_pos.w + 2) * i), 20, &char_pos);
+		}
 	}
 	
-	if (App->scene_castle->IsEnabled())
+	if (App->scene_castle->IsEnabled() && App->scene_castle->lost == false)
 	{
 		App->fonts->BlitText(0, 5, font_score, "uP:");
 		App->fonts->BlitText(25, 5, font_score, score_text);
@@ -115,6 +125,12 @@ update_status ModuleUI::Update()
 			ash_top_score = ash_score;
 		}
 		sprintf_s(score_text, 10, "%7d", App->ash->points);
+		char_pos.x = 26;
+		char_pos.y = 12;
+		for (int i = 0; i < App->ash->lives; i++)
+		{
+			App->render->Blit(char_lives, 204 - ((char_pos.w + 2) * i), 20, &char_pos);
+		}
 	}
 	if (App->scene_castle->lost)
 	{

@@ -421,15 +421,23 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
 		{
-			App->render->moving_scene = false;
-			App->marion->lives -= 1;
+			App->marion->hit_timer_now = SDL_GetTicks() - App->marion->hit_timer_start;
+			if (App->marion->hit_timer_now >= App->marion->hit_timer_total)
+			{
+				App->marion->hit_timer_start = SDL_GetTicks();
+				App->marion->lives -= 1;
+			}
 			if (App->marion->lives == 0)
 				App->marion->Disable();
 		}
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
-			App->render->moving_scene = false;
-			App->ash->lives -= 1;
+			App->ash->hit_timer_now = SDL_GetTicks() - App->ash->hit_timer_start;
+			if (App->ash->hit_timer_now >= App->ash->hit_timer_total)
+			{
+				App->ash->hit_timer_start = SDL_GetTicks();
+				App->ash->lives -= 1;
+			}
 			if (App->ash->lives == 0)
 				App->ash->Disable();
 		}

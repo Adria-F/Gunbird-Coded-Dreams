@@ -32,6 +32,8 @@ private:
 	SDL_Texture* ash_texture;
 	SDL_Texture* game_over = nullptr;
 	SDL_Rect game_over_bckg;
+	SDL_Texture* char_lives = nullptr;
+	SDL_Rect char_pos;
 
 };
 
