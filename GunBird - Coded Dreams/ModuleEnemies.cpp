@@ -70,8 +70,14 @@ update_status ModuleEnemies::Update()
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_WALL )) enemies[i]->Draw(enemies[i]->sprites);
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_BUILDING)) enemies[i]->Draw(enemies[i]->sprites);
+
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr && (enemies[i]->collider->type != COLLIDER_WALL)) enemies[i]->Draw(enemies[i]->sprites);
+		if(enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_DROPPING_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
 
 	return UPDATE_CONTINUE;
 }

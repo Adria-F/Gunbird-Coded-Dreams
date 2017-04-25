@@ -35,7 +35,7 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	lives = 24;
 	points = 600;
 
-	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Antiaircraft::Move()

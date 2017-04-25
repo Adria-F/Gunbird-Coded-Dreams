@@ -84,14 +84,30 @@ update_status ModuleAsh::Update()
 		drop = true;
 	}
 
-	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
+	if (shot_lvl < 2)
 	{
-		App->particles->AddParticle(App->particles->ASH_bullet_particle, particle_type::P_ASH_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
-		start_time = SDL_GetTicks();
-		bullet_counter++;
-		if (bullet_counter == MAX_BULLETS)
+		if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 		{
-			shot = false;
+			App->particles->AddParticle(App->particles->ASH_bullet_p1_particle, particle_type::P_ASH_BULLET_P1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+			start_time = SDL_GetTicks();
+			bullet_counter++;
+			if (bullet_counter == MAX_BULLETS)
+			{
+				shot = false;
+			}
+		}
+	}
+	else if (shot_lvl >= 2)
+	{
+		if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
+		{
+			App->particles->AddParticle(App->particles->ASH_bullet_p2_particle, particle_type::P_ASH_BULLET_P2, position.x, position.y - 55, COLLIDER_PLAYER_SHOT);
+			start_time = SDL_GetTicks();
+			bullet_counter++;
+			if (bullet_counter == MAX_BULLETS)
+			{
+				shot = false;
+			}
 		}
 	}
 
