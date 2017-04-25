@@ -44,7 +44,10 @@ public:
 	Animation last_bridge;
 	SDL_Rect rect_bridge;
 	
-	
+	SDL_Texture* game_over = nullptr;
+	SDL_Rect game_over_bckg;
+	bool lost = false;
+
 	//gturret
 	SDL_Texture* texture_gturret = nullptr;
 	Animation anim_gturret;

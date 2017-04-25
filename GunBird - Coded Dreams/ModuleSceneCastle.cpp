@@ -54,6 +54,8 @@ ModuleSceneCastle::ModuleSceneCastle()
 	anim_bridge.PushBack({ 125, 325, 117, 110 });
 	anim_bridge.speed = 0.1f;
 	
+	game_over_bckg.w = SCREEN_WIDTH;
+	game_over_bckg.h = SCREEN_HEIGHT;
 
 	last_bridge.PushBack({ 241,250,117,165 });
 }
@@ -73,6 +75,7 @@ bool ModuleSceneCastle::Start()
 	texture_2_river = App->textures->Load("assets/maps/castle_second_river.png"); //Second river
 	texture_bridge = App->textures->Load("assets/maps/castle_bridge.png"); //Bridge
 	texture_the_trump = App->textures->Load("assets/maps/castle_the_trump.png");
+	game_over = App->textures->Load("assets/UI/game over.png");
 
 	//pot
 	App->enemies->AddEnemy(POT, 8, 840 );
@@ -154,9 +157,6 @@ bool ModuleSceneCastle::Start()
 	App->enemies->AddEnemy(TORPEDO, 123, 425, 3, 1);
 	App->enemies->AddEnemy(TORPEDO, 99, 420, 3, 3);
 
-
-
-
 	App->render->moving_scene = true;
 	App->render->camera.x = 0;
 	App->render->camera.y = -1782;
@@ -211,7 +211,6 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------
 	//background
-
 	if (App->render->camera.y >= -357)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
@@ -258,8 +257,7 @@ update_status ModuleSceneCastle::Update()
 	}
 	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_BACKSPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->highscores, 0.5f);
-		fading = true;
+		lost = true;
 	}
 	
 	return UPDATE_CONTINUE;

@@ -42,7 +42,8 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	SDL_RenderClear(renderer);
+	if (App->scene_castle->lost == false)
+		SDL_RenderClear(renderer);
 
 	return update_status::UPDATE_CONTINUE;
 }
