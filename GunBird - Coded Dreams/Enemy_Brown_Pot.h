@@ -15,6 +15,7 @@ private:
 public:
 
 	Enemy_Brown_Pot(int x, int y);
+	~Enemy_Brown_Pot();
 	
 };
 

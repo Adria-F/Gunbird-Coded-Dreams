@@ -88,6 +88,16 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 	original_pos.y = y;
 }
 
+Enemy_Torpedo::~Enemy_Torpedo()
+{
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
+}
+
 void Enemy_Torpedo::Move()
 {
 	position = original_pos + path.GetCurrentPosition();

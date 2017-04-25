@@ -37,6 +37,17 @@ Enemy_Building2::Enemy_Building2(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 75, 1165, 72, 83 }, COLLIDER_BUILDING, (Module*)App->enemies);
 }
+
+Enemy_Building2::~Enemy_Building2()
+{
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
+}
+
 void Enemy_Building2::Move()
 {
 

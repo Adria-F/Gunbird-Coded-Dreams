@@ -86,9 +86,13 @@ bool ModuleUI::CleanUp()
 	App->fonts->UnLoad(highscores_score);
 	App->textures->Unload(marion_texture);
 	App->textures->Unload(ash_texture);
+	App->textures->Unload(game_over);
+	App->textures->Unload(char_lives);
 
 	marion_texture = nullptr;
 	ash_texture = nullptr;
+	game_over = nullptr;
+	char_lives = nullptr;
 
 	return true;
 }

@@ -228,6 +228,11 @@ bool ModuleParticles::CleanUp()
 	App->textures->Unload(small_shot_texture);
 	App->textures->Unload(explosions_texture);
 	App->textures->Unload(big_shot_texture);
+	
+	App->textures->Unload(explosion_building1_texture);
+	App->textures->Unload(explosion_antiaircraft_texture);
+	App->textures->Unload(explosion_torpedo_texture);
+	App->textures->Unload(explosion_pot_texture);
 
 	MARION_bullet_p1_texture = nullptr;
 	MARION_bullet_p2_texture = nullptr;
@@ -239,6 +244,11 @@ bool ModuleParticles::CleanUp()
 	small_shot_texture = nullptr;
 	explosions_texture = nullptr;
 	big_shot_texture = nullptr;
+
+	explosion_building1_texture = nullptr;
+	explosion_antiaircraft_texture = nullptr;
+	explosion_torpedo_texture = nullptr;
+	explosion_pot_texture = nullptr;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

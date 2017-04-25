@@ -183,7 +183,6 @@ bool ModuleSceneCastle::CleanUp()
 	App->textures->Unload(texture_1_river);
 	App->textures->Unload(texture_2_river);
 	App->textures->Unload(texture_bridge);
-	App->textures->Unload(texture_buildings);
 	App->textures->Unload(texture_the_trump);
 	
 	texture_bg = nullptr;
@@ -191,7 +190,6 @@ bool ModuleSceneCastle::CleanUp()
 	texture_1_river = nullptr;
 	texture_2_river = nullptr;
 	texture_bridge = nullptr;
-	texture_buildings = nullptr;
 	texture_the_trump = nullptr;
 
 	App->audio->Stop();

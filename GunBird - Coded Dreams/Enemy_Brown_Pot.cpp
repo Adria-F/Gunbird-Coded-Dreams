@@ -19,3 +19,9 @@ Enemy_Brown_Pot::Enemy_Brown_Pot(int x, int y) : Enemy(x, y)
 	
 	collider = App->collision->AddCollider({8, 840, 36, 53}, COLLIDER_BUILDING, (Module*)App->enemies);
 }
+
+Enemy_Brown_Pot::~Enemy_Brown_Pot()
+{
+	App->textures->Unload(NormalSprite);
+	NormalSprite = nullptr;
+}

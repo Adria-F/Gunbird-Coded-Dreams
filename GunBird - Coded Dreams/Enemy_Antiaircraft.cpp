@@ -41,6 +41,16 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
+Enemy_Antiaircraft::~Enemy_Antiaircraft()
+{
+	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
+	NormalSprite = nullptr;
+	RedSprite = nullptr;
+	WhiteSprite = nullptr;
+}
+
 void Enemy_Antiaircraft::Move()
 {
 	vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
