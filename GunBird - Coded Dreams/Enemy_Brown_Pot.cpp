@@ -4,9 +4,9 @@
 #include "ModuleCollision.h"
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
-#include "Brown_Pot.h"
+#include "Enemy_Brown_Pot.h"
 
-Brown_Pot::Brown_Pot(int x, int y) : Enemy(x, y)
+Enemy_Brown_Pot::Enemy_Brown_Pot(int x, int y) : Enemy(x, y)
 {
 	sprites = App->textures->Load("assets/maps/pot.png");
 	

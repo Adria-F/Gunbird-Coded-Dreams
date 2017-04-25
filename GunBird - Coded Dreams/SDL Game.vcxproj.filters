@@ -125,14 +125,14 @@
     <ClInclude Include="ModulePlayer.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Brown_Pot.h">
-      <Filter>Modules\Enemies\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleFonts.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleUI.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Brown_Pot.h">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,14 +223,14 @@
     <ClCompile Include="ModuleAsh.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Brown_Pot.cpp">
-      <Filter>Modules\Enemies\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleUI.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Brown_Pot.cpp">
+      <Filter>Modules\Enemies\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

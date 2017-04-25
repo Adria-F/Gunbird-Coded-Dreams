@@ -13,7 +13,7 @@
 #include "Enemy_Knights.h"
 #include "Enemy_The_Trump.h"
 #include "Enemy.h"
-#include "Brown_Pot.h"
+#include "Enemy_Brown_Pot.h"
 
 #define SPAWN_MARGIN 75
 
@@ -170,7 +170,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 
 		case ENEMY_TYPES::POT:
-			enemies[i]=new Brown_Pot(info.x ,info.y);
+			enemies[i]=new Enemy_Brown_Pot(info.x ,info.y);
 			break;
 		}
 	}
