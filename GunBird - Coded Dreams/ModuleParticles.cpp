@@ -422,12 +422,16 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->marion)
 		{
 			App->render->moving_scene = false;
-			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			App->marion->lives -= 1;
+			if (App->marion->lives == 0)
+				App->marion->Disable();
 		}
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
 			App->render->moving_scene = false;
-			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			App->ash->lives -= 1;
+			if (App->ash->lives == 0)
+				App->ash->Disable();
 		}
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{

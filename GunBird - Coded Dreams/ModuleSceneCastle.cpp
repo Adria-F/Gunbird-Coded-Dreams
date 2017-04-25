@@ -248,6 +248,9 @@ update_status ModuleSceneCastle::Update()
 	};
 
 	//Fade To Black ---------------------------------------------
+	if (App->marion->IsEnabled() == false && App->ash->IsEnabled() == false)
+		App->fade->FadeToBlack(App->scene_castle, App->highscores);
+
 	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);

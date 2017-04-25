@@ -3,6 +3,7 @@
 #include "ModuleFonts.h"
 #include "ModuleMarion.h"
 #include "ModuleAsh.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleHighscores.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -95,9 +96,14 @@ update_status ModuleUI::Update()
 			marion_top_score = marion_score;
 		}
 		sprintf_s(score_text, 10, "%7d", App->marion->points);
+	}
+	
+	if (App->scene_castle->IsEnabled())
+	{
 		App->fonts->BlitText(0, 5, font_score, "uP:");
 		App->fonts->BlitText(25, 5, font_score, score_text);
 	}
+
 	if (App->ash->IsEnabled())
 	{
 		ash_score = App->ash->points;
@@ -106,9 +112,14 @@ update_status ModuleUI::Update()
 			ash_top_score = ash_score;
 		}
 		sprintf_s(score_text, 10, "%7d", App->ash->points);
+	}
+
+	if (App->scene_castle->IsEnabled())
+	{
 		App->fonts->BlitText(130, 5, font_score, "dP:");
 		App->fonts->BlitText(155, 5, font_score, score_text);
 	}
+
 	if (App->highscores->IsEnabled())
 	{
 		if (marion_score >= ash_score)

@@ -141,7 +141,7 @@ bool ModuleMarion::Start()
 	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png"); 
 
 	points = 0;
-
+	lives = 3;
 	shot_lvl = 1;
 
 	position.x = 50;
