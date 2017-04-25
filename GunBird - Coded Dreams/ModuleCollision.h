@@ -1,7 +1,7 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#define MAX_COLLIDERS 50
+#define MAX_COLLIDERS 207
 
 #include "Module.h"
 
@@ -28,7 +28,7 @@ struct Collider
 	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
-	Particle* part = nullptr;
+	Particle* part;
 
 	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr, Particle* part = nullptr) :
 		rect(rectangle),

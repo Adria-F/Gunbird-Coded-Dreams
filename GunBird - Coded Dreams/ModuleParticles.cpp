@@ -432,8 +432,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			//friendly shots with enemy. Animation here!
-			/*delete active[i];
-			active[i] = nullptr;*/
+			delete active[i];
+			active[i] = nullptr;
 			break;
 		}
 	}

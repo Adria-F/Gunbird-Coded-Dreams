@@ -59,7 +59,21 @@ void Enemy::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_PLAYER_SHOT)
 	{
-		lives -= collider->part->damage;
+		switch (collider->part->type)
+		{
+		case P_MARION_BULLET_P1:
+			lives -= 1;
+			break;
+		case P_MARION_BULLET_P2:
+			lives -= 2;
+			break;
+		case P_ASH_BULLET_P1:
+			lives -= 1;
+			break;
+		case P_ASH_BULLET_P2:
+			lives -= 2;
+			break;
+		}
 		hit = true;
 		if (lives <= 0)
 		{
