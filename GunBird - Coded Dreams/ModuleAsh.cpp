@@ -51,6 +51,8 @@ bool ModuleAsh::Start()
 	position.x = 150;
 	position.y = 266;
 
+	shot_lvl = 1;
+
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
 
 	App->powerup->Enable();

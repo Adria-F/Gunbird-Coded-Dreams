@@ -86,6 +86,8 @@ bool ModuleMarion::Start()
 
 	points = 0;
 
+	shot_lvl = 1;
+
 	position.x = 50;
 	position.y = 266;
 
