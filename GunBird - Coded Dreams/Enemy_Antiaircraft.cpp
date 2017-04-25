@@ -18,21 +18,32 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	RedSprite = App->textures->Load("assets/enemies/hittenhitten_red_General_Torpedo _ Castle mortar.png");
 	WhiteSprite = App->textures->Load("assets/enemies/hittenhitten_white_General_Torpedo _ Castle mortar.png");
 
+	extra_anim = true;
+	//animation
 	anim.PushBack({ 0, 0, 32, 32 });
 	anim.PushBack({ 34, 0, 32, 32 });
 	anim.PushBack({ 68, 0, 32, 32 });
 	anim.PushBack({ 102, 0, 32, 32 });
 	anim.speed = 0.1f;
 
-	extra_anim = true;
+	//open animation
 	open_anim.PushBack({ 137, 0, 32, 32 });
-	open_anim.PushBack({ 174, 0, 32, 32 });
-	open_anim.PushBack({ 211, 0, 32, 32 });
-	open_anim.PushBack({ 212, 36, 32, 32 });
 	open_anim.loop = false;
-	open_anim.speed = 0.05f;
+	open_anim.speed = 0.06f;
 
-	animation = &open_anim;
+	open2_anim.PushBack({ 174, 0, 32, 32 });
+	open2_anim.PushBack({ 211, 0, 32, 32 });
+	open2_anim.PushBack({ 212, 36, 32, 32 });
+	open2_anim.loop = false;
+	open2_anim.speed = 0.06f;
+
+	path.PushBack({ 0.0f, 0.0f }, 1, &open_anim);
+	path.PushBack({ 0.0f, 0.0f }, 30, &open2_anim);
+	path.PushBack({ 0.0f, 0.0f }, 5000, &anim);
+
+	original_pos.x = x;
+	original_pos.y = y;
+
 
 	lives = 24;
 	initial_hp = 24;
@@ -99,17 +110,19 @@ void Enemy_Antiaircraft::Move()
 			reload = false;
 		}
 	}
+	
+	if (App->render->camera.y >= -1600)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	else if (state == false)
+	{
+		state = true;
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
 }
 
 void Enemy_Antiaircraft::ExtraAnim(SDL_Texture* texture)
 {
-	if (App->render->camera.y >= -1590)
-	{
-		App->render->Blit(texture, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
-		if (open_anim.Finished())
-		{
-			animation = &anim;
-			animation->GetCurrentFrame();
-		}
-	}
+	App->render->Blit(texture, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
 }
