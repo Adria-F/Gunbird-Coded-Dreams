@@ -263,16 +263,15 @@ update_status ModuleMarion::Update()
 	SDL_Rect oh = onhit_animation4->GetCurrentFrame();
 
 	Pcollider->SetPos(position.x, position.y - r.h);
+
 	//Move graphics render
 
 	App->render->Blit(texture_graphics, position.x, position.y - r.h, &r);
 
 	//Stele render
 	
-	
 		App->render->Blit(texture_graphics, position.x + 4, position.y - s1.h + 10, &s1, 0.5f);
 	
-
 		App->render->Blit(texture_graphics, position.x + 4, position.y - s2.h + 15, &s2, 0.5f);
 
 		App->render->Blit(texture_graphics, position.x + 4, position.y - s3.h + 20, &s3, 0.5f);
@@ -291,7 +290,7 @@ void ModuleMarion::OnCollision(Collider* c1, Collider* c2)
 	if (shot_lvl < 1) {
 		shot_lvl = 1;
 	}
-
+	//hitted_MARION.PushBack({ 124,0,38,33 });
 	drop_timer_start = SDL_GetTicks();
 	onhit_start_time = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
