@@ -16,7 +16,6 @@
 
 ModuleMarion::ModuleMarion()
 {
-
 	// idle animation (arcade sprite sheet)
 	idle.PushBack({ 5, 64, 21, 32 });//x - y - w - h
 	idle.PushBack({ 37, 64, 21, 32 });
@@ -54,9 +53,11 @@ ModuleMarion::ModuleMarion()
 	stele1.PushBack({ 169, 16, 11, 11 });
 	stele1.PushBack({ 169, 30, 11, 11 });
 	stele1.PushBack({ 169, 45, 11, 11 });
+	stele1.speed = 0.1f;
 	//2
 	stele2.PushBack({ 184, 0, 11, 11 });
 	stele2.PushBack({ 184, 16, 11, 11 });
+	stele2.speed = 0.1f;
 	//3
 	stele3.PushBack({ 199, 0, 11, 11 });
 	stele3.PushBack({ 213, 0, 11, 11 });
@@ -70,19 +71,39 @@ ModuleMarion::ModuleMarion()
 	stele3.PushBack({ 247, 16, 11, 11 });
 	stele3.PushBack({ 261, 16, 11, 11 });
 	stele3.PushBack({ 279, 16, 11, 11 });
-	stele1.speed = 0.1f;
-	stele2.speed = 0.1f;
 	stele3.speed = 0.1f;
+
+	//onhit flying enemies (Torpedo)
+	onhit.PushBack({ 52, 43, 31, 31 });
+	onhit.PushBack({ 90, 44, 31, 31 });
+	onhit.PushBack({ 131, 47, 31, 31 });
+	onhit.PushBack({ 168, 46, 31, 31 });
+	onhit.PushBack({ 206, 46, 31, 31 });
+	onhit.PushBack({ 16, 84, 31, 31 });
+	onhit.PushBack({ 54, 84, 31, 31 });
+	onhit.PushBack({ 92, 84, 31, 31 });
+	onhit.PushBack({ 130, 84, 31, 31 });
+
+	onhit.PushBack({ 15, 2, 31, 31 });
+	onhit.PushBack({ 50, 4, 31, 31 });
+	onhit.PushBack({ 89, 4, 31, 31 });
+	onhit.PushBack({ 125, 6, 31, 31 });
+	onhit.PushBack({ 166, 7, 31, 31 });
+	onhit.PushBack({ 203, 8, 31, 31 });
+	onhit.PushBack({ 16, 41, 31, 31 });
+	onhit.speed = 0.25f;
 }
 
 ModuleMarion::~ModuleMarion()
 {}
+
 // Load assets
 bool ModuleMarion::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
+	texture_graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
+	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png"); 
 
 	points = 0;
 
@@ -101,8 +122,11 @@ bool ModuleMarion::Start()
 bool ModuleMarion::CleanUp()
 {
 	bool ret = true;
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	App->textures->Unload(texture_graphics);
+	App->textures->Unload(texture_onhit);
+
+	texture_graphics = nullptr;
+	texture_onhit = nullptr;
 
 	if (Pcollider != nullptr)
 	{
@@ -151,12 +175,11 @@ update_status ModuleMarion::Update()
 		}
 	}
 	
-	
 	Animation* current_animation = &idle;
-	
 	Animation* stele_animation1 = &stele1;
 	Animation* stele_animation2 = &stele2;
 	Animation* stele_animation3 = &stele3;
+	Animation* onhit_animation4 = &onhit;
 
 	int speed = 3;
 
@@ -200,14 +223,21 @@ update_status ModuleMarion::Update()
 	SDL_Rect s1 = stele_animation1->GetCurrentFrame();
 	SDL_Rect s2 = stele_animation2->GetCurrentFrame();
 	SDL_Rect s3 = stele_animation3->GetCurrentFrame();
+	SDL_Rect oh = onhit_animation4->GetCurrentFrame();
 
 	Pcollider->SetPos(position.x, position.y - r.h);
 	//Move graphics render
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(texture_graphics, position.x, position.y - r.h, &r);
 	//Stele render
-	App->render->Blit(graphics, position.x+4, position.y - s1.h + 10, &s1);
-	App->render->Blit(graphics, position.x + 4, position.y - s2.h + 15, &s2);
-	App->render->Blit(graphics, position.x + 4, position.y - s3.h + 20, &s3);
+	App->render->Blit(texture_graphics, position.x + 4, position.y - s1.h + 10, &s1);
+	App->render->Blit(texture_graphics, position.x + 4, position.y - s2.h + 15, &s2);
+	App->render->Blit(texture_graphics, position.x + 4, position.y - s3.h + 20, &s3);
+	
+	if (going_onhit == true)
+	{
+		App->render->Blit(texture_onhit, position.x - 7, position.y - 30, &oh);
+		going_onhit = false;
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -217,9 +247,17 @@ void ModuleMarion::OnCollision(Collider* c1, Collider* c2)
 	if (shot_lvl < 1) {
 		shot_lvl = 1;
 	}
+
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
+		//activate onhit animation
+		going_onhit = true;
+
+		//sound when hit flying enemy (Torpedo)
+		App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
+
 		if (drop && shot_lvl > 1)
 		{
 			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
