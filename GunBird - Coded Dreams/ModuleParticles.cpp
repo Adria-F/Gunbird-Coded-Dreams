@@ -137,7 +137,25 @@ bool ModuleParticles::Start()
 		exploison_building1_particle.anim.speed = 1.0f;
 
 		// Torpedo explosion
-		exploison_torpedo_particle.anim.PushBack({ 5, 117, 92, 86 });
+		exploison_torpedo_particle.anim.PushBack({ 12,10,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 77,11,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 137,13,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 197,12,48,37 });
+
+		exploison_torpedo_particle.anim.PushBack({ 12,61,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 72,62,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 136,62,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 196,62,48,37 });
+
+		exploison_torpedo_particle.anim.PushBack({ 12,110,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 73,111,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 134,111,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 194,111,48,37 });
+
+		exploison_torpedo_particle.anim.PushBack({ 12,153,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 73,153,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 134,153,48,37 });
+
 		exploison_torpedo_particle.life = 10000;
 		exploison_torpedo_particle.speed.y = App->render->cam_speed;
 		exploison_torpedo_particle.anim.loop = false;
