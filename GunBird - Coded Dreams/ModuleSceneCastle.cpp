@@ -258,7 +258,7 @@ update_status ModuleSceneCastle::Update()
 
 	if (-1266 > App->render->camera.y && App->render->camera.y > -1350) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 65), (App->render->camera.y + 1340), &rect_bridge);
-
+	}
 	if (App->render->camera.y > -1266) {
 		App->render->Blit(texture_bridge, (App->render->camera.x + 54), (App->render->camera.y + 1263), &last_bridge);
 	};
@@ -277,24 +277,3 @@ update_status ModuleSceneCastle::Update()
 	
 	return UPDATE_CONTINUE;
 }
-
-
-
-
-void ModuleSceneCastle::OnCollision(Collider* c1, Collider* c2)
-{
-	if (c2->type == COLLIDER_BUILDING)
-	{
-		if (c2 == coll_build1)
-		{
-		/*
-		Animation* current_animation5 = &anim_build1down;
-		rect_building1 = current_animation5->GetCurrentFrame();
-		App->render->Blit(texture_buildings, (App->render->camera.x + 145), (App->render->camera.y + 1415), &rect_building1);//render
-		coll_build1->SetPos((App->render->camera.x + 145), (App->render->camera.y + 1415));
-		*/
-		
-		}
-	}
-}
-
