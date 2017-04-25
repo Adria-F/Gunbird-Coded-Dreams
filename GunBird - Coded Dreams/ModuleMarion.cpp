@@ -204,6 +204,7 @@ update_status ModuleMarion::Update()
 	Pcollider->SetPos(position.x, position.y - r.h);
 	//Move graphics render
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+
 	//Stele render
 	App->render->Blit(graphics, position.x+4, position.y - s1.h + 10, &s1);
 	App->render->Blit(graphics, position.x + 4, position.y - s2.h + 15, &s2);
