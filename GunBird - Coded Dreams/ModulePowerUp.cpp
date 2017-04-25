@@ -8,6 +8,7 @@
 #include "ModuleAsh.h"
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
+#include "ModuleDebugMode.h"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -39,7 +40,7 @@ bool ModulePowerUp::CleanUp()
 
 update_status ModulePowerUp::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+	if (App->debug->debugging && App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->powerup->AddPowerUp(powerup_type::UPGRADE, 100, 150);
 	}

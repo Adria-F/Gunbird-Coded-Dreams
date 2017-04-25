@@ -41,6 +41,17 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 void Enemy_Antiaircraft::Move()
 {
 	//ja ho calcularás tu, norman!
+	vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
+	vector.y = (App->marion->position.y - (App->render->camera.y + position.y));
+	distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+	vector.x = (App->ash->position.x - (App->render->camera.x + position.x));
+	vector.y = (App->ash->position.y - (App->render->camera.y + position.y));
+	distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+	if (distance[0] < distance[1])
+		player = App->marion;
+	else
+		player = App->ash;
+	
 	if (App->render->camera.y >= -1590)
 	{
 		if (reload == false)
@@ -67,7 +78,7 @@ void Enemy_Antiaircraft::Move()
 				++shot_sequ;
 			}
 
-			else if (now > total_time && shot_sequ == 2)
+			else if (now > total_time && shot_sequ == 2 && player->position.y - 64 > this->collider->rect.y)
 			{
 				start_time = SDL_GetTicks();
 				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 60);
