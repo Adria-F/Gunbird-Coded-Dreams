@@ -73,6 +73,9 @@ void Enemy::OnCollision(Collider* collider)
 		case P_ASH_BULLET_P2:
 			lives -= 2;
 			break;
+		default:
+			lives -= 1;
+			break;
 		}
 		hit = true;
 		if (lives <= 0)

@@ -16,6 +16,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleDebugMode.h"
+#include "ModuleUI.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -167,7 +168,7 @@ bool ModuleSceneCastle::Start()
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
-	
+	App->ui->Enable();
 
 	fading = false;
 
@@ -197,6 +198,7 @@ bool ModuleSceneCastle::CleanUp()
 	App->ash->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
+	App->ui->Disable();
 
 	return true;
 }
@@ -213,6 +215,8 @@ update_status ModuleSceneCastle::Update()
 			App->fade->FadeToBlack(this, App->highscores, 0.5f);
 			fading = true;
 		}
+
+		return UPDATE_CONTINUE;
 	}
 	
 	// Draw everything --------------------------------------

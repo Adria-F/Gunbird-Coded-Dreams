@@ -73,6 +73,7 @@ bool ModuleAsh::Start()
 	position.y = 266;
 
 	shot_lvl = 1;
+	lives = 3;
 
 	Pcollider = App->collision->AddCollider({ 0, 0, 18, 32 }, COLLIDER_PLAYER, this);
 
@@ -204,12 +205,22 @@ void ModuleAsh::OnCollision(Collider* c1, Collider* c2)
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
+		onhit_now = SDL_GetTicks() - onhit_start_time;
+
 		//activate onhit animation
 		going_onhit = true;
 
 		//sound when hit flying enemy (Torpedo)
-		App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
-		App->audio->Play(App->audio->EFFECT);
+		if (onhit_now > onhit_total_time)
+		{
+			going_onhit = false;
+			onhit_start_time = SDL_GetTicks();
+			App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
+			for (int i = 0; i < 3; i++)
+			{
+				App->audio->Play(App->audio->EFFECT);
+			}
+		}
 
 		if (drop && shot_lvl > 1)
 		{

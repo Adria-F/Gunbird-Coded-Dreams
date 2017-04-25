@@ -21,7 +21,7 @@ class ModuleFonts : public Module
 public:
 
 	ModuleFonts();
-	~ModuleFonts();
+	virtual ~ModuleFonts();
 
 	// Load Font
 	int Load(const char* texture_path, const char* characters, uint rows = 1);

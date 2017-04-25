@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleHighscores.h"
 #include "ModuleWelcomeTitle.h"
+#include "ModuleUI.h"
 
 ModuleHighscores::ModuleHighscores()
 {
@@ -35,6 +36,8 @@ bool ModuleHighscores::Start()
 	App->audio->Load("assets/music/highscore.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
 
+	App->ui->Enable();
+
 	fading = false;
 
 	return true;
@@ -47,6 +50,8 @@ bool ModuleHighscores::CleanUp()
 	App->textures->Unload(graphics);
 	graphics = nullptr;
 	App->audio->Stop();
+
+	App->ui->Disable();
 
 	return true;
 }

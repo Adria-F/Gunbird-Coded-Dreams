@@ -60,6 +60,10 @@ protected:
 	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 1000.0f);
 	Uint32 drop_timer_now;
 
+	Uint32 onhit_start_time = 0;
+	Uint32 onhit_total_time = (Uint32)(2.0f * 0.5f * 2000.0f);
+	Uint32 onhit_now;
+
 };
 
 #endif // !__MODULE_PLAYER_H__

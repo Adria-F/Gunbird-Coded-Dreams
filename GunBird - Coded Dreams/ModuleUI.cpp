@@ -77,6 +77,8 @@ bool ModuleUI::Start()
 	game_over = App->textures->Load("assets/UI/game over.png");
 	char_lives = App->textures->Load("assets/UI/ash_marion_ui.png");
 
+	App->fonts->Enable();
+
 	return true;
 }
 
@@ -93,6 +95,8 @@ bool ModuleUI::CleanUp()
 	ash_texture = nullptr;
 	game_over = nullptr;
 	char_lives = nullptr;
+
+	App->fonts->Disable();
 
 	return true;
 }
