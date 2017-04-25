@@ -9,6 +9,7 @@
 
 #define MAX_ACTIVE_PARTICLES 500
 #define SMALL_SHOT_SPEED 3.5
+#define BIG_SHOT_SPEED 2.0
 
 struct SDL_Texture;
 struct Collider;
@@ -18,7 +19,8 @@ enum particle_type
 {
 	P_MARION_BULLET_P1,
 	P_MARION_BULLET_P2,
-	P_ASH_BULLET,
+	P_ASH_BULLET_P1,
+	P_ASH_BULLET_P2,
 	P_UPGRADE,
 	P_SMALL_SHOT,
 	P_BIG_SHOT,
@@ -62,7 +64,10 @@ public:
 
 	SDL_Texture* MARION_bullet_p1_texture = nullptr;
 	SDL_Texture* MARION_bullet_p2_texture = nullptr;
-	SDL_Texture* ASH_bullet_texture = nullptr;
+
+	SDL_Texture* ASH_bullet_p1_texture = nullptr;
+	SDL_Texture* ASH_bullet_p2_texture = nullptr;
+
 	SDL_Texture* upgrade_texture = nullptr;
 	SDL_Texture* small_shot_texture = nullptr;
 	SDL_Texture* explosions_texture = nullptr;
@@ -77,7 +82,10 @@ public:
 
 	Particle MARION_bullet_p1_particle;
 	Particle MARION_bullet_p2_particle;
-	Particle ASH_bullet_particle;
+
+	Particle ASH_bullet_p1_particle;
+	Particle ASH_bullet_p2_particle;
+
 	Particle upgrade_particle;
 	Particle small_shot_particle;
 	Particle explosions_particle;

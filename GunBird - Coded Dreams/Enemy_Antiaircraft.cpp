@@ -6,6 +6,8 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 #include "ModuleParticles.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include <math.h>
 #include "SDL/include/SDL_timer.h"
 
@@ -33,59 +35,70 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	lives = 24;
 	points = 600;
 
-	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_DROPPING_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({162, 1596, 32, 32 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Antiaircraft::Move()
 {
 	//ja ho calcularás tu, norman!
-	now = SDL_GetTicks() - start_time;
-	if (now > total_time  && shot_sequ == 0)
+	if (App->render->camera.y >= -1590)
 	{
-		start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
-		++shot_sequ;
-	}
-	else if (now > total_time + 200 && shot_sequ == 1)
-	{
-		start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
-		
-		
-		++shot_sequ;
-	}
+		if (reload == false)
+		{
 
-	else if (now > total_time + 200 && shot_sequ == 2)
-	{
-		start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
-		
-		
-		++shot_sequ;
-	}
-	else if (now > total_time + 200 && shot_sequ == 3)
-	{
-		start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
-		
-		
-		shot_sequ = 0;
-	}
+			now = SDL_GetTicks() - start_time;
+			if (now > total_time  && shot_sequ == 0)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
+				++shot_sequ;
+			}
+			else if (now > total_time  && shot_sequ == 1)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 - 30);
 
+				++shot_sequ;
+			}
+
+			else if (now > total_time && shot_sequ == 2 && //player->position.y - 64)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 - 60);
+				shot_sequ = 0;
+				reload = true;
+				reload_start_time = SDL_GetTicks();	
+			}
+		}
+		reload_now = SDL_GetTicks() - reload_start_time;
+
+		if (reload && reload_now > reload_total_time)
+		{
+			reload = false;
+		}
+
+	}
 }
 
 void Enemy_Antiaircraft::ExtraAnim()
 {
-	App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
-	if (open_anim.Finished())
+	if (App->render->camera.y >= -1590)
 	{
-		animation = &anim;
-		animation->GetCurrentFrame();
+		App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
+		if (open_anim.Finished())
+		{
+			animation = &anim;
+			animation->GetCurrentFrame();
+		}
 	}
+	
 }

@@ -32,4 +32,5 @@ typedef unsigned int uint;
 #define MAX_BULLETS 4
 #define PARTICLES_MARGIN 50
 
+
 #endif // __GLOBALS_H__

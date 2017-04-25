@@ -63,6 +63,10 @@ bool ModuleAsh::CleanUp()
 	bool ret = true;
 	App->textures->Unload(graphics);
 	graphics = nullptr;
+	if (Pcollider != nullptr)
+	{
+		Pcollider->to_delete = true;
+	}
 
 	App->powerup->Disable();
 
@@ -80,14 +84,31 @@ update_status ModuleAsh::Update()
 		drop = true;
 	}
 
-	if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
+	if (shot_lvl < 2)
 	{
-		App->particles->AddParticle(App->particles->ASH_bullet_particle, particle_type::P_ASH_BULLET, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
-		start_time = SDL_GetTicks();
-		bullet_counter++;
-		if (bullet_counter == MAX_BULLETS)
+		if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
 		{
-			shot = false;
+			App->particles->AddParticle(App->particles->ASH_bullet_p1_particle, particle_type::P_ASH_BULLET_P1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+			start_time = SDL_GetTicks();
+			bullet_counter++;
+			if (bullet_counter == MAX_BULLETS)
+			{
+				shot = false;
+			}
+		}
+	}
+	//test
+	else if (shot_lvl >= 2)
+	{
+		if ((bullet_counter == 0 || now >= total_time) && bullet_counter <= MAX_BULLETS && shot)
+		{
+			App->particles->AddParticle(App->particles->ASH_bullet_p2_particle, particle_type::P_ASH_BULLET_P2, position.x, position.y - 55, COLLIDER_PLAYER_SHOT);
+			start_time = SDL_GetTicks();
+			bullet_counter++;
+			if (bullet_counter == MAX_BULLETS)
+			{
+				shot = false;
+			}
 		}
 	}
 
@@ -141,13 +162,13 @@ update_status ModuleAsh::Update()
 
 void ModuleAsh::OnCollision(Collider* c1, Collider* c2)
 {
-
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
 		if (drop)
 		{
 			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
+			shot_lvl -= 1;
 			drop = false;
 		}
 	}

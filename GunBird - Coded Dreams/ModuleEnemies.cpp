@@ -70,8 +70,14 @@ update_status ModuleEnemies::Update()
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_WALL )) enemies[i]->Draw(enemies[i]->sprites);
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_BUILDING)) enemies[i]->Draw(enemies[i]->sprites);
+
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr && (enemies[i]->collider->type != COLLIDER_WALL)) enemies[i]->Draw(enemies[i]->sprites);
+		if(enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr && (enemies[i]->collider->type == COLLIDER_DROPPING_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
 
 	return UPDATE_CONTINUE;
 }
@@ -83,7 +89,8 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if ((abs((int)App->render->camera.y) + SCREEN_HEIGHT + SPAWN_MARGIN) < enemies[i]->position.y)
+			if (enemies[i]->position.x < -(SPAWN_MARGIN + 1) || enemies[i]->position.x >(SCREEN_WIDTH + (SPAWN_MARGIN + 1)) || enemies[i]->position.y > (-App->render->camera.y + SCREEN_HEIGHT + (SPAWN_MARGIN + 1)) || enemies[i]->position.y < (-App->render->camera.y - (SPAWN_MARGIN + 1)))
+			//if ((abs((int)App->render->camera.y) + SCREEN_HEIGHT + SPAWN_MARGIN) < enemies[i]->position.y)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
 				delete enemies[i];
@@ -106,6 +113,10 @@ bool ModuleEnemies::CleanUp()
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
+		}
+		if (queue[i].type != NO_TYPE)
+		{
+			queue[i].type = NO_TYPE;
 		}
 	}
 

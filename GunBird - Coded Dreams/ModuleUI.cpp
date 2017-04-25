@@ -69,6 +69,18 @@ bool ModuleUI::Start()
 	marion_texture = App->textures->Load("assets/characters/marion.png");
 	ash_texture = App->textures->Load("assets/characters/ash.png");
 
+	return true;
+}
+
+bool ModuleUI::CleanUp()
+{
+	App->fonts->UnLoad(font_score);
+	App->fonts->UnLoad(highscores_score);
+	App->textures->Unload(marion_texture);
+	App->textures->Unload(ash_texture);
+
+	marion_texture = nullptr;
+	ash_texture = nullptr;
 
 	return true;
 }

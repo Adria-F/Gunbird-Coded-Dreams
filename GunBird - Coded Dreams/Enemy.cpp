@@ -53,7 +53,16 @@ void Enemy::OnCollision(Collider* collider)
 						{
 							App->marion->points += points;
 						}
-						if (App->particles->active[i]->type == P_ASH_BULLET)
+						else if (App->particles->active[i]->type == P_MARION_BULLET_P2)
+						{
+							App->marion->points += points;
+						}
+
+						if (App->particles->active[i]->type == P_ASH_BULLET_P1)
+						{
+							App->ash->points += points;
+						}
+						else if (App->particles->active[i]->type == P_ASH_BULLET_P2)
 						{
 							App->ash->points += points;
 						}
