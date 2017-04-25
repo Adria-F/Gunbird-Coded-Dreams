@@ -142,6 +142,7 @@ bool ModuleParticles::Start()
 		exploison_building1_particle.anim.PushBack({ 8,275,115,115 });
 		exploison_building1_particle.anim.PushBack({ 128,275,115,115 });
 		exploison_building1_particle.anim.PushBack({ 253,275,115,115 });
+		exploison_building1_particle.anim.PushBack({ 0, 0, 0, 0 });
 		exploison_building1_particle.life = 100000;
 		exploison_building1_particle.speed.y = App->render->cam_speed;
 		exploison_building1_particle.anim.loop = false;
@@ -163,6 +164,7 @@ bool ModuleParticles::Start()
 		exploison_torpedo_particle.anim.PushBack({ 12,153,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 73,153,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 134,153,48,37 });
+		exploison_torpedo_particle.anim.PushBack({ 0, 0, 0, 0 });
 		exploison_torpedo_particle.life = 10000;
 		exploison_torpedo_particle.speed.y = App->render->cam_speed;
 		exploison_torpedo_particle.anim.loop = false;
@@ -181,6 +183,7 @@ bool ModuleParticles::Start()
 		exploison_antiaricraft_particle.anim.PushBack({ 11, 197 , 63, 73 });
 		exploison_antiaricraft_particle.anim.PushBack({ 160, 199 , 63, 73 });
 		exploison_antiaricraft_particle.anim.PushBack({ 228, 199 , 67, 66 });
+		exploison_antiaricraft_particle.anim.PushBack({ 0, 0, 0, 0 });
 		exploison_antiaricraft_particle.life = 10000;
 		exploison_antiaricraft_particle.speed.y = App->render->cam_speed;
 		exploison_antiaricraft_particle.anim.loop = false;
@@ -201,6 +204,7 @@ bool ModuleParticles::Start()
 		exploison_pot_particle.anim.PushBack({ 105, 191 , 67, 66 });
 		exploison_pot_particle.anim.PushBack({ 182, 192 , 63, 73 });
 		exploison_pot_particle.anim.PushBack({ 255, 191 , 67, 66 });
+		exploison_pot_particle.anim.PushBack({ 0, 0, 0, 0 });
 		exploison_pot_particle.life = 100000;
 		exploison_pot_particle.speed.y = App->render->cam_speed;
 		exploison_pot_particle.anim.loop = false;
