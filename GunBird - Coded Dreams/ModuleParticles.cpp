@@ -275,8 +275,8 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
 					vector.x /= modul;
 					vector.y /= modul;
-					p->speed.x = vector.x * SMALL_SHOT_SPEED;
-					p->speed.y = vector.y * SMALL_SHOT_SPEED;
+					p->speed.x = vector.x * BIG_SHOT_SPEED;
+					p->speed.y = vector.y * BIG_SHOT_SPEED;
 					
 					break;
 				}

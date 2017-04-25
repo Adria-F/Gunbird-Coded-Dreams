@@ -6,6 +6,8 @@
 #include "ModuleSceneCastle.h"
 #include "ModuleTextures.h"
 #include "ModuleParticles.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include <math.h>
 #include "SDL/include/SDL_timer.h"
 
@@ -41,46 +43,49 @@ void Enemy_Antiaircraft::Move()
 	//ja ho calcularás tu, norman!
 	if (App->render->camera.y >= -1590)
 	{
-		now = SDL_GetTicks() - start_time;
-		if (now > total_time  && shot_sequ == 0)
+		if (reload == false)
 		{
-			start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
-			++shot_sequ;
+
+			now = SDL_GetTicks() - start_time;
+			if (now > total_time  && shot_sequ == 0)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315);
+				++shot_sequ;
+			}
+			else if (now > total_time  && shot_sequ == 1)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 - 30);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 - 30);
+
+				++shot_sequ;
+			}
+
+			else if (now > total_time && shot_sequ == 2 && //player->position.y - 64)
+			{
+				start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 - 60);
+				App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 - 60);
+				shot_sequ = 0;
+				reload = true;
+				reload_start_time = SDL_GetTicks();	
+			}
 		}
-		else if (now > total_time + 200 && shot_sequ == 1)
+		reload_now = SDL_GetTicks() - reload_start_time;
+
+		if (reload && reload_now > reload_total_time)
 		{
-			start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 + 30);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 + 30);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 + 30);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 + 30);
-
-			++shot_sequ;
+			reload = false;
 		}
 
-		else if (now > total_time + 200 && shot_sequ == 2)
-		{
-			start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 + 60);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 135 + 60);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 225 + 30);
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 315 + 60);
-
-
-			++shot_sequ;
-		}
-		else if (now > total_time + 200 && shot_sequ == 3)
-		{
-			start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, P_BIG_SHOT, App->render->camera.x + position.x + 10, App->render->camera.y + position.y + 10, COLLIDER_ENEMY_SHOT, 0, 45 + 90);
-
-
-			shot_sequ = 0;
-		}
 	}
 }
 

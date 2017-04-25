@@ -9,6 +9,7 @@
 
 #define MAX_ACTIVE_PARTICLES 500
 #define SMALL_SHOT_SPEED 3.5
+#define BIG_SHOT_SPEED 2.0
 
 struct SDL_Texture;
 struct Collider;
