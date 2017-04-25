@@ -43,7 +43,7 @@ public:
 
 	uint points = 0;
 	int shot_lvl = 1;
-
+	int lives = 3;
 
 protected:
 

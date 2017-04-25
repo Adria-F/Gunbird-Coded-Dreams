@@ -21,6 +21,8 @@ private:
 
 	int marion_score;
 	int ash_score;
+	int marion_top_score;
+	int ash_top_score;
 	char score_text[10];
 	int font_score = -1;
 	int highscores_score = -1;

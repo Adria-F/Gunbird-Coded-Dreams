@@ -90,6 +90,10 @@ update_status ModuleUI::Update()
 	if (App->marion->IsEnabled())
 	{
 		marion_score = App->marion->points;
+		if (marion_score > marion_top_score)
+		{
+			marion_top_score = marion_score;
+		}
 		sprintf_s(score_text, 10, "%7d", App->marion->points);
 		App->fonts->BlitText(0, 5, font_score, "uP:");
 		App->fonts->BlitText(25, 5, font_score, score_text);
@@ -97,6 +101,10 @@ update_status ModuleUI::Update()
 	if (App->ash->IsEnabled())
 	{
 		ash_score = App->ash->points;
+		if (ash_score > ash_top_score)
+		{
+			ash_top_score = ash_score;
+		}
 		sprintf_s(score_text, 10, "%7d", App->ash->points);
 		App->fonts->BlitText(130, 5, font_score, "dP:");
 		App->fonts->BlitText(155, 5, font_score, score_text);
@@ -106,10 +114,10 @@ update_status ModuleUI::Update()
 		if (marion_score >= ash_score)
 		{
 			App->render->Blit(marion_texture, 12, 46, &(marion_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", marion_score);
+			sprintf_s(score_text, 10, "%7d", marion_top_score);
 			App->fonts->BlitText(109, 58, highscores_score, score_text);
 			App->render->Blit(ash_texture, 194, 70, &(ash_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", ash_score);
+			sprintf_s(score_text, 10, "%7d", ash_top_score);
 			App->fonts->BlitText(109, 83, highscores_score, score_text);
 		}
 		else
