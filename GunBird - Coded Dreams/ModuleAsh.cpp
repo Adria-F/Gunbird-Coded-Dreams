@@ -165,7 +165,7 @@ void ModuleAsh::OnCollision(Collider* c1, Collider* c2)
 	drop_timer_start = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
-		if (drop)
+		if (drop && shot_lvl > 1)
 		{
 			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
 			shot_lvl -= 1;

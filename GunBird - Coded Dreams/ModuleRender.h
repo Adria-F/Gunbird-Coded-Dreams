@@ -31,7 +31,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	bool moving_scene = false;
-	float cam_speed = 0.4f;
+	float cam_speed = 0.3f;
 };
 
 #endif //__ModuleRenderer_H__

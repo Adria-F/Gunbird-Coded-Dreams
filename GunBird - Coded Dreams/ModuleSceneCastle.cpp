@@ -228,7 +228,7 @@ update_status ModuleSceneCastle::Update()
 	// Draw everything --------------------------------------
 	//background
 
-	if (App->render->camera.y == -357)
+	if (App->render->camera.y >= -357)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;

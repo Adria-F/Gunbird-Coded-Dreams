@@ -14,6 +14,7 @@
 #include "Enemy_The_Trump.h"
 #include "Enemy.h"
 #include "Enemy_Brown_Pot.h"
+#include "ModulePowerUp.h"
 
 #define SPAWN_MARGIN 75
 
@@ -196,6 +197,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c2);
 			if (enemies[i]->lives <= 0)
 			{
+				if (enemies[i]->collider->type == COLLIDER_BUILDING)
+				{
+					App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
+				}
 				//Aqui haurem de crear una particula que sigui explosio
 				//App->particles->AddParticle(App->particles->explosions_particle, particle_type::P_EXPLOSION, enemies[i]->position.x -40 + App->render->camera.x, enemies[i]->position.y - 40 + App->render->camera.y);
 				enemies[i]->dead = true;
