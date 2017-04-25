@@ -95,7 +95,6 @@ void Enemy_Antiaircraft::Move()
 		{
 			reload = false;
 		}
-
 	}
 }
 
@@ -110,5 +109,4 @@ void Enemy_Antiaircraft::ExtraAnim()
 			animation->GetCurrentFrame();
 		}
 	}
-	
 }
