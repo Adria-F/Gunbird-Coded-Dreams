@@ -51,5 +51,4 @@ void Enemy_Building2::DeadAnim()
 	animation = &dead_build2;
 	position.y = 1190;
 	position.x = 80;
-	collider->to_delete = true;
 }
