@@ -5,6 +5,8 @@
 
 #include "Module.h"
 
+struct Particle;
+
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
@@ -26,11 +28,13 @@ struct Collider
 	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
+	Particle* part = nullptr;
 
-	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
+	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr, Particle* part = nullptr) :
 		rect(rectangle),
 		type(type),
-		callback(callback)
+		callback(callback),
+		part(part)
 	{}
 
 	void SetPos(int x, int y)
@@ -54,7 +58,7 @@ public:
 	//update_status PostUpdate();
 	bool CleanUp();
 
-	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
+	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr, Particle* part = nullptr);
 	bool EraseCollider(Collider* collider);
 	void DebugDraw();
 

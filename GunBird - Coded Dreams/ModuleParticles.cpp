@@ -251,9 +251,10 @@ bool ModuleParticles::CleanUp()
 // Update: draw background
 update_status ModuleParticles::Update()
 {
+	Particle* p = new Particle;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		Particle* p = active[i];
+		p = active[i];
 
 		if (p == nullptr)
 			continue;
@@ -310,14 +311,16 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 			}
+
+			if (p->position.x < -PARTICLES_MARGIN || p->position.x >(SCREEN_WIDTH + PARTICLES_MARGIN) || p->position.y < -PARTICLES_MARGIN || p->position.y >(SCREEN_HEIGHT + PARTICLES_MARGIN))
+			{
+				p->life = 0;
+				delete p;
+				active[i] = nullptr;
+			}
 		}
 
-		if (p->position.x < -PARTICLES_MARGIN || p->position.x > (SCREEN_WIDTH + PARTICLES_MARGIN) || p->position.y < -PARTICLES_MARGIN || p->position.y > (SCREEN_HEIGHT + PARTICLES_MARGIN))
-		{
-			p->life = 0;
-			delete p;
-			active[i] = nullptr;
-		}
+
 	}
 
 	return UPDATE_CONTINUE;
@@ -338,7 +341,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 			switch (collider_type)
 			{
 			case COLLIDER_PLAYER_SHOT:
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this, p);
 				break;
 			case COLLIDER_POWER_UP:
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, App->powerup);
@@ -425,8 +428,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			//friendly shots with enemy. Animation here!
-			delete active[i];
-			active[i] = nullptr;
+			/*delete active[i];
+			active[i] = nullptr;*/
 			break;
 		}
 	}

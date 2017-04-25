@@ -46,7 +46,7 @@ void Enemy_Building1::Move()
 
 void Enemy_Building1::ExtraAnim(SDL_Texture* texture)
 {
-	App->render->Blit(sprites, App->render->camera.x + position.x + 30, App->render->camera.y + position.y - 12, &(flag_anim.GetCurrentFrame()));
+	App->render->Blit(texture, App->render->camera.x + position.x + 30, App->render->camera.y + position.y - 12, &(flag_anim.GetCurrentFrame()));
 }
 
 void Enemy_Building1::DeadAnim()

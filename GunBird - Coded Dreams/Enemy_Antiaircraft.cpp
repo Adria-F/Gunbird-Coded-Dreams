@@ -105,7 +105,7 @@ void Enemy_Antiaircraft::ExtraAnim(SDL_Texture* texture)
 {
 	if (App->render->camera.y >= -1590)
 	{
-		App->render->Blit(sprites, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
+		App->render->Blit(texture, App->render->camera.x + position.x, App->render->camera.y + position.y, &(animation->GetCurrentFrame()));
 		if (open_anim.Finished())
 		{
 			animation = &anim;

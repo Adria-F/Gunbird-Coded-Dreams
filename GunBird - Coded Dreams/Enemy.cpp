@@ -59,36 +59,26 @@ void Enemy::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_PLAYER_SHOT)
 	{
-		for (int i = 0; i < MAX_ACTIVE_PARTICLES; i++)
+		lives -= collider->part->damage;
+		hit = true;
+		if (lives <= 0)
 		{
-			if (App->particles->active[i] != nullptr)
+			if (collider->part->type == P_MARION_BULLET_P1)
 			{
-				if (App->particles->active[i]->collider == collider)
-				{
-					lives -= App->particles->active[i]->damage;
-					hit = true;
-					if (lives <= 0)
-					{
-						if (App->particles->active[i]->type == P_MARION_BULLET_P1)
-						{
-							App->marion->points += points;
-						}
-						else if (App->particles->active[i]->type == P_MARION_BULLET_P2)
-						{
-							App->marion->points += points;
-						}
+				App->marion->points += points;
+			}
+			else if (collider->part->type == P_MARION_BULLET_P2)
+			{
+				App->marion->points += points;
+			}
 
-						if (App->particles->active[i]->type == P_ASH_BULLET_P1)
-						{
-							App->ash->points += points;
-						}
-						else if (App->particles->active[i]->type == P_ASH_BULLET_P2)
-						{
-							App->ash->points += points;
-						}
-					}
-					break;
-				}
+			if (collider->part->type == P_ASH_BULLET_P1)
+			{
+				App->ash->points += points;
+			}
+			else if (collider->part->type == P_ASH_BULLET_P2)
+			{
+				App->ash->points += points;
 			}
 		}
 	}
