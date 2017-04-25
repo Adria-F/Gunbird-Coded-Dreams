@@ -40,7 +40,6 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 
 void Enemy_Antiaircraft::Move()
 {
-	//ja ho calcularás tu, norman!
 	vector.x = (App->marion->position.x - (App->render->camera.x + position.x));
 	vector.y = (App->marion->position.y - (App->render->camera.y + position.y));
 	distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
