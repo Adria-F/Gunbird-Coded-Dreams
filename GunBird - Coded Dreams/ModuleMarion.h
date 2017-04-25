@@ -20,6 +20,10 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	Uint32 onhit_start_time = 0;
+	Uint32 onhit_total_time = (Uint32)(2.0f * 0.5f * 2000.0f);
+	Uint32 onhit_now;
+
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:

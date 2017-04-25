@@ -264,12 +264,9 @@ update_status ModuleMarion::Update()
 
 	Pcollider->SetPos(position.x, position.y - r.h);
 	//Move graphics render
-//!<<<<<<< HEAD
-	//!App->render->Blit(graphics, position.x, position.y - r.h, &r);
 
-//!=======
 	App->render->Blit(texture_graphics, position.x, position.y - r.h, &r);
-//!>>>>>>> origin/master
+
 	//Stele render
 	
 	
@@ -296,14 +293,20 @@ void ModuleMarion::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	drop_timer_start = SDL_GetTicks();
+	onhit_start_time = SDL_GetTicks();
 	if (c2->type == COLLIDER_DROPPING_ENEMY)
 	{
+		onhit_now = SDL_GetTicks() - start_time;
 		//activate onhit animation
 		going_onhit = true;
-
 		//sound when hit flying enemy (Torpedo)
 		App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
 		App->audio->Play(App->audio->EFFECT);
+
+		if (onhit_now > onhit_total_time)
+		{
+			going_onhit = false;
+		}
 
 		if (drop && shot_lvl > 1)
 		{
