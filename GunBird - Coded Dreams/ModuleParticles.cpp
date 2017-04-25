@@ -102,15 +102,7 @@ bool ModuleParticles::Start()
 	small_shot_particle.anim.loop = true;
 	small_shot_particle.anim.speed = 0.5f;
 
-	// Balloon exploison
-	explosions_particle.anim.PushBack({ 5, 117, 92, 86 });
-	explosions_particle.anim.PushBack({ 104, 114, 101, 93 });
-	explosions_particle.anim.PushBack({ 212, 109, 105, 102 });
-	explosions_particle.anim.PushBack({ 322, 110, 99, 101 });
-	explosions_particle.life = 100000;
-	explosions_particle.speed.y = App->render->cam_speed;
-	explosions_particle.anim.loop = false;
-	explosions_particle.anim.speed = 1.0f;
+
 
 	// Big shot 
 	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
@@ -120,6 +112,23 @@ bool ModuleParticles::Start()
 	big_shot_particle.speed.y = 0;
 	big_shot_particle.anim.loop = true;
 	big_shot_particle.anim.speed = 0.5f;
+
+	//exploisons
+	{
+		// Balloon exploison
+		explosions_particle.anim.PushBack({ 5, 117, 92, 86 });
+		explosions_particle.anim.PushBack({ 104, 114, 101, 93 });
+		explosions_particle.anim.PushBack({ 212, 109, 105, 102 });
+		explosions_particle.anim.PushBack({ 322, 110, 99, 101 });
+		explosions_particle.life = 100;
+		explosions_particle.speed.y = App->render->cam_speed;
+		explosions_particle.anim.loop = false;
+		explosions_particle.anim.speed = 1.0f;
+
+		// Building 1 exploison
+
+
+	}
 	
 	return true;
 }

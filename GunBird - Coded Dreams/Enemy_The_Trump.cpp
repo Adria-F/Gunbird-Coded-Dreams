@@ -39,7 +39,7 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		anim_pilot_idle.speed = 0.1f;
 
 		//idle girl
-		anim_girl_idle.PushBack({ 189, 166, 13 ,23 });
+		anim_girl_idle.PushBack({ 189, 165, 13 ,23 });
 		anim_girl_idle.PushBack({ 170, 166, 13, 23 });
 		anim_girl_idle.speed = 0.1f;
 
@@ -56,7 +56,7 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 		anim_girl_up.speed = 0.2f;
 
 		//idle boy
-		anim_boy_idle.PushBack({ 103, 110, 12, 22 });
+		anim_boy_idle.PushBack({ 103, 109, 12, 23 });
 		anim_boy_idle.PushBack({ 85, 110, 12, 23 });
 		anim_boy_idle.speed = 0.1f;
 
@@ -83,14 +83,14 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 
 		else if (wave == 2)
 		{
-			path.PushBack({ 0.0f, 0.0f }, 300, &anim_boy_idle);
+			path.PushBack({ 0.0f, 0.0f }, 600, &anim_boy_idle);
 			path.PushBack({ 0.0f, 0.0f }, 20, &anim_boy_turning);
 			path.PushBack({ 0.0f, -0.6f }, 500, &anim_boy_up);
 		}
 		
 		if (wave == 3)
 		{
-			path.PushBack({ 0.0f, 0.0f }, 280, &anim_girl_idle);
+			path.PushBack({ 0.0f, 0.0f }, 600, &anim_girl_idle);
 			path.PushBack({ 0.0f, 0.0f }, 20, &anim_girl_turning);
 			path.PushBack({ 0.0f, -0.6f }, 500, &anim_girl_up);
 		}

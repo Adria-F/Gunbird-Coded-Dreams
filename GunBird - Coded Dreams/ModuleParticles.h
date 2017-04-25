@@ -72,6 +72,7 @@ public:
 	SDL_Texture* small_shot_texture = nullptr;
 	SDL_Texture* explosions_texture = nullptr;
 	SDL_Texture* big_shot_texture = nullptr;
+	SDL_Texture* exploison_building1_texture = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	fPoint vector;
 	float modul;
@@ -90,6 +91,7 @@ public:
 	Particle small_shot_particle;
 	Particle explosions_particle;
 	Particle big_shot_particle;
+	Particle exploison_building1_particle;
 };
 
 #endif // __MODULEPARTICLES_H__
