@@ -45,6 +45,7 @@ bool ModuleParticles::Start()
 	explosion_building1_texture = App->textures->Load("assets/enemies/explosions/castle_flags_explosion.png");
 	explosion_antiaircraft_texture = App->textures->Load("assets/enemies/explosions/castle_antiaircraft_explosion.png");
 	explosion_torpedo_texture = App->textures->Load("assets/enemies/explosions/castle_torpedo_explosion.png");
+	explosion_pot_texture = App->textures->Load("assets/enemies/explosions/castle_pot_explosion.png");
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -129,8 +130,18 @@ bool ModuleParticles::Start()
 		explosions_particle.anim.speed = 1.0f;
 
 		// Building 1 exploison
-		exploison_building1_particle.anim.PushBack({ 13, 17, 104, 102 });
-		exploison_building1_particle.anim.PushBack({ 13, 17, 104, 102 });
+
+		exploison_building1_particle.anim.PushBack({ 14,18,99,108 });
+		exploison_building1_particle.anim.PushBack({ 118,9,126,126 });
+		exploison_building1_particle.anim.PushBack({ 245,9,126,126 });
+		exploison_building1_particle.anim.PushBack({ 372,9,126,126 });
+		exploison_building1_particle.anim.PushBack({ 6,145,115,115 });
+		exploison_building1_particle.anim.PushBack({ 126,145,115,115 });
+		exploison_building1_particle.anim.PushBack({ 248,145,115,115 });
+		exploison_building1_particle.anim.PushBack({ 368,144,115,115 });
+		exploison_building1_particle.anim.PushBack({ 8,275,115,115 });
+		exploison_building1_particle.anim.PushBack({ 128,275,115,115 });
+		exploison_building1_particle.anim.PushBack({ 253,275,115,115 });
 		exploison_building1_particle.life = 100000;
 		exploison_building1_particle.speed.y = App->render->cam_speed;
 		exploison_building1_particle.anim.loop = false;
@@ -141,21 +152,17 @@ bool ModuleParticles::Start()
 		exploison_torpedo_particle.anim.PushBack({ 77,11,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 137,13,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 197,12,48,37 });
-
 		exploison_torpedo_particle.anim.PushBack({ 12,61,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 72,62,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 136,62,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 196,62,48,37 });
-
 		exploison_torpedo_particle.anim.PushBack({ 12,110,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 73,111,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 134,111,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 194,111,48,37 });
-
 		exploison_torpedo_particle.anim.PushBack({ 12,153,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 73,153,48,37 });
 		exploison_torpedo_particle.anim.PushBack({ 134,153,48,37 });
-
 		exploison_torpedo_particle.life = 10000;
 		exploison_torpedo_particle.speed.y = App->render->cam_speed;
 		exploison_torpedo_particle.anim.loop = false;
@@ -194,7 +201,7 @@ bool ModuleParticles::Start()
 		exploison_pot_particle.anim.PushBack({ 105, 191 , 67, 66 });
 		exploison_pot_particle.anim.PushBack({ 182, 192 , 63, 73 });
 		exploison_pot_particle.anim.PushBack({ 255, 191 , 67, 66 });
-		exploison_pot_particle.life = 10000;
+		exploison_pot_particle.life = 100000;
 		exploison_pot_particle.speed.y = App->render->cam_speed;
 		exploison_pot_particle.anim.loop = false;
 		exploison_pot_particle.anim.speed = 1.0f;
@@ -273,7 +280,6 @@ update_status ModuleParticles::Update()
 			case P_ASH_BULLET_P2:
 				App->render->Blit(ASH_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
-
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
@@ -376,7 +382,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					vector.y /= modul;
 					p->speed.x = vector.x * SMALL_SHOT_SPEED;
 					p->speed.y = vector.y * SMALL_SHOT_SPEED;
-				break;
+					break;
 
 				case P_BIG_SHOT:
 					
@@ -389,7 +395,6 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					vector.y /= modul;
 					p->speed.x = vector.x * BIG_SHOT_SPEED;
 					p->speed.y = vector.y * BIG_SHOT_SPEED;
-					
 					break;
 				}
 			}
@@ -411,16 +416,17 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			break;
 		}
-
 		if (App->debug->debugging == false && c1->type == COLLIDER_ENEMY_SHOT && c2->callback == (Module*)App->ash)
 		{
 			App->render->moving_scene = false;
 			App->fade->FadeToBlack(App->scene_castle, App->highscores);
+			break;
 		}
-		
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
+			//friendly shots with enemy. Animation here!
 			delete active[i];
 			active[i] = nullptr;
 			break;
@@ -445,7 +451,7 @@ Particle::~Particle()
 {
 	if (collider != nullptr)
 	{
-	collider->to_delete = true;
+		collider->to_delete = true;
 	}
 }
 
