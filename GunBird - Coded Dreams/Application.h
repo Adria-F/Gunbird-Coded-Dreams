@@ -27,7 +27,6 @@ class ModuleEnemies;
 class ModuleFonts;
 class ModuleUI;
 
-
 class Application
 {
 public:

@@ -28,6 +28,7 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = scene_mine = new ModuleSceneMine();
 	modules[i++] = scene_castle = new ModuleSceneCastle();
 	modules[i++] = welcometitle = new ModuleWelcomeTitle();
@@ -36,13 +37,12 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = marion = new ModuleMarion();
 	modules[i++] = ash = new ModuleAsh();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = powerup = new ModulePowerUp();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = ui = new ModuleUI();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = debug = new ModuleDebugMode();
-	modules[i++] = powerup = new ModulePowerUp();
-	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = collision = new ModuleCollision();
-	modules[i++] = fonts = new ModuleFonts();
-	modules[i++] = ui = new ModuleUI();
 	modules[i++] = fade = new ModuleFadeToBlack();
 }
 
@@ -88,6 +88,7 @@ bool Application::Init()
 
 update_status Application::Update()
 {
+
 	update_status ret = UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
