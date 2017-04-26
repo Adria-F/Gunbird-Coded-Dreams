@@ -9,57 +9,55 @@ https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki
 
 Decompress the .zip file in any directory and execute the executable inside the decompressed folder.
 
-##Usage (version 0.5)
+## Functionalities
 
-Character 1
-WASD: move character
-F key: shoot
+- Two different players functionality (Marion and Ash)
+- First map up until first miniboss (Castle)
+- 3 types of enemies implemented (Antiaircraft, Humanoide Robot and Torpedo)
+- 1 powerup implemented
 
-Character 2
-Arrow keys: move character
-0 numpad key: shoot
+## Usage
 
-Debugging Mode
-Tab: activate / deactivate
-Arrow numpad keys: move camera
+### Character 1
+- WASD: move character
+- F key: shoot
 
-##Usage (original game)
+### Character 2
+- Arrow keys: move character
+- 0 numpad key: shoot
 
-Control-> Shoot
-Shift-> Special Attack
-Arrow Keys-> Move the character
-5--> Insert Coin
-1--> Join Player l
-2--> Join Player 2
+### Debugging Mode
+- Tab: activate / deactivate
+- Arrow numpad keys (8462): move camera
 
 ## Contributing
 
 Our most important contributions to the game were:
-1 - (23th February) Add main modules: Welcome Title, Scene Castle and High Scores.
-2 - (28th March) Castle's background does scroll.
-3 - (31th March) Implemented Debug Mode and first character (Marion)
-4 - (1th April) Shooting mechanics and sound implemented.
-5 - (4th April) Collision module added.
-6 - (5th April) Enemies have colliders and lose conditions is present.
-7 - (11th April) Power Ups have their own path.
-8 - (14th April) Buildings and Humanoide Robot are added.
-9 - (18th April) Implemented second character (Ash).
-10 - (21th April) Tropedo enemy and its waves are added.
-11 - (23th April) Third Torpedo's wave attack to the player.
-12 - (24th April) Second level of Power Up added to Marion and Ash and Antiaircraft enemy too.
-13 - (25th April) Enemies have dead animation, enemies turn white when hit and red when at low hp. High scores are done too. Antiaircraft enemy is corrected.
-14 - (26th April) Solved critical crash when updating modules.
+- (23th February) Add main modules: Welcome Title, Scene Castle and High Scores.
+- (28th March) Castle's background does scroll.
+- (31th March) Implemented Debug Mode and first character (Marion)
+- (1th April) Shooting mechanics and sound implemented.
+- (4th April) Collision module added.
+- (5th April) Enemies have colliders and lose conditions is present.
+- (11th April) Power Ups have their own path.
+- (14th April) Buildings and Humanoide Robot are added.
+- (18th April) Implemented second character (Ash).
+- (21th April) Tropedo enemy and its waves are added.
+- (23th April) Third Torpedo's wave attack to the player.
+- (24th April) Second level of Power Up added to Marion and Ash and Antiaircraft enemy too.
+- (25th April) Enemies have dead animation, enemies turn white when hit and red when at low hp. High scores are done too. Antiaircraft enemy is corrected.
+- (26th April) Solved critical crash when updating modules.
 
-#History
+## History
 
 During our GunBird development the game had seven releases:
-1 - version 0.1 (20th March)
-2 - version 0.2 (26th March)
-3 - version 0.2.1 (29th March)
-4 - version 0.3 (4th April)
-5 - version 0.4 (5th April)
-6 - version 0.45 (18th April)
-7 - version 0.46 (25th April)
+- version 0.1 (20th March)
+- version 0.2 (26th March)
+- version 0.2.1 (29th March)
+- version 0.3 (4th April)
+- version 0.4 (5th April)
+- version 0.45 (18th April)
+- version 0.46 (25th April)
  
 ## Credits
 
