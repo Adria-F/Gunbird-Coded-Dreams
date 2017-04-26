@@ -76,10 +76,10 @@ bool ModuleSceneCastle::Start()
 
 
 	//pot
-	App->enemies->AddEnemy(POT, 8, 840 );
-	App->enemies->AddEnemy(POT, 185, 840);
-	App->enemies->AddEnemy(POT, 8, 1058);
-	App->enemies->AddEnemy(POT, 185, 1058);
+	App->enemies->AddEnemy(POT, 7, 835 );
+	App->enemies->AddEnemy(POT, 183, 835);
+	App->enemies->AddEnemy(POT, 7, 1052);
+	App->enemies->AddEnemy(POT, 183, 1052);
 
 	App->enemies->AddEnemy(ANTIAIRCRAFT, 162, 1597);
 	App->enemies->AddEnemy(HUMANOIDE_ROBOT, 70, 1472);
