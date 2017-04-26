@@ -2,8 +2,7 @@
 
 Coded Dreams is a team by five members that are going to copy the GunBird arcade game done, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we are working in only one level, The Castle, which will be out prototype.
 
-Check our wiki in order to know more about GunBird:
-https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki
+Check our [wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
 
 ## Installation
 
@@ -66,10 +65,8 @@ During our GunBird development the game had seven releases:
 - Adrià Ferrer Comas, Norman Benet - Code
 - Vladimir Agache - QA
 
-Github link:
-https://github.com/Adria-F/Gunbird-Coded-Dreams
-Trello link:
-https://trello.com/b/dwxSlLBC/gunbird-coded-dreams
+[Github](https://github.com/Adria-F/Gunbird-Coded-Dreams)
+[Trello ](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams)
 
 ## License
 
