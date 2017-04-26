@@ -61,10 +61,10 @@ During our GunBird development the game had seven releases:
  
 ## Credits
 
-Josep Pi Serra - Management
-Pau Llopart Cervelló - Art/Design
-Adrià Ferrer Comas, Norman Benet - Code
-Vladimir Agache - QA
+- Josep Pi Serra - Management
+- Pau Llopart Cervelló - Art/Design
+- Adrià Ferrer Comas, Norman Benet - Code
+- Vladimir Agache - QA
 
 Github link:
 https://github.com/Adria-F/Gunbird-Coded-Dreams
