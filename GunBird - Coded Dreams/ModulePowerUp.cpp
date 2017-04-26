@@ -95,7 +95,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			if (powerups[i] != nullptr && powerups[i]->collider == c1)
 			{
 				powerups[i] = nullptr;
-				App->marion->shot_lvl += 1;
+				App->marion->shot_lvl = 2;
 				break;
 			}
 		}
@@ -110,7 +110,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			if (powerups[i] != nullptr && powerups[i]->collider == c1)
 			{
 				powerups[i] = nullptr;
-				App->ash->shot_lvl += 1;
+				App->ash->shot_lvl = 2;
 				break;
 			}
 		}
