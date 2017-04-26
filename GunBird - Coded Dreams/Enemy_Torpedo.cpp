@@ -93,12 +93,18 @@ Enemy_Torpedo::~Enemy_Torpedo()
 	if (NormalSprite != nullptr)
 	{
 		App->textures->Unload(NormalSprite);
-		NormalSprite = nullptr;
+		RedSprite = nullptr;
 	}
-	App->textures->Unload(RedSprite);
-	App->textures->Unload(WhiteSprite);
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	if (RedSprite != nullptr)
+	{
+		App->textures->Unload(RedSprite);
+		RedSprite = nullptr;
+	}
+	if (WhiteSprite != nullptr)
+	{
+		App->textures->Unload(WhiteSprite);
+		WhiteSprite = nullptr;
+	}
 }
 
 void Enemy_Torpedo::Move()
