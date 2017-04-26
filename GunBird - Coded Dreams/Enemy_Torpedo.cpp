@@ -90,10 +90,13 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 Enemy_Torpedo::~Enemy_Torpedo()
 {
-	App->textures->Unload(NormalSprite);
+	if (NormalSprite != nullptr)
+	{
+		App->textures->Unload(NormalSprite);
+		NormalSprite = nullptr;
+	}
 	App->textures->Unload(RedSprite);
 	App->textures->Unload(WhiteSprite);
-	NormalSprite = nullptr;
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 }

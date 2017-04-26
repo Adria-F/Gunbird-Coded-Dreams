@@ -38,11 +38,11 @@ void Enemy::Draw(SDL_Texture* sprites)
 			sprites = WhiteSprite;
 			hit = false;
 		}
-		if (RedSprite != nullptr && lives <= (initial_hp/5) && lives >= 0 && Red_now >= Red_Total_time && Red_now <= (Red_Total_time + 50))
+		if (RedSprite != nullptr && lives <= (initial_hp/5) && lives > 0 && Red_now >= Red_Total_time && Red_now <= (Red_Total_time + 50))
 		{
 			sprites = RedSprite;
 		}
-		if (RedSprite != nullptr && lives <= (initial_hp/5) && lives >= 0 && Red_now >= (Red_Total_time + 150))
+		if (RedSprite != nullptr && lives <= (initial_hp/5) && lives > 0 && Red_now >= (Red_Total_time + 150))
 		{
 			sprites = RedSprite;
 			Red_Start_time = SDL_GetTicks();
