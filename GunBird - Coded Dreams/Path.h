@@ -26,9 +26,12 @@ public:
 
 	void PushBack(fPoint speed, uint frames, Animation* animation = nullptr)
 	{
-		steps[last_step].animation = animation;
-		steps[last_step].frames = frames;
-		steps[last_step++].speed = speed;
+		if (last_step <= MAX_STEPS)
+		{
+			steps[last_step].animation = animation;
+			steps[last_step].frames = frames;
+			steps[last_step++].speed = speed;
+		}
 	}
 
 	iPoint GetCurrentPosition(Animation** current_animation = nullptr)
