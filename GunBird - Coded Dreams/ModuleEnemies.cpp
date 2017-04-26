@@ -200,10 +200,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			{
 				if (enemies[i]->collider->type == COLLIDER_BUILDING)
 				{
-					App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
+					App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w/2), (c2->rect.y + c2->rect.h/2));
 				}
 				//Aqui haurem de crear una particula que sigui explosio
-				App->particles->AddParticle(App->particles->exploison_torpedo_particle, particle_type::P_EXPLOSION_TORPEDO, enemies[i]->position.x -40 + App->render->camera.x, enemies[i]->position.y - 40 + App->render->camera.y);
+				App->particles->AddParticle(App->particles->exploison_torpedo_particle, particle_type::P_EXPLOSION_TORPEDO, enemies[i]->position.x + App->render->camera.x , enemies[i]->position.y + App->render->camera.y + c1->rect.h/2);
 				enemies[i]->dead = true;
 				enemies[i]->collider->to_delete = true;
 			}

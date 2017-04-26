@@ -218,66 +218,6 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	if (MARION_bullet_p1_texture != nullptr)
-	{
-		App->textures->Unload(MARION_bullet_p1_texture);
-		MARION_bullet_p1_texture = nullptr;
-	}
-	if (MARION_bullet_p2_texture != nullptr)
-	{
-		App->textures->Unload(MARION_bullet_p2_texture);
-		MARION_bullet_p2_texture = nullptr;
-	}
-	if (ASH_bullet_p1_texture != nullptr)
-	{
-		App->textures->Unload(ASH_bullet_p1_texture);
-		ASH_bullet_p1_texture = nullptr;
-	}
-	if (ASH_bullet_p2_texture != nullptr)
-	{
-		App->textures->Unload(ASH_bullet_p2_texture);
-		ASH_bullet_p2_texture = nullptr;
-	}
-	if (upgrade_texture != nullptr)
-	{
-		App->textures->Unload(upgrade_texture);
-		upgrade_texture = nullptr;
-	}
-	if (small_shot_texture != nullptr)
-	{
-		App->textures->Unload(small_shot_texture);
-		small_shot_texture = nullptr;
-	}
-	if (explosions_texture != nullptr)
-	{
-		App->textures->Unload(explosions_texture);
-		explosions_texture = nullptr;
-	}
-	if (big_shot_texture != nullptr)
-	{
-		App->textures->Unload(big_shot_texture);
-		big_shot_texture = nullptr;
-	}
-	if (explosion_building1_texture != nullptr)
-	{
-		App->textures->Unload(explosion_building1_texture);
-		explosion_building1_texture = nullptr;
-	}
-	if (explosion_torpedo_texture != nullptr)
-	{
-		App->textures->Unload(explosion_torpedo_texture);
-		explosion_torpedo_texture = nullptr;
-	}
-	if (explosion_antiaircraft_texture != nullptr)
-	{
-		App->textures->Unload(explosion_antiaircraft_texture);
-		explosion_antiaircraft_texture = nullptr;
-	}
-	if (explosion_pot_texture != nullptr)
-	{
-		App->textures->Unload(explosion_pot_texture);
-		explosion_pot_texture = nullptr;
-	}
 	
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

@@ -92,7 +92,7 @@ bool ModuleRender::CleanUp()
 	//Destroy window
 	if(renderer != NULL)
 	{
-		SDL_DestroyRenderer(renderer);
+		//SDL_DestroyRenderer(renderer);
 	}
 
 	return true;

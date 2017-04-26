@@ -24,21 +24,4 @@ Enemy_Brown_Pot::Enemy_Brown_Pot(int x, int y) : Enemy(x, y)
 
 Enemy_Brown_Pot::~Enemy_Brown_Pot()
 {
-	if (NormalSprite != nullptr)
-	{
-		App->textures->Unload(NormalSprite);
-		NormalSprite = nullptr;
-	}
-	
-	if (RedSprite != nullptr)
-	{
-		App->textures->Unload(RedSprite);
-		RedSprite = nullptr;
-	}
-
-	if (WhiteSprite != nullptr)
-	{
-		App->textures->Unload(WhiteSprite);
-		WhiteSprite = nullptr;
-	}
 }

@@ -76,17 +76,6 @@ Enemy_Knights::Enemy_Knights(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 Enemy_Knights::~Enemy_Knights()
 {
-	if (NormalSprite != nullptr)
-	{
-		App->textures->Unload(NormalSprite);
-		NormalSprite = nullptr;
-	}
-
-	if (texture_bg_upper != nullptr)
-	{
-		App->textures->Unload(texture_bg_upper);
-		texture_bg_upper = nullptr;
-	}
 }
 
 void Enemy_Knights::Move()

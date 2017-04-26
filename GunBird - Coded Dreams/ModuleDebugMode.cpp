@@ -29,7 +29,6 @@ bool ModuleDebugMode::Start()
 bool ModuleDebugMode::CleanUp()
 {
 	LOG("Closed Debug Mode");
-	App->textures->Unload(debugging_on);
 	App->render->camera.x = 0;
 	if (App->render->moving_scene == false)
 	{

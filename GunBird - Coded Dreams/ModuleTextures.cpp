@@ -41,9 +41,6 @@ bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	for (uint i = 0; i < MAX_TEXTURES; ++i)
-		if (textures[i] != nullptr)
-			SDL_DestroyTexture(textures[i]);
 
 	IMG_Quit();
 	return true;

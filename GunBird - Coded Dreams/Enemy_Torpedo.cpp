@@ -90,21 +90,6 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 
 Enemy_Torpedo::~Enemy_Torpedo()
 {
-	if (NormalSprite != nullptr)
-	{
-		App->textures->Unload(NormalSprite);
-		NormalSprite = nullptr;
-	}
-	if (RedSprite != nullptr)
-	{
-		App->textures->Unload(RedSprite);
-		RedSprite = nullptr;
-	}
-	if (WhiteSprite != nullptr)
-	{
-		App->textures->Unload(WhiteSprite);
-		WhiteSprite = nullptr;
-	}
 }
 
 void Enemy_Torpedo::Move()

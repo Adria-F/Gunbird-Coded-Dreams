@@ -158,17 +158,6 @@ bool ModuleMarion::Start()
 bool ModuleMarion::CleanUp()
 {
 	bool ret = true;
-	if (texture_graphics != nullptr)
-	{
-		App->textures->Unload(texture_graphics);
-		texture_graphics = nullptr;
-	}
-
-	if (texture_onhit != nullptr)
-	{
-		App->textures->Unload(texture_onhit);
-		texture_onhit = nullptr;
-	}
 
 	if (Pcollider != nullptr)
 	{
