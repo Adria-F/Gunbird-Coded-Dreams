@@ -28,7 +28,7 @@ public:
 
 	void PushBack(const SDL_Rect& rect)
 	{
-		if (last_frame <= 50)
+		if (last_frame <= MAX_FRAMES)
 			frames[last_frame++] = rect;
 	}
 
