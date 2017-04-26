@@ -45,8 +45,12 @@ bool ModuleWelcomeTitle::Start()
 bool ModuleWelcomeTitle::CleanUp()
 {
 	LOG("Unloading WelcomeTitle scene");
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	if (graphics != nullptr)
+	{
+		App->textures->Unload(graphics);
+		graphics = nullptr;
+	}
+
 	App->audio->Stop();
 
 	return true;

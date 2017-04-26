@@ -44,8 +44,12 @@ bool ModuleSelection::Start()
 bool ModuleSelection::CleanUp()
 {
 	LOG("Unloading Selection scene");
-	App->textures->Unload(graphics);
-	graphics = nullptr;
+	if (graphics != nullptr)
+	{
+		App->textures->Unload(graphics);
+		graphics = nullptr;
+	}
+
 	App->audio->Stop();
 
 	return true;

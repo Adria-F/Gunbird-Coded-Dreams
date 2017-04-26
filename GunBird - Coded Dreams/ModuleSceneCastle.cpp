@@ -179,19 +179,36 @@ bool ModuleSceneCastle::Start()
 bool ModuleSceneCastle::CleanUp()
 {
 	LOG("Unloading Castle scene");
-	App->textures->Unload(texture_bg);
-	App->textures->Unload(texture_bg_upper);
-	App->textures->Unload(texture_1_river);
-	App->textures->Unload(texture_2_river);
-	App->textures->Unload(texture_bridge);
-	App->textures->Unload(texture_the_trump);
-	
-	texture_bg = nullptr;
-	texture_bg_upper = nullptr;
-	texture_1_river = nullptr;
-	texture_2_river = nullptr;
-	texture_bridge = nullptr;
-	texture_the_trump = nullptr;
+	if (texture_bg != nullptr)
+	{
+		App->textures->Unload(texture_bg);
+		texture_bg = nullptr;
+	}
+	if (texture_bg_upper != nullptr)
+	{
+		App->textures->Unload(texture_bg_upper);
+		texture_bg_upper = nullptr;
+	}
+	if (texture_1_river != nullptr)
+	{
+		App->textures->Unload(texture_1_river);
+		texture_1_river = nullptr;
+	}
+	if (texture_2_river != nullptr)
+	{
+		App->textures->Unload(texture_2_river);
+		texture_2_river = nullptr;
+	}
+	if (texture_bridge != nullptr)
+	{
+		App->textures->Unload(texture_bridge);
+		texture_bridge = nullptr;
+	}
+	if (texture_the_trump != nullptr)
+	{
+		App->textures->Unload(texture_the_trump);
+		texture_the_trump = nullptr;
+	}
 
 	App->audio->Stop();
 	App->marion->Disable();

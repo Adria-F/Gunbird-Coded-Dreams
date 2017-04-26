@@ -93,7 +93,7 @@ Enemy_Torpedo::~Enemy_Torpedo()
 	if (NormalSprite != nullptr)
 	{
 		App->textures->Unload(NormalSprite);
-		RedSprite = nullptr;
+		NormalSprite = nullptr;
 	}
 	if (RedSprite != nullptr)
 	{

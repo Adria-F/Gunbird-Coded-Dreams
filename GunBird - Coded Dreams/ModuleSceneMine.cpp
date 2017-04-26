@@ -56,11 +56,16 @@ bool ModuleSceneMine::Start()
 bool ModuleSceneMine::CleanUp()
 {
 	LOG("Unloading Mine scene");
-	App->textures->Unload(graphics_above_background_text);
-	App->textures->Unload(graphics_background_text);
-
-	graphics_above_background_text = nullptr;
-	graphics_background_text = nullptr;
+	if (graphics_above_background_text != nullptr)
+	{
+		App->textures->Unload(graphics_above_background_text);
+		graphics_above_background_text = nullptr;
+	}
+	if (graphics_background_text != nullptr)
+	{
+		App->textures->Unload(graphics_background_text);
+		graphics_background_text = nullptr;
+	}
 	
 	App->audio->Stop();
 	App->marion->Disable();

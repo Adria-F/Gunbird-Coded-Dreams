@@ -123,7 +123,7 @@ Enemy_The_Trump::~Enemy_The_Trump()
 	if (texture_bg_upper2 != nullptr)
 	{
 		App->textures->Unload(texture_bg_upper2);
-		texture_bg_upper = nullptr;
+		texture_bg_upper2 = nullptr;
 	}
 }
 
