@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePowerUp.h"
+#include "ModuleSceneCastle.h"
 #include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -170,7 +171,7 @@ update_status ModuleAsh::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && shot == false) //The key state down is to control the spree you can shoot the bullets.
+	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && shot == false && App->scene_castle->lost == false) //The key state down is to control the spree you can shoot the bullets.
 	{
 		shot = true;
 		bullet_counter = 0;

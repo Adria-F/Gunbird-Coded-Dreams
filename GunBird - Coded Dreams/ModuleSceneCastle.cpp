@@ -211,12 +211,10 @@ update_status ModuleSceneCastle::Update()
 		App->render->moving_scene = false;
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 		{
-			App->render->print_screen = true;
 			App->fade->FadeToBlack(this, App->highscores, 0.5f);
 			fading = true;
 		}
 
-		return UPDATE_CONTINUE;
 	}
 	
 	// Draw everything --------------------------------------

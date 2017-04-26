@@ -15,6 +15,7 @@
 #include "Enemy.h"
 #include "Enemy_Brown_Pot.h"
 #include "ModulePowerUp.h"
+#include "ModuleSceneCastle.h"
 
 #define SPAWN_MARGIN 75
 
@@ -61,7 +62,7 @@ update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if (enemies[i] != nullptr && App->scene_castle->lost == false)
 		{
 			if (enemies[i]->dead) enemies[i]->DeadAnim();
 			else enemies[i]->Move();

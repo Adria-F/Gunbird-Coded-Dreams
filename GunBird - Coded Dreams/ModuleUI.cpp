@@ -103,7 +103,7 @@ bool ModuleUI::CleanUp()
 
 update_status ModuleUI::Update()
 {
-	if (App->marion->IsEnabled())
+	if (App->marion->IsEnabled() && App->scene_castle->lost == false)
 	{
 		marion_score = App->marion->points;
 		if (marion_score > marion_top_score)
@@ -125,7 +125,7 @@ update_status ModuleUI::Update()
 		App->fonts->BlitText(25, 5, font_score, score_text);
 	}
 
-	if (App->ash->IsEnabled())
+	if (App->ash->IsEnabled() && App->scene_castle->lost == false)
 	{
 		ash_score = App->ash->points;
 		if (ash_score > ash_top_score)

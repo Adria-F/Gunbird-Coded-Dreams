@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "ModulePowerUp.h"
 #include "ModuleFonts.h"
+#include "ModuleSceneCastle.h"
 #include "SDL/include/SDL_timer.h"
 
 
@@ -242,7 +243,7 @@ update_status ModuleMarion::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && shot == false) //The key state down is to control the spree you can shoot the bullets.
+	if (App->input->keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && shot == false && App->scene_castle->lost == false) //The key state down is to control the spree you can shoot the bullets.
 	{
 		shot = true;
 		bullet_counter = 0;
