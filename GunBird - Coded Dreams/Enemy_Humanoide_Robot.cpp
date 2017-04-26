@@ -107,12 +107,23 @@ Enemy_Humanoide_Robot::Enemy_Humanoide_Robot(int x, int y) : Enemy(x, y)
 
 Enemy_Humanoide_Robot::~Enemy_Humanoide_Robot()
 {
-	App->textures->Unload(NormalSprite);
-	App->textures->Unload(RedSprite);
-	App->textures->Unload(WhiteSprite);
-	NormalSprite = nullptr;
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	if (NormalSprite != nullptr)
+	{
+		App->textures->Unload(NormalSprite);
+		NormalSprite = nullptr;
+	}
+
+	if (RedSprite != nullptr)
+	{
+		App->textures->Unload(RedSprite);
+		RedSprite = nullptr;
+	}
+
+	if (WhiteSprite != nullptr)
+	{
+		App->textures->Unload(WhiteSprite);
+		WhiteSprite = nullptr;
+	}
 }
 
 void Enemy_Humanoide_Robot::Move()

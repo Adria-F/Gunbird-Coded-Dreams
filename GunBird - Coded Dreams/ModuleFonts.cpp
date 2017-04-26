@@ -60,7 +60,7 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	return id;
 }
 
-void ModuleFonts::UnLoad(int font_id)
+void ModuleFonts::Unload(int font_id)
 {
 	if(font_id >= 0 && font_id < MAX_FONTS && fonts[font_id].graphic != nullptr)
 	{

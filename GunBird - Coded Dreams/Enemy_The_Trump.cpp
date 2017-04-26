@@ -107,12 +107,24 @@ Enemy_The_Trump::Enemy_The_Trump(int x, int y, int wave, int id) : Enemy(x, y, w
 
 Enemy_The_Trump::~Enemy_The_Trump()
 {
-	App->textures->Unload(NormalSprite);
-	App->textures->Unload(texture_bg_upper);
-	App->textures->Unload(texture_bg_upper2);
-	NormalSprite = nullptr;
-	texture_bg_upper = nullptr;
-	texture_bg_upper2 = nullptr;
+	if (NormalSprite != nullptr)
+	{
+		App->textures->Unload(NormalSprite);
+		NormalSprite = nullptr;
+	}
+
+	if (texture_bg_upper != nullptr)
+	{
+		App->textures->Unload(texture_bg_upper);
+		texture_bg_upper = nullptr;
+	}
+
+
+	if (texture_bg_upper2 != nullptr)
+	{
+		App->textures->Unload(texture_bg_upper2);
+		texture_bg_upper = nullptr;
+	}
 }
 
 void Enemy_The_Trump::Move()

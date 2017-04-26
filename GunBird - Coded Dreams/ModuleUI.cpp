@@ -84,18 +84,24 @@ bool ModuleUI::Start()
 
 bool ModuleUI::CleanUp()
 {
-	App->fonts->UnLoad(font_score);
-	App->fonts->UnLoad(highscores_score);
-	App->textures->Unload(marion_texture);
-	App->textures->Unload(ash_texture);
-	App->textures->Unload(game_over);
-	App->textures->Unload(char_lives);
-
-	marion_texture = nullptr;
-	ash_texture = nullptr;
-	game_over = nullptr;
-	char_lives = nullptr;
-
+	if (marion_texture != nullptr)
+	{
+		App->textures->Unload(marion_texture);
+	}
+	if (ash_texture != nullptr)
+	{
+		App->textures->Unload(ash_texture);
+	}
+	if (marion_texture != nullptr)
+	{
+		App->textures->Unload(game_over);
+	}
+	if (char_lives != nullptr)
+	{
+		App->textures->Unload(char_lives);
+	}
+	App->fonts->Unload(font_score);
+	App->fonts->Unload(highscores_score);
 	App->fonts->Disable();
 
 	return true;
