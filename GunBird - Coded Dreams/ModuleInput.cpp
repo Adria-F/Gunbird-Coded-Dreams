@@ -28,11 +28,29 @@ bool ModuleInput::Init()
 	bool ret = true;
 	SDL_Init(0);
 
-	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
+	if(SDL_InitSubSystem(SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_JOYSTICK) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
+
+	if (SDL_NumJoysticks() > 0) {
+		// Open joystick
+		joy = SDL_JoystickOpen(0);
+
+		if (joy) {
+			LOG("Opened Joystick 0\n");
+			LOG("Name: %s\n", SDL_JoystickNameForIndex(0));
+			LOG("Number of Axes: %d\n", SDL_JoystickNumAxes(joy));
+			LOG("Number of Buttons: %d\n", SDL_JoystickNumButtons(joy));
+			LOG("Number of Balls: %d\n", SDL_JoystickNumBalls(joy));
+		}
+		else {
+			LOG("Couldn't open Joystick 0\n");
+		}
+	}
+
+	
 
 	return ret;
 }
@@ -41,6 +59,8 @@ bool ModuleInput::Init()
 update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
+
+	joy_guid = SDL_JoystickGetGUID(joy);
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 

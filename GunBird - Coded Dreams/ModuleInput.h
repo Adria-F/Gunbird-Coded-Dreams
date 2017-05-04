@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "SDL\include\SDL_scancode.h"
+#include "SDL\include\SDL_joystick.h"
 
 #define MAX_KEYS 300
 
@@ -27,6 +28,8 @@ public:
 	bool CleanUp();
 
 public:
+	SDL_Joystick* joy;
+	SDL_JoystickGUID joy_guid;
 	KEY_STATE keyboard[MAX_KEYS];
 };
 
