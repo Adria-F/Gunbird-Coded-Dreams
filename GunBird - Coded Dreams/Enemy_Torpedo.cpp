@@ -78,8 +78,8 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave, int id) : Enemy(x, y, wave,
 			path.PushBack({ 0.0f, 2.3f }, 150);
 
 	}
-	lives = 12;
-	initial_hp = 12;
+	lives = 2;
+	initial_hp = 2;
 	points = 200;
 	animation = &anim;
 
