@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleCollision.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
@@ -52,6 +53,7 @@ bool ModuleSceneMine::Start()
 
 	App->player2->Enable();
 	App->player1->Enable();
+	App->collision->Enable();
 
 	return ret;
 }
@@ -74,6 +76,7 @@ bool ModuleSceneMine::CleanUp()
 	App->audio->Stop();
 	App->player1->Disable();
 	App->player2->Disable();
+	App->collision->Disable();
 
 	return true;
 }
