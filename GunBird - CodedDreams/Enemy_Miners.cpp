@@ -78,6 +78,5 @@ Enemy_Miners::~Enemy_Miners()
 
 void Enemy_Miners::Move()
 {
-		position = original_pos + path.GetCurrentPosition(&animation);
-
+	position = original_pos + path.GetCurrentPosition(&animation);
 }

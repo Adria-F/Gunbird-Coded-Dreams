@@ -18,6 +18,7 @@
     <ClInclude Include="Enemy_Flying_Machine.h" />
     <ClInclude Include="Enemy_Miners.h" />
     <ClInclude Include="Enemy_Torpedo.h" />
+    <ClInclude Include="Enemy_Trump.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -49,6 +50,7 @@
     <ClCompile Include="Enemy_Flying_Machine.cpp" />
     <ClCompile Include="Enemy_Miners.cpp" />
     <ClCompile Include="Enemy_Torpedo.cpp" />
+    <ClCompile Include="Enemy_Trump.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAsh.cpp" />
