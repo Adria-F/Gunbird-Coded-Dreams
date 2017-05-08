@@ -55,61 +55,62 @@ bool ModuleUI::CleanUp()
 
 update_status ModuleUI::Update()
 {
-	if (App->player1->IsEnabled())
+	if (App->scene_mine->lost == false)
 	{
-		player1_score = App->player1->points;
-		if (player1_score > player1_top_score)
+		if (App->player1->IsEnabled())
 		{
-			player1_top_score = player1_score;
-		}
-		sprintf_s(score_text, 10, "%7d", App->player1->points);
-		
-		if (App->player1->character == App->marion)
-			char_pos.x = 8;
-		else if(App->player1->character == App->ash)
-			char_pos.x = 26;
+			player1_score = App->player1->points;
+			if (player1_score > player1_top_score)
+			{
+				player1_top_score = player1_score;
+			}
+			sprintf_s(score_text, 10, "%7d", App->player1->points);
 
-		for (int i = 0; i < App->player1->lives; i++)
+			if (App->player1->character == App->marion)
+				char_pos.x = 8;
+			else if (App->player1->character == App->ash)
+				char_pos.x = 26;
+
+			for (int i = 0; i < App->player1->lives; i++)
+			{
+				App->render->Blit(char_lives, 5 + ((char_pos.w + 2) * i), 20, &char_pos);
+			}
+		}
+
+		if (App->scene_mine->IsEnabled())
 		{
-			App->render->Blit(char_lives, 5 + ((char_pos.w + 2) * i), 20, &char_pos);
+			App->fonts->BlitText(0, 5, font_score, "uP:");
+			App->fonts->BlitText(25, 5, font_score, score_text);
+		}
+
+		if (App->player2->IsEnabled())
+		{
+			player2_score = App->player2->points;
+			if (player2_score > player2_top_score)
+			{
+				player2_top_score = player2_score;
+			}
+			sprintf_s(score_text, 10, "%7d", App->player2->points);
+
+			if (App->player2->character == App->marion)
+				char_pos.x = 8;
+			else if (App->player2->character == App->ash)
+				char_pos.x = 26;
+
+			for (int i = 0; i < App->player2->lives; i++)
+			{
+				App->render->Blit(char_lives, 204 - ((char_pos.w + 2) * i), 20, &char_pos);
+			}
+		}
+
+		if (App->scene_mine->IsEnabled())
+		{
+			App->fonts->BlitText(130, 5, font_score, "dP:");
+			App->fonts->BlitText(155, 5, font_score, score_text);
 		}
 	}
-	
-	if (App->scene_mine->IsEnabled()) // && scene_mine->lost = false
-	{
-		App->fonts->BlitText(0, 5, font_score, "uP:");
-		App->fonts->BlitText(25, 5, font_score, score_text);
-	}
-
-	if (App->player2->IsEnabled())
-	{
-		player2_score = App->player2->points;
-		if (player2_score > player2_top_score)
-		{
-			player2_top_score = player2_score;
-		}
-		sprintf_s(score_text, 10, "%7d", App->player2->points);
-		
-		if (App->player2->character == App->marion)
-			char_pos.x = 8;
-		else if (App->player2->character == App->ash)
-			char_pos.x = 26;
-
-		for (int i = 0; i < App->player2->lives; i++)
-		{
-			App->render->Blit(char_lives, 204 - ((char_pos.w + 2) * i), 20, &char_pos);
-		}
-	}
-
-	/*if (App->scene_mine->lost)
-	{
+	else
 		App->render->Blit(game_over, 0, 0, &game_over_bckg);
-	}*/
-	if (App->scene_mine->IsEnabled()) //else if
-	{
-		App->fonts->BlitText(130, 5, font_score, "dP:");
-		App->fonts->BlitText(155, 5, font_score, score_text);
-	}
 
 	if (App->highscores->IsEnabled())
 	{
