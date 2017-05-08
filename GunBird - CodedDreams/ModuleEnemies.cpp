@@ -170,7 +170,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Flying_Machine(info.x, info.y);
 			break;
 		case ENEMY_TYPES::DRONE:
-			enemies[i] = new Enemy_Drone(info.x, info.y);
+			enemies[i] = new Enemy_Drone(info.x, info.y, info.wave, info.id);
 		}
 	}
 }

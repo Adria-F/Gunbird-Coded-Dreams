@@ -48,9 +48,24 @@ bool ModuleSceneMine::Start()
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
 	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
-	App->enemies->AddEnemy(DRONE, 0, 3220);
-	App->enemies->AddEnemy(DRONE, 50, 3220);
-	App->enemies->AddEnemy(DRONE, 25, 3250);
+	//Drones wave1
+	App->enemies->AddEnemy(DRONE, -50, 3220, 1, 1);
+	App->enemies->AddEnemy(DRONE, 0, 3220, 1, 1);
+	App->enemies->AddEnemy(DRONE, -25, 3250, 1, 1);
+	//Drones wave2
+	App->enemies->AddEnemy(DRONE, 175, 3220, 2, 1);
+	App->enemies->AddEnemy(DRONE, 125, 3220, 2, 1);
+	App->enemies->AddEnemy(DRONE, 150, 3250, 2, 1);
+	//Drones wave3
+	App->enemies->AddEnemy(DRONE, 250, 3220, 3, 1);
+	App->enemies->AddEnemy(DRONE, 200, 3220, 3, 1);
+	App->enemies->AddEnemy(DRONE, 225, 3250, 3, 1);
+	//Drones wave4
+	App->enemies->AddEnemy(DRONE, 75, 3220, 4, 1);
+	App->enemies->AddEnemy(DRONE, 25, 3220, 4, 1);
+	App->enemies->AddEnemy(DRONE, 50, 3250, 4, 1);
+
+	//My name is Jeff
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
 	App->enemies->AddEnemy(MINER, 125, 3300, 3);

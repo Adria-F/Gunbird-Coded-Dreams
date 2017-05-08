@@ -4,25 +4,23 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 
-Enemy_Drone::Enemy_Drone(int x, int y) : Enemy(x, y)
+Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/drone.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 
-	//Set animation steps, speed and loop
-
-	//Low level
-	idle.PushBack({ 12, 37, 38, 38 });
-	idle.PushBack({ 58, 37, 38, 38 });
-	idle.PushBack({ 106, 39, 38, 38 });
-	idle.PushBack({ 163, 39, 38, 38 });
-	idle.PushBack({ 55, 90, 38, 38 });
-	idle.PushBack({ 107, 90, 38, 38 });
-	idle.PushBack({ 163, 90, 38, 38 });
-	idle.speed = 0.15f;
-	idle.loop = true;
+	//Wave1
+	dronewave.PushBack({ 12, 37, 38, 38 });
+	dronewave.PushBack({ 59, 39, 38, 38 });
+	dronewave.PushBack({ 107, 40, 38, 38 });
+	dronewave.PushBack({ 164, 39, 38, 38 });
+	dronewave.PushBack({ 56, 90, 38, 38 });
+	dronewave.PushBack({ 108, 91, 38, 38 });
+	dronewave.PushBack({ 164, 92, 38, 38 });
+	dronewave.speed = 1.0f;
+	dronewave.loop = true;
 
 	//Death
 	dead.PushBack({ 16, 132, 32, 58 });
@@ -30,17 +28,42 @@ Enemy_Drone::Enemy_Drone(int x, int y) : Enemy(x, y)
 	dead.speed = 0.1f;
 	dead.loop = true;
 
-	//Set path
-	path.PushBack({ 1.0f, 0.0f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	//Wave1 Path
 
-													 //Set lives, initial_hp, points adn extra_anim
-	lives = 10;
+	if (wave == 1)
+	{
+		path.PushBack({ 1.0f, 0.0f }, 60, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &dronewave);
+	}
+	//Wave2 Path
+	else if (wave == 2)
+	{
+		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
+	}
+	//Wave3 Path
+	else if (wave==3)
+	{
+		path.PushBack({ -1.0f, 0.0f }, 60, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &dronewave);
+	}
+	else if (wave == 4)
+	{
+		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
+	}
+	//Set lives, initial_hp, points adn extra_anim
+	lives = 5;
 	initial_hp = lives;
 	points = 500;
 	extra_anim = false;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 38, 38 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 35, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Drone::~Enemy_Drone()

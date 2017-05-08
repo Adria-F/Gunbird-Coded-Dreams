@@ -8,7 +8,7 @@ class Enemy_Drone : public Enemy
 {
 public:
 
-	Enemy_Drone(int x, int y);
+	Enemy_Drone(int x, int y, int wave, int id);
 	~Enemy_Drone();
 
 	void Move();
@@ -18,7 +18,7 @@ public:
 public:
 
 	Path path;
-	Animation idle;
+	Animation dronewave;
 	Animation dead;
 
 };
