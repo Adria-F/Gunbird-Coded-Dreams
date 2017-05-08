@@ -18,7 +18,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	idle_low.PushBack({ 168, 59, 49, 45 });
 	idle_low.PushBack({ 273, 57, 49, 45 });
 	idle_low.PushBack({ 383, 60, 49, 45 });
-	idle_low.speed = 0.1f;
+	idle_low.speed = 0.15f;
 	idle_low.loop = true;
 
 	//Death
@@ -28,7 +28,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	dead.loop = true;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.75f }, 100, &idle_low); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ -0.5f, -0.3f }, 100, &idle_low); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 90;

@@ -45,9 +45,14 @@ bool ModuleSceneMine::Start()
 
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
-	App->enemies->AddEnemy(FLYING_MACHINE, 125, 3200);
-	App->enemies->AddEnemy(MINER, 75, 3300);
+	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
+	App->enemies->AddEnemy(MINER, 50, 3300, 1);
+	App->enemies->AddEnemy(MINER, 80, 3280, 2);
+	App->enemies->AddEnemy(MINER, 125, 3300, 3);
+	App->enemies->AddEnemy(MINER, 140, 3380, 4);
+	App->enemies->AddEnemy(MINER, 170, 3380, 4);
 
+	
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
@@ -90,7 +95,7 @@ update_status ModuleSceneMine::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 
-	overlay_position += 0.2;
+	overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)

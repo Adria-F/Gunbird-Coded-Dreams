@@ -125,8 +125,8 @@ update_status ModuleCollision::Update()
 
 void ModuleCollision::DebugDraw()
 {
-	/*if(App->debug->debugging == false)
-		return;*/
+	if(App->render->debugging == false)
+		return;
 
 	Uint8 alpha = 80;
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)

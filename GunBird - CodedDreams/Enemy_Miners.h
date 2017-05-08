@@ -18,6 +18,7 @@ public:
 	Path path;
 	Animation left;
 	Animation right;
+	Animation look;
 
 };
 
