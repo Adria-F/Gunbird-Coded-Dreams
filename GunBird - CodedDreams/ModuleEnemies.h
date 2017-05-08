@@ -12,7 +12,8 @@ enum ENEMY_TYPES
 	THE_TRUMP,
 	BALLON,
 	FLYING_MACHINE,
-	MINER
+	MINER,
+	TRUMP
 };
 
 class Enemy;

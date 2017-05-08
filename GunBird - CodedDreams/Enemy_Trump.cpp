@@ -12,31 +12,45 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 
-	//confused pilot
-	//down
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 20, 15, 25 });
-	anim_pilot_confused.PushBack({ 0, 40, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 60, 15, 25 });
 
+	
+	//confused pilot
+	//right
 	anim_pilot_confused.PushBack({ 0, 145, 16, 24 });
 	anim_pilot_confused.PushBack({ 21, 145, 13, 25 });
 	anim_pilot_confused.PushBack({ 39, 145, 15, 25 });
 	anim_pilot_confused.PushBack({ 58, 145, 12, 24 });
 
-	anim_pilot_confused.PushBack({ 0, 0, 12, 24 });
+	//down
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 20, 0, 15, 25 });
+	anim_pilot_confused.PushBack({ 40, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 60, 0, 15, 25 });
+
+	//left
+	anim_pilot_confused.PushBack({ 0, 175, 12, 24 });
+	anim_pilot_confused.PushBack({ 17, 175, 15, 24 });
+	anim_pilot_confused.PushBack({ 36, 175, 15, 24 });
+	anim_pilot_confused.PushBack({ 54, 175, 15, 24 });
+
+	//down
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 20, 0, 15, 25 });
+	anim_pilot_confused.PushBack({ 40, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 60, 0, 15, 25 });
 
 	anim_pilot_confused.speed = 0.2f;
 	anim_pilot_confused.loop = true;
 
 	//left pilot
-	anim_pilot_left.PushBack({ 58, 83, 11, 23 });
+	anim_pilot_left.PushBack({ 0, 86, 12, 23 });
+	anim_pilot_left.PushBack({ 17, 86, 11, 24 });
+	anim_pilot_left.PushBack({ 33, 86, 12, 23 });
+	anim_pilot_left.PushBack({ 50, 86, 11, 24 });
 	anim_pilot_left.speed = 0.2f;
 	anim_pilot_left.loop = true;
-
+	
+	
 	//right pilot
 	anim_pilot_right.PushBack({ 0, 58, 12, 23 });
 	anim_pilot_right.PushBack({ 17, 58, 11, 24 });
@@ -58,17 +72,16 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 
 	//up pilot
 	anim_pilot_up.PushBack({ 0, 29, 14, 24 });
-	anim_pilot_up.PushBack({ 19, 29, 15, 25 }); 
-	anim_pilot_up.PushBack({ 39, 29, 14, 24 }); 
+	anim_pilot_up.PushBack({ 19, 29, 15, 25 });
+	anim_pilot_up.PushBack({ 39, 29, 14, 24 });
 	anim_pilot_up.PushBack({ 58, 29, 15, 25 });
 	anim_pilot_up.speed = 0.2f;
 	anim_pilot_up.loop = true;
-
+	
+	/*---------------------------------------------------*/
 	//confused boy
 	//right boy
 	//left boy
-
-
 	//idle boy
 	anim_boy_idle.PushBack({ 103, 109, 12, 23 });
 	anim_boy_idle.PushBack({ 85, 110, 12, 23 });
@@ -85,6 +98,8 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	anim_boy_up.PushBack({ 124, 28, 14, 22 });
 	anim_boy_up.PushBack({ 144, 28, 13, 21 });
 	anim_boy_up.speed = 0.2f;
+
+	/*---------------------------------------------------*/
 
 	//idle girl
 	anim_girl_idle.PushBack({ 189, 165, 13 ,23 });
@@ -108,9 +123,16 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 
 
 	//Set path
-	if (wave == 1)
+	//pilot
+	if (wave == 1 && id == 1)
 	{
-		path.PushBack({ -0.40f, 0.09f }, 50, &anim);
+		path.PushBack({ 0.0f, 0.09f }, 400, &anim_pilot_confused);
+		path.PushBack({ -0.40f, 0.09f }, 500, &anim_pilot_left);
+
+	}
+	if (wave == 2 && id == 1)
+	{
+
 	}
 
 	//set live;

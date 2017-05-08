@@ -57,6 +57,8 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TORPEDO, -45, 2149, 1);
 	App->enemies->AddEnemy(TORPEDO, -45, 2149, 1);
 	App->enemies->AddEnemy(TORPEDO, -45, 2149, 1);
+	App->enemies->AddEnemy(TRUMP, 10, 2850, 1, 1);
+
 
 	
 	LOG("Loading music");
