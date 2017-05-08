@@ -14,6 +14,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -34,6 +35,7 @@ Application::Application()
 	modules[i++] = ash = new ModuleAsh();
 
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = ui = new ModuleUI();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	//...
 	//Collision
