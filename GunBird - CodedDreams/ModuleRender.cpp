@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
+#include "ModuleInput.h"
+#include "ModuleSceneMine.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -51,15 +53,16 @@ update_status ModuleRender::Update()
 	{
 		camera.y += cam_speed;
 	}
-	/*if (App->debug->debugging)
+	if (debugging)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_KP_8])
 		{
+			App->scene_mine->overlay_position += 0.9f;
 			camera.y += 3;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_KP_2])
 		{
-			App->scene_mine->above_background_rect.y += 4;
+			App->scene_mine->overlay_position -= 0.9f;
 			camera.y -= 3;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_KP_6])
@@ -70,7 +73,7 @@ update_status ModuleRender::Update()
 		{
 			camera.x += 3;
 		}
-	}*/
+	}
 	
 	return update_status::UPDATE_CONTINUE;
 }

@@ -25,6 +25,7 @@ public:
 	SDL_Rect background_rect;
 	SDL_Rect above_background_rect;
 	float overlay_position;
+	float overlay_speed = 0.09f;
 
 	bool fading;
 };

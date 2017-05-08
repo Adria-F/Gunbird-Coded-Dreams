@@ -88,7 +88,7 @@ update_status ModuleSceneMine::Update()
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 
-	overlay_position += 0.2;
+	overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
