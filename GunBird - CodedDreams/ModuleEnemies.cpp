@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleSceneMine.h"
 #include "Enemy.h"
 //Include all enemies
 #include "Enemy_Balloon.h"
@@ -54,7 +55,7 @@ update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if (enemies[i] != nullptr && App->scene_mine->lost == false)
 		{
 			if (enemies[i]->dead) enemies[i]->DeadAnim();
 			else enemies[i]->Move();
