@@ -44,7 +44,8 @@ bool ModuleSceneMine::Start()
 
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
-	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
+	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3210);
+
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
