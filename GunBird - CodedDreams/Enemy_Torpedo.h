@@ -12,16 +12,12 @@ public:
 	~Enemy_Torpedo();
 
 	void Move();
-	void ExtraAnim(SDL_Texture* texture);
-	void DeadAnim();
-
+	
 public:
 
 	Path path;
 	Animation idle;
-	Animation dead;
-
+	
 };
 
-#endif // !__BALLOON_H__
-#pragma once
+#endif // !__TORPEDO_H__

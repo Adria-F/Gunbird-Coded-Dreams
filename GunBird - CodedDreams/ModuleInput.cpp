@@ -6,11 +6,35 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneMine.h"
+#include <iostream>
 
 ModuleInput::ModuleInput() : Module()
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
+
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
+	if (SDL_NumJoysticks() < 1)
+	{
+		LOG("Warning: No joysticks connected!\n");
+	}
+	else
+	{
+		for (int i = 0; i < SDL_NumJoysticks(); i++)
+		{
+			if (SDL_IsGameController(i))
+			{
+				controller = SDL_GameControllerOpen(i);
+				std::cout << SDL_GameControllerMapping(controller) << std::endl;
+				break;
+			}
+			else
+			{
+				LOG("Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError());
+			}
+		}
+
+	}
 }
 
 // Destructor
@@ -24,8 +48,8 @@ bool ModuleInput::Init()
 	LOG("Init SDL input event system");
 	bool ret = true;
 	SDL_Init(0);
-
-	if(SDL_InitSubSystem(SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_JOYSTICK) < 0)
+	SDL_Init(SDL_INIT_GAMECONTROLLER); //?
+	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
@@ -64,24 +88,24 @@ update_status ModuleInput::PreUpdate()
 	if (App->scene_mine->lost == false)
 	{
 		//Player 1
-		if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP) == 1)
 			App->player1->going_up = true;
 		else if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
 			App->player1->going_up = false;
-		if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) == 1)
 			App->player1->going_left = true;
 		else if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
 			App->player1->going_left = false;
-		if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) == 1)
 			App->player1->going_down = true;
 		else if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
 			App->player1->going_down = false;
-		if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) == 1)
 			App->player1->going_right = true;
 		else if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
 			App->player1->going_right = false;
 		//Shot if key pressed
-		if (keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && App->player1->shot == false)
+		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A) == 1) && App->player1->shot == false)
 		{
 			App->player1->shot = true;
 			App->player1->bullet_counter = 0;

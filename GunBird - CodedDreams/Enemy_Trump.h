@@ -1,5 +1,5 @@
-#ifndef __ENEMY_MINERS_H__
-#define __ENEMY_MINERS_H__
+#ifndef __ENEMY_TRUMP_H__
+#define __ENEMY_TRUMP_H__
 
 #include "Enemy.h"
 #include "Path.h"
