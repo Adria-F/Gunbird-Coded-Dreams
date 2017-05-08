@@ -34,6 +34,7 @@ public:
 	Animation right;
 	Animation onhit;
 	Animation death;
+	Animation highscore_anim;
 
 	char* shot_path;
 	particle_type shot_lvl1;

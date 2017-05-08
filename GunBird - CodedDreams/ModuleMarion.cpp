@@ -41,6 +41,41 @@ ModuleMarion::ModuleMarion()
 	left.PushBack({ 66, 0, 23, 32 });
 	left.PushBack({ 99, 0, 23, 32 });
 	left.speed = 0.1f;
+
+	//highscores animation
+	highscore_anim.PushBack({ 5, 64, 21, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 37, 64, 21, 32 });
+	highscore_anim.PushBack({ 68, 64, 21, 32 });
+	highscore_anim.PushBack({ 101, 64, 21, 32 });
+	highscore_anim.PushBack({ 5, 129, 23, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 37, 129, 23, 32 });
+	highscore_anim.PushBack({ 68, 129, 23, 32 });
+	highscore_anim.PushBack({ 101, 129, 23, 32 });
+	highscore_anim.PushBack({ 5, 97, 23, 32 });
+	highscore_anim.PushBack({ 37, 97, 23, 32 });
+	highscore_anim.PushBack({ 68, 97, 23, 32 });
+	highscore_anim.PushBack({ 101, 97, 23, 32 });
+	highscore_anim.PushBack({ 5, 129, 23, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 37, 129, 23, 32 });
+	highscore_anim.PushBack({ 68, 129, 23, 32 });
+	highscore_anim.PushBack({ 101, 129, 23, 32 });
+	highscore_anim.PushBack({ 5, 64, 21, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 37, 64, 21, 32 });
+	highscore_anim.PushBack({ 68, 64, 21, 32 });
+	highscore_anim.PushBack({ 101, 64, 21, 32 });
+	highscore_anim.PushBack({ 3, 33, 23, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 35, 33, 23, 32 });
+	highscore_anim.PushBack({ 66, 33, 23, 32 });
+	highscore_anim.PushBack({ 99, 33, 23, 32 });
+	highscore_anim.PushBack({ 3, 0, 23, 32 });
+	highscore_anim.PushBack({ 35, 0, 23, 32 });
+	highscore_anim.PushBack({ 66, 0, 23, 32 });
+	highscore_anim.PushBack({ 99, 0, 23, 32 });
+	highscore_anim.PushBack({ 3, 33, 23, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 35, 33, 23, 32 });
+	highscore_anim.PushBack({ 66, 33, 23, 32 });
+	highscore_anim.PushBack({ 99, 33, 23, 32 });
+	highscore_anim.speed = 0.1f;
 }
 
 ModuleMarion::~ModuleMarion()

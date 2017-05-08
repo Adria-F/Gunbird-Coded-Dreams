@@ -17,6 +17,7 @@
     <ClInclude Include="Enemy_Balloon.h" />
     <ClInclude Include="Enemy_Flying_Machine.h" />
     <ClInclude Include="Enemy_Miners.h" />
+    <ClInclude Include="Enemy_Torpedo.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
+    <ClInclude Include="ModuleHighscores.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleCharacter.h" />
     <ClInclude Include="ModuleMarion.h" />
@@ -34,6 +36,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneMine.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleUI.h" />
     <ClInclude Include="ModuleWelcomeTitle.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -45,6 +48,7 @@
     <ClCompile Include="Enemy_Balloon.cpp" />
     <ClCompile Include="Enemy_Flying_Machine.cpp" />
     <ClCompile Include="Enemy_Miners.cpp" />
+    <ClCompile Include="Enemy_Torpedo.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAsh.cpp" />
@@ -53,6 +57,7 @@
     <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
+    <ClCompile Include="ModuleHighscores.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleMarion.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
@@ -60,6 +65,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneMine.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleUI.cpp" />
     <ClCompile Include="ModuleWelcomeTitle.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

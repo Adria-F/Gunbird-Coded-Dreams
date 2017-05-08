@@ -27,6 +27,17 @@ ModuleAsh::ModuleAsh()
 	left.PushBack({ 70, 55, 14, 32 });
 	left.PushBack({ 94, 55, 14, 32 });
 	left.speed = 0.3f;
+	
+	//highscores animation
+	highscore_anim.PushBack({ 14, 13, 19, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 43, 13, 19, 32 });
+	highscore_anim.PushBack({ 70, 55, 14, 32 });
+	highscore_anim.PushBack({ 94, 55, 14, 32 });
+	highscore_anim.PushBack({ 14, 13, 19, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 43, 13, 19, 32 });
+	highscore_anim.PushBack({ 15, 97, 14, 32 });//x - y - w - h
+	highscore_anim.PushBack({ 39, 97, 14, 32 });
+	highscore_anim.speed = 0.1f;
 
 	/*//onhit flying enemies (Torpedo)
 	onhit.PushBack({ 52, 43, 31, 31 });

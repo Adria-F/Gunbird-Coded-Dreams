@@ -10,6 +10,8 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollision.h"
+#include "ModuleHighscores.h"
+#include "ModuleUI.h"
 
 // Reference at updated to a youtube video from gunbird
 // https://youtu.be/HDC6PZxGwL4?t=3m17s
@@ -58,7 +60,9 @@ bool ModuleSceneMine::Start()
 	App->audio->Play(App->audio->MUSIC);
 
 	fading = false;
+	lost = false;
 
+	App->ui->Enable();
 	App->player2->Enable();
 	App->player1->Enable();
 	App->collision->Enable();
@@ -82,6 +86,7 @@ bool ModuleSceneMine::CleanUp()
 	}
 	
 	App->audio->Stop();
+	App->ui->Disable();
 	App->player1->Disable();
 	App->player2->Disable();
 	App->collision->Disable();
@@ -92,15 +97,29 @@ bool ModuleSceneMine::CleanUp()
 // Update: draw background
 update_status ModuleSceneMine::Update()
 {
+	if (lost)
+	{
+		App->render->moving_scene = false;
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
+		{
+			App->fade->FadeToBlack(this, App->highscores, 0.5f);
+			fading = true;
+		}
+	}
+	
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
-
-	overlay_position += overlay_speed;
+	if (App->render->moving_scene)
+		overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);
 	
+	//Fade to black
+	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
+		lost = true;
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->welcometitle);
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
 	}
 
