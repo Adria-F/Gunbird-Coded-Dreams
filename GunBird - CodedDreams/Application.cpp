@@ -14,6 +14,8 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
+#include "ModuleHighscores.h"
 
 Application::Application()
 {
@@ -26,6 +28,7 @@ Application::Application()
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = welcometitle = new ModuleWelcomeTitle();
 	modules[i++] = scene_mine = new ModuleSceneMine();
+	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player1 = new Player();
@@ -34,6 +37,7 @@ Application::Application()
 	modules[i++] = ash = new ModuleAsh();
 
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = ui = new ModuleUI();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	//...
 	//Collision
@@ -54,6 +58,7 @@ bool Application::Init()
 	bool ret = true;
 
 	scene_mine->Disable();
+	highscores->Disable();
 	player1->Disable();
 	marion->Disable();
 	ash->Disable();

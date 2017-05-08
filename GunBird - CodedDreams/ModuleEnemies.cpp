@@ -4,10 +4,12 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleSceneMine.h"
 #include "Enemy.h"
 //Include all enemies
 #include "Enemy_Balloon.h"
 #include "Enemy_Flying_Machine.h"
+#include "Enemy_Miners.h"
 
 #define SPAWN_MARGIN 75
 
@@ -54,7 +56,7 @@ update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if (enemies[i] != nullptr && App->scene_mine->lost == false)
 		{
 			if (enemies[i]->dead) enemies[i]->DeadAnim();
 			else enemies[i]->Move();
@@ -154,8 +156,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::TORPEDO:
 			//enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave, info.id);
 			break;
-		case ENEMY_TYPES::WORKERS:
-			//enemies[i] = new Enemy_Knights(info.x, info.y, info.wave, info.id);
+		case ENEMY_TYPES::MINER:
+			enemies[i] = new Enemy_Miners(info.x, info.y, info.wave, info.id);
 			break;
 		case ENEMY_TYPES::THE_TRUMP:
 			//enemies[i] = new Enemy_The_Trump(info.x, info.y, info.wave, info.id);

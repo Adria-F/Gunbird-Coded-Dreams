@@ -8,18 +8,17 @@ class Enemy_Miners : public Enemy
 {
 public:
 
-	Enemy_Miners(int x, int y);
+	Enemy_Miners(int x, int y, int wave, int id);
 	~Enemy_Miners();
 
 	void Move();
-	void ExtraAnim(SDL_Texture* texture);
-	void DeadAnim();
 
 public:
 
 	Path path;
-	Animation anim;
-	Animation dead;
+	Animation left;
+	Animation right;
+	Animation look;
 
 };
 

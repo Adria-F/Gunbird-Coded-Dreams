@@ -30,7 +30,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	//Set path
 	path.PushBack({ -0.5f, -0.3f }, 100, &idle_low); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
-											   //Set lives, initial_hp, points adn extra_anim
+	//Set lives, initial_hp, points adn extra_anim
 	lives = 90;
 	initial_hp = lives;
 	points = 5000;
