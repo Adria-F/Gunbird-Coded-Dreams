@@ -10,6 +10,8 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollision.h"
+#include "ModuleHighscores.h"
+#include "ModuleUI.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
@@ -52,6 +54,7 @@ bool ModuleSceneMine::Start()
 
 	fading = false;
 
+	App->ui->Enable();
 	App->player2->Enable();
 	App->player1->Enable();
 	App->collision->Enable();
@@ -75,6 +78,7 @@ bool ModuleSceneMine::CleanUp()
 	}
 	
 	App->audio->Stop();
+	App->ui->Disable();
 	App->player1->Disable();
 	App->player2->Disable();
 	App->collision->Disable();
@@ -93,7 +97,7 @@ update_status ModuleSceneMine::Update()
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->welcometitle);
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
 	}
 

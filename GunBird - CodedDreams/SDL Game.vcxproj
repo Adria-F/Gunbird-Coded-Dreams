@@ -26,6 +26,7 @@
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFonts.h" />
+    <ClInclude Include="ModuleHighscores.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleCharacter.h" />
     <ClInclude Include="ModuleMarion.h" />
@@ -54,6 +55,7 @@
     <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
+    <ClCompile Include="ModuleHighscores.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleMarion.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />

@@ -101,6 +101,9 @@
     <ClInclude Include="ModuleUI.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleHighscores.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Globals.cpp">
@@ -170,6 +173,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModuleUI.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleHighscores.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

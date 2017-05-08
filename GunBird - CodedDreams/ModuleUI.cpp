@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleSceneMine.h"
+#include "ModuleHighscores.h"
 #include "ModuleMarion.h"
 #include "ModuleAsh.h"
 #include <stdio.h>
@@ -30,6 +31,8 @@ bool ModuleUI::Start()
 	font_score = App->fonts->Load("assets/UI/ui_fonts.png", "udP:0123456789 ", 3);
 	highscores_score = App->fonts->Load("assets/UI/highscores_fonts.png", "01234.56789 ", 2);
 	
+	marion_texture = App->textures->Load("assets/characters/marion.png");
+	ash_texture = App->textures->Load("assets/characters/ash.png");
 	game_over = App->textures->Load("assets/UI/game over.png");
 	char_lives = App->textures->Load("assets/UI/ash_marion_ui.png");
 
@@ -40,6 +43,9 @@ bool ModuleUI::Start()
 
 bool ModuleUI::CleanUp()
 {
+	App->textures->Unload(game_over);
+	App->textures->Unload(char_lives);
+	
 	App->fonts->Unload(font_score);
 	App->fonts->Unload(highscores_score);
 	App->fonts->Disable();
@@ -105,28 +111,27 @@ update_status ModuleUI::Update()
 		App->fonts->BlitText(155, 5, font_score, score_text);
 	}
 
-	/*if (App->highscores->IsEnabled())
+	if (App->highscores->IsEnabled())
 	{
-		if (marion_score >= ash_score)
+		if (player1_score >= player2_score)
 		{
-			App->render->Blit(marion_texture, 12, 46, &(highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", marion_top_score);
+			App->render->Blit(marion_texture, 12, 46, &(App->player1->character->highscore_anim.GetCurrentFrame()));
+			sprintf_s(score_text, 10, "%7d", player1_top_score);
 			App->fonts->BlitText(109, 58, highscores_score, score_text);
-			App->render->Blit(ash_texture, 194, 70, &(highscores_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", ash_top_score);
+			App->render->Blit(ash_texture, 194, 70, &(App->player2->character->highscore_anim.GetCurrentFrame()));
+			sprintf_s(score_text, 10, "%7d", player2_top_score);
 			App->fonts->BlitText(109, 83, highscores_score, score_text);
 		}
 		else
 		{
-			App->render->Blit(marion_texture, 194, 70, &(highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", marion_score);
+			App->render->Blit(marion_texture, 194, 70, &(App->player1->character->highscore_anim.GetCurrentFrame()));
+			sprintf_s(score_text, 10, "%7d", player1_score);
 			App->fonts->BlitText(109, 83, highscores_score, score_text);
-			App->render->Blit(ash_texture, 12, 46, &(highscores_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", ash_score);
+			App->render->Blit(ash_texture, 12, 46, &(App->player2->character->highscore_anim.GetCurrentFrame()));
+			sprintf_s(score_text, 10, "%7d", player2_score);
 			App->fonts->BlitText(109, 58, highscores_score, score_text);
-
 		}
-	}*/
+	}
 
 	return UPDATE_CONTINUE;
 }
