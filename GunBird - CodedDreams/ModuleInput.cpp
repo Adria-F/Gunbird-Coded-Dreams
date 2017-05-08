@@ -4,6 +4,7 @@
 #include "SDL/include/SDL.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleCollision.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -119,6 +120,14 @@ update_status ModuleInput::PreUpdate()
 			App->render->debugging = false;
 		else
 			App->render->debugging = true;
+	}
+
+	if (keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		if (App->render->god_mode)
+			App->render->god_mode = false;
+		else
+			App->render->god_mode = true;
 	}
 
 	return update_status::UPDATE_CONTINUE;

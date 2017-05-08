@@ -48,6 +48,12 @@ update_status Player::Update()
 		
 		character->current_animation = &character->idle;
 		
+		//Update god mode
+		if (App->render->god_mode)
+			Pcollider->type = COLLIDER_NONE;
+		else
+			Pcollider->type = COLLIDER_PLAYER;
+
 		if (going_up && position.y > 32)
 		{
 			position.y -= CHARACTER_SPEED;
