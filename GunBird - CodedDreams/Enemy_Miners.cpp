@@ -4,7 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 
-Enemy_Miners::Enemy_Miners(int x, int y) : Enemy(x, y)
+Enemy_Miners::Enemy_Miners(int x, int y, int wave, int id) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/Miners.png");
@@ -14,26 +14,30 @@ Enemy_Miners::Enemy_Miners(int x, int y) : Enemy(x, y)
 	//Set animation steps, speed and loop
 
 	//left
-	anim.PushBack({ 57, 58, 49, 45 });
-	anim.PushBack({ 168, 59, 49, 45 });
-	anim.PushBack({ 273, 57, 49, 45 });
-	anim.PushBack({ 383, 60, 49, 45 });
-	anim.speed = 0.1f;
-	anim.loop = true;
+	left.PushBack({ 58, 83, 11, 23 });//standing still
+	left.PushBack({ 58, 8, 11, 22 });//1
+	left.PushBack({ 83, 8, 11, 23 });//2
+	left.PushBack({ 107, 8, 11, 23 });//3
 
-	//Death
-	dead.PushBack({ 16, 132, 32, 58 });
-	dead.PushBack({ 80, 132, 32, 58 });
-	dead.speed = 0.1f;
-	dead.loop = true;
+
+	left.speed = 0.2f;
+	left.loop = true;
+
+	/*
+	right.PushBack({ 57, 58, 49, 45 });
+	right.PushBack({ 168, 59, 49, 45 });
+	right.PushBack({ 273, 57, 49, 45 });
+	right.PushBack({ 383, 60, 49, 45 });
+	right.PushBack({ 107, 8, 12, 22 });//staying still
+	right.speed = 0.1f;
+	right.loop = true;
+	*/
+	//right
 
 	//Set path
-	path.PushBack({ 0.0f, 0.75f }, 100, &anim); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-
-													//Set lives, initial_hp, points adn extra_anim
+	path.PushBack({ -0.25f, 0.0f }, 100, &left); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	//set live;
 	lives = 1;
-	initial_hp = lives;
-	points = 5000;
 	extra_anim = false;
 
 }
@@ -46,15 +50,5 @@ Enemy_Miners::~Enemy_Miners()
 void Enemy_Miners::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-}
-
-void Enemy_Miners::ExtraAnim(SDL_Texture* texture)
-{
-	//Si l'enemic no te extra animation no cal posar aquesta funció ni aqui ni al header
-}
-
-void Enemy_Miners::DeadAnim()
-{
-	animation = &dead;
-	position.y += 0.2f; //Perque es mogui a la mateixa velocitat que l'overlay
+	position.y = position.y -0.2;
 }

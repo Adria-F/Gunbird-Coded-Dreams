@@ -11,7 +11,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleCollision.h"
 
-// Reference at https://youtu.be/6OlenbCC4WI?t=382
+// Reference at updated to a youtube video from gunbird
+// https://youtu.be/HDC6PZxGwL4?t=3m17s
 
 ModuleSceneMine::ModuleSceneMine()
 {
@@ -45,6 +46,7 @@ bool ModuleSceneMine::Start()
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
 	App->enemies->AddEnemy(FLYING_MACHINE, 125, 3200);
+	App->enemies->AddEnemy(MINER, 75, 3300);
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
