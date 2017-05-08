@@ -13,17 +13,18 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//confused pilot
+	//down
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 25 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 0, 20, 15, 25 });
+	anim_pilot_confused.PushBack({ 0, 40, 15, 24 });
+	anim_pilot_confused.PushBack({ 0, 60, 15, 25 });
 
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 0, 145, 16, 24 });
+	anim_pilot_confused.PushBack({ 21, 145, 13, 25 });
+	anim_pilot_confused.PushBack({ 39, 145, 15, 25 });
+	anim_pilot_confused.PushBack({ 58, 145, 12, 24 });
 
-	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
+	anim_pilot_confused.PushBack({ 0, 0, 12, 24 });
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
 	anim_pilot_confused.PushBack({ 0, 0, 15, 24 });
