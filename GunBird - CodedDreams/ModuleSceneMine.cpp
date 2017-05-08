@@ -47,7 +47,7 @@ bool ModuleSceneMine::Start()
 
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
-	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
+	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3210);
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
 	App->enemies->AddEnemy(MINER, 125, 3300, 3);
