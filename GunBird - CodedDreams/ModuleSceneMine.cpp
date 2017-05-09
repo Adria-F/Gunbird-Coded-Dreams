@@ -47,7 +47,7 @@ bool ModuleSceneMine::Start()
 
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
-	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
+	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3230);
 	//Drones wave1->Done
 	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 1);
 	App->enemies->AddEnemy(DRONE,   0, 3020+70, 1, 1);
