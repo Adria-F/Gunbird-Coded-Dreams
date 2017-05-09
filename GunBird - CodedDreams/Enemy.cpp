@@ -43,8 +43,8 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	explosion_b1.PushBack({ 128,275,115,115 });
 	explosion_b1.PushBack({ 253,275,115,115 });
 	explosion_b1.PushBack({ 0, 0, 0, 0 });
-	explosion_b1.speed = 0.005f;
-	explosion_b1.loop = true;
+	explosion_b1.speed = 0.5f;
+	explosion_b1.loop = false;
 
 	//big2
 	//mid1
@@ -101,6 +101,8 @@ void Enemy::Draw(SDL_Texture* sprites)
 	}
 	if (lives <= 0 && die == false)
 		die = explode();
+	if (lives <= 0 && die)
+		explode();
 }
 
 void Enemy::OnCollision(Collider* collider)
