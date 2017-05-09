@@ -29,22 +29,23 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	explosion_b1.PushBack({ 0, 0, 0, 0 });
 
 	*/
-	explosion_b1.PushBack({ 17,37,83,74 });
-	explosion_b1.PushBack({ 129,33,91,85 });
-	explosion_b1.PushBack({ 258,25,102,94 });
-	explosion_b1.PushBack({ 385,24,104,102 });
+	anim_b1.PushBack({ 17,37,83,74 });
+	anim_b1.PushBack({ 129,33,91,85 });
+	anim_b1.PushBack({ 258,25,102,94 });
+	anim_b1.PushBack({ 385,24,104,102 });
 
-	explosion_b1.PushBack({ 9,141,101,102 });
-	explosion_b1.PushBack({ 126,145,101,103 });
-	explosion_b1.PushBack({ 132,140,115,115 });
-	explosion_b1.PushBack({ 368,144,115,115 });
+	anim_b1.PushBack({ 8,141,102,102 });
+	anim_b1.PushBack({ 132,140,101,103 });
+	anim_b1.PushBack({ 263,137,100,105 });
+	anim_b1.PushBack({ 381,144,104,106 });
 
-	explosion_b1.PushBack({ 8,275,115,115 });
-	explosion_b1.PushBack({ 128,275,115,115 });
-	explosion_b1.PushBack({ 253,275,115,115 });
-	explosion_b1.PushBack({ 0, 0, 0, 0 });
-	explosion_b1.speed = 0.5f;
-	explosion_b1.loop = false;
+	anim_b1.PushBack({ 6,266,104,105 });
+	anim_b1.PushBack({ 129,265,105,105 });
+	anim_b1.PushBack({ 253,275,106,106 });
+	anim_b1.PushBack({ 401,281,65,80 });
+	anim_b1.PushBack({ 0, 0, 0, 0 });
+	anim_b1.speed = 0.5f;
+	anim_b1.loop = false;
 
 	//big2
 	//mid1
@@ -155,23 +156,23 @@ bool Enemy::explode()
 	switch (type)
 	{
 	case BIG1:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(explosion_b1.GetCurrentFrame()));
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
 		break;
 	case BIG2:
-		return true; //temporal
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
 		break;
 	case MID1:
-
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
 		break;
 	case MID2:
-
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
 		break;
 	case SMALL1:
-
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
 		break;
 	case SMALL2:
-
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
 		break;
 	}
-	return (explosion_b1.GetCurrentFrameNum() == type);
+	return (anim_b1.GetCurrentFrameNum() == type);
 }

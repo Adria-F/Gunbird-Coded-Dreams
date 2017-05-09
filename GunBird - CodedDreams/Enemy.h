@@ -11,11 +11,21 @@ class Enemy
 {
 protected:
 	Animation* animation = nullptr;
-	Animation explosion_b1;
+	Animation anim_b1;
+	Animation anim_b2;
+	Animation anim_m1;
+	Animation anim_m2;
+	Animation anim_s1;
+	Animation anim_s2;
 
 public:
 	enum Explosions
 	{
+		//Josep: M'he fixat que en pràcticament totes les animacions 
+		//de mort acaben en el fotograma 4... 
+		//no serà tan útil com em pensava això, pero farà la feina
+		//aquí hi han coses que no están acabades (perque totes neceiten el fotograma
+		//4)
 		BIG1 = 4,
 		BIG2,
 		MID1,
