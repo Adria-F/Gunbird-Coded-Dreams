@@ -16,6 +16,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Balloon.h" />
     <ClInclude Include="Enemy_Drone.h" />
+    <ClInclude Include="Enemy_Falling_Drone.h" />
     <ClInclude Include="Enemy_Flying_Machine.h" />
     <ClInclude Include="Enemy_Miners.h" />
     <ClInclude Include="Enemy_Torpedo.h" />
@@ -49,6 +50,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Balloon.cpp" />
     <ClCompile Include="Enemy_Drone.cpp" />
+    <ClCompile Include="Enemy_Falling_Drone.cpp" />
     <ClCompile Include="Enemy_Flying_Machine.cpp" />
     <ClCompile Include="Enemy_Miners.cpp" />
     <ClCompile Include="Enemy_Torpedo.cpp" />
