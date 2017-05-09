@@ -18,7 +18,10 @@ public:
 public:
 
 	Path path;
-	Animation dronewave;
+	Animation idle;
+	Animation move_right;
+	Animation right_idle;
+	Animation move_left;
 	Animation dead;
 
 };
