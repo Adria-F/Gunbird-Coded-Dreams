@@ -63,6 +63,8 @@ update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
+	LOG("%d", SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY));
+
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -88,21 +90,21 @@ update_status ModuleInput::PreUpdate()
 	if (App->scene_mine->lost == false)
 	{
 		//Player 1
-		if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP) == 1)
+		if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTY) < -13000)
 			App->player1->going_up = true;
-		else if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
+		else if (keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTY) > -15000))
 			App->player1->going_up = false;
-		if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) == 1)
+		if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTX) < -13000)
 			App->player1->going_left = true;
-		else if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
+		else if (keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_A] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTX) > -15000))
 			App->player1->going_left = false;
-		if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN) == 1)
+		if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTY) > 10000)
 			App->player1->going_down = true;
-		else if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+		else if (keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_S] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTY) < 10000))
 			App->player1->going_down = false;
-		if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) == 1)
+		if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTX) > 10000)
 			App->player1->going_right = true;
-		else if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+		else if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->controller, SDL_CONTROLLER_AXIS_LEFTX) < 10000))
 			App->player1->going_right = false;
 		//Shot if key pressed
 		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A) == 1) && App->player1->shot == false)
