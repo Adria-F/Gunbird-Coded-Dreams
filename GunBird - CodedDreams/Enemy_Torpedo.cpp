@@ -39,6 +39,8 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 Enemy_Torpedo::~Enemy_Torpedo()
 {
 	App->textures->Unload(NormalSprite);
+	App->textures->Unload(RedSprite);
+	App->textures->Unload(WhiteSprite);
 }
 
 void Enemy_Torpedo::Move()
