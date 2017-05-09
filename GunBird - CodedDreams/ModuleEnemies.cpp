@@ -12,6 +12,7 @@
 #include "Enemy_Flying_Machine.h"
 #include "Enemy_Miners.h"
 #include "Enemy_Drone.h"
+#include "Enemy_Trump.h"
 
 #define SPAWN_MARGIN 75
 
@@ -161,8 +162,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::MINER:
 			enemies[i] = new Enemy_Miners(info.x, info.y, info.wave, info.id);
 			break;
-		case ENEMY_TYPES::THE_TRUMP:
-			//enemies[i] = new Enemy_The_Trump(info.x, info.y, info.wave, info.id);
+		case ENEMY_TYPES::TRUMP:
+			enemies[i] = new Enemy_Trump(info.x, info.y, info.wave, info.id);
 			break;
 		case ENEMY_TYPES::BALLON:
 			enemies[i] = new Enemy_Balloon(info.x, info.y);

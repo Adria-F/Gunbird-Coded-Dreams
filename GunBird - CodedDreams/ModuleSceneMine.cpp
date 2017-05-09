@@ -91,6 +91,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(MINER, 140, 3380, 4);
 	App->enemies->AddEnemy(MINER, 170, 3380, 4);
 
+	//The Trump
+	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
+
 	
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
