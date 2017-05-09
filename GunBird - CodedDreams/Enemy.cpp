@@ -74,6 +74,8 @@ void Enemy::Draw(SDL_Texture* sprites)
 		if (extra_anim && lives > 0)
 			ExtraAnim(sprites);
 	}
+	if (lives <= 0)
+		die = explode();
 }
 
 void Enemy::OnCollision(Collider* collider)
@@ -121,7 +123,7 @@ void Enemy::DeadAnim()
 {
 	animation = nullptr;
 }
-bool Enemy::explode(Explosions type)
+bool Enemy::explode()
 {
 	switch (type)
 	{
@@ -129,7 +131,7 @@ bool Enemy::explode(Explosions type)
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(explosion_b1.GetCurrentFrame()));
 		break;
 	case BIG2:
-
+		return true; //temporal
 		break;
 	case MID1:
 

@@ -32,6 +32,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	initial_hp = lives;
 	points = 400;
 	extra_anim = false;
+	type = BIG1;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -44,14 +45,7 @@ Enemy_Balloon::~Enemy_Balloon()
 
 void Enemy_Balloon::Move()
 {
-	if (lives > 0)
-	{
 		position = original_pos + path.GetCurrentPosition(&animation);
-	}
-	else
-	{
-		die = explode(BIG1);
-	}
 }
 
 void Enemy_Balloon::ExtraAnim(SDL_Texture* texture)

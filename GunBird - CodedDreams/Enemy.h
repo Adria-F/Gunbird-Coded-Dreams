@@ -42,6 +42,7 @@ public:
 	bool extra_anim = false; //Something moving over basic animation?
 	bool die = false;
 	bool lower_level = false; //Is the enemy behing the overlayed map?
+	Explosions type;
 	
 	int wave;
 	int id = -1; //Id of an enemy inside a wave
@@ -59,7 +60,7 @@ public:
 	virtual void DeadAnim();
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
-	virtual bool explode(Explosions type);
+	virtual bool explode();
 };
 
 #endif // __ENEMY_H__
