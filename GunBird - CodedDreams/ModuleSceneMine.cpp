@@ -147,7 +147,7 @@ update_status ModuleSceneMine::Update()
 	if (lost)
 	{
 		App->render->moving_scene = false;
-		if ((App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_Y) == 1) && fading == false && App->fade->GetFadeState() == false)
+		if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 		{
 			App->fade->FadeToBlack(this, App->highscores, 0.5f);
 			fading = true;
@@ -164,7 +164,7 @@ update_status ModuleSceneMine::Update()
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
 		lost = true;
 
-	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_Y) == 1) && fading == false && App->fade->GetFadeState() == false)
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;

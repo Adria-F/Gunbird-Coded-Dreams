@@ -65,7 +65,7 @@ update_status ModuleHighscores::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f);
 
-	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_Y) == 1) && fading == false && App->fade->GetFadeState() == false)
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->welcometitle, 0.5f);
 		fading = true;

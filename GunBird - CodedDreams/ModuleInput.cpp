@@ -86,11 +86,15 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	Uint8 button = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+	Uint8 button[MAX_BUTTONS];
+	button[SDL_CONTROLLER_BUTTON_LEFTSHOULDER] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+	button[SDL_CONTROLLER_BUTTON_RIGHTSHOULDER] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+	button[SDL_CONTROLLER_BUTTON_A] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_A);
+	button[SDL_CONTROLLER_BUTTON_Y] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_Y);
 
 	for (int i = 0; i < MAX_BUTTONS; i++)
 	{
-		if (button == 1)
+		if (button[i] == 1)
 		{
 			if (controller[i] == BUTTON_IDLE)
 				controller[i] = BUTTON_DOWN;
@@ -126,7 +130,7 @@ update_status ModuleInput::PreUpdate()
 		else if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->game_controller, SDL_CONTROLLER_AXIS_LEFTX) < 10000))
 			App->player1->going_right = false;
 		//Shot if key pressed
-		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_A) == 1) && App->player1->shot == false)
+		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_A] == PAD_BUTON_STATE::BUTTON_DOWN) && App->player1->shot == false)
 		{
 			App->player1->shot = true;
 			App->player1->bullet_counter = 0;
@@ -168,7 +172,7 @@ update_status ModuleInput::PreUpdate()
 				App->render->debugging = true;
 		}
 
-		if (keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER) == 1)
+		if (keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_RIGHTSHOULDER] == PAD_BUTON_STATE::BUTTON_DOWN)
 		{
 			if (App->render->god_mode)
 				App->render->god_mode = false;
