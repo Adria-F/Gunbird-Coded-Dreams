@@ -9,8 +9,10 @@
 
 Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id)
 {
-	b1 = App->textures->Load("assets/enemies/explosions/big1.png");
-	explosion_b1.PushBack({ 10, 131, 69, 69 });
+	//Big1
+	b1 = App->textures->Load("assets/enemies/explosions/big2.png");
+	/*
+		explosion_b1.PushBack({ 10, 131, 69, 69 });
 	explosion_b1.PushBack({ 82, 131, 69, 69 });
 	explosion_b1.PushBack({ 152, 131, 69, 69 });
 	explosion_b1.PushBack({ 228, 131, 69, 69 });
@@ -25,8 +27,30 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	explosion_b1.PushBack({ 228, 313, 68, 68 });
 	explosion_b1.PushBack({ 303, 313, 68, 68 });
 	explosion_b1.PushBack({ 0, 0, 0, 0 });
-	explosion_b1.speed = 0.5f;
-	explosion_b1.loop = false;
+
+	*/
+	explosion_b1.PushBack({ 17,37,83,74 });
+	explosion_b1.PushBack({ 129,33,91,85 });
+	explosion_b1.PushBack({ 258,25,102,94 });
+	explosion_b1.PushBack({ 385,24,104,102 });
+
+	explosion_b1.PushBack({ 9,141,101,102 });
+	explosion_b1.PushBack({ 126,145,101,103 });
+	explosion_b1.PushBack({ 132,140,115,115 });
+	explosion_b1.PushBack({ 368,144,115,115 });
+
+	explosion_b1.PushBack({ 8,275,115,115 });
+	explosion_b1.PushBack({ 128,275,115,115 });
+	explosion_b1.PushBack({ 253,275,115,115 });
+	explosion_b1.PushBack({ 0, 0, 0, 0 });
+	explosion_b1.speed = 0.005f;
+	explosion_b1.loop = true;
+
+	//big2
+	//mid1
+	//mid2
+	//small1
+	//small2
 }
 
 Enemy::~Enemy()
@@ -140,7 +164,10 @@ bool Enemy::explode()
 	case MID2:
 
 		break;
-	case SMALL:
+	case SMALL1:
+
+		break;
+	case SMALL2:
 
 		break;
 	}

@@ -20,7 +20,8 @@ public:
 		BIG2,
 		MID1,
 		MID2,
-		SMALL
+		SMALL1,
+		SMALL2
 	};
 	fPoint position;
 	fPoint original_pos;
