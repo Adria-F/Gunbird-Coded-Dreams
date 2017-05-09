@@ -17,6 +17,8 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	idle.speed = 0.1f;
 	idle.loop = true;
 
+	dead.speed = 0.5f;
+	dead.loop = false;
 	dead.PushBack({ 16, 132, 32, 58 });
 	dead.PushBack({ 80, 132, 32, 58 });
 	dead.speed = 0.1f;
@@ -42,7 +44,14 @@ Enemy_Balloon::~Enemy_Balloon()
 
 void Enemy_Balloon::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (lives > 0)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	else
+	{
+		die = explode(BIG1);
+	}
 }
 
 void Enemy_Balloon::ExtraAnim(SDL_Texture* texture)

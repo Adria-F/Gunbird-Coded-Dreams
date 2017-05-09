@@ -12,8 +12,6 @@ public:
 	~Enemy_Drone();
 
 	void Move();
-	void ExtraAnim(SDL_Texture* texture);
-	void DeadAnim();
 
 public:
 

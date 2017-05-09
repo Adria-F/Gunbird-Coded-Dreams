@@ -8,7 +8,25 @@
 #include "SDL/include/SDL_timer.h"
 
 Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id)
-{}
+{
+	b1 = App->textures->Load("assets/enemies/explosions/big1.png");
+	explosion_b1.PushBack({ 10, 131, 69, 69 });
+	explosion_b1.PushBack({ 82, 131, 69, 69 });
+	explosion_b1.PushBack({ 152, 131, 69, 69 });
+	explosion_b1.PushBack({ 228, 131, 69, 69 });
+	explosion_b1.PushBack({ 303, 131, 69, 69 });
+	explosion_b1.PushBack({ 16, 215, 68, 68 });
+	explosion_b1.PushBack({ 82, 215, 68, 68 });
+	explosion_b1.PushBack({ 152, 215, 68, 68 });
+	explosion_b1.PushBack({ 228, 215, 68, 68 });
+	explosion_b1.PushBack({ 303, 215, 68, 68 });
+	explosion_b1.PushBack({ 82, 313, 68, 68 });
+	explosion_b1.PushBack({ 152, 313, 68, 68 });
+	explosion_b1.PushBack({ 228, 313, 68, 68 });
+	explosion_b1.PushBack({ 303, 313, 68, 68 });
+	explosion_b1.speed = 0.5f;
+	explosion_b1.loop = false;
+}
 
 Enemy::~Enemy()
 {
@@ -16,6 +34,7 @@ Enemy::~Enemy()
 	App->textures->Unload(NormalSprite);
 	App->textures->Unload(RedSprite);
 	App->textures->Unload(WhiteSprite);
+	App->textures->Unload(b1);
 	if (collider != nullptr)
 		collider->to_delete = true;
 }
@@ -59,7 +78,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER_SHOT && dead == false)
+	if (collider->type == COLLIDER_PLAYER_SHOT && die == false)
 	{
 		switch (collider->part->type)
 		{
@@ -101,5 +120,26 @@ void Enemy::OnCollision(Collider* collider)
 void Enemy::DeadAnim()
 {
 	animation = nullptr;
-	collider->to_delete = true;
+}
+bool Enemy::explode(Explosions type)
+{
+	switch (type)
+	{
+	case BIG1:
+		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(explosion_b1.GetCurrentFrame()));
+		break;
+	case BIG2:
+
+		break;
+	case MID1:
+
+		break;
+	case MID2:
+
+		break;
+	case SMALL:
+
+		break;
+	}
+	return (explosion_b1.GetCurrentFrameNum() == type);
 }

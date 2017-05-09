@@ -109,16 +109,10 @@ Enemy_Drone::~Enemy_Drone()
 
 void Enemy_Drone::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
-}
-
-void Enemy_Drone::ExtraAnim(SDL_Texture* texture)
-{
-	//Si l'enemic no te extra animation no cal posar aquesta funció ni aqui ni al header
-}
-
-void Enemy_Drone::DeadAnim()
-{
-	animation = &dead;
-	position.y += 0.2f; //Perque es mogui a la mateixa velocitat que l'overlay
+	if (lives > 0)
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	else
+		die = true;
 }

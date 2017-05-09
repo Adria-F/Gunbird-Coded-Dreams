@@ -11,14 +11,27 @@ class Enemy
 {
 protected:
 	Animation* animation = nullptr;
+	Animation explosion_b1;
 
 public:
+	enum Explosions
+	{
+		BIG1 = 4,
+		BIG2,
+		MID1,
+		MID2,
+		SMALL
+	};
 	fPoint position;
 	fPoint original_pos;
 	SDL_Texture* sprites = nullptr; //Using texture
 	SDL_Texture* NormalSprite = nullptr;
 	SDL_Texture* RedSprite = nullptr;
 	SDL_Texture* WhiteSprite = nullptr;
+	
+	//Explosions textures
+	SDL_Texture* b1;
+
 	//Time between red ticks
 	Uint32 Red_now;
 	Uint32 Red_Start_time;
@@ -27,8 +40,9 @@ public:
 	int initial_hp; //To calculate when to turn red
 	bool hit; //When to turn white
 	bool extra_anim = false; //Something moving over basic animation?
-	bool dead = false;
+	bool die = false;
 	bool lower_level = false; //Is the enemy behing the overlayed map?
+	
 	int wave;
 	int id = -1; //Id of an enemy inside a wave
 	int points = 0; //Points that give to the player
@@ -45,6 +59,7 @@ public:
 	virtual void DeadAnim();
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
+	virtual bool explode(Explosions type);
 };
 
 #endif // __ENEMY_H__

@@ -62,7 +62,8 @@ update_status ModuleEnemies::Update()
 	{
 		if (enemies[i] != nullptr && App->scene_mine->lost == false)
 		{
-			if (enemies[i]->dead) enemies[i]->DeadAnim();
+			if (enemies[i]->die) 
+				enemies[i]->DeadAnim();
 			else enemies[i]->Move();
 		}
 	}
@@ -189,9 +190,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if (enemies[i]->lives <= 0 && enemies[i]->dead == false)
+			if (enemies[i]->lives <= 0 && enemies[i]->die == false)
 			{
-				enemies[i]->dead = true;
 				enemies[i]->collider->to_delete = true;
 				enemies[i]->collider = nullptr;
 			}
