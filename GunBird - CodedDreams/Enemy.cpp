@@ -24,6 +24,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	explosion_b1.PushBack({ 152, 313, 68, 68 });
 	explosion_b1.PushBack({ 228, 313, 68, 68 });
 	explosion_b1.PushBack({ 303, 313, 68, 68 });
+	explosion_b1.PushBack({ 0, 0, 0, 0 });
 	explosion_b1.speed = 0.5f;
 	explosion_b1.loop = false;
 }

@@ -45,7 +45,7 @@ Enemy_Balloon::~Enemy_Balloon()
 
 void Enemy_Balloon::Move()
 {
-		position = original_pos + path.GetCurrentPosition(&animation);
+	position = original_pos + path.GetCurrentPosition(&animation);
 }
 
 void Enemy_Balloon::ExtraAnim(SDL_Texture* texture)
