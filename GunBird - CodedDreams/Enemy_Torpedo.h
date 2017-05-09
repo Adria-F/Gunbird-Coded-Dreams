@@ -8,7 +8,7 @@ class Enemy_Torpedo : public Enemy
 {
 public:
 
-	Enemy_Torpedo(int x, int y);
+	Enemy_Torpedo(int x, int y, int wave);
 	~Enemy_Torpedo();
 
 	void Move();

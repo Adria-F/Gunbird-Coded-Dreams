@@ -4,7 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 
-Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
+Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/Torpedo&Mortar.png");
@@ -29,11 +29,11 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y) : Enemy(x, y)
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 12;
 	initial_hp = lives;
-	points = 400;
+	points = 200;
 	extra_anim = false;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 23, 31 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Torpedo::~Enemy_Torpedo()

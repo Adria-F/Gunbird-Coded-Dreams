@@ -81,6 +81,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 25, 2690, 2, 1);
 	App->enemies->AddEnemy(DRONE, 50, 2720, 2, 2);
 
+	//Torpedos wave1
+	App->enemies->AddEnemy(TORPEDO, 0, 2149, 1);
+
 	//My name is Jeff
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
