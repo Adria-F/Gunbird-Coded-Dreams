@@ -63,8 +63,6 @@ update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
-	LOG("%d", SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY));
-
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -141,7 +139,7 @@ update_status ModuleInput::PreUpdate()
 			App->audio->Play(App->audio->EFFECT);
 		}
 
-		if (keyboard[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER) == 1)
 		{
 			if (App->render->debugging)
 				App->render->debugging = false;
@@ -149,7 +147,7 @@ update_status ModuleInput::PreUpdate()
 				App->render->debugging = true;
 		}
 
-		if (keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		if (keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER) == 1)
 		{
 			if (App->render->god_mode)
 				App->render->god_mode = false;
