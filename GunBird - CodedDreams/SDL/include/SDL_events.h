@@ -248,7 +248,7 @@ typedef struct SDL_MouseButtonEvent
     Uint32 timestamp;
     Uint32 windowID;    /**< The window with mouse focus, if any */
     Uint32 which;       /**< The mouse instance id, or SDL_TOUCH_MOUSEID */
-    Uint8 button;       /**< The mouse button index */
+    Uint8 controller;       /**< The mouse button index */
     Uint8 state;        /**< ::SDL_PRESSED or ::SDL_RELEASED */
     Uint8 clicks;       /**< 1 for single-click, 2 for double-click, etc. */
     Uint8 padding1;
@@ -330,7 +330,7 @@ typedef struct SDL_JoyButtonEvent
     Uint32 type;        /**< ::SDL_JOYBUTTONDOWN or ::SDL_JOYBUTTONUP */
     Uint32 timestamp;
     SDL_JoystickID which; /**< The joystick instance id */
-    Uint8 button;       /**< The joystick button index */
+    Uint8 controller;       /**< The joystick button index */
     Uint8 state;        /**< ::SDL_PRESSED or ::SDL_RELEASED */
     Uint8 padding1;
     Uint8 padding2;
@@ -372,7 +372,7 @@ typedef struct SDL_ControllerButtonEvent
     Uint32 type;        /**< ::SDL_CONTROLLERBUTTONDOWN or ::SDL_CONTROLLERBUTTONUP */
     Uint32 timestamp;
     SDL_JoystickID which; /**< The joystick instance id */
-    Uint8 button;       /**< The controller button (SDL_GameControllerButton) */
+    Uint8 controller;       /**< The controller button (SDL_GameControllerButton) */
     Uint8 state;        /**< ::SDL_PRESSED or ::SDL_RELEASED */
     Uint8 padding1;
     Uint8 padding2;
@@ -527,7 +527,7 @@ typedef union SDL_Event
     SDL_TextEditingEvent edit;      /**< Text editing event data */
     SDL_TextInputEvent text;        /**< Text input event data */
     SDL_MouseMotionEvent motion;    /**< Mouse motion event data */
-    SDL_MouseButtonEvent button;    /**< Mouse button event data */
+    SDL_MouseButtonEvent controller;    /**< Mouse button event data */
     SDL_MouseWheelEvent wheel;      /**< Mouse wheel event data */
     SDL_JoyAxisEvent jaxis;         /**< Joystick axis event data */
     SDL_JoyBallEvent jball;         /**< Joystick ball event data */

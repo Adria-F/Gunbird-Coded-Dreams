@@ -463,7 +463,7 @@ typedef struct SDL_HapticConstant
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 controller;          /**< Button that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Constant */
@@ -546,7 +546,7 @@ typedef struct SDL_HapticPeriodic
     Uint16 delay;       /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;      /**< Button that triggers the effect. */
+    Uint16 controller;      /**< Button that triggers the effect. */
     Uint16 interval;    /**< How soon it can be triggered again after button. */
 
     /* Periodic */
@@ -598,7 +598,7 @@ typedef struct SDL_HapticCondition
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 controller;          /**< Button that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Condition */
@@ -634,7 +634,7 @@ typedef struct SDL_HapticRamp
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 controller;          /**< Button that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Ramp */
@@ -697,7 +697,7 @@ typedef struct SDL_HapticCustom
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 controller;          /**< Button that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Custom */

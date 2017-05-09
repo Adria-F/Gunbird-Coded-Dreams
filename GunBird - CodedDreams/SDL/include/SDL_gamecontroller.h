@@ -72,7 +72,7 @@ typedef struct SDL_GameControllerButtonBind
     SDL_GameControllerBindType bindType;
     union
     {
-        int button;
+        int controller;
         int axis;
         struct {
             int hat;
@@ -288,14 +288,14 @@ extern DECLSPEC SDL_GameControllerButton SDLCALL SDL_GameControllerGetButtonFrom
 /**
  *  turn this button enum into a string mapping
  */
-extern DECLSPEC const char* SDLCALL SDL_GameControllerGetStringForButton(SDL_GameControllerButton button);
+extern DECLSPEC const char* SDLCALL SDL_GameControllerGetStringForButton(SDL_GameControllerButton controller);
 
 /**
  *  Get the SDL joystick layer binding for this controller button mapping
  */
 extern DECLSPEC SDL_GameControllerButtonBind SDLCALL
 SDL_GameControllerGetBindForButton(SDL_GameController *gamecontroller,
-                                   SDL_GameControllerButton button);
+                                   SDL_GameControllerButton controller);
 
 
 /**
@@ -304,7 +304,7 @@ SDL_GameControllerGetBindForButton(SDL_GameController *gamecontroller,
  *  The button indices start at index 0.
  */
 extern DECLSPEC Uint8 SDLCALL SDL_GameControllerGetButton(SDL_GameController *gamecontroller,
-                                                          SDL_GameControllerButton button);
+                                                          SDL_GameControllerButton controller);
 
 /**
  *  Close a controller previously opened with SDL_GameControllerOpen().

@@ -250,7 +250,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickGetBall(SDL_Joystick * joystick,
  *  The button indices start at index 0.
  */
 extern DECLSPEC Uint8 SDLCALL SDL_JoystickGetButton(SDL_Joystick * joystick,
-                                                    int button);
+                                                    int controller);
 
 /**
  *  Close a joystick previously opened with SDL_JoystickOpen().

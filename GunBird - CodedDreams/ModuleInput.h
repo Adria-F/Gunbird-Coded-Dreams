@@ -7,6 +7,7 @@
 #include "SDL\include\SDL_gamecontroller.h"
 
 #define MAX_KEYS 300
+#define MAX_BUTTONS 16
 
 enum KEY_STATE
 {
@@ -14,6 +15,14 @@ enum KEY_STATE
 	KEY_DOWN,
 	KEY_REPEAT,
 	KEY_UP
+};
+
+enum PAD_BUTON_STATE
+{
+	BUTTON_IDLE = 0,
+	BUTTON_DOWN,
+	BUTTON_REPEAT,
+	BUTTON_UP
 };
 
 class ModuleInput : public Module
@@ -30,7 +39,8 @@ public:
 public:
 
 	KEY_STATE keyboard[MAX_KEYS];
-	SDL_GameController *controller = nullptr;
+	PAD_BUTON_STATE controller[MAX_BUTTONS];
+	SDL_GameController *game_controller = nullptr;
 };
 
 #endif // __ModuleInput_H__
