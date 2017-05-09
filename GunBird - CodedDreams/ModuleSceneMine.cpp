@@ -48,22 +48,38 @@ bool ModuleSceneMine::Start()
 	//Set enemies
 	App->enemies->AddEnemy(BALLON, 150, 3000);
 	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3200);
-	//Drones wave1
-	App->enemies->AddEnemy(DRONE, -50, 3220, 1, 1);
-	App->enemies->AddEnemy(DRONE, 0, 3220, 1, 1);
-	App->enemies->AddEnemy(DRONE, -25, 3250, 1, 1);
-	//Drones wave2
-	App->enemies->AddEnemy(DRONE, 175, 3220, 2, 1);
-	App->enemies->AddEnemy(DRONE, 125, 3220, 2, 1);
-	App->enemies->AddEnemy(DRONE, 150, 3250, 2, 1);
+	//Drones wave1->Done
+	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 1);
+	App->enemies->AddEnemy(DRONE,   0, 3020+70, 1, 1);
+	App->enemies->AddEnemy(DRONE, -25, 3040+70, 1, 2);
+	//Drones wave2->Done
+	App->enemies->AddEnemy(DRONE, 175, 2980 + 70, 2, 1);
+	App->enemies->AddEnemy(DRONE, 125, 2980 + 70, 2, 1);
+	App->enemies->AddEnemy(DRONE, 150, 3010 + 70, 2, 2);
 	//Drones wave3
-	App->enemies->AddEnemy(DRONE, 250, 3220, 3, 1);
-	App->enemies->AddEnemy(DRONE, 200, 3220, 3, 1);
-	App->enemies->AddEnemy(DRONE, 225, 3250, 3, 1);
+	App->enemies->AddEnemy(DRONE, 280, 2950, 3, 1);
+	App->enemies->AddEnemy(DRONE, 230, 2950, 3, 1);
+	App->enemies->AddEnemy(DRONE, 255, 2980, 3, 2);
 	//Drones wave4
-	App->enemies->AddEnemy(DRONE, 75, 3220, 4, 1);
-	App->enemies->AddEnemy(DRONE, 25, 3220, 4, 1);
-	App->enemies->AddEnemy(DRONE, 50, 3250, 4, 1);
+	App->enemies->AddEnemy(DRONE, 75, 2890, 2, 1);
+	App->enemies->AddEnemy(DRONE, 25, 2890, 2, 1);
+	App->enemies->AddEnemy(DRONE, 50, 2920, 2, 2);
+	//Drones wave5
+	App->enemies->AddEnemy(DRONE, -50, 2800, 1, 1);
+	App->enemies->AddEnemy(DRONE,   0, 2800, 1, 1);
+	App->enemies->AddEnemy(DRONE, -25, 2820, 1, 2);
+	//Drones wave6
+	App->enemies->AddEnemy(DRONE, 175, 2760, 2, 1);
+	App->enemies->AddEnemy(DRONE, 125, 2760, 2, 1);
+	App->enemies->AddEnemy(DRONE, 150, 2790, 2, 2);
+	//Drones wave7
+	App->enemies->AddEnemy(DRONE, 280, 2750, 3, 1);
+	App->enemies->AddEnemy(DRONE, 230, 2750, 3, 1);
+	App->enemies->AddEnemy(DRONE, 255, 2780, 3, 2);
+	//Drones wave8
+	App->enemies->AddEnemy(DRONE, 75, 2690, 2, 1);
+	App->enemies->AddEnemy(DRONE, 25, 2690, 2, 1);
+	App->enemies->AddEnemy(DRONE, 50, 2720, 2, 2);
 
 	//My name is Jeff
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);

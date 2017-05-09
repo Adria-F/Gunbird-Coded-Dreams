@@ -30,32 +30,52 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 
 	//Wave1 Path
 
-	if (wave == 1)
+	if (wave == 1 && id==1)
 	{
+		path.PushBack({ 0.0f, 0.2f }, 150, &dronewave);
 		path.PushBack({ 1.0f, 0.0f }, 60, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &dronewave);
+	
+	}
+	else if (wave==1 && id == 2) {
+		path.PushBack({ 0.0f, 0.2f }, 217, &dronewave);
+		path.PushBack({ 1.0f, 0.0f }, 60, &dronewave);
 		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
 		path.PushBack({ 0.5f, 1.5f }, 1000, &dronewave);
 	}
 	//Wave2 Path
-	else if (wave == 2)
+	else if (wave == 2 && id==1)
 	{
+		path.PushBack({ 0.0f, 0.0f }, 50, &dronewave);
+		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
+	}
+	else if (wave == 2 && id == 2)
+	{
+		path.PushBack({ 0.0f, 0.0f }, 50, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 98, &dronewave);
 		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
 		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
 	}
 	//Wave3 Path
-	else if (wave==3)
+	else if (wave == 3 && id == 1)
 	{
-		path.PushBack({ -1.0f, 0.0f }, 60, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 200, &dronewave);
+		path.PushBack({ -1.0f, 0.0f }, 100, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.0f }, 100, &dronewave);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &dronewave);
+
+	}
+	else if (wave == 3 && id == 2) {
+		path.PushBack({ 0.0f, 0.0f }, 300, &dronewave);
+		path.PushBack({ -1.0f, 0.0f }, 100, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 100, &dronewave);
 		path.PushBack({ -0.5f, 1.5f }, 1000, &dronewave);
 	}
-	else if (wave == 4)
-	{
-		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
-	}
+	
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 5;
 	initial_hp = lives;
