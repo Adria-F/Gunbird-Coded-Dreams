@@ -24,14 +24,12 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	//move_right.PushBack({ 306, 95, 45, 45 });
 	//move_right.PushBack({ 144, 150, 45, 45 });
 	move_right.PushBack({ 195, 150, 45, 45 });
-
 	//move_right.PushBack({ 108, 91, 45, 45 });
 	//move_right.PushBack({ 164, 92, 45, 45 });
 	move_right.speed = 0.1f;
 	move_right.loop = false;
 
 	//Right Idle
-
 	right_idle.PushBack({ 306, 95, 45, 45 });
 	right_idle.PushBack({ 142, 148, 45, 45 });
 	right_idle.PushBack({ 193, 149, 45, 45 });
@@ -40,25 +38,32 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	right_idle.loop = true;
 
 	//Move Left
-	move_left.PushBack({ 12, 37, 38, 38 });
-	move_left.PushBack({ 59, 39, 38, 38 });
-	move_left.PushBack({ 107, 40, 38, 38 });
-	move_left.PushBack({ 164, 39, 38, 38 });
-	move_left.PushBack({ 56, 90, 38, 38 });
-	move_left.PushBack({ 108, 91, 38, 38 });
-	move_left.PushBack({ 164, 92, 38, 38 });
-	move_left.speed = 1.0f;
-	move_left.loop = true;
+	move_left.PushBack({ 33, 95, 45, 45 });
+	move_left.PushBack({ 88, 95, 45, 45 });
+	move_left.PushBack({ 247, 95, 45, 45 });
+	
+	move_left.speed = 0.1f;
+	move_left.loop = false;
+
+	//Left Idle
+	left_idle.PushBack({ 190, 95, 45, 45 });
+	left_idle.PushBack({ 247, 95, 45, 45 });
+	//left_idle.PushBack({ 247, 95, 45, 45 });
+
+	left_idle.speed = 0.05f;
+	left_idle.loop = true;
 
 	//Wave1 Path
 
 	if (wave == 1 && id == 1)
 	{
-		path.PushBack({ 0.0f, 0.2f }, 100, &idle);
-		path.PushBack({ 1.0f, 0.0f }, 25, &move_right);
-		path.PushBack({ 1.0f, 0.0f }, 75, &right_idle);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 100, &move_right);
-		path.PushBack({ 0.5f, 1.5f }, 1000, &move_right);
+		path.PushBack({ 1.0f, 0.2f }, 75, &right_idle);
+		path.PushBack({ 0.0f, 0.2f }, 25, &idle);
+		path.PushBack({ 1.0f, 0.2f }, 25, &move_right);
+		path.PushBack({ 0.0f, 0.2f }, 1000, &left_idle);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 25, &idle);
+		path.PushBack({ -1.5f, 0.2f }, 25, &move_left);
+		path.PushBack({ -1.5f, 0.2f }, 200, &left_idle);
 
 	}
 	else if (wave == 1 && id == 2) {

@@ -22,6 +22,7 @@ public:
 	Animation move_right;
 	Animation right_idle;
 	Animation move_left;
+	Animation left_idle;
 	Animation dead;
 
 };
