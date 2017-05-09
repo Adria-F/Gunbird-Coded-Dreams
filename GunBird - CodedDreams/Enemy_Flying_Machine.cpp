@@ -14,42 +14,42 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	//Set animation steps, speed and loop
 
 	//Low level
-	idle_low.PushBack({ 57, 58, 49, 45 });
-	idle_low.PushBack({ 168, 59, 49, 45 });
-	idle_low.PushBack({ 273, 57, 49, 45 });
-	idle_low.PushBack({ 383, 60, 49, 45 });
+	idle_low.PushBack({ 36, 58, 90, 69 });
+	idle_low.PushBack({ 147, 59, 90, 69 });
+	idle_low.PushBack({ 252, 58, 90, 69 });
+	idle_low.PushBack({ 362, 60, 90, 69 });
 	idle_low.speed = 0.3f;
 	idle_low.loop = true;
 
 	//Grow level
-	idle_grow.PushBack({ 48, 149, 68, 63 });
-	idle_grow.PushBack({ 158, 149, 68, 63 });
-	idle_grow.PushBack({ 265, 142, 68, 63 });
-	idle_grow.PushBack({ 375, 143, 68, 63 });
-	idle_grow.PushBack({ 491, 142, 68, 63 });
-	idle_grow.PushBack({ 614, 143, 68, 63 });
-	idle_grow.PushBack({ 721, 142, 68, 63 });
-	idle_grow.PushBack({ 837, 143, 68, 63 });
+	idle_grow.PushBack({ 36, 156, 90, 69 });
+	idle_grow.PushBack({ 147, 155, 90, 69 });
+	idle_grow.PushBack({ 254, 144, 90, 69 });
+	idle_grow.PushBack({ 363, 143, 90, 69 });
+	idle_grow.PushBack({ 480, 143, 90, 69 });
+	idle_grow.PushBack({ 602, 143, 90, 69 });
+	idle_grow.PushBack({ 710, 141, 90, 69 });
+	idle_grow.PushBack({ 826, 141, 90, 69 });
 	idle_grow.speed = 0.3f;
 	idle_grow.loop = false;
 
 	//Grow gun level
-	idle_grow_gun.PushBack({ 36, 240, 90, 69 });
-	idle_grow_gun.PushBack({ 149, 240, 90, 69 });
-	idle_grow_gun.PushBack({ 258, 240, 90, 69 });
-	idle_grow_gun.PushBack({ 362, 240, 90, 69 });
-	idle_grow_gun.PushBack({ 484, 241, 90, 69 });
-	idle_grow_gun.PushBack({ 598, 242, 90, 69 });
-	idle_grow_gun.PushBack({ 709, 242, 90, 69 });
-	idle_grow_gun.PushBack({ 825, 241, 90, 69 });
+	idle_grow_gun.PushBack({ 36, 241, 90, 69 });
+	idle_grow_gun.PushBack({ 149, 241, 90, 69 });
+	idle_grow_gun.PushBack({ 258, 241, 90, 69 });
+	idle_grow_gun.PushBack({ 362, 241, 90, 69 });
+	idle_grow_gun.PushBack({ 484, 243, 90, 69 });
+	idle_grow_gun.PushBack({ 598, 243, 90, 69 });
+	idle_grow_gun.PushBack({ 709, 243, 90, 69 });
+	idle_grow_gun.PushBack({ 825, 243, 90, 69 });
 	idle_grow_gun.speed = 0.3f;
 	idle_grow_gun.loop = false;
 
 	//Up level
-	idle_up.PushBack({ 40, 348, 90, 70 });
-	idle_up.PushBack({ 149, 346, 90, 70 });
-	idle_up.PushBack({ 259, 348, 90, 70 });
-	idle_up.PushBack({ 363, 348, 90, 70 });
+	idle_up.PushBack({ 40, 349, 90, 70 });
+	idle_up.PushBack({ 149, 347, 90, 70 });
+	idle_up.PushBack({ 259, 349, 90, 70 });
+	idle_up.PushBack({ 363, 349, 90, 70 });
 	idle_up.speed = 0.3f;
 	idle_up.loop = true;
 
@@ -57,16 +57,15 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 16, 132, 32, 58 });
 	dead.PushBack({ 80, 132, 32, 58 });
 	dead.speed = 0.1f;
-	dead.loop = true;
+	dead.loop = false;
 
 	//Set path
 	path.PushBack({ 0.0f, 0.0f }, 190, &idle_low);
-	path.PushBack({ -0.55f, -0.4f }, 320, &idle_low);
+	path.PushBack({ -0.65f, -0.4f }, 320, &idle_low);
 	path.PushBack({ 0.0f, -0.2f }, 1100, &idle_low);
-	path.PushBack({ 0.5f, 0.0f }, 50, &idle_low);
 	path.PushBack({ 0.0f, -0.5f }, 50, &idle_low);
 
-	path.PushBack({ 0.0, -1.55f }, 50, &idle_grow);
+	path.PushBack({ 0.0, -1.55f }, 25, &idle_grow);
 
 	path.PushBack({ 0.0f, 0.0f }, 25, &idle_grow_gun);
 
