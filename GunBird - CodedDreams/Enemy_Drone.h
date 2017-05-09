@@ -24,4 +24,4 @@ public:
 };
 
 #endif // !__DRONE_H__
-#pragma once
+
