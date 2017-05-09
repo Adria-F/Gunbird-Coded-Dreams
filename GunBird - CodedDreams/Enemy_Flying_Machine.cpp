@@ -46,10 +46,10 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	idle_grow_gun.loop = false;
 
 	//Up level
-	idle_up.PushBack({ 40, 349, 90, 70 });
-	idle_up.PushBack({ 149, 347, 90, 70 });
-	idle_up.PushBack({ 259, 349, 90, 70 });
-	idle_up.PushBack({ 363, 349, 90, 70 });
+	idle_up.PushBack({ 40, 349, 90, 69 });
+	idle_up.PushBack({ 149, 347, 90, 69 });
+	idle_up.PushBack({ 259, 349, 90, 69 });
+	idle_up.PushBack({ 363, 349, 90, 69 });
 	idle_up.speed = 0.3f;
 	idle_up.loop = true;
 
@@ -60,16 +60,52 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	dead.loop = false;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.0f }, 190, &idle_low);
-	path.PushBack({ -0.65f, -0.4f }, 320, &idle_low);
-	path.PushBack({ 0.0f, -0.2f }, 1100, &idle_low);
-	path.PushBack({ 0.0f, -0.5f }, 50, &idle_low);
+	path.PushBack({ 0.0f, 0.0f }, 250, &idle_low);
+	path.PushBack({ -0.55f, -0.4f }, 350, &idle_low);
+	path.PushBack({ 0.02f, -0.2f }, 1100, &idle_low);
+	path.PushBack({ -0.1f, -0.5f }, 175, &idle_low);
 
-	path.PushBack({ 0.0, -1.55f }, 25, &idle_grow);
+	path.PushBack({ -0.2f, -0.75f }, 30, &idle_grow);
 
-	path.PushBack({ 0.0f, 0.0f }, 25, &idle_grow_gun);
+	path.PushBack({ -0.1f, -0.2f }, 30, &idle_grow_gun);
 
-	path.PushBack({ 0.0f, -0.5f }, 1000, &idle_up);
+	path.PushBack({ 0.0f, -0.95f }, 150, &idle_up);
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, 0.45f - 0.09f}, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, -0.95f }, 100, &idle_up);
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, -0.95f }, 105, &idle_up);
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, -0.95f }, 110, &idle_up);
+	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
+
+	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
+	path.PushBack({ 0.0f, 0.95f - 0.09f }, 300, &idle_up);
+	path.PushBack({ 0.0f, 0.0f}, 200, &idle_up);
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 90;
@@ -78,7 +114,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	extra_anim = false;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Flying_Machine::~Enemy_Flying_Machine()
