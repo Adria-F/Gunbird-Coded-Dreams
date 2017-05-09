@@ -8,8 +8,8 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/Flying Machine.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies//hitten/hitten_red_Flying Machine.png");
+	WhiteSprite = App->textures->Load("assets/enemies//hitten/hitten_white_Flying Machine.png");
 
 	//Set animation steps, speed and loop
 
@@ -83,7 +83,6 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 
 Enemy_Flying_Machine::~Enemy_Flying_Machine()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Flying_Machine::Move()

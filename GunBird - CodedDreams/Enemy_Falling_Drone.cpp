@@ -8,8 +8,8 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/Falling drone.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_Falling drone.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Falling drone.png");
 
 	//Idle
 
@@ -116,7 +116,6 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 
 Enemy_Faling_Drone::~Enemy_Faling_Drone()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Faling_Drone::Move()

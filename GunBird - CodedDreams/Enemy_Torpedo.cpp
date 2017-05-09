@@ -8,8 +8,8 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/torpedo.png");
-	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_torpedo&mortar.png");
-	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_torpedo&mortar.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_torpedo.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_torpedo.png");
 
 	//Set animation steps, speed and loop
 	idle.PushBack({ 5, 37, 17, 31 });
@@ -38,9 +38,6 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 
 Enemy_Torpedo::~Enemy_Torpedo()
 {
-	App->textures->Unload(NormalSprite);
-	App->textures->Unload(RedSprite);
-	App->textures->Unload(WhiteSprite);
 }
 
 void Enemy_Torpedo::Move()

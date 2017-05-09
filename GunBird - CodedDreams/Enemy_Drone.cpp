@@ -8,8 +8,8 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/drone.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_drone.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_drone.png");
 	
 
 	//Wave1
@@ -105,7 +105,6 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 
 Enemy_Drone::~Enemy_Drone()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Drone::Move()
