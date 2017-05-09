@@ -90,14 +90,3 @@ void Enemy_Flying_Machine::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
 }
-
-void Enemy_Flying_Machine::ExtraAnim(SDL_Texture* texture)
-{
-	//Si l'enemic no te extra animation no cal posar aquesta funció ni aqui ni al header
-}
-
-void Enemy_Flying_Machine::DeadAnim()
-{
-	animation = &dead;
-	position.y += 0.2f; //Perque es mogui a la mateixa velocitat que l'overlay
-}

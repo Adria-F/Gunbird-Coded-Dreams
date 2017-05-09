@@ -12,8 +12,6 @@ public:
 	~Enemy_Flying_Machine();
 
 	void Move();
-	void ExtraAnim(SDL_Texture* texture);
-	void DeadAnim();
 
 public:
 
