@@ -10,6 +10,7 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	NormalSprite = App->textures->Load("assets/enemies/drone.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
+	
 
 	//Wave1
 	dronewave.PushBack({ 12, 37, 38, 38 });
@@ -23,10 +24,25 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	dronewave.loop = true;
 
 	//Death
-	dead.PushBack({ 16, 132, 32, 58 });
-	dead.PushBack({ 80, 132, 32, 58 });
-	dead.speed = 0.1f;
-	dead.loop = true;
+	//Chavales es la medium explosion sencera, si algu la vol aqui esta guapas
+
+	dead.PushBack({ 10, 131, 69, 69 });
+	dead.PushBack({ 82, 131, 69, 69 });
+	dead.PushBack({ 152, 131, 69, 69 });
+	dead.PushBack({ 228, 131, 69, 69 });
+	dead.PushBack({ 303, 131, 69, 69 });
+	dead.PushBack({ 16, 215, 68, 68 });
+	dead.PushBack({ 82, 215, 68, 68 });
+	dead.PushBack({ 152, 215, 68, 68 });
+	dead.PushBack({ 228, 215, 68, 68 });
+	dead.PushBack({ 303, 215, 68, 68 });
+	dead.PushBack({ 82, 313, 68, 68 });
+	dead.PushBack({ 152, 313, 68, 68 });
+	dead.PushBack({ 228, 313, 68, 68 });
+	dead.PushBack({ 303, 313, 68, 68 });
+
+	dead.speed = 0.5f;
+	dead.loop = false;
 
 	//Wave1 Path
 
