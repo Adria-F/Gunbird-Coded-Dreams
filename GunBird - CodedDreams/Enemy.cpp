@@ -75,7 +75,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 		if (extra_anim && lives > 0)
 			ExtraAnim(sprites);
 	}
-	if (lives <= 0)
+	if (lives <= 0 && die == false)
 		die = explode();
 }
 
