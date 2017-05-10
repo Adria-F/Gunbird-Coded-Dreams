@@ -64,6 +64,23 @@ public:
 	{
 		current_frame = 0;
 	}
+
+	Animation* GetCurrentAnimation()
+	{
+		uint count = 0;
+		uint i = 0;
+		Animation* temp = nullptr;
+		for (; i < last_step; ++i)
+		{
+			count += steps[i].frames;
+			temp = steps[i].animation;
+			if (count >= current_frame)
+				break;
+		}
+		
+		return temp;
+	}
+
 };
 
 #endif // __PATH_H__

@@ -125,4 +125,12 @@ Enemy_Flying_Machine::~Enemy_Flying_Machine()
 void Enemy_Flying_Machine::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+
+	if (collider != nullptr)
+	{
+		if (path.GetCurrentAnimation() == &idle_grow_gun || path.GetCurrentAnimation() == &idle_up)
+			collider->rect = { (int)position.x, (int)position.y, 90, 69 };
+		else
+			collider->rect = { 0, 0, 0, 0 };
+	}
 }
