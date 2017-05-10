@@ -9,7 +9,7 @@
 
 Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id)
 {
-	//Big1
+	
 	b1 = App->textures->Load("assets/enemies/explosions/big2.png");
 	b2 = App->textures->Load("assets/enemies/explosions/big1.png");
 	m1 = App->textures->Load("assets/enemies/explosions/medium1.png");
@@ -17,7 +17,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	s1 = App->textures->Load("assets/enemies/explosions/small1.png");
 	s2 = App->textures->Load("assets/enemies/explosions/small2.png");
 
-
+	//Big1
 	anim_b1.PushBack({ 17,37,83,74 });
 	anim_b1.PushBack({ 129,33,91,85 });
 	anim_b1.PushBack({ 258,25,102,94 });
