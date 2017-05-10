@@ -142,7 +142,6 @@ bool Enemy::explode()
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
 		break;
 	case BIG2:
-		return true;
 		App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
 		break;
 	case MID1:
