@@ -31,6 +31,7 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 	initial_hp = lives;
 	points = 200;
 	extra_anim = false;
+	explosion_type = SMALL1;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 23, 31 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);

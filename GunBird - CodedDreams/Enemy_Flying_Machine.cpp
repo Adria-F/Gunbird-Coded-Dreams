@@ -112,6 +112,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	initial_hp = lives;
 	points = 5000;
 	extra_anim = false;
+	explosion_type = FLYINGMACHINE;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);

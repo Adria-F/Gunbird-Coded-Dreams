@@ -97,7 +97,8 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	initial_hp = lives;
 	points = 500;
 	extra_anim = false;
-	type = BIG2;
+	explosion_type = SMALL1;
+
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 35, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -111,3 +112,4 @@ void Enemy_Drone::Move()
 {
 		position = original_pos + path.GetCurrentPosition(&animation);
 }
+

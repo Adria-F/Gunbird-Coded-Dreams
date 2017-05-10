@@ -21,11 +21,8 @@ protected:
 public:
 	enum Explosions
 	{
-		//Josep: M'he fixat que en pràcticament totes les animacions 
-		//de mort acaben en el fotograma 4... 
-		//no serà tan útil com em pensava això, pero farà la feina
-		//aquí hi han coses que no están acabades (perque totes neceiten el fotograma
-		//4)
+		//The diference between x1 and x2 is 
+		//the animation is inverted, but remains the same.
 		BIG1 = 1,
 		BIG2,
 		MID1,
@@ -43,6 +40,11 @@ public:
 	
 	//Explosions textures
 	SDL_Texture* b1;
+	SDL_Texture* b2;
+	SDL_Texture* m1;
+	SDL_Texture* m2;
+	SDL_Texture* s1;
+	SDL_Texture* s2;
 
 	//Time between red ticks
 	Uint32 Red_now;
@@ -54,7 +56,7 @@ public:
 	bool extra_anim = false; //Something moving over basic animation?
 	bool die = false;
 	bool lower_level = false; //Is the enemy behing the overlayed map?
-	Explosions type;
+	Explosions explosion_type;
 	
 	int wave;
 	int id = -1; //Id of an enemy inside a wave

@@ -121,6 +121,8 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	initial_hp = lives;
 	points = 500;
 	extra_anim = false;
+	explosion_type = SMALL1;
+
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 40, 40 }, COLLIDER_ENEMY, (Module*)App->enemies);

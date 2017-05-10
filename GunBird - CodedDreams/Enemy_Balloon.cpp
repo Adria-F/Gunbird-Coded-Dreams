@@ -32,7 +32,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	initial_hp = lives;
 	points = 400;
 	extra_anim = false;
-	type = BIG1;
+	explosion_type = BIG1; //Explosion type
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_ENEMY, (Module*)App->enemies);

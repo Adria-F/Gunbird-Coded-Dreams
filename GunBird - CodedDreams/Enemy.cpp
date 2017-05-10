@@ -26,7 +26,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	anim_b1.PushBack({ 129,265,105,105 });
 	anim_b1.PushBack({ 253,275,106,106 });
 	anim_b1.PushBack({ 401,281,65,80 });
-	anim_b1.PushBack({ 0, 0, 0, 0 });
+	anim_b1.PushBack({ 0, 0, 0, 0 }); //last one should be always transparent
 	anim_b1.speed = 0.5f;
 	anim_b1.loop = false;
 
@@ -136,26 +136,26 @@ void Enemy::DeadAnim()
 }
 bool Enemy::explode()
 {
-	switch (type)
+	switch (explosion_type)
 	{
 	case BIG1:
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
 		break;
 	case BIG2:
 		return true;
-		//App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
+		App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
 		break;
 	case MID1:
-		//App->render->Blit(m1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
+		App->render->Blit(m1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
 		break;
 	case MID2:
-		//App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
+		App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
 		break;
 	case SMALL1:
-		//App->render->Blit(s1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
+		App->render->Blit(s1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
 		break;
 	case SMALL2:
-		//App->render->Blit(s2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
+		App->render->Blit(s2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
 		break;
 	}
 	return (anim_b1.GetCurrentFrameNum() == 4);
