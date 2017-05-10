@@ -110,6 +110,7 @@ Enemy_Drone::~Enemy_Drone()
 
 void Enemy_Drone::Move()
 {
-		position = original_pos + path.GetCurrentPosition(&animation);
+	position = original_pos + path.GetCurrentPosition(&animation);
 }
+
 

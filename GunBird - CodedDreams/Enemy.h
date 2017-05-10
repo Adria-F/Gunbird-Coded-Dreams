@@ -54,7 +54,7 @@ public:
 	int initial_hp; //To calculate when to turn red
 	bool hit; //When to turn white
 	bool extra_anim = false; //Something moving over basic animation?
-	bool die = false;
+	bool die = false; //enemy is dead if it's true.
 	bool lower_level = false; //Is the enemy behing the overlayed map?
 	Explosions explosion_type;
 	

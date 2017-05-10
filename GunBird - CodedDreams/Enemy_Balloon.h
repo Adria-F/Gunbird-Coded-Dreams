@@ -12,7 +12,6 @@ public:
 	~Enemy_Balloon();
 
 	void Move();
-	void ExtraAnim(SDL_Texture* texture);
 	void DeadAnim();
 
 public:

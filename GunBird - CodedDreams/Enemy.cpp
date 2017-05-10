@@ -183,10 +183,10 @@ bool Enemy::explode()
 		App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
 		break;
 	case SMALL1:
-		App->render->Blit(s1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
+		App->render->Blit(s1, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s1.GetCurrentFrame()));
 		break;
 	case SMALL2:
-		App->render->Blit(s2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
+		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s2.GetCurrentFrame()));
 		break;
 	}
 	return (anim_b1.GetCurrentFrameNum() == 4);
