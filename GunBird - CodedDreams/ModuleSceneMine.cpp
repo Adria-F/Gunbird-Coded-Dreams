@@ -92,8 +92,17 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(FALLING_DRONE, 220, 3240, 2, 1);
 
 
-	//Torpedos wave1
-	App->enemies->AddEnemy(TORPEDO, 0, 2149, 1);
+	//Torpedos wave1 left
+	App->enemies->AddEnemy(TORPEDO, 0, 2350, 1);
+	App->enemies->AddEnemy(TORPEDO, 0, 2345, 1);
+	App->enemies->AddEnemy(TORPEDO, 0, 2340, 1);
+	App->enemies->AddEnemy(TORPEDO, 0, 2335, 1);
+
+	//Torpedos wave2 right
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2350, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2345, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2340, 2);
+	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2335, 2);
 
 	//My name is Jeff
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);

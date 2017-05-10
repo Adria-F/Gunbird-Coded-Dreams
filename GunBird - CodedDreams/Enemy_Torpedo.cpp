@@ -24,7 +24,18 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 	idle.loop = true;
 
 	//Set path
-	path.PushBack({ -0.1f, -0.2f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	if (wave == 1)
+	{
+		path.PushBack({ 1.6f, 2.0f }, 75, &idle);
+		path.PushBack({ 1.35f, 2.75f }, 140, &idle);
+	}
+
+	else if (wave == 2)
+	{
+		path.PushBack({ -1.6f, 2.0f }, 60, &idle);
+		path.PushBack({ -1.35f, 2.75f }, 140, &idle);
+	}
+	 //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 12;
