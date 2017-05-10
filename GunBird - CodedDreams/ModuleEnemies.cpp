@@ -58,31 +58,39 @@ update_status ModuleEnemies::PreUpdate()
 // Called before render is available
 update_status ModuleEnemies::Update()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	if (draw_underlayed)
 	{
-		if (enemies[i] != nullptr && App->scene_mine->lost == false)
-		{
-			if (enemies[i]->die) 
-				enemies[i]->DeadAnim();
-			else enemies[i]->Move();
-		}
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->lower_level)) enemies[i]->Draw(enemies[i]->sprites);
 	}
+	else
+	{
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+		{
+			if (enemies[i] != nullptr && App->scene_mine->lost == false)
+			{
+				if (enemies[i]->die) 
+					enemies[i]->DeadAnim();
+				else enemies[i]->Move();
+			}
+		}
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr && (enemies[i]->collider == nullptr)) enemies[i]->Draw(enemies[i]->sprites);
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider == nullptr)) enemies[i]->Draw(enemies[i]->sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_DECORATION)) enemies[i]->Draw(enemies[i]->sprites);
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_DECORATION)) enemies[i]->Draw(enemies[i]->sprites);
 
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_NONE)) enemies[i]->Draw(enemies[i]->sprites);
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_NONE)) enemies[i]->Draw(enemies[i]->sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_AIR_ENEMY)) enemies[i]->Draw(enemies[i]->sprites);
-
+		for (uint i = 0; i < MAX_ENEMIES; ++i)
+			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->collider->type == COLLIDER_AIR_ENEMY) && (enemies[i]->lower_level == false)) enemies[i]->Draw(enemies[i]->sprites);
+	}
+	
 	return UPDATE_CONTINUE;
 }
 

@@ -164,6 +164,12 @@ update_status ModuleSceneMine::Update()
 	
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
+	
+	App->enemies->draw_underlayed = true;
+	App->enemies->Update();
+	App->enemies->draw_underlayed = false;
+
+	//Overlay map
 	if (App->render->moving_scene)
 		overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);

@@ -129,8 +129,14 @@ void Enemy_Flying_Machine::Move()
 	if (collider != nullptr)
 	{
 		if (path.GetCurrentAnimation() == &idle_grow_gun || path.GetCurrentAnimation() == &idle_up)
+		{
 			collider->rect = { (int)position.x, (int)position.y, 90, 69 };
+			lower_level = false;
+		}
 		else
+		{
 			collider->rect = { 0, 0, 0, 0 };
+			lower_level = true;
+		}
 	}
 }

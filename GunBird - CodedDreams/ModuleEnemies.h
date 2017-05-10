@@ -41,6 +41,10 @@ public:
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y, int wave = 1, int id = 0);
 
+public:
+
+	bool draw_underlayed = false;
+
 private:
 
 	void SpawnEnemy(const EnemyInfo& info);
