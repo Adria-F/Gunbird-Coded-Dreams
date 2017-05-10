@@ -12,7 +12,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	idle.PushBack({12, 16, 42, 48});
+	idle.PushBack({ 12, 16, 42, 48 });
 	idle.PushBack({ 76, 16, 42, 48 });
 	idle.speed = 0.1f;
 	idle.loop = true;

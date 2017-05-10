@@ -140,7 +140,7 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	/*---------------------------------------------------*/
 
 	//idle girl
-	anim_girl_idle.PushBack({ 189, 165, 13 ,23 });
+	anim_girl_idle.PushBack({ 189, 165, 13, 23 });
 	anim_girl_idle.PushBack({ 170, 166, 13, 23 });
 	anim_girl_idle.speed = 0.1f;
 	anim_girl_idle.loop = true;
