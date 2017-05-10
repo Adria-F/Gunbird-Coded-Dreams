@@ -12,6 +12,7 @@
 #include "ModuleCollision.h"
 #include "ModuleHighscores.h"
 #include "ModuleUI.h"
+#include "ModuleParticles.h"
 
 // Reference at updated to a youtube video from gunbird
 // https://youtu.be/HDC6PZxGwL4?t=3m17s
@@ -116,6 +117,8 @@ bool ModuleSceneMine::Start()
 	App->player2->Enable();
 	App->player1->Enable();
 	App->collision->Enable();
+	App->enemies->Enable();
+	App->particles->Enable();
 
 	return ret;
 }
@@ -140,6 +143,8 @@ bool ModuleSceneMine::CleanUp()
 	App->player1->Disable();
 	App->player2->Disable();
 	App->collision->Disable();
+	App->enemies->Disable();
+	App->particles->Disable();
 
 	return true;
 }
