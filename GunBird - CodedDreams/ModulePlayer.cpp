@@ -90,12 +90,16 @@ update_status Player::Update()
 		//Shot system
 		if ((bullet_counter == 0 || now >= total_time) && shot && bullet_counter <= MAX_BULLETS)
 		{
-			App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
-			start_time = SDL_GetTicks();
-			bullet_counter++;
 			if (bullet_counter == MAX_BULLETS)
 			{
 				shot = false;
+				start_time = SDL_GetTicks();
+			}
+			else
+			{
+				App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				start_time = SDL_GetTicks();
+				bullet_counter++;
 			}
 		}
 

@@ -49,7 +49,7 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()
 {
-	if (camera.y < 0 && moving_scene && camera.y < -357)
+	if (camera.y < 0 && moving_scene)
 	{
 		camera.y += cam_speed;
 	}
