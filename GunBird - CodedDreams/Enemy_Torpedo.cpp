@@ -12,19 +12,19 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_torpedo.png");
 
 	//Set animation steps, speed and loop
-	idle.PushBack({ 5, 37, 17, 31 });
-	idle.PushBack({ 35, 37, 15, 31 });
-	idle.PushBack({ 60, 37, 21, 31 });
-	idle.PushBack({ 85, 37, 25, 31 });
-	idle.PushBack({ 0, 74, 27, 31 });
-	idle.PushBack({ 30, 74, 25, 31 });
-	idle.PushBack({ 60, 74, 21, 31 });
-	idle.PushBack({ 90, 74, 15, 31 });
-	idle.speed = 0.1f;
+	idle.PushBack({ 0, 37, 28, 32 });
+	idle.PushBack({ 29, 38, 28, 32 });
+	idle.PushBack({ 57, 38, 28, 32 });
+	idle.PushBack({ 84, 38, 28, 32 });
+	idle.PushBack({ 0, 74, 28, 32 });
+	idle.PushBack({ 29, 74, 28, 32 });
+	idle.PushBack({ 57, 74, 28, 32 });
+	idle.PushBack({ 84, 74, 28, 32 });
+	idle.speed = 0.4f;
 	idle.loop = true;
 
 	//Set path
-	//path.PushBack({ -0.1f, -0.2f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ -0.1f, -0.2f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 12;
