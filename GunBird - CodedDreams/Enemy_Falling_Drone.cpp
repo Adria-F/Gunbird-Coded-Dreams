@@ -75,6 +75,7 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 
 	if (wave == 1 && id == 1)
 	{
+		path.PushBack({ 0.0f, 0.0f }, 200, &going_right);
 		path.PushBack({ 1.0f, 0.2f }, 125, &going_right);
 		path.PushBack({ 0.8f, 0.2f }, 25, &center_from_right);
 		path.PushBack({ 0.6f, 0.2f }, 20, &rotate_left);
@@ -88,14 +89,22 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 
 	}
 	else if (wave == 1 && id == 2) {
-		path.PushBack({ 0.0f, 0.2f }, 217, &rotate_right);
-		path.PushBack({ 1.0f, 0.0f }, 60, &rotate_right);
-		path.PushBack({ 0.0f, 0.2f }, 100, &rotate_right);
-		path.PushBack({ 0.5f, 1.5f }, 1000, &rotate_right);
+		path.PushBack({ 0.0f, 0.0f }, 335, &going_right);
+		path.PushBack({ 1.0f, 0.2f }, 125, &going_right);
+		path.PushBack({ 0.8f, 0.2f }, 25, &center_from_right);
+		path.PushBack({ 0.6f, 0.2f }, 20, &rotate_left);
+		path.PushBack({ 0.3f, 0.2f }, 20, &rotate_left);
+		path.PushBack({ -0.7f, 0.2f }, 25, &going_left);
+		path.PushBack({ -1.0f, 0.2f }, 50, &going_left);
+		path.PushBack({ -0.7f, 0.2f }, 25, &center_from_left);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ -0.7f, 0.2f }, 25, &rotate_right);
+		path.PushBack({ 1.0f, 0.5f }, 25, &going_right);
+		path.PushBack({ 2.5f, 0.8f }, 1000, &going_right);
 	}
 	//Wave2 Path
 	else if (wave == 2 && id == 1)
 	{
+		path.PushBack({ 0.0f, 0.0f }, 200, &going_left);
 		path.PushBack({ -1.0f, 0.2f }, 125, &going_left);
 		path.PushBack({ -0.8f, 0.2f }, 25, &center_from_left);
 		path.PushBack({ -0.6f, 0.2f }, 20, &rotate_right);
@@ -109,11 +118,17 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	}
 	else if (wave == 2 && id == 2)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 50, &rotate_right);
-		path.PushBack({ 0.0f, 0.0f }, 98, &rotate_right);
-		path.PushBack({ 0.0f, 2.0f }, 70, &rotate_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &rotate_right);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &rotate_right);
+		path.PushBack({ 0.0f, 0.0f }, 335, &going_left);
+		path.PushBack({ -1.0f, 0.2f }, 125, &going_left);
+		path.PushBack({ -0.8f, 0.2f }, 25, &center_from_left);
+		path.PushBack({ -0.6f, 0.2f }, 20, &rotate_right);
+		path.PushBack({ -0.3f, 0.2f }, 20, &rotate_right);
+		path.PushBack({ 0.7f, 0.2f }, 25, &going_right);
+		path.PushBack({ 1.0f, 0.2f }, 50, &going_right);
+		path.PushBack({ 0.7f, 0.2f }, 25, &center_from_right);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.7f, 0.2f }, 25, &rotate_left);
+		path.PushBack({ -1.0f, 0.5f }, 25, &going_left);
+		path.PushBack({ -2.5f, 0.8f }, 1000, &going_left);
 	}
 
 	//Set lives, initial_hp, points adn extra_anim
