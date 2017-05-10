@@ -40,6 +40,9 @@ bool ModuleWelcomeTitle::Start()
 
 	fading = false;
 
+	App->player1->setCharacter(App->marion); //Character selection
+	App->player2->setCharacter(App->ash); //Character selection
+
 	return ret;
 }
 
@@ -71,9 +74,6 @@ update_status ModuleWelcomeTitle::Update()
 		App->fade->FadeToBlack(this, App->scene_mine, 0.5f);
 		fading = true;
 	}
-
-	App->player1->setCharacter(App->marion); //Character selection
-	App->player2->setCharacter(App->ash); //Character selection
 
 	return UPDATE_CONTINUE;
 }
