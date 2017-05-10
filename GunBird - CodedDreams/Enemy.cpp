@@ -11,6 +11,12 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 {
 	//Big1
 	b1 = App->textures->Load("assets/enemies/explosions/big2.png");
+	b2 = App->textures->Load("assets/enemies/explosions/big1.png");
+	m1 = App->textures->Load("assets/enemies/explosions/medium1.png");
+	m2 = App->textures->Load("assets/enemies/explosions/medium2.png");
+	s1 = App->textures->Load("assets/enemies/explosions/small1.png");
+	s2 = App->textures->Load("assets/enemies/explosions/small2.png");
+
 
 	anim_b1.PushBack({ 17,37,83,74 });
 	anim_b1.PushBack({ 129,33,91,85 });
@@ -44,6 +50,11 @@ Enemy::~Enemy()
 	App->textures->Unload(RedSprite);
 	App->textures->Unload(WhiteSprite);
 	App->textures->Unload(b1);
+	App->textures->Unload(b2);
+	App->textures->Unload(m2);
+	App->textures->Unload(m1);
+	App->textures->Unload(s2);
+	App->textures->Unload(s1);
 	if (collider != nullptr)
 		collider->to_delete = true;
 }
