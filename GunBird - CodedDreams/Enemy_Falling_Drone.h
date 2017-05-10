@@ -19,10 +19,12 @@ public:
 
 	Path path;
 	Animation idle;
-	Animation move_right;
-	Animation right_idle;
-	Animation move_left;
-	Animation left_idle;
+	Animation rotate_right;
+	Animation going_right;
+	Animation center_from_right;
+	Animation rotate_left;
+	Animation going_left;
+	Animation center_from_left;
 	Animation dead;
 
 };

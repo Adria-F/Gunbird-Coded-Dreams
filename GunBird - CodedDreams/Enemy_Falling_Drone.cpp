@@ -18,90 +18,117 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	idle.PushBack({ 88, 150, 45, 45 });
 	idle.speed = 0.15f;
 
-	//Move Right
-	move_right.PushBack({ 312, 150, 45, 45 });
-	move_right.PushBack({ 252, 150, 45, 45 });
+	//Rotate Right
+	rotate_right.PushBack({ 312, 150, 45, 45 });
+	rotate_right.PushBack({ 252, 150, 45, 45 });
 	//move_right.PushBack({ 306, 95, 45, 45 });
 	//move_right.PushBack({ 144, 150, 45, 45 });
-	move_right.PushBack({ 195, 150, 45, 45 });
+	rotate_right.PushBack({ 195, 150, 45, 45 });
 	//move_right.PushBack({ 108, 91, 45, 45 });
 	//move_right.PushBack({ 164, 92, 45, 45 });
-	move_right.speed = 0.1f;
-	move_right.loop = false;
+	rotate_right.speed = 0.5f;
+	rotate_right.loop = false;
 
-	//Right Idle
-	right_idle.PushBack({ 306, 95, 45, 45 });
-	right_idle.PushBack({ 142, 148, 45, 45 });
-	right_idle.PushBack({ 193, 149, 45, 45 });
+	//Going Right
+	going_right.PushBack({ 306, 95, 45, 45 });
+	going_right.PushBack({ 142, 148, 45, 45 });
+	going_right.PushBack({ 193, 149, 45, 45 });
 
-	right_idle.speed = 0.05f;
-	right_idle.loop = true;
+	going_right.speed = 0.05f;
+	going_right.loop = true;
+
+	//Restore Right
+
+	center_from_right.PushBack({ 195, 150, 45, 45 });
+	center_from_right.PushBack({ 252, 150, 45, 45 });
+	center_from_right.PushBack({ 312, 150, 45, 45 });
+
+	center_from_right.speed = 0.5f;
+	center_from_right.loop = false;
 
 	//Move Left
-	move_left.PushBack({ 33, 95, 45, 45 });
-	move_left.PushBack({ 88, 95, 45, 45 });
-	move_left.PushBack({ 247, 95, 45, 45 });
+	rotate_left.PushBack({ 33, 95, 45, 45 });
+	rotate_left.PushBack({ 88, 95, 45, 45 });
+	rotate_left.PushBack({ 247, 95, 45, 45 });
 	
-	move_left.speed = 0.1f;
-	move_left.loop = false;
+	rotate_left.speed = 0.5f;
+	rotate_left.loop = false;
 
 	//Left Idle
-	left_idle.PushBack({ 190, 95, 45, 45 });
-	left_idle.PushBack({ 247, 95, 45, 45 });
+	going_left.PushBack({ 190, 95, 45, 45 });
+	going_left.PushBack({ 247, 95, 45, 45 });
 	//left_idle.PushBack({ 247, 95, 45, 45 });
 
-	left_idle.speed = 0.05f;
-	left_idle.loop = true;
+	going_left.speed = 0.05f;
+	going_left.loop = true;
+
+	//Restore Left
+
+	center_from_left.PushBack({ 247, 95, 45, 45 });
+	center_from_left.PushBack({ 88, 95, 45, 45 });
+	center_from_left.PushBack({ 33, 95, 45, 45 });
+
+	center_from_left.speed = 0.5f;
+	center_from_left.loop = false;
 
 	//Wave1 Path
 
 	if (wave == 1 && id == 1)
 	{
-		path.PushBack({ 1.0f, 0.2f }, 75, &right_idle);
-		path.PushBack({ 0.0f, 0.2f }, 25, &idle);
-		path.PushBack({ 1.0f, 0.2f }, 25, &move_right);
-		path.PushBack({ 0.0f, 0.2f }, 1000, &left_idle);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 25, &idle);
-		path.PushBack({ -1.5f, 0.2f }, 25, &move_left);
-		path.PushBack({ -1.5f, 0.2f }, 200, &left_idle);
+		path.PushBack({ 1.0f, 0.2f }, 125, &going_right);
+		path.PushBack({ 0.8f, 0.2f }, 25, &center_from_right);
+		path.PushBack({ 0.6f, 0.2f }, 20, &rotate_left);
+		path.PushBack({ 0.3f, 0.2f }, 20, &rotate_left);
+		path.PushBack({ -0.7f, 0.2f }, 25, &going_left);
+		path.PushBack({ -1.0f, 0.2f }, 50, &going_left);
+		path.PushBack({ -0.7f, 0.2f }, 25, &center_from_left);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ -0.7f, 0.2f }, 25, &rotate_right);
+		path.PushBack({ 1.0f, 0.5f }, 25, &going_right);
+		path.PushBack({ 2.5f, 0.8f }, 1000, &going_right);
 
 	}
 	else if (wave == 1 && id == 2) {
-		path.PushBack({ 0.0f, 0.2f }, 217, &move_right);
-		path.PushBack({ 1.0f, 0.0f }, 60, &move_right);
-		path.PushBack({ 0.0f, 0.2f }, 100, &move_right);
-		path.PushBack({ 0.5f, 1.5f }, 1000, &move_right);
+		path.PushBack({ 0.0f, 0.2f }, 217, &rotate_right);
+		path.PushBack({ 1.0f, 0.0f }, 60, &rotate_right);
+		path.PushBack({ 0.0f, 0.2f }, 100, &rotate_right);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &rotate_right);
 	}
 	//Wave2 Path
 	else if (wave == 2 && id == 1)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 50, &move_right);
-		path.PushBack({ 0.0f, 2.0f }, 70, &move_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &move_right);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &move_right);
+		path.PushBack({ -1.0f, 0.2f }, 125, &going_left);
+		path.PushBack({ -0.8f, 0.2f }, 25, &center_from_left);
+		path.PushBack({ -0.6f, 0.2f }, 20, &rotate_right);
+		path.PushBack({ -0.3f, 0.2f }, 20, &rotate_right);
+		path.PushBack({ 0.7f, 0.2f }, 25, &going_right);
+		path.PushBack({ 1.0f, 0.2f }, 50, &going_right);
+		path.PushBack({ 0.7f, 0.2f }, 25, &center_from_right);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.7f, 0.2f }, 25, &rotate_left);
+		path.PushBack({ -1.0f, 0.5f }, 25, &going_left);
+		path.PushBack({ -2.5f, 0.8f }, 1000, &going_left);
 	}
 	else if (wave == 2 && id == 2)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 50, &move_right);
-		path.PushBack({ 0.0f, 0.0f }, 98, &move_right);
-		path.PushBack({ 0.0f, 2.0f }, 70, &move_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &move_right);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &move_right);
+		path.PushBack({ 0.0f, 0.0f }, 50, &rotate_right);
+		path.PushBack({ 0.0f, 0.0f }, 98, &rotate_right);
+		path.PushBack({ 0.0f, 2.0f }, 70, &rotate_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &rotate_right);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &rotate_right);
 	}
 	//Wave3 Path
 	else if (wave == 3 && id == 1)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 200, &move_right);
-		path.PushBack({ -1.0f, 0.0f }, 100, &move_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.0f }, 100, &move_right);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &move_right);
+		path.PushBack({ 0.0f, 0.0f }, 200, &rotate_right);
+		path.PushBack({ -1.0f, 0.0f }, 100, &rotate_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.0f }, 100, &rotate_right);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &rotate_right);
 
 	}
 	else if (wave == 3 && id == 2) {
-		path.PushBack({ 0.0f, 0.0f }, 300, &move_right);
-		path.PushBack({ -1.0f, 0.0f }, 100, &move_right);
-		path.PushBack({ 0.0f, 0.0f }, 100, &move_right);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &move_right);
+		path.PushBack({ 0.0f, 0.0f }, 300, &rotate_right);
+		path.PushBack({ -1.0f, 0.0f }, 100, &rotate_right);
+		path.PushBack({ 0.0f, 0.0f }, 100, &rotate_right);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &rotate_right);
 	}
 
 	//Set lives, initial_hp, points adn extra_anim
