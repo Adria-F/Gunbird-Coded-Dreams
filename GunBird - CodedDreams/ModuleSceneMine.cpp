@@ -41,6 +41,7 @@ bool ModuleSceneMine::Start()
 	App->render->moving_scene = true;
 	graphics_background_text = App->textures->Load("assets/maps/mine_background.png");
 	graphics_above_background_text = App->textures->Load("assets/maps/above mine_background.png");
+	graphics_above_background_anims_text = App->textures->Load("assets/maps/above_mine_bg_anims.png");
 
 	App->render->camera.x  = 0;
 	App->render->camera.y = -3210;
@@ -91,7 +92,6 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(FALLING_DRONE, 200, 2350, 2, 1);
 	App->enemies->AddEnemy(FALLING_DRONE, 220, 2390, 2, 2);
 
-
 	//Torpedos wave1 left
 	App->enemies->AddEnemy(TORPEDO, 0, 2350, 1);
 	App->enemies->AddEnemy(TORPEDO, 0, 2345, 1);
@@ -115,7 +115,46 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
 	App->enemies->AddEnemy(TRUMP, 145, 2830, 1, 2);
 
-	
+	//LED 1
+	upper_led1.PushBack({ 1, 1, 16, 5 });
+	upper_led1.PushBack({ 18, 1, 16, 5 });
+	upper_led1.PushBack({ 35, 1, 16, 5 });
+	upper_led1.PushBack({ 52, 1, 16, 5 });
+	upper_led1.PushBack({ 1, 7, 16, 5 });
+	upper_led1.PushBack({ 18, 7, 16, 5 });
+	upper_led1.PushBack({ 35, 7, 16, 5 });
+	upper_led1.PushBack({ 52, 7, 16, 5 });
+	upper_led1.speed = 0.1f;
+	upper_led1.loop = true;
+
+	//BLOW1
+	upper_blow1.PushBack({ 69, 1, 31, 63 });
+	upper_blow1.PushBack({ 101, 1, 31, 63 });
+	upper_blow1.PushBack({ 133, 1, 31, 63 });
+	upper_blow1.PushBack({ 165, 1, 31, 63 });
+	upper_blow1.speed = 0.2f;
+	upper_blow1.loop = true;
+
+	//GATE
+	upper_gate.PushBack({ 69, 98, 120, 98 });
+	upper_gate.speed = 0.0f;
+	upper_gate.loop = false;
+
+	//LED 2
+	upper_led2.PushBack({ 3, 13, 12, 15 });
+	upper_led2.PushBack({ 20, 13, 12, 15 });
+	upper_led2.PushBack({ 37, 13, 12, 15 });
+	upper_led2.PushBack({ 54, 13, 12, 15 });
+	upper_led2.PushBack({ 3, 29, 12, 15 });
+	upper_led2.PushBack({ 20, 29, 12, 15 });
+	upper_led2.PushBack({ 37, 29, 12, 15 });
+	upper_led2.PushBack({ 54, 29, 12, 15 });
+	upper_led2.speed = 0.1f;
+	upper_led2.loop = true;
+
+	//BLOW 2
+	//LED 3
+
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
@@ -146,6 +185,11 @@ bool ModuleSceneMine::CleanUp()
 	{
 		App->textures->Unload(graphics_background_text);
 		graphics_background_text = nullptr;
+	}
+	if (graphics_above_background_anims_text != nullptr)
+	{
+		App->textures->Unload(graphics_above_background_anims_text);
+		graphics_above_background_anims_text = nullptr;
 	}
 	
 	App->audio->Stop();
@@ -184,6 +228,15 @@ update_status ModuleSceneMine::Update()
 		overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);
 	
+	//LED 1
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 100, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
+	//BLOW 1
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
+	//GATE
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 105, App->render->camera.y + 2434 + overlay_position, &upper_gate.GetCurrentFrame(), 0.75f);
+	//LED 2
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
+
 	//Fade to black
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
 		lost = true;
