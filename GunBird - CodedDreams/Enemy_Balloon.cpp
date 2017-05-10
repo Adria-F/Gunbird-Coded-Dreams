@@ -20,7 +20,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	dead.PushBack({ 16, 132, 32, 58 });
 	dead.PushBack({ 80, 132, 32, 58 });
 	dead.speed = 0.1f;
-	dead.loop = true;
+	dead.loop = true; 
 
 	//Set path
 	path.PushBack({0.0f, 0.2f}, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay

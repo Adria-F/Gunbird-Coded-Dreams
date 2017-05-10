@@ -168,26 +168,33 @@ void Enemy::DeadAnim()
 }
 bool Enemy::explode()
 {
+	bool result = false;
 	switch (explosion_type)
 	{
 	case BIG1:
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
+		result = (anim_b1.GetCurrentFrameNum() == 4);
 		break;
 	case BIG2:
 		App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
+		result = (anim_b2.GetCurrentFrameNum() == 4);
 		break;
 	case MID1:
 		App->render->Blit(m1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
+		result = (anim_m1.GetCurrentFrameNum() == 4);
 		break;
 	case MID2:
 		App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
+		result = (anim_m2.GetCurrentFrameNum() == 4);
 		break;
 	case SMALL1:
 		App->render->Blit(s1, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s1.GetCurrentFrame()));
+		result = (anim_s1.GetCurrentFrameNum() == 4);
 		break;
 	case SMALL2:
 		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s2.GetCurrentFrame()));
+		result = (anim_s2.GetCurrentFrameNum() == 4);
 		break;
 	}
-	return (anim_b1.GetCurrentFrameNum() == 4);
+	return result;
 }
