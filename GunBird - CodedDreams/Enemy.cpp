@@ -16,6 +16,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	m2 = App->textures->Load("assets/enemies/explosions/medium2.png");
 	s1 = App->textures->Load("assets/enemies/explosions/small1.png");
 	s2 = App->textures->Load("assets/enemies/explosions/small2.png");
+	fm = App->textures->Load("assets/enemies/explosions/flying_machine.png");
 
 	//Big1
 	anim_b1.PushBack({ 17,37,83,74 });
@@ -76,6 +77,7 @@ Enemy::~Enemy()
 	App->textures->Unload(m1);
 	App->textures->Unload(s2);
 	App->textures->Unload(s1);
+	App->textures->Unload(fm);
 	if (collider != nullptr)
 		collider->to_delete = true;
 }
@@ -194,6 +196,10 @@ bool Enemy::explode()
 	case SMALL2:
 		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s2.GetCurrentFrame()));
 		result = (anim_s2.GetCurrentFrameNum() == 4);
+		break;
+	case FLYINGMACHINE:
+		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_fm.GetCurrentFrame()));
+		result = (anim_fm.GetCurrentFrameNum() == 24);
 		break;
 	}
 	return result;

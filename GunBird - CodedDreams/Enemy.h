@@ -17,6 +17,7 @@ protected:
 	Animation anim_m2;
 	Animation anim_s1;
 	Animation anim_s2;
+	Animation anim_fm;
 
 public:
 	enum Explosions
@@ -45,6 +46,7 @@ public:
 	SDL_Texture* m2;
 	SDL_Texture* s1;
 	SDL_Texture* s2;
+	SDL_Texture* fm;
 
 	//Time between red ticks
 	Uint32 Red_now;
