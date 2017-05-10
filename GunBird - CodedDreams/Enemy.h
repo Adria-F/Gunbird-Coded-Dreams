@@ -26,12 +26,13 @@ public:
 		//no serà tan útil com em pensava això, pero farà la feina
 		//aquí hi han coses que no están acabades (perque totes neceiten el fotograma
 		//4)
-		BIG1 = 4,
+		BIG1 = 1,
 		BIG2,
 		MID1,
 		MID2,
 		SMALL1,
-		SMALL2
+		SMALL2,
+		FLYINGMACHINE
 	};
 	fPoint position;
 	fPoint original_pos;

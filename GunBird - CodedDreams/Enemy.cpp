@@ -11,24 +11,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 {
 	//Big1
 	b1 = App->textures->Load("assets/enemies/explosions/big2.png");
-	/*
-		explosion_b1.PushBack({ 10, 131, 69, 69 });
-	explosion_b1.PushBack({ 82, 131, 69, 69 });
-	explosion_b1.PushBack({ 152, 131, 69, 69 });
-	explosion_b1.PushBack({ 228, 131, 69, 69 });
-	explosion_b1.PushBack({ 303, 131, 69, 69 });
-	explosion_b1.PushBack({ 16, 215, 68, 68 });
-	explosion_b1.PushBack({ 82, 215, 68, 68 });
-	explosion_b1.PushBack({ 152, 215, 68, 68 });
-	explosion_b1.PushBack({ 228, 215, 68, 68 });
-	explosion_b1.PushBack({ 303, 215, 68, 68 });
-	explosion_b1.PushBack({ 82, 313, 68, 68 });
-	explosion_b1.PushBack({ 152, 313, 68, 68 });
-	explosion_b1.PushBack({ 228, 313, 68, 68 });
-	explosion_b1.PushBack({ 303, 313, 68, 68 });
-	explosion_b1.PushBack({ 0, 0, 0, 0 });
 
-	*/
 	anim_b1.PushBack({ 17,37,83,74 });
 	anim_b1.PushBack({ 129,33,91,85 });
 	anim_b1.PushBack({ 258,25,102,94 });
@@ -159,20 +142,21 @@ bool Enemy::explode()
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
 		break;
 	case BIG2:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
+		return true;
+		//App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
 		break;
 	case MID1:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
+		//App->render->Blit(m1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
 		break;
 	case MID2:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
+		//App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
 		break;
 	case SMALL1:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
+		//App->render->Blit(s1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s1.GetCurrentFrame()));
 		break;
 	case SMALL2:
-		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
+		//App->render->Blit(s2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_s2.GetCurrentFrame()));
 		break;
 	}
-	return (anim_b1.GetCurrentFrameNum() == type);
+	return (anim_b1.GetCurrentFrameNum() == 4);
 }
