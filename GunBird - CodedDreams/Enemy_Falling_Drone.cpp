@@ -115,21 +115,6 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 		path.PushBack({ 0.0f, 0.2f }, 15, &rotate_right);
 		path.PushBack({ 0.0f, -2.0f }, 1000, &rotate_right);
 	}
-	//Wave3 Path
-	else if (wave == 3 && id == 1)
-	{
-		path.PushBack({ 0.0f, 0.0f }, 200, &rotate_right);
-		path.PushBack({ -1.0f, 0.0f }, 100, &rotate_right); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.0f }, 100, &rotate_right);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &rotate_right);
-
-	}
-	else if (wave == 3 && id == 2) {
-		path.PushBack({ 0.0f, 0.0f }, 300, &rotate_right);
-		path.PushBack({ -1.0f, 0.0f }, 100, &rotate_right);
-		path.PushBack({ 0.0f, 0.0f }, 100, &rotate_right);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &rotate_right);
-	}
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 5;
@@ -138,7 +123,7 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	extra_anim = false;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 35, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 40, 40 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Faling_Drone::~Enemy_Faling_Drone()
