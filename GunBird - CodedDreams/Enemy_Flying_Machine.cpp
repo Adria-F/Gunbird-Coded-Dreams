@@ -60,51 +60,51 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	dead.loop = false;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.0f }, 250, &idle_low);
-	path.PushBack({ -0.55f, -0.4f }, 350, &idle_low);
-	path.PushBack({ 0.02f, -0.2f }, 1100, &idle_low);
-	path.PushBack({ -0.1f, -0.5f }, 175, &idle_low);
+	path.PushBack({ 0.0f, 0.0f }, 225, &idle_low);
+	path.PushBack({ -0.55f, -0.45f }, 325, &idle_low);
+	path.PushBack({ 0.012f, -0.23f }, 1100, &idle_low);
+	path.PushBack({ -0.2f, -0.75f }, 85, &idle_low);
 
-	path.PushBack({ -0.2f, -0.75f }, 30, &idle_grow);
+	path.PushBack({ -0.15f, -0.75f }, 30, &idle_grow);
 
-	path.PushBack({ -0.1f, -0.2f }, 30, &idle_grow_gun);
-
-	path.PushBack({ 0.0f, -0.95f }, 150, &idle_up);
+	path.PushBack({ -0.1f, -0.45f }, 30, &idle_grow_gun);
+	// UP 1
+	path.PushBack({ 0.0f, -0.85f }, 85, &idle_up);
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f }, 15, &idle_up);
+	// DOWN 1
 	path.PushBack({ 0.0f, 0.45f - 0.09f}, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.85f - 0.09f }, 40, &idle_up);
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 15, &idle_up);
+	// UP 2
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, -0.95f }, 100, &idle_up);
+	path.PushBack({ 0.0f, -0.85f }, 125, &idle_up);
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f }, 15, &idle_up);
+	// DOWN 2
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.85f - 0.09f }, 50, &idle_up);
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 15, &idle_up);
+	// UP 3
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, -0.95f }, 105, &idle_up);
+	path.PushBack({ 0.0f, -0.85f }, 130, &idle_up);
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f }, 15, &idle_up);
+	// DOWN 3
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.95f - 0.09f }, 50, &idle_up);
+	path.PushBack({ 0.0f, 0.85f - 0.09f }, 50, &idle_up);
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f - 0.09f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f - 0.09f }, 15, &idle_up);
+	// UP 4
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, -0.95f }, 110, &idle_up);
+	path.PushBack({ 0.0f, -0.85f }, 135, &idle_up);
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.0f }, 5, &idle_up);
-
+	path.PushBack({ 0.0f, 0.0f }, 15, &idle_up);
+	// DOWN LAST
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
-	path.PushBack({ 0.0f, 0.95f - 0.09f }, 300, &idle_up);
+	path.PushBack({ 0.0f, 1.0f - 0.09f }, 300, &idle_up);
 	path.PushBack({ 0.0f, 0.0f}, 200, &idle_up);
 
 	//Set lives, initial_hp, points adn extra_anim
