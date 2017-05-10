@@ -80,8 +80,33 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	
 	/*---------------------------------------------------*/
 	//confused boy
+	anim_boy_confused.PushBack({ 121, 139, 14, 25 }); //left
+	anim_boy_confused.PushBack({ 140, 139, 14, 24 });
+	anim_boy_confused.PushBack({ 121, 139, 14, 25 }); //left
+	anim_boy_confused.PushBack({ 140, 139, 14, 24 });
+
+	anim_boy_confused.PushBack({ 85, 0, 15, 23 }); //down
+	anim_boy_confused.PushBack({ 105, 0, 15, 24 });
+	anim_boy_confused.PushBack({ 125, 0, 15, 23 });
+	anim_boy_confused.PushBack({ 145, 0, 15, 25 });
+
+	anim_boy_confused.PushBack({ 102, 139, 14, 25 }); //right
+	anim_boy_confused.PushBack({ 85, 139, 12, 24 });
+	anim_boy_confused.PushBack({ 102, 139, 14, 25 }); //right
+	anim_boy_confused.PushBack({ 85, 139, 12, 24 });
+
 	//right boy
+	anim_boy_right.PushBack({ 85, 83, 11, 22 });
+	anim_boy_right.PushBack({ 102, 83, 12, 21 }); 
+	anim_boy_right.PushBack({ 118, 83, 11, 22 }); 
+	anim_boy_right.PushBack({ 134, 83, 11, 21 }); 
+
 	//left boy
+	anim_boy_right.PushBack({ 85, 56, 11, 21 });
+	anim_boy_right.PushBack({ 101, 56, 11, 21 });
+	anim_boy_right.PushBack({ 117, 56, 12, 21 });
+	anim_boy_right.PushBack({ 134, 56, 11, 22 });
+
 	//idle boy
 	anim_boy_idle.PushBack({ 103, 109, 12, 23 });
 	anim_boy_idle.PushBack({ 85, 110, 12, 23 });
@@ -130,9 +155,10 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 		path.PushBack({ -0.40f, 0.09f }, 500, &anim_pilot_left);
 
 	}
-	if (wave == 2 && id == 1)
+	if (wave == 1 && id == 2)
 	{
-
+		path.PushBack({ 0.0f, 0.09f }, 400, &anim_boy_confused);
+		path.PushBack({ 0.40f, 0.09f }, 500, &anim_boy_right);
 	}
 
 	//set live;
