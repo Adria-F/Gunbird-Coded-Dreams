@@ -40,6 +40,27 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	//mid1
 	//mid2
 	//small1
+	anim_s1.PushBack({ 12,10,48,37 });
+	anim_s1.PushBack({ 77,11,48,37 });
+	anim_s1.PushBack({ 137,13,48,37 });
+	anim_s1.PushBack({ 197,12,48,37 });
+	anim_s1.PushBack({ 12,61,48,37 });
+	anim_s1.PushBack({ 72,62,48,37 });
+	anim_s1.PushBack({ 136,62,48,37 });
+	anim_s1.PushBack({ 196,62,48,37 });
+	anim_s1.PushBack({ 12,110,48,37 });
+	anim_s1.PushBack({ 73,111,48,37 });
+	anim_s1.PushBack({ 134,111,48,37 });
+	anim_s1.PushBack({ 194,111,48,37 });
+	anim_s1.PushBack({ 12,153,48,37 });
+	anim_s1.PushBack({ 73,153,48,37 });
+	anim_s1.PushBack({ 134,153,48,37 });
+	anim_s1.PushBack({ 0, 0, 0, 0 });
+	anim_s1.speed = 1.0f;
+	anim_s1.loop = false;
+	/*
+	anim_s1.life = 10000;
+	anim_s1.speed.y = App->render->cam_speed;*/
 	//small2
 }
 
