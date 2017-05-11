@@ -18,7 +18,8 @@ public:
 public:
 
 	Path path;
-	Animation idle;
+	Animation open;
+	Animation shooting;
 	Animation dead;
 
 };

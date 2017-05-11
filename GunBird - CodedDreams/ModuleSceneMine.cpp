@@ -103,6 +103,10 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2340, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2335, 2);
 
+	//Tanks
+	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2952, 1);
+	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2889, 2);
+
 	//My name is Jeff
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
@@ -114,7 +118,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
 	App->enemies->AddEnemy(TRUMP, 145, 2830, 1, 2);
 
-	//Easter Egg
+	//JOSEP IMBECIL
 	App->enemies->AddEnemy(MEGAMAN, -10, 3240, 1);
 
 	//LED 1

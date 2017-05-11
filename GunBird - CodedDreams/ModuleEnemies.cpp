@@ -9,6 +9,7 @@
 //Include all enemies
 #include "Enemy_Balloon.h"
 #include "Enemy_Torpedo.h"
+#include "Enemy_Tank.h"
 #include "Enemy_Flying_Machine.h"
 #include "Enemy_Miners.h"
 #include "Enemy_Drone.h"
@@ -167,6 +168,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
+		case ENEMY_TYPES::TANK:
+			enemies[i] = new Enemy_Tank(info.x, info.y, info.wave);
+			break;
 		case ENEMY_TYPES::TORPEDO:
 			enemies[i] = new Enemy_Torpedo(info.x, info.y, info.wave);
 			break;

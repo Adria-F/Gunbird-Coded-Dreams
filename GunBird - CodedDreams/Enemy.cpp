@@ -59,9 +59,7 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	anim_s1.PushBack({ 0, 0, 0, 0 });
 	anim_s1.speed = 1.0f;
 	anim_s1.loop = false;
-	/*
-	anim_s1.life = 10000;
-	anim_s1.speed.y = App->render->cam_speed;*/
+
 	//small2
 }
 
