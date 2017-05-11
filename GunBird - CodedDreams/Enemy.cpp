@@ -199,7 +199,7 @@ bool Enemy::explode()
 		break;
 	case FLYINGMACHINE:
 		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_fm.GetCurrentFrame()));
-		result = (anim_fm.GetCurrentFrameNum() == 24);
+		result = (anim_fm.GetCurrentFrameNum() == 7);
 		break;
 	}
 	return result;
