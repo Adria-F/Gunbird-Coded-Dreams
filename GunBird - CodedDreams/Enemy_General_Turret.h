@@ -3,6 +3,8 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "p2Point.h"
+#include "ModulePlayer.h"
 
 class Enemy_General_Turret : public Enemy
 {
@@ -13,12 +15,22 @@ public:
 
 	void Move();
 	void DeadAnim();
+	void ExtraAnim(SDL_Texture* texture);
 
 public:
 
 	Path path;
 	Animation idle;
 	Animation dead;
+
+private:
+
+	fPoint vector;
+	int distance[2];
+	fPoint cannon_pos[2];
+	int angle;
+	Player* player;
+	SDL_Rect angles[32];
 
 };
 
