@@ -21,6 +21,7 @@
     <ClInclude Include="Enemy_General_Turret.h" />
     <ClInclude Include="Enemy_Megaman.h" />
     <ClInclude Include="Enemy_Miners.h" />
+    <ClInclude Include="Enemy_Tank.h" />
     <ClInclude Include="Enemy_Torpedo.h" />
     <ClInclude Include="Enemy_Trump.h" />
     <ClInclude Include="Globals.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="Enemy_General_Turret.cpp" />
     <ClCompile Include="Enemy_Megaman.cpp" />
     <ClCompile Include="Enemy_Miners.cpp" />
+    <ClCompile Include="Enemy_Tank.cpp" />
     <ClCompile Include="Enemy_Torpedo.cpp" />
     <ClCompile Include="Enemy_Trump.cpp" />
     <ClCompile Include="Globals.cpp" />
