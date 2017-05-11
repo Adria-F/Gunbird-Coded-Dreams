@@ -160,6 +160,18 @@ bool ModuleSceneMine::Start()
 	upper_led3.speed = 0.1f;
 	upper_led3.loop = true;
 
+	//LED 4
+	upper_led4.PushBack({ 3, 59, 13, 11 });
+	upper_led4.PushBack({ 17, 59, 13, 11 });
+	upper_led4.PushBack({ 31, 59, 13, 11 });
+	upper_led4.PushBack({ 45, 59, 13, 11 });
+	upper_led4.PushBack({ 3, 71, 13, 11 });
+	upper_led4.PushBack({ 17, 71, 13, 11 });
+	upper_led4.PushBack({ 31, 71, 13, 11 });
+	upper_led4.PushBack({ 45, 71, 13, 11 });
+	upper_led4.speed = 0.1f;
+	upper_led4.loop = true;
+
 	//BLOW1
 	upper_blow1.PushBack({ 69, 1, 31, 63 });
 	upper_blow1.PushBack({ 101, 1, 31, 63 });
@@ -169,10 +181,10 @@ bool ModuleSceneMine::Start()
 	upper_blow1.loop = true;
 
 	//BLOW 2
-	upper_blow2.PushBack({ 69, 65, 24, 32 });
-	upper_blow2.PushBack({ 101, 65, 24, 32 });
-	upper_blow2.PushBack({ 133, 65, 24, 32 });
-	upper_blow2.PushBack({ 165, 65, 24, 32 });
+	upper_blow2.PushBack({ 69, 65, 25, 34 });
+	upper_blow2.PushBack({ 101, 65, 25, 34 });
+	upper_blow2.PushBack({ 133, 65, 25, 34 });
+	upper_blow2.PushBack({ 165, 65, 25, 34 });
 	upper_blow2.speed = 0.2f;
 	upper_blow2.loop = true;
 
@@ -255,10 +267,12 @@ update_status ModuleSceneMine::Update()
 	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
 	//LED 3
 	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 64, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
+	//LED 4
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 172, App->render->camera.y + 2805 + overlay_position, &upper_led4.GetCurrentFrame(), 0.75f);
 	//BLOW 1
 	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
 	//BLOW 2
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 1, App->render->camera.y + 2167 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 2165 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
 
 	//Fade to black
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)

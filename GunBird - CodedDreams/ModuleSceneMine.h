@@ -29,6 +29,7 @@ public:
 	Animation upper_led1;
 	Animation upper_led2;
 	Animation upper_led3;
+	Animation upper_led4;
 	Animation upper_blow2;
 	Animation upper_blow1;
 
