@@ -14,7 +14,7 @@ Enemy_Megaman::Enemy_Megaman(int x, int y): Enemy(x, y)
 	//Set animation steps, speed and loop
 	idle.PushBack({ 12, 16, 42, 48 });
 	idle.PushBack({ 76, 16, 42, 48 });
-	idle.speed = 0.1f;
+	idle.speed = 0.02f;
 	idle.loop = true;
 
 	//Set path
