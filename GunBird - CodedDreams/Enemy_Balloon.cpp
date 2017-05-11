@@ -17,6 +17,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	idle.speed = 0.1f;
 	idle.loop = true;
 
+	//dead
 	dead.PushBack({ 16, 132, 32, 58 });
 	dead.PushBack({ 80, 132, 32, 58 });
 	dead.speed = 0.1f;

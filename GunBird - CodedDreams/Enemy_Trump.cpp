@@ -11,9 +11,10 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	NormalSprite = App->textures->Load("assets/maps/Trump.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
-
-
-	
+	//delete animations
+	anim.PushBack({ 0, 0, 0, 0 });
+	anim.speed = 0.01f;
+	anim.loop = false;
 	//confused pilot
 	//right
 	anim_pilot_confused.PushBack({ 0, 145, 16, 24 });
@@ -159,8 +160,8 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	anim_girl_up.speed = 0.2f;
 	anim_girl_up.loop = true;
 
-
 	//Set path
+
 	//pilot
 	if (wave == 1 && id == 1)
 	{
@@ -168,12 +169,38 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 		path.PushBack({ -0.40f, 0.09f }, 500, &anim_pilot_left);
 
 	}
+	if (wave == 2 && id == 1)
+	{
+		path.PushBack({ 0.40f, 0.09f }, 305, &anim_pilot_right);
+		path.PushBack({ 0.0f, 0.09f }, 180, &anim_pilot_idle);
+		path.PushBack({ 0.40f, 0.09f }, 45, &anim_pilot_right);
+		path.PushBack({ 0.00f, -0.31f }, 150, &anim_pilot_up);
+		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
+	}
+	//boy
 	if (wave == 1 && id == 2)
 	{
 		path.PushBack({ 0.0f, 0.09f }, 450, &anim_boy_confused);
 		path.PushBack({ 0.40f, 0.09f }, 1000, &anim_boy_right);
 	}
+	if (wave == 2 && id == 2)
+	{
+		path.PushBack({ -0.40f, 0.09f }, 310, &anim_boy_left);
+		path.PushBack({ 0.0f, 0.09f }, 150, &anim_boy_idle);
+		path.PushBack({ -0.40f, 0.09f }, 40, &anim_boy_left);
+		path.PushBack({ 0.00f, -0.31f }, 150, &anim_boy_up);
+		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
+	}
 
+	//girl
+	if (wave == 1 && id == 3)
+	{
+		path.PushBack({ 0.0f, 0.09f }, 450, &anim_girl_idle);
+		path.PushBack({ 0.0f, 0.09f }, 15, &anim_girl_turning);
+		path.PushBack({ 0.0f, -0.31f }, 172, &anim_girl_up);
+		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
+
+	}
 	//set live;
 	lives = 1;
 	extra_anim = false;
@@ -187,5 +214,7 @@ Enemy_Trump::~Enemy_Trump()
 
 void Enemy_Trump::Move()
 {
+	
+	//if (App->render->camera.y <= -2293)
 	position = original_pos + path.GetCurrentPosition(&animation);
 }

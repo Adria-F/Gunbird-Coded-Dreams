@@ -117,8 +117,11 @@ bool ModuleSceneMine::Start()
 	//The Trump
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
 	App->enemies->AddEnemy(TRUMP, 145, 2830, 1, 2);
+	App->enemies->AddEnemy(TRUMP, 110, 2357, 1, 3);
+	App->enemies->AddEnemy(TRUMP, 250, 2345, 2, 2);
+	App->enemies->AddEnemy(TRUMP, -30, 2345, 2, 1);
 
-	//JOSEP IMBECIL
+	//<3
 	App->enemies->AddEnemy(MEGAMAN, -10, 3240, 1);
 
 	//LED 1
