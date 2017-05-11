@@ -115,6 +115,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
 	App->enemies->AddEnemy(TRUMP, 145, 2830, 1, 2);
 
+	//Easter Egg
+	App->enemies->AddEnemy(MEGAMAN, 50, 3300, 1);
+
 	//LED 1
 	upper_led1.PushBack({ 1, 1, 16, 5 });
 	upper_led1.PushBack({ 18, 1, 16, 5 });
