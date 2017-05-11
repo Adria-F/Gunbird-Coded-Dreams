@@ -20,6 +20,8 @@ ModuleUI::ModuleUI()
 	char_pos.h = 13;
 	char_pos.y = 12;
 
+	notification = { 0, 0, 73, 15 };
+
 }
 
 ModuleUI::~ModuleUI()
@@ -35,6 +37,8 @@ bool ModuleUI::Start()
 	ash_texture = App->textures->Load("assets/characters/ash.png");
 	game_over = App->textures->Load("assets/UI/game over.png");
 	char_lives = App->textures->Load("assets/UI/ash_marion_ui.png");
+	debugging_text = App->textures->Load("assets/UI/debugging_on.png");
+	godMode_text = App->textures->Load("assets/UI/godmode_on.png");
 
 	App->fonts->Enable();
 
@@ -45,6 +49,10 @@ bool ModuleUI::CleanUp()
 {
 	App->textures->Unload(game_over);
 	App->textures->Unload(char_lives);
+	App->textures->Unload(marion_texture);
+	App->textures->Unload(ash_texture);
+	App->textures->Unload(debugging_text);
+	App->textures->Unload(godMode_text);
 	
 	App->fonts->Unload(font_score);
 	App->fonts->Unload(highscores_score);
@@ -55,6 +63,15 @@ bool ModuleUI::CleanUp()
 
 update_status ModuleUI::Update()
 {
+	if (App->render->debugging)
+	{
+		App->render->Blit(debugging_text, 0, 305, &notification);
+	}
+	if (App->render->god_mode)
+	{
+		App->render->Blit(godMode_text, 151, 305, &notification);
+	}
+	
 	if (App->scene_mine->lost == false)
 	{
 		if (App->player1->IsEnabled())

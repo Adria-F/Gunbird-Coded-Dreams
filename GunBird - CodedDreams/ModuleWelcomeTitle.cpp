@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneMine.h"
+#include "ModuleUI.h"
 #include "ModulePlayer.h" //temp
 #include "ModuleMarion.h" //temp
 #include "ModuleAsh.h" //temp
@@ -40,6 +41,8 @@ bool ModuleWelcomeTitle::Start()
 
 	fading = false;
 
+	App->ui->Enable();
+
 	App->player1->setCharacter(App->marion); //Character selection
 	App->player2->setCharacter(App->ash); //Character selection
 
@@ -57,6 +60,7 @@ bool ModuleWelcomeTitle::CleanUp()
 	}
 
 	App->audio->Stop();
+	App->ui->Disable();
 
 	return true;
 }

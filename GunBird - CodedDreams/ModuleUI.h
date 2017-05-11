@@ -32,6 +32,9 @@ private:
 	SDL_Rect game_over_bckg;
 	SDL_Texture* char_lives = nullptr;
 	SDL_Rect char_pos;
+	SDL_Texture* debugging_text = nullptr;
+	SDL_Texture* godMode_text = nullptr;
+	SDL_Rect notification;
 
 };
 
