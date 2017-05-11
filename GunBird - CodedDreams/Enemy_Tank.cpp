@@ -35,8 +35,8 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	dead.loop = true;
 	
 	//Set path
-	path.PushBack({ -0.5f, 0.0f }, 100, &open);
-	path.PushBack({ -0.5f, 0.0f }, 100, &shooting);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ -0.5f, 0.09f }, 100, &open);//Josep: He posat el 0.09f perque no es mogi cap a dalt. Suposo quen no era la teva intenció
+	path.PushBack({ -0.5f, 0.09f }, 100, &shooting);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 52;
