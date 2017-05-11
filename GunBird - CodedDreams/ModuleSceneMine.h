@@ -27,11 +27,10 @@ public:
 	SDL_Rect above_background_rect;
 
 	Animation upper_led1;
-	Animation upper_gate;
-	Animation upper_blow1;
 	Animation upper_led2;
-	Animation upper_blow2;
 	Animation upper_led3;
+	Animation upper_blow2;
+	Animation upper_blow1;
 
 	float overlay_position;
 	float overlay_speed = 0.09f;

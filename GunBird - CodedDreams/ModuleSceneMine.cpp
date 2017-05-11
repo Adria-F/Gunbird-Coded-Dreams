@@ -130,19 +130,6 @@ bool ModuleSceneMine::Start()
 	upper_led1.speed = 0.1f;
 	upper_led1.loop = true;
 
-	//BLOW1
-	upper_blow1.PushBack({ 69, 1, 31, 63 });
-	upper_blow1.PushBack({ 101, 1, 31, 63 });
-	upper_blow1.PushBack({ 133, 1, 31, 63 });
-	upper_blow1.PushBack({ 165, 1, 31, 63 });
-	upper_blow1.speed = 0.2f;
-	upper_blow1.loop = true;
-
-	//GATE
-	upper_gate.PushBack({ 69, 98, 120, 98 });
-	upper_gate.speed = 0.0f;
-	upper_gate.loop = false;
-
 	//LED 2
 	upper_led2.PushBack({ 3, 13, 12, 15 });
 	upper_led2.PushBack({ 20, 13, 12, 15 });
@@ -155,8 +142,33 @@ bool ModuleSceneMine::Start()
 	upper_led2.speed = 0.1f;
 	upper_led2.loop = true;
 
-	//BLOW 2
 	//LED 3
+	upper_led3.PushBack({ 3, 45, 9, 6 });
+	upper_led3.PushBack({ 13, 45, 9, 6 });
+	upper_led3.PushBack({ 23, 45, 9, 6 });
+	upper_led3.PushBack({ 37, 45, 9, 6 });
+	upper_led3.PushBack({ 47, 45, 9, 6 });
+	upper_led3.PushBack({ 57, 45, 9, 6 });
+	upper_led3.PushBack({ 47, 52, 9, 6 });
+	upper_led3.PushBack({ 57, 52, 9, 6 });
+	upper_led3.speed = 0.1f;
+	upper_led3.loop = true;
+
+	//BLOW1
+	upper_blow1.PushBack({ 69, 1, 31, 63 });
+	upper_blow1.PushBack({ 101, 1, 31, 63 });
+	upper_blow1.PushBack({ 133, 1, 31, 63 });
+	upper_blow1.PushBack({ 165, 1, 31, 63 });
+	upper_blow1.speed = 0.2f;
+	upper_blow1.loop = true;
+
+	//BLOW 2
+	upper_blow2.PushBack({ 69, 65, 24, 32 });
+	upper_blow2.PushBack({ 101, 65, 24, 32 });
+	upper_blow2.PushBack({ 133, 65, 24, 32 });
+	upper_blow2.PushBack({ 165, 65, 24, 32 });
+	upper_blow2.speed = 0.2f;
+	upper_blow2.loop = true;
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
@@ -233,12 +245,14 @@ update_status ModuleSceneMine::Update()
 	
 	//LED 1
 	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 100, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
-	//BLOW 1
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
-	//GATE
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 105, App->render->camera.y + 2434 + overlay_position, &upper_gate.GetCurrentFrame(), 0.75f);
 	//LED 2
 	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
+	//LED 3
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 64, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
+	//BLOW 1
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
+	//BLOW 2
+	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 1, App->render->camera.y + 2167 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
 
 	//Fade to black
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
