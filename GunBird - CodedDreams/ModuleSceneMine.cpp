@@ -107,12 +107,12 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2952, 1);
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2889, 2);
 
-	//My name is Jeff
+	//Miners
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
 	App->enemies->AddEnemy(MINER, 125, 3300, 3);
 	App->enemies->AddEnemy(MINER, 140, 3380, 4);
-	App->enemies->AddEnemy(MINER, 170, 3360, 4);
+	App->enemies->AddEnemy(MINER, 170, 3380, 4);
 
 	//The Trump
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
@@ -122,7 +122,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TRUMP, -30, 2345, 2, 1);
 
 	//<3
-	App->enemies->AddEnemy(MEGAMAN, -10, 3240, 1);
+	App->enemies->AddEnemy(MEGAMAN, 180, 3395, 1);
 
 	//LED 1
 	upper_led1.PushBack({ 1, 1, 16, 5 });
