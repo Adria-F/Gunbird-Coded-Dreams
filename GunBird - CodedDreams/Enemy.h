@@ -33,6 +33,7 @@ public:
 		FLYINGMACHINE
 	};
 	fPoint position;
+	fPoint collider_pos;
 	fPoint original_pos;
 	SDL_Texture* sprites = nullptr; //Using texture
 	SDL_Texture* NormalSprite = nullptr;

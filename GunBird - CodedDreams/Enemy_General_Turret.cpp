@@ -83,7 +83,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 		angles[i++] = { 214, 104, 28, 29 };
 	}
 	
-	//Set lives, initial_hp, points adn extra_anim
+	//Set lives, initial_hp, points and extra_anim
 	lives = 12;
 	initial_hp = lives;
 	points = 400;
@@ -93,6 +93,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider_pos.y = -6;
 }
 
 Enemy_General_Turret::~Enemy_General_Turret()

@@ -7,7 +7,7 @@
 #include "ModulePlayer.h"
 #include "SDL/include/SDL_timer.h"
 
-Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id)
+Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id), collider_pos(0, 0)
 {
 	
 	b1 = App->textures->Load("assets/enemies/explosions/big2.png");
@@ -90,7 +90,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 	Red_now = SDL_GetTicks() - Red_Start_time;
 
 	if(collider != nullptr)
-		collider->SetPos(App->render->camera.x + position.x, App->render->camera.y + position.y);
+		collider->SetPos(App->render->camera.x + position.x + collider_pos.x, App->render->camera.y + position.y + collider_pos.y);
 
 	if (animation != nullptr)
 	{
