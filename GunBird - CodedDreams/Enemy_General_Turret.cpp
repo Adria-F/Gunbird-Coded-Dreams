@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
+#include "ModuleSceneMine.h"
 #include "p2Point.h"
 
 #define PI 3.14159265
@@ -27,16 +28,22 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 	idle.PushBack({ 30, 307, 28, 35 });
 	idle.PushBack({ 59, 307, 28, 35 });
 	idle.PushBack({ 88, 307, 28, 35 });
-	idle.speed = 0.1f;
+	idle.speed = 0.07f;
 	idle.loop = true;
 
-	dead.PushBack({ 16, 132, 32, 33 });
+	dead.PushBack({ 11, 156, 32, 33 });
 	dead.PushBack({ 44, 156, 32, 33 });
+	dead.PushBack({ 77, 156, 32, 33 });
+	dead.PushBack({ 138, 156, 32, 33 });
+	dead.PushBack({ 171, 156, 32, 33 });
+	dead.PushBack({ 204, 156, 32, 33 });
+	dead.PushBack({ 139, 190, 32, 33 });
+	dead.PushBack({ 172, 190, 32, 33 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.2f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, 0.09f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 	extra_anim = true;
 	int i = 0;
@@ -82,8 +89,10 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 	points = 400;
 	explosion_type = BIG1; //Explosion type
 
+	original_pos = position;
+
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_General_Turret::~Enemy_General_Turret()
@@ -131,5 +140,5 @@ void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 void Enemy_General_Turret::DeadAnim()
 {
 	animation = &dead;
-	position.y += 0.2f; //Perque es mogui a la mateixa velocitat que l'overlay
+	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
 }

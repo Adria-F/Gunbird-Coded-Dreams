@@ -126,6 +126,9 @@ bool ModuleSceneMine::Start()
 	//Balloon
 	App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
 
+	//General Turret
+	App->enemies->AddEnemy(GENERAL_TURRET, 89, 3023, 1); //Test
+
 	//LED 1
 	upper_led1.PushBack({ 1, 1, 16, 5 });
 	upper_led1.PushBack({ 18, 1, 16, 5 });

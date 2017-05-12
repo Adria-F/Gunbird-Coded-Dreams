@@ -8,8 +8,8 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/Balloon.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_Balloon.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Balloon.png");
 
 	//Set animation steps, speed and loop
 	anim.PushBack({ 11, 6, 42, 53 });

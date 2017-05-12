@@ -17,6 +17,7 @@
 #include "Enemy_Falling_Drone.h"
 #include "Enemy_Barrel.h"
 #include "Enemy_Megaman.h"
+#include "Enemy_General_Turret.h"
 
 #define SPAWN_MARGIN 75
 
@@ -198,6 +199,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::MEGAMAN:
 			enemies[i] = new Enemy_Megaman(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GENERAL_TURRET:
+			enemies[i] = new Enemy_General_Turret(info.x, info.y);
 			break;
 		}
 	}
