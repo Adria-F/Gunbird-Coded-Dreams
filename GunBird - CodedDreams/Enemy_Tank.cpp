@@ -67,4 +67,5 @@ void Enemy_Tank::ExtraAnim(SDL_Texture* texture)
 void Enemy_Tank::DeadAnim()
 {
 	animation = &dead;
+	position.y += 0.09f;
 }

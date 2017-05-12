@@ -201,7 +201,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Megaman(info.x, info.y);
 			break;
 		case ENEMY_TYPES::GENERAL_TURRET:
-			enemies[i] = new Enemy_General_Turret(info.x, info.y);
+			enemies[i] = new Enemy_General_Turret(info.x, info.y, info.wave, info.id);
 			break;
 		}
 	}

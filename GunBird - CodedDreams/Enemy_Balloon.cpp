@@ -35,7 +35,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	explosion_type = BIG1; //Explosion type
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Balloon::~Enemy_Balloon()

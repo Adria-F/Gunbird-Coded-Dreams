@@ -8,12 +8,12 @@
 
 #define PI 3.14159265
 
-Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
+Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/General_Turret.png");
-	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_General_Turret.png");
-	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_General_Turret.png");;
+	RedSprite = nullptr;// App->textures->Load("assets/enemies/hitten/hitten_red_General_Turret.png");
+	WhiteSprite = nullptr;// App->textures->Load("assets/enemies/hitten/hitten_white_General_Turret.png");;
 
 	//Set animation steps, speed and loop
 	idle.PushBack({ 1, 235, 28, 35 });
@@ -28,7 +28,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 	idle.PushBack({ 30, 307, 28, 35 });
 	idle.PushBack({ 59, 307, 28, 35 });
 	idle.PushBack({ 88, 307, 28, 35 });
-	idle.speed = 0.07f;
+	idle.speed = 0.4f;
 	idle.loop = true;
 
 	dead.PushBack({ 11, 156, 32, 33 });
@@ -87,7 +87,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 	lives = 12;
 	initial_hp = lives;
 	points = 400;
-	explosion_type = BIG1; //Explosion type
+	explosion_type = SMALL1; //Explosion type
 
 	original_pos = position;
 

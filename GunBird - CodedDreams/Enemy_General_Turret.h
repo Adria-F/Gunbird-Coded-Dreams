@@ -10,7 +10,7 @@ class Enemy_General_Turret : public Enemy
 {
 public:
 
-	Enemy_General_Turret(int x, int y);
+	Enemy_General_Turret(int x, int y, int wave, int id);
 	~Enemy_General_Turret();
 
 	void Move();
