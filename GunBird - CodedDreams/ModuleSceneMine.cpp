@@ -137,12 +137,12 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(GENERAL_TURRET, 103, 2803, 2);
 	App->enemies->AddEnemy(GENERAL_TURRET, 154, 2803, 2);
 	//General Turret Wave 3
-	App->enemies->AddEnemy(GENERAL_TURRET, 137, 2612, 3, 2);
-	App->enemies->AddEnemy(GENERAL_TURRET, 170, 2612, 3, 1);
-	App->enemies->AddEnemy(GENERAL_TURRET, 204, 2612, 3, 1);
-	App->enemies->AddEnemy(GENERAL_TURRET, 137, 2638, 3);
-	App->enemies->AddEnemy(GENERAL_TURRET, 170, 2638, 3);
-	App->enemies->AddEnemy(GENERAL_TURRET, 204, 2638, 3);
+	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 2);
+	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
+	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
+	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2643, 3);
+	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2643, 3);
+	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2643, 3);
 
 	//LED 1
 	upper_led1.PushBack({ 1, 1, 16, 5 });

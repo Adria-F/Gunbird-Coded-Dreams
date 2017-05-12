@@ -151,5 +151,7 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 		ret = false;
 	}
 
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
 	return ret;
 }

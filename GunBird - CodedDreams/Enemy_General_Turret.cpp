@@ -84,12 +84,10 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	}
 	
 	//Set lives, initial_hp, points and extra_anim
-	lives = 12;
+	lives = 2;
 	initial_hp = lives;
 	points = 400;
 	explosion_type = SMALL1; //Explosion type
-
-	original_pos = position;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -114,7 +112,7 @@ void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 	vector.x = (App->player2->position.x - (App->render->camera.x + position.x));
 	vector.y = (App->player2->position.y - (App->render->camera.y + position.y));
 	distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-	if (distance[0] < distance[1])
+	if (distance[0] <= distance[1])
 		player = App->player1;
 	else
 		player = App->player2;

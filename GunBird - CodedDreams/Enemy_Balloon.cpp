@@ -21,8 +21,8 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	anim.loop = true;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.9f}, 25, &anim); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-	path.PushBack({ 0.0f, -0.3f }, 200, &anim);
+	path.PushBack({ 0.0f, 0.9f}, 40, &anim); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, -0.3f }, 240, &anim);
 	path.PushBack({ 0.0f, 0.9f }, 60, &anim);
 	path.PushBack({ 0.0f, -0.3f }, 350, &anim);
 	path.PushBack({ 0.0f, 0.9f }, 600, &anim);
