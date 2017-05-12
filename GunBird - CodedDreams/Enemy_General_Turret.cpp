@@ -10,18 +10,28 @@
 Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 {
 	//Open all textures
-	NormalSprite = App->textures->Load("assets/enemies/spritesheetmegaman1.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	NormalSprite = App->textures->Load("assets/enemies/General_Turret.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_General_Turret.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_General_Turret.png");;
 
 	//Set animation steps, speed and loop
-	idle.PushBack({ 12, 16, 42, 48 });
-	idle.PushBack({ 76, 16, 42, 48 });
+	idle.PushBack({ 1, 235, 28, 35 });
+	idle.PushBack({ 30, 235, 28, 35 });
+	idle.PushBack({ 59, 235, 28, 35 });
+	idle.PushBack({ 88, 235, 28, 35 });
+	idle.PushBack({ 1, 271, 28, 35 });
+	idle.PushBack({ 30, 271, 28, 35 });
+	idle.PushBack({ 59, 271, 28, 35 });
+	idle.PushBack({ 88, 271, 28, 35 });
+	idle.PushBack({ 1, 307, 28, 35 });
+	idle.PushBack({ 30, 307, 28, 35 });
+	idle.PushBack({ 59, 307, 28, 35 });
+	idle.PushBack({ 88, 307, 28, 35 });
 	idle.speed = 0.1f;
 	idle.loop = true;
 
-	dead.PushBack({ 16, 132, 32, 58 });
-	dead.PushBack({ 80, 132, 32, 58 });
+	dead.PushBack({ 16, 132, 32, 33 });
+	dead.PushBack({ 44, 156, 32, 33 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 
