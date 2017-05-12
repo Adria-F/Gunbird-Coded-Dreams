@@ -60,6 +60,22 @@ public:
 		return fPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
 	}
 
+	fPoint GetCurrentPositionNoProg()
+	{
+		uint count = 0;
+		uint i = 0;
+		for (; i < last_step; ++i)
+		{
+			count += steps[i].frames;
+			if (count >= current_frame)
+			{
+				accumulated_speed += steps[i].speed;
+				break;
+			}
+		}
+		return fPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
+	}
+
 	void Reset()
 	{
 		current_frame = 0;

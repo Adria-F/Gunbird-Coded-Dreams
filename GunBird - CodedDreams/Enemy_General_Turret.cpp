@@ -49,38 +49,38 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y) : Enemy(x, y)
 	int i = 0;
 	//All angles rect definition
 	{
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
-		angles[i++] = { 0, 0, 0, 0 };
+		angles[i++] = { 0, 0, 28, 29 };
+		angles[i++] = { 29, 0, 28, 29 };
+		angles[i++] = { 58, 0, 28, 29 };
+		angles[i++] = { 87, 0, 28, 29 };
+		angles[i++] = { 127, 0, 28, 29 };
+		angles[i++] = { 156, 0, 28, 29 };
+		angles[i++] = { 185, 0, 28, 29 };
+		angles[i++] = { 214, 0, 28, 29 };
+		angles[i++] = { 252, 0, 28, 29 };
+		angles[i++] = { 281, 0, 28, 29 };
+		angles[i++] = { 310, 0, 28, 29 };
+		angles[i++] = { 339, 0, 28, 29 };
+		angles[i++] = { 0, 52, 28, 29 };
+		angles[i++] = { 29, 52, 28, 29 };
+		angles[i++] = { 58, 52, 28, 29 };
+		angles[i++] = { 87, 52, 28, 29 };
+		angles[i++] = { 127, 52, 28, 29 };
+		angles[i++] = { 156, 52, 28, 29 };
+		angles[i++] = { 185, 52, 28, 29 };
+		angles[i++] = { 214, 52, 28, 29 };
+		angles[i++] = { 252, 52, 28, 29 };
+		angles[i++] = { 281, 52, 28, 29 };
+		angles[i++] = { 310, 52, 28, 29 };
+		angles[i++] = { 339, 52, 28, 29 };
+		angles[i++] = { 0, 104, 28, 29 };
+		angles[i++] = { 29, 104, 28, 29 };
+		angles[i++] = { 58, 104, 28, 29 };
+		angles[i++] = { 87, 104, 28, 29 };
+		angles[i++] = { 127, 104, 28, 29 };
+		angles[i++] = { 156, 104, 28, 29 };
+		angles[i++] = { 185, 104, 28, 29 };
+		angles[i++] = { 214, 104, 28, 29 };
 	}
 	
 	//Set lives, initial_hp, points adn extra_anim
@@ -120,19 +120,19 @@ void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 	//---------------------------------------------------------------------------------------
 	for (int i = 0; i < 2; i++)
 	{
-		vector.x = (player->position.x - (App->render->camera.x + position.x + cannon_pos[i].x));
-		vector.y = (player->position.y - (App->render->camera.y + position.y + cannon_pos[i].y));
+		vector.x = (player->position.x - (App->render->camera.x + position.x + 13));
+		vector.y = (player->position.y - (App->render->camera.y + position.y));
 		angle = atan(vector.x / vector.y) * 180 / PI;
 		if (vector.y > 0) angle = 360 - 90 + angle;
 		else angle = 90 + angle;
 		
-		if (angle >= 0 && angle < 30)
+		if (angle >= 0 && angle < 34)
 		{
-			App->render->Blit(texture, App->render->camera.x + position.x + cannon_pos[i].x, App->render->camera.y + position.y + cannon_pos[i].y, &angles[0]);
+			App->render->Blit(texture, App->render->camera.x + position.x, App->render->camera.y + position.y - 9, &angles[0]);
 		}
 		else
 		{
-			App->render->Blit(texture, (App->render->camera.x + position.x + cannon_pos[i].x), (App->render->camera.y + position.y + cannon_pos[i].y) - ((vector.y < 0) ? (angles[angle / 30 + (angle / 100) + 1].h - 16) : 0), &angles[(int)((float)angle / 11.25f)]);
+			App->render->Blit(texture, (App->render->camera.x + position.x), (App->render->camera.y + position.y - ((angle < 125 && angle > 34)? 9 : 8)), &angles[(int)((float)angle / 11.25f)]);
 		}
 	}
 }

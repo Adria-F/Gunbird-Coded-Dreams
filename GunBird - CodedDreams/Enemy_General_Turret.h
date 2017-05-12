@@ -27,7 +27,6 @@ private:
 
 	fPoint vector;
 	int distance[2];
-	fPoint cannon_pos[2];
 	int angle;
 	Player* player;
 	SDL_Rect angles[32];
