@@ -48,7 +48,6 @@ bool ModuleSceneMine::Start()
 	overlay_position = 0;
 
 	//Set enemies
-	App->enemies->AddEnemy(BALLON, 150, 3000);
 	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3230);
 	//Drones wave1->Done
 	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 1);
@@ -123,6 +122,9 @@ bool ModuleSceneMine::Start()
 
 	//<3
 	App->enemies->AddEnemy(MEGAMAN, 180, 3395, 1);
+
+	//Balloon
+	App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
 
 	//LED 1
 	upper_led1.PushBack({ 1, 1, 16, 5 });

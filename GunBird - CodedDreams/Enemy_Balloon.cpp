@@ -7,24 +7,25 @@
 Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 {
 	//Open all textures
-	NormalSprite = App->textures->Load("assets/enemies/spritesheetmegaman1.png");
+	NormalSprite = App->textures->Load("assets/enemies/Balloon.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	idle.PushBack({ 12, 16, 42, 48 });
-	idle.PushBack({ 76, 16, 42, 48 });
-	idle.speed = 0.1f;
-	idle.loop = true;
-
-	//dead
-	dead.PushBack({ 16, 132, 32, 58 });
-	dead.PushBack({ 80, 132, 32, 58 });
-	dead.speed = 0.1f;
-	dead.loop = true; 
+	anim.PushBack({ 11, 6, 42, 53 });
+	anim.PushBack({ 64, 6, 42, 53 });
+	anim.PushBack({ 116, 6, 42, 53 });
+	anim.PushBack({ 168, 6, 42, 53 });
+	anim.PushBack({ 219, 6, 42, 53 });
+	anim.speed = 2.0f;
+	anim.loop = true;
 
 	//Set path
-	path.PushBack({0.0f, 0.2f}, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, 0.9f}, 25, &anim); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, -0.3f }, 200, &anim);
+	path.PushBack({ 0.0f, 0.9f }, 60, &anim);
+	path.PushBack({ 0.0f, -0.3f }, 350, &anim);
+	path.PushBack({ 0.0f, 0.9f }, 600, &anim);
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 12;
