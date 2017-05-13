@@ -27,6 +27,12 @@ enum particle_type
 	P_BIG_SHOT
 };
 
+enum shot_type
+{
+	PLAYER,
+	ANGLE
+};
+
 struct Particle
 {
 	Collider* collider = nullptr;
@@ -58,7 +64,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	Particle* AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, float x_phase = 0);
+	Particle* AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, float x_phase = 0, shot_type shotAt = PLAYER);
 
 public:
 

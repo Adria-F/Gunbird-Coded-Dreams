@@ -190,7 +190,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, float x_phase)
+Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type type, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, float x_phase, shot_type shotAt)
 {
 	Particle* temp_p = nullptr;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -214,54 +214,62 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 				switch (type)
 				{
-				case P_SMALL_SHOT:
-					Player* player;
-					vector.x = (App->player1->position.x - (App->render->camera.x + x));
-					vector.y = (App->player1->position.y - (App->render->camera.y + y));
-					distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-					vector.x = (App->player2->position.x - (App->render->camera.x + x));
-					vector.y = (App->player2->position.y - (App->render->camera.y + y));
-					distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-					if (distance[0] < distance[1])
-						player = App->player1;
-					else
-						player = App->player2;
-					
-					y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12);
-					if (player->position.x - x < 0)
-					{
-						if (x_phase < 0)
-						{
-							y_phase = -y_phase;
-						}
-					}
-					else
-					{
-						if (x_phase > 0)
-						{
-							y_phase = -y_phase;
-						}
-					}
-					vector.x = player->position.x + 10 + x_phase - x;
-					vector.y = player->position.y - 16 + y_phase - y;
-					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-					vector.x /= modul;
-					vector.y /= modul;
-					p->speed.x = vector.x * SMALL_SHOT_SPEED;
-					p->speed.y = vector.y * SMALL_SHOT_SPEED;
-					break;
+				case P_SMALL_SHOT:	
 
 				case P_BIG_SHOT:
-					
-					vector.x = (x_phase < 90 || x_phase > 270)? 1 : -1;
-					vector.y = vector.x * tan(x_phase * PI / 180);
-					vector.y = -vector.y;
 
-					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-					vector.x /= modul;
-					vector.y /= modul;
-					p->speed.x = vector.x * BIG_SHOT_SPEED;
-					p->speed.y = vector.y * BIG_SHOT_SPEED;
+				case P_MID_SHOT:
+					switch (shotAt)
+					{
+					case PLAYER:
+						Player* player;
+						vector.x = (App->player1->position.x - (App->render->camera.x + x));
+						vector.y = (App->player1->position.y - (App->render->camera.y + y));
+						distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+						vector.x = (App->player2->position.x - (App->render->camera.x + x));
+						vector.y = (App->player2->position.y - (App->render->camera.y + y));
+						distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+						if (distance[0] < distance[1])
+							player = App->player1;
+						else
+							player = App->player2;
+
+						y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12);
+						if (player->position.x - x < 0)
+						{
+							if (x_phase < 0)
+							{
+								y_phase = -y_phase;
+							}
+						}
+						else
+						{
+							if (x_phase > 0)
+							{
+								y_phase = -y_phase;
+							}
+						}
+						vector.x = player->position.x + 10 + x_phase - x;
+						vector.y = player->position.y - 16 + y_phase - y;
+						modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+						vector.x /= modul;
+						vector.y /= modul;
+						p->speed.x = vector.x * SMALL_SHOT_SPEED;
+						p->speed.y = vector.y * SMALL_SHOT_SPEED;
+						break;
+					case ANGLE:
+						vector.x = (x_phase < 90 || x_phase > 270) ? 1 : -1;
+						vector.y = vector.x * tan(x_phase * PI / 180);
+						vector.y = -vector.y;
+
+						modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+						vector.x /= modul;
+						vector.y /= modul;
+						p->speed.x = vector.x * BIG_SHOT_SPEED;
+						p->speed.y = vector.y * BIG_SHOT_SPEED;
+						break;
+					}
+
 					break;
 				}
 			}
