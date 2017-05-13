@@ -64,6 +64,16 @@ bool ModuleParticles::Start()
 	ASH_bullet_p2_particle.anim.loop = false;
 	ASH_bullet_p2_particle.anim.speed = 0.5f;
 	ASH_bullet_p2_particle.damage = 2;
+
+	// Big_Shoot
+	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
+	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });
+	big_shot_particle.life = 10000;
+	big_shot_particle.speed.y = -8;
+	big_shot_particle.anim.loop = false;
+	big_shot_particle.anim.speed = 0.5f;
+	big_shot_particle.damage = 1;
+
 	
 	return true;
 }
@@ -186,7 +196,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 				//p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, App->powerup);
 				break;
 			case COLLIDER_ENEMY_SHOT:
-				//p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 				switch (type)
 				{
 				case P_SMALL_SHOT:

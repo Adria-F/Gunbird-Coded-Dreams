@@ -39,6 +39,7 @@ public:
 	SDL_Texture* NormalSprite = nullptr;
 	SDL_Texture* RedSprite = nullptr;
 	SDL_Texture* WhiteSprite = nullptr;
+	SDL_Texture* Shoot = nullptr;
 	
 	//Explosions textures
 	SDL_Texture* b1;

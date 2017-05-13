@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
 
 Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 {
@@ -34,6 +35,14 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	extra_anim = false;
 	explosion_type = BIG1; //Explosion type
 
+	//shooting mechanic
+	
+	shoot = particle_type::P_BIG_SHOT;
+	big_shoot = &App->particles->big_shot_particle;
+	
+	
+	
+
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
@@ -46,6 +55,10 @@ Enemy_Balloon::~Enemy_Balloon()
 void Enemy_Balloon::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+
+	final_position_y = position.y - 3200;
+	
+	App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x, final_position_y, COLLIDER_ENEMY_SHOT);
 }
 
 void Enemy_Balloon::DeadAnim()
