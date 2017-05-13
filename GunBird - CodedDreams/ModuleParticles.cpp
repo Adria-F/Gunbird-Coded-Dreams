@@ -32,6 +32,9 @@ bool ModuleParticles::Start()
 	ASH_bullet_p1_texture = App->textures->Load("assets/characters/ash.png");
 	ASH_bullet_p2_texture = App->textures->Load("assets/characters/ash.png");
 
+	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
+	small_shot_texture = App->textures->Load("assets/enemies/Bullets Small.png");
+
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
 	MARION_bullet_p1_particle.life = 10000;
@@ -76,6 +79,11 @@ bool ModuleParticles::CleanUp()
 	ASH_bullet_p1_texture = nullptr;
 	App->textures->Unload(ASH_bullet_p2_texture);
 	ASH_bullet_p2_texture = nullptr;
+
+	App->textures->Unload(big_shot_texture);
+	big_shot_texture = nullptr;
+	App->textures->Unload(small_shot_texture);
+	small_shot_texture = nullptr;
 	
 	LOG("Unloading particles");
 

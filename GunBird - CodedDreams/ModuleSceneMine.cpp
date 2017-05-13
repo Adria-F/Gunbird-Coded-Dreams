@@ -133,81 +133,87 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(GENERAL_TURRET, 49, 3012, 1, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 99, 3012, 1, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 132, 3012, 1, 2);
+
 	//General Turret Wave 2
 	App->enemies->AddEnemy(GENERAL_TURRET, 103, 2803, 2);
 	App->enemies->AddEnemy(GENERAL_TURRET, 154, 2803, 2);
+
 	//General Turret Wave 3
-	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 2);
+	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2643, 3);
 	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2643, 3);
 	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2643, 3);
 
-	//LED 1
-	upper_led1.PushBack({ 1, 1, 16, 5 });
-	upper_led1.PushBack({ 18, 1, 16, 5 });
-	upper_led1.PushBack({ 35, 1, 16, 5 });
-	upper_led1.PushBack({ 52, 1, 16, 5 });
-	upper_led1.PushBack({ 1, 7, 16, 5 });
-	upper_led1.PushBack({ 18, 7, 16, 5 });
-	upper_led1.PushBack({ 35, 7, 16, 5 });
-	upper_led1.PushBack({ 52, 7, 16, 5 });
-	upper_led1.speed = 0.1f;
-	upper_led1.loop = true;
 
-	//LED 2
-	upper_led2.PushBack({ 3, 13, 12, 15 });
-	upper_led2.PushBack({ 20, 13, 12, 15 });
-	upper_led2.PushBack({ 37, 13, 12, 15 });
-	upper_led2.PushBack({ 54, 13, 12, 15 });
-	upper_led2.PushBack({ 3, 29, 12, 15 });
-	upper_led2.PushBack({ 20, 29, 12, 15 });
-	upper_led2.PushBack({ 37, 29, 12, 15 });
-	upper_led2.PushBack({ 54, 29, 12, 15 });
-	upper_led2.speed = 0.1f;
-	upper_led2.loop = true;
+	//LEDS AND BLOWS
+	{
+		//LED 1
+		upper_led1.PushBack({ 1, 1, 16, 5 });
+		upper_led1.PushBack({ 18, 1, 16, 5 });
+		upper_led1.PushBack({ 35, 1, 16, 5 });
+		upper_led1.PushBack({ 52, 1, 16, 5 });
+		upper_led1.PushBack({ 1, 7, 16, 5 });
+		upper_led1.PushBack({ 18, 7, 16, 5 });
+		upper_led1.PushBack({ 35, 7, 16, 5 });
+		upper_led1.PushBack({ 52, 7, 16, 5 });
+		upper_led1.speed = 0.1f;
+		upper_led1.loop = true;
 
-	//LED 3
-	upper_led3.PushBack({ 3, 45, 9, 6 });
-	upper_led3.PushBack({ 13, 45, 9, 6 });
-	upper_led3.PushBack({ 23, 45, 9, 6 });
-	upper_led3.PushBack({ 37, 45, 9, 6 });
-	upper_led3.PushBack({ 47, 45, 9, 6 });
-	upper_led3.PushBack({ 57, 45, 9, 6 });
-	upper_led3.PushBack({ 47, 52, 9, 6 });
-	upper_led3.PushBack({ 57, 52, 9, 6 });
-	upper_led3.speed = 0.1f;
-	upper_led3.loop = true;
+		//LED 2
+		upper_led2.PushBack({ 3, 13, 12, 15 });
+		upper_led2.PushBack({ 20, 13, 12, 15 });
+		upper_led2.PushBack({ 37, 13, 12, 15 });
+		upper_led2.PushBack({ 54, 13, 12, 15 });
+		upper_led2.PushBack({ 3, 29, 12, 15 });
+		upper_led2.PushBack({ 20, 29, 12, 15 });
+		upper_led2.PushBack({ 37, 29, 12, 15 });
+		upper_led2.PushBack({ 54, 29, 12, 15 });
+		upper_led2.speed = 0.1f;
+		upper_led2.loop = true;
 
-	//LED 4
-	upper_led4.PushBack({ 3, 59, 13, 11 });
-	upper_led4.PushBack({ 17, 59, 13, 11 });
-	upper_led4.PushBack({ 31, 59, 13, 11 });
-	upper_led4.PushBack({ 45, 59, 13, 11 });
-	upper_led4.PushBack({ 3, 71, 13, 11 });
-	upper_led4.PushBack({ 17, 71, 13, 11 });
-	upper_led4.PushBack({ 31, 71, 13, 11 });
-	upper_led4.PushBack({ 45, 71, 13, 11 });
-	upper_led4.speed = 0.1f;
-	upper_led4.loop = true;
+		//LED 3
+		upper_led3.PushBack({ 3, 45, 9, 6 });
+		upper_led3.PushBack({ 13, 45, 9, 6 });
+		upper_led3.PushBack({ 23, 45, 9, 6 });
+		upper_led3.PushBack({ 37, 45, 9, 6 });
+		upper_led3.PushBack({ 47, 45, 9, 6 });
+		upper_led3.PushBack({ 57, 45, 9, 6 });
+		upper_led3.PushBack({ 47, 52, 9, 6 });
+		upper_led3.PushBack({ 57, 52, 9, 6 });
+		upper_led3.speed = 0.1f;
+		upper_led3.loop = true;
 
-	//BLOW1
-	upper_blow1.PushBack({ 69, 1, 31, 63 });
-	upper_blow1.PushBack({ 101, 1, 31, 63 });
-	upper_blow1.PushBack({ 133, 1, 31, 63 });
-	upper_blow1.PushBack({ 165, 1, 31, 63 });
-	upper_blow1.speed = 0.2f;
-	upper_blow1.loop = true;
+		//LED 4
+		upper_led4.PushBack({ 3, 59, 13, 11 });
+		upper_led4.PushBack({ 17, 59, 13, 11 });
+		upper_led4.PushBack({ 31, 59, 13, 11 });
+		upper_led4.PushBack({ 45, 59, 13, 11 });
+		upper_led4.PushBack({ 3, 71, 13, 11 });
+		upper_led4.PushBack({ 17, 71, 13, 11 });
+		upper_led4.PushBack({ 31, 71, 13, 11 });
+		upper_led4.PushBack({ 45, 71, 13, 11 });
+		upper_led4.speed = 0.1f;
+		upper_led4.loop = true;
 
-	//BLOW 2
-	upper_blow2.PushBack({ 69, 65, 25, 34 });
-	upper_blow2.PushBack({ 101, 65, 25, 34 });
-	upper_blow2.PushBack({ 133, 65, 25, 34 });
-	upper_blow2.PushBack({ 165, 65, 25, 34 });
-	upper_blow2.speed = 0.2f;
-	upper_blow2.loop = true;
+		//BLOW1
+		upper_blow1.PushBack({ 69, 1, 31, 63 });
+		upper_blow1.PushBack({ 101, 1, 31, 63 });
+		upper_blow1.PushBack({ 133, 1, 31, 63 });
+		upper_blow1.PushBack({ 165, 1, 31, 63 });
+		upper_blow1.speed = 0.2f;
+		upper_blow1.loop = true;
 
+		//BLOW 2
+		upper_blow2.PushBack({ 69, 65, 25, 34 });
+		upper_blow2.PushBack({ 101, 65, 25, 34 });
+		upper_blow2.PushBack({ 133, 65, 25, 34 });
+		upper_blow2.PushBack({ 165, 65, 25, 34 });
+		upper_blow2.speed = 0.2f;
+		upper_blow2.loop = true;
+	}
+	
 	LOG("Loading music");
 	App->audio->Load("assets/music/mine.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
