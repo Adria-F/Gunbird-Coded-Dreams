@@ -139,7 +139,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(GENERAL_TURRET, 154, 2803, 2);
 
 	//General Turret Wave 3
-	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 1);
+	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 2);
 	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
 	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2643, 3);

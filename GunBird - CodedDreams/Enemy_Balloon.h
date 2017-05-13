@@ -24,10 +24,6 @@ public:
 	char* shot_path;
 	particle_type shoot;
 	Particle* big_shoot;
-
-	int final_position_y;
-	
-
 };
 
 #endif // !__BALLOON_H__

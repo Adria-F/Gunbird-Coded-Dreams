@@ -65,6 +65,21 @@ bool ModuleParticles::Start()
 	ASH_bullet_p2_particle.anim.speed = 0.5f;
 	ASH_bullet_p2_particle.damage = 2;
 
+	// Small shot
+	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 41, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 73, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 105, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 137, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 185, 9, 6, 6 });
+	small_shot_particle.anim.PushBack({ 9, 25, 6, 6 });
+	small_shot_particle.anim.PushBack({ 41, 25, 6, 6 });
+	small_shot_particle.life = 100000;
+	small_shot_particle.speed.x = 0;
+	small_shot_particle.speed.y = 0;
+	small_shot_particle.anim.loop = true;
+	small_shot_particle.anim.speed = 0.5f;
+	
 	// Big_Shoot
 	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
 	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });

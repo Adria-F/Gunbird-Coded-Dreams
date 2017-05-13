@@ -3,6 +3,7 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "SDL/include/SDL_timer.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -54,6 +55,11 @@ public:
 	Uint32 Red_now;
 	Uint32 Red_Start_time;
 	Uint32 Red_Total_time = (Uint32)(2.0f * 0.5f * 700.0f);
+	//Time between shots
+	Uint32 Shot_now;
+	Uint32 Shot_Start_time;
+	Uint32 Shot_Total_time;
+	
 	int lives; //Hit points
 	int initial_hp; //To calculate when to turn red
 	bool hit; //When to turn white
