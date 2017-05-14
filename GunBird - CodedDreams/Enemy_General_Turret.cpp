@@ -13,8 +13,8 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/General_Turret.png");
-	RedSprite = nullptr;// App->textures->Load("assets/enemies/hitten/hitten_red_General_Turret.png");
-	WhiteSprite = nullptr;// App->textures->Load("assets/enemies/hitten/hitten_white_General_Turret.png");;
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_General_Turret.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_General_Turret.png");;
 
 	//Set animation steps, speed and loop
 	idle.PushBack({ 1, 235, 28, 35 });
