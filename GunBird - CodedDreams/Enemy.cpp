@@ -51,8 +51,33 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	anim_b2.PushBack({ 6,266,104,105 });
 	anim_b2.PushBack({ 129,267,105,105 });
 	anim_b2.PushBack({ 256,266,106,105 });
-	anim_b2.PushBack({ 385,286,105,106 });
+	anim_b2.PushBack({ 401,281,65,80 });
+	anim_b2.PushBack({ 0, 0, 0, 0 }); //last one should be always transparent
+	anim_b2.speed = 0.5f;
+	anim_b2.loop = false;
+
 	//mid1
+	anim_m1.PushBack({ 22,36,44,37 });
+	anim_m1.PushBack({ 93,31,46,46 });
+	anim_m1.PushBack({ 163,26,48,55 });
+	anim_m1.PushBack({ 236,23,54,61 });
+	anim_m1.PushBack({ 313,27,50,57 });
+
+	anim_m1.PushBack({ 22,107,53,60 });
+	anim_m1.PushBack({ 89,106,52,63 });
+	anim_m1.PushBack({ 159,107,53,63 });
+	anim_m1.PushBack({ 230,109,54,62 });
+	anim_m1.PushBack({ 307,108,56,63 });
+
+	anim_m1.PushBack({ 16,201,54,68 });
+	anim_m1.PushBack({ 89,206,55,63 });
+	anim_m1.PushBack({ 164,206,54,61 });
+	anim_m1.PushBack({ 234,211,50,51 });
+	anim_m1.PushBack({ 330,211,30,51 });
+	anim_m1.PushBack({ 0, 0, 0, 0 }); //last one should be always transparent
+	anim_m1.speed = 0.5f;
+	anim_m1.loop = false;
+
 	//mid2
 	//small1
 	anim_s1.PushBack({ 12,10,48,37 });
