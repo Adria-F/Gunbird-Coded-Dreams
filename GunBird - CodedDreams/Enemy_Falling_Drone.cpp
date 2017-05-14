@@ -3,6 +3,8 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
+
 
 Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 {
@@ -139,6 +141,11 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	explosion_type = SMALL1;
 
 
+	shoot = particle_type::P_BIG_SHOT;
+	big_shoot = &App->particles->big_shot_particle;
+	Shot_Start_time= (Uint32)(3333.3f);
+	Shot_Total_time = (Uint32)(2000.0f);
+
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 40, 40 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
@@ -150,6 +157,13 @@ Enemy_Faling_Drone::~Enemy_Faling_Drone()
 void Enemy_Faling_Drone::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+
+	Shot_now = SDL_GetTicks() - Shot_Start_time;
+	if (Shot_now > Shot_Total_time)
+	{
+		Shot_Start_time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 20, COLLIDER_ENEMY_SHOT, 0, 0);
+	}
 }
 
 void Enemy_Faling_Drone::ExtraAnim(SDL_Texture* texture)
