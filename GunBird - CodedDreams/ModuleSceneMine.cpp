@@ -46,6 +46,8 @@ bool ModuleSceneMine::Start()
 	App->render->camera.x  = 0;
 	App->render->camera.y = -3210;
 	overlay_position = 0;
+	turret_appeared = false;
+	turret_appearing = false;
 
 	//Set enemies
 	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3230);
@@ -135,17 +137,11 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(GENERAL_TURRET, 132, 3012, 1, 2);
 
 	//General Turret Wave 2
-	App->enemies->AddEnemy(GENERAL_TURRET, 103, 2803, 2);
-	App->enemies->AddEnemy(GENERAL_TURRET, 154, 2803, 2);
+	App->enemies->AddEnemy(GENERAL_TURRET, 225, 2803, 2);
+	App->enemies->AddEnemy(GENERAL_TURRET, 276, 2803, 2);
 
 	//General Turret Wave 3
 	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 2);
-	/*App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
-	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
-	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2643, 3);
-	App->enemies->AddEnemy(GENERAL_TURRET, 160, 2643, 3);
-	App->enemies->AddEnemy(GENERAL_TURRET, 194, 2643, 3);*/
-
 
 	//LEDS AND BLOWS
 	{

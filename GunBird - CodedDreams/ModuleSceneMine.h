@@ -36,6 +36,8 @@ public:
 	float overlay_position;
 	float overlay_speed = 0.09f;
 	bool lost = false;
+	bool turret_appeared = false;
+	bool turret_appearing = false;
 
 	bool fading;
 };

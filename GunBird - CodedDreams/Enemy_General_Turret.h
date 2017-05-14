@@ -22,6 +22,8 @@ public:
 	Path path;
 	Animation idle;
 	Animation dead;
+	Animation appear_anim;
+	SDL_Rect gate;
 
 private:
 
@@ -30,6 +32,13 @@ private:
 	int angle;
 	Player* player;
 	SDL_Rect angles[32];
+	bool appearing = false;
+	bool gate_opened = false;
+	fPoint gate_pos;
+
+	Uint32 appear_now;
+	Uint32 appear_Start_time;
+	Uint32 appear_Total_time = (Uint32)(6000.0f);
 
 };
 

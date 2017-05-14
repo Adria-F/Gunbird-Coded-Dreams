@@ -43,6 +43,17 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	dead.speed = 0.1f;
 	dead.loop = true;
 
+	appear_anim.PushBack({ 133, 227, 16, 28 });
+	appear_anim.PushBack({ 191, 227, 16, 28 });
+	appear_anim.PushBack({ 258, 227, 16, 28 });
+	appear_anim.PushBack({ 345, 227, 16, 28 });
+	appear_anim.speed = 0.08f;
+	appear_anim.loop = false;
+
+	gate = {64, 100, 130, 98}; //104, 2448
+	gate_pos.x = 104;
+	gate_pos.y = 2589;
+
 	//Set path
 	path.PushBack({ 0.0f, 0.09f }, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
@@ -89,18 +100,48 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	initial_hp = lives;
 	points = 400;
 	explosion_type = SMALL1; //Explosion type
+	this->wave = wave;
+	this->id = id;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 	collider_pos.y = -6;
 
-	if (wave == 3 && id == 2)
+	if (wave == 3)
 	{
-		App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
-		App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
-		App->enemies->AddEnemy(GENERAL_TURRET, 127, 2648, 3);
-		App->enemies->AddEnemy(GENERAL_TURRET, 160, 2648, 3);
-		App->enemies->AddEnemy(GENERAL_TURRET, 194, 2648, 3);
+		collider->rect = { 0, 0, 0, 0 };
+		if (id == 2)
+		{
+			App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
+			App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
+			App->enemies->AddEnemy(GENERAL_TURRET, 127, 2648, 3);
+			App->enemies->AddEnemy(GENERAL_TURRET, 160, 2648, 3, 4);
+			App->enemies->AddEnemy(GENERAL_TURRET, 194, 2648, 3, 3);
+		}
+		if (id == 3)
+		{
+			appear_Start_time = SDL_GetTicks();
+		}
+	}
+
+	if (wave == 1)
+	{
+		if (id == 1)
+		{
+			path.PushBack({ 0.0f, 0.09f }, 50, &idle);
+			path.PushBack({ -0.3f, 0.09f }, 1000, &idle);
+		}
+		else if (id == 2)
+		{
+			path.PushBack({ 0.0f, 0.09f }, 50, &idle);
+			path.PushBack({ 0.3f, 0.09f }, 1000, &idle);
+		}
+	}
+	else if (wave == 2)
+	{
+		path.PushBack({ 0.0f, 0.09f }, 50, &idle);
+		path.PushBack({ -0.5f, 0.09f }, 244, &idle);
+		path.PushBack({ 0.0f, 0.09f }, 1000, &idle);
 	}
 
 }
@@ -117,32 +158,66 @@ void Enemy_General_Turret::Move()
 
 void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 {
-	vector.x = (App->player1->position.x - (App->render->camera.x + position.x));
-	vector.y = (App->player1->position.y - (App->render->camera.y + position.y));
-	distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-	vector.x = (App->player2->position.x - (App->render->camera.x + position.x));
-	vector.y = (App->player2->position.y - (App->render->camera.y + position.y));
-	distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-	if (distance[0] <= distance[1])
-		player = App->player1;
-	else
-		player = App->player2;
-	//---------------------------------------------------------------------------------------
-	for (int i = 0; i < 2; i++)
+	if (wave == 3 && App->scene_mine->turret_appeared == false)
 	{
-		vector.x = (player->position.x - (App->render->camera.x + position.x + 13));
-		vector.y = (player->position.y - (App->render->camera.y + position.y));
-		angle = atan(vector.x / vector.y) * 180 / PI;
-		if (vector.y > 0) angle = 360 - 90 + angle;
-		else angle = 90 + angle;
-		
-		if (angle >= 0 && angle < 34)
+		if (id == 3)
 		{
-			App->render->Blit(texture, App->render->camera.x + position.x, App->render->camera.y + position.y - 9, &angles[0]);
+			appear_now = SDL_GetTicks() - appear_Start_time;
+			if (appear_now > appear_Total_time)
+			{
+				if (appear_now > appear_Total_time + 1300)
+				{
+					App->scene_mine->turret_appearing = true;
+				}
+				appearing = true;
+			}
+			if (appearing)
+			{
+				gate_pos.x += 1.5f;
+			}
+			gate_pos.y += 0.09f;
+			App->render->Blit(App->scene_mine->graphics_above_background_anims_text, App->render->camera.x + gate_pos.x, App->render->camera.y + gate_pos.y, &gate); // 2448 | 141
 		}
-		else
+	}
+	if (wave == 3 && App->scene_mine->turret_appearing && App->scene_mine->turret_appeared == false)
+	{
+		App->render->Blit(texture, App->render->camera.x + position.x + 5, App->render->camera.y + position.y - 9, &appear_anim.GetCurrentFrame());
+		if (appear_anim.Finished())
 		{
-			App->render->Blit(texture, (App->render->camera.x + position.x), (App->render->camera.y + position.y - ((angle < 125 && angle > 34)? 9 : 8)), &angles[(int)((float)angle / 11.25f)]);
+			collider->rect = { (int)position.x, (int)position.y, 28, 35 };
+			if (id == 4)
+				App->scene_mine->turret_appeared = true;
+		}
+	}
+	if (wave == 3 && App->scene_mine->turret_appeared || wave != 3)
+	{
+		vector.x = (App->player1->position.x - (App->render->camera.x + position.x));
+		vector.y = (App->player1->position.y - (App->render->camera.y + position.y));
+		distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+		vector.x = (App->player2->position.x - (App->render->camera.x + position.x));
+		vector.y = (App->player2->position.y - (App->render->camera.y + position.y));
+		distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+		if (distance[0] <= distance[1])
+			player = App->player1;
+		else
+			player = App->player2;
+		//---------------------------------------------------------------------------------------
+		for (int i = 0; i < 2; i++)
+		{
+			vector.x = (player->position.x - (App->render->camera.x + position.x + 13));
+			vector.y = (player->position.y - (App->render->camera.y + position.y));
+			angle = atan(vector.x / vector.y) * 180 / PI;
+			if (vector.y > 0) angle = 360 - 90 + angle;
+			else angle = 90 + angle;
+
+			if (angle >= 0 && angle < 34)
+			{
+				App->render->Blit(texture, App->render->camera.x + position.x - 1, App->render->camera.y + position.y - 9, &angles[0]);
+			}
+			else
+			{
+				App->render->Blit(texture, (App->render->camera.x + position.x - 1), (App->render->camera.y + position.y - ((angle < 125 && angle > 34) ? 9 : 8)), &angles[(int)((float)angle / 11.25f)]);
+			}
 		}
 	}
 }
