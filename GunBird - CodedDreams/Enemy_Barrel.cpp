@@ -33,12 +33,14 @@ Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 	dead.speed = 0.1f;
 	dead.loop = true;
 
+	path.PushBack({ 0.0f, 0.09f }, 100, &idle);
+
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 16;
 	initial_hp = lives;
 	points = 1000;
 	extra_anim = false;
-	explosion_type = MID1;
+	explosion_type = SMALL1;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 44, 30 }, COLLIDER_ENEMY, (Module*)App->enemies);
