@@ -61,12 +61,11 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 
 	//Set path
 	path.PushBack({ 0.0f, 0.0f }, 225, &idle_low);
-	path.PushBack({ -0.55f, -0.45f }, 325, &idle_low);
+	path.PushBack({ -0.75f, -0.6f }, 250, &idle_low);
+	path.PushBack({ 0.01f, 0.15f }, 75, &idle_low); // fix previous position
 	path.PushBack({ 0.012f, -0.23f }, 1100, &idle_low);
 	path.PushBack({ -0.2f, -0.75f }, 85, &idle_low);
-
 	path.PushBack({ -0.15f, -0.75f }, 30, &idle_grow);
-
 	path.PushBack({ -0.1f, -0.45f }, 30, &idle_grow_gun);
 	// UP 1
 	path.PushBack({ 0.0f, -0.85f }, 85, &idle_up);

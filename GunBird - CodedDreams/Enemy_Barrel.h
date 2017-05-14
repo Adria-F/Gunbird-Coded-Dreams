@@ -12,6 +12,7 @@ public:
 	~Enemy_Barrel();
 
 	void Move();
+	void DeadAnim();
 
 public:
 

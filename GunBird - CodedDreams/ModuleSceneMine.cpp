@@ -50,7 +50,12 @@ bool ModuleSceneMine::Start()
 	turret_appearing = false;
 
 	//Set enemies
+	//Flying Machine
 	App->enemies->AddEnemy(FLYING_MACHINE, 224, 3230);
+
+	//Barrel
+	App->enemies->AddEnemy(BARREL, 0, 2717);
+
 	//Drones wave1->Done
 	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 1);
 	App->enemies->AddEnemy(DRONE,   0, 3020+70, 1, 1);
@@ -83,6 +88,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 75, 2690, 2, 1);
 	App->enemies->AddEnemy(DRONE, 25, 2690, 2, 1);
 	App->enemies->AddEnemy(DRONE, 50, 2720, 2, 2);
+
 	//Falling Drones wave1
 	App->enemies->AddEnemy(FALLING_DRONE, -60, 2450, 1, 1);
 	App->enemies->AddEnemy(FALLING_DRONE, -20, 2450, 1, 1);
@@ -97,7 +103,6 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TORPEDO, 0, 2345, 1);
 	App->enemies->AddEnemy(TORPEDO, 0, 2340, 1);
 	App->enemies->AddEnemy(TORPEDO, 0, 2335, 1);
-
 	//Torpedos wave2 right
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2350, 2);
 	App->enemies->AddEnemy(TORPEDO, SCREEN_WIDTH, 2345, 2);
@@ -283,18 +288,21 @@ update_status ModuleSceneMine::Update()
 		overlay_position += overlay_speed;
 	App->render->Blit(graphics_above_background_text, App->render->camera.x, App->render->camera.y - 15 + overlay_position, &above_background_rect, 0.75f);
 	
-	//LED 1
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 100, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
-	//LED 2
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
-	//LED 3
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 64, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
-	//LED 4
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 172, App->render->camera.y + 2805 + overlay_position, &upper_led4.GetCurrentFrame(), 0.75f);
-	//BLOW 1
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
-	//BLOW 2
-	App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 2165 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
+	//LEDS AND BLOWS
+	{
+		//LED 1
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 100, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
+		//LED 2
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
+		//LED 3
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 64, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
+		//LED 4
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 172, App->render->camera.y + 2805 + overlay_position, &upper_led4.GetCurrentFrame(), 0.75f);
+		//BLOW 1
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
+		//BLOW 2
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 2165 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
+	}
 
 	//Fade to black
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
