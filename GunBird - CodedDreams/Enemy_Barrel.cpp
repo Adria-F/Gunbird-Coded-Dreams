@@ -16,7 +16,7 @@ Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 	//Low level
 	idle.PushBack({ 0, 0, 44, 30 });
 	idle.speed = 0.1f;
-	idle.loop = true;
+	idle.loop = false;
 
 	//Death
 	dead.PushBack({ 0, 33, 53, 39 });
@@ -29,7 +29,6 @@ Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 
 	dead.PushBack({ 0, 113, 53, 39 });
 	dead.PushBack({ 54, 113, 53, 39 });
-	dead.PushBack({ 108, 113, 53, 39 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 
