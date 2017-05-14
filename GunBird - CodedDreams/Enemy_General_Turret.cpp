@@ -99,7 +99,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	lives = 2;
 	initial_hp = lives;
 	points = 400;
-	explosion_type = SMALL1; //Explosion type
+	explosion_type = MID1; //Explosion type
 	this->wave = wave;
 	this->id = id;
 
