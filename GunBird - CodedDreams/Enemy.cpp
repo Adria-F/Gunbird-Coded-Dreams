@@ -38,6 +38,20 @@ Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y
 	anim_b1.loop = false;
 
 	//big2
+	anim_b2.PushBack({ 17,37,83,74 });
+	anim_b2.PushBack({ 129,33,91,85 });
+	anim_b2.PushBack({ 258,25,102,94 });
+	anim_b2.PushBack({ 385,24,104,102 });
+
+	anim_b2.PushBack({ 8,141,102,102 });
+	anim_b2.PushBack({ 132,140,101,103 });
+	anim_b2.PushBack({ 263,137,100,105 });
+	anim_b2.PushBack({ 381,140,105,106 });
+
+	anim_b2.PushBack({ 6,266,104,105 });
+	anim_b2.PushBack({ 129,267,105,105 });
+	anim_b2.PushBack({ 256,266,106,105 });
+	anim_b2.PushBack({ 385,286,105,106 });
 	//mid1
 	//mid2
 	//small1
