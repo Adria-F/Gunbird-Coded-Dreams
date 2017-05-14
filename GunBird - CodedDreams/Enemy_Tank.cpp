@@ -7,9 +7,9 @@
 Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 {
 	//Open all textures
-	NormalSprite = App->textures->Load("assets/enemies/tankk.png");
-	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_tank.png");
-	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_tank.png");
+	NormalSprite = App->textures->Load("assets/enemies/Tank.png");
+	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_Tank.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Tank.png");
 
 	//Set animation steps, speed and loop
 	open.PushBack({ 126, 11, 105, 61 });
