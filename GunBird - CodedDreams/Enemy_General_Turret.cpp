@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModuleSceneMine.h"
+#include "ModuleEnemies.h"
 #include "p2Point.h"
 
 #define PI 3.14159265
@@ -92,6 +93,16 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 	collider_pos.y = -6;
+
+	if (wave == 3 && id == 2)
+	{
+		App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
+		App->enemies->AddEnemy(GENERAL_TURRET, 194, 2618, 3, 1);
+		App->enemies->AddEnemy(GENERAL_TURRET, 127, 2648, 3);
+		App->enemies->AddEnemy(GENERAL_TURRET, 160, 2648, 3);
+		App->enemies->AddEnemy(GENERAL_TURRET, 194, 2648, 3);
+	}
+
 }
 
 Enemy_General_Turret::~Enemy_General_Turret()
