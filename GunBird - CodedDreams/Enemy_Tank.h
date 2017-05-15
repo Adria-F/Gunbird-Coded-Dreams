@@ -18,8 +18,12 @@ public:
 public:
 
 	Path path;
-	Animation open;
-	Animation shooting;
+	Animation idle_motor;
+	Animation open_tur;
+	Animation open_cent;
+	Animation idle;
+	Animation close_tur; 
+	Animation close_cent;
 	Animation dead;
 
 };

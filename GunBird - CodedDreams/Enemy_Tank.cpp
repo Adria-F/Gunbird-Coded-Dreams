@@ -12,31 +12,72 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Tank.png");
 
 	//Set animation steps, speed and loop
-	open.PushBack({ 126, 11, 105, 61 });
-	open.PushBack({ 250, 12, 105, 61 });
-	open.PushBack({ 377, 11, 105, 61 });
-	open.PushBack({ 5, 89, 105, 61 });
-	open.PushBack({ 127, 88, 105, 61 });
-	open.PushBack({ 252, 87, 105, 61 });
-	open.PushBack({ 376, 88, 105, 61 });
-	open.PushBack({ 6, 157, 105, 61 });
-	open.PushBack({ 125, 154, 105, 61 });
-	open.speed = 0.1f;
-	open.loop = false;
+	idle_motor.PushBack({ 6, 10, 100, 61 });
+	idle_motor.PushBack({ 128, 10, 100, 61 });
+	idle_motor.PushBack({ 250, 10, 100, 61 });
+	idle_motor.PushBack({ 372, 10, 100, 61 });
+	idle_motor.PushBack({ 494, 10, 100, 61 });
+	idle_motor.PushBack({ 616, 10, 100, 61 });
+	idle_motor.speed = 0.1f;
+	idle_motor.loop = false;
 
-	shooting.PushBack({ 5, 267, 105, 61 });
-	shooting.PushBack({ 123, 268, 105, 61 });
-	shooting.PushBack({ 245, 265, 105, 61 });
-	shooting.PushBack({ 368, 263, 105, 61 });
-	shooting.PushBack({ 5, 330, 105, 61 });
+	open_tur.PushBack({ 6, 91, 100, 61 });
+	open_tur.PushBack({ 128, 91, 100, 61 });
+	open_tur.speed = 0.1f;
+	open_tur.loop = false;
 
-	dead.PushBack({ 6, 14, 105, 59 });
+	open_cent.PushBack({ 6, 256, 100, 61 });
+	open_cent.PushBack({ 128, 256, 100, 61 });
+	open_cent.PushBack({ 250, 256, 100, 61 });
+	open_cent.PushBack({ 372, 256, 100, 61 });
+	open_cent.PushBack({ 494, 256, 100, 61 });
+	open_cent.speed = 0.05f;
+	open_cent.loop = false;
+
+	idle.PushBack({ 6, 338, 100, 61 });
+	idle.PushBack({ 128, 338, 100, 61 });
+	idle.PushBack({ 250, 338, 100, 61 });
+	idle.PushBack({ 372, 338, 100, 61 });
+	idle.PushBack({ 494, 338, 100, 61 });
+	idle.PushBack({ 616, 338, 100, 61 });
+	idle.speed = 0.2f;
+	idle.loop = true;
+	
+
+	close_tur.PushBack({ 6, 420, 100, 61 });
+	close_tur.PushBack({ 128, 420, 100, 61 });
+	close_tur.PushBack({ 250, 420, 100, 61 });
+	close_tur.PushBack({ 372, 420, 100, 61 });
+	close_tur.speed = 0.1f;
+	close_tur.loop = false;
+
+	close_cent.PushBack({ 6, 502, 100, 61 });
+	close_cent.PushBack({ 128, 502, 100, 61 });
+	close_cent.PushBack({ 250, 502, 100, 61 });
+	close_cent.PushBack({ 372, 502, 100, 61 });
+	close_cent.PushBack({ 494, 502, 100, 61 });
+	close_cent.PushBack({ 616, 502, 100, 61 });
+	close_cent.PushBack({ 738, 502, 100, 61 });
+	close_cent.PushBack({ 859, 502, 100, 61 });
+	close_cent.speed = 0.05f;
+	close_cent.loop = false;
+
+	dead.PushBack({ 6, 585, 100, 61 });
+	dead.PushBack({ 128, 585, 100, 61 });
+	dead.PushBack({ 250, 585, 100, 61 });
+	dead.PushBack({ 372, 585, 100, 61 });
+	dead.PushBack({ 494, 585, 100, 61 });
+	dead.PushBack({ 616, 585, 100, 61 });
+	dead.PushBack({ 738, 585, 100, 61 });
+	dead.PushBack({ 859, 585, 100, 61 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 	
 	//Set path
-	path.PushBack({ -0.5f, 0.09f }, 100, &open);//Josep: He posat el 0.09f perque no es mogi cap a dalt. Suposo quen no era la teva intenció
-	path.PushBack({ -0.5f, 0.09f }, 100, &shooting);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ -0.5f, 0.09f }, 50, &idle_motor);//Josep: He posat el 0.09f perque no es mogi cap a dalt. Suposo quen no era la teva intenció
+	path.PushBack({ -0.5f, 0.09f }, 100, &open_tur);
+	path.PushBack({ -0.5f, 0.09f }, 100, &open_cent);
+	path.PushBack({ -0.5f, 0.09f }, 1000, &idle);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 52;
