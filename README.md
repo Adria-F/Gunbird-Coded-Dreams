@@ -1,6 +1,6 @@
 # Gunbird by Coded Dreams
 
-Coded Dreams is a team by five members that are going to copy the GunBird arcade game done, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we are working in only one level, The Castle, which will be out prototype.
+Coded Dreams is a team by five members that are going to copy the GunBird arcade game done, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we have already done the prototype (Castle level) and right now working on The Mine, which will be our Alpha release.
 
 Check our [wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
 
@@ -10,27 +10,38 @@ Decompress the .zip file in any directory and execute the executable inside the 
 
 ## Functionalities
 
-- Two different players functionality (Marion and Ash)
-- First map up until first miniboss (Castle)
-- 3 types of enemies implemented (Antiaircraft, Humanoide Robot and Torpedo)
-- 1 powerup implemented
+- Two different players functionality (Marion (gamepad too) and Ash)
+- Mine map up until first boss.
+- 8 types of enemies implemented (Balloon, Barrel, Drone, Falling Drone, Flying Machine, General Turret, Tank and Torpedo)
+- Players have 3 lives.
 
 ## Usage
 
 ### Character 1
+#### Gamepad
+- Left joystick: move character
+- A/X button: shoot
+- Y/triangle button: fade scene
+- LB/L1 button: (de)/activate debugging mode
+- RB/R1 button: (de)/activate god mode
+
+#### Keyboard
 - WASD: move character
 - F key: shoot
 
 ### Character 2
+#### Keyboard
 - Arrow keys: move character
 - 0 numpad key: shoot
 
-### Debugging Mode
-- Tab: activate / deactivate
+### Special feautres
+- F1: activate / deactivate Debugging Mode
 - Arrow numpad keys (8462): move camera
+- F2: activate / deactivate God Mode
 
 ## Contributing
 
+### Prototype
 Our most important contributions to the game were:
 - (23th February) Add main modules: Welcome Title, Scene Castle and High Scores.
 - (28th March) Castle's background does scroll.
@@ -47,7 +58,15 @@ Our most important contributions to the game were:
 - (25th April) Enemies have dead animation, enemies turn white when hit and red when at low hp. High scores are done too. Antiaircraft enemy is corrected.
 - (26th April) Solved critical crash when updating modules.
 
+### Alpha
+- (6th May) Whole project was reset for the Alpha process, changing Castle level to Mine one.
+- (8th May) Completely new enemies are added, starting per Flying Machine and Torpedo. Debugging and God Modes are implemented following user interface.
 ## History
+- (9th May) Drone enemies are added. Explosions do work and red/white effect too.
+- (11th May) Some visual textures (upper background for exmaple) are redone and General Turret and Tank added.
+- (12th May) Balloon is implemented with shotings.
+- (13th May) Balloon shoots to the nearest player.
+- (14th May) Player have three lives. Extra animations and static enemies are added.
 
 During our GunBird development the game had seven releases:
 - version 0.1 (20th March)
@@ -57,6 +76,7 @@ During our GunBird development the game had seven releases:
 - version 0.4 (5th April)
 - version 0.45 (18th April)
 - version 0.46 (25th April)
+- version 0.5 - Prototype (26th April)
  
 ## Credits
 
