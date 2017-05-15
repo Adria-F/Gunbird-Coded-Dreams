@@ -130,7 +130,7 @@ update_status ModuleInput::PreUpdate()
 		else if (keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_UP || (keyboard[SDL_SCANCODE_D] != KEY_STATE::KEY_REPEAT && SDL_GameControllerGetAxis(App->input->game_controller, SDL_CONTROLLER_AXIS_LEFTX) < 10000))
 			App->player1->going_right = false;
 		//Shot if key pressed
-		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_A] == PAD_BUTON_STATE::BUTTON_DOWN) && App->player1->shot == false)
+		if ((keyboard[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_A] == PAD_BUTON_STATE::BUTTON_DOWN) && App->player1->shot == false && App->player1->IsEnabled())
 		{
 			App->player1->shot = true;
 			App->player1->bullet_counter = 0;
@@ -156,7 +156,7 @@ update_status ModuleInput::PreUpdate()
 		else if (keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
 			App->player2->going_right = false;
 		//Shot if key pressed
-		if (keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && App->player2->shot == false)
+		if (keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && App->player2->shot == false && App->player2->IsEnabled())
 		{
 			App->player2->shot = true;
 			App->player2->bullet_counter = 0;

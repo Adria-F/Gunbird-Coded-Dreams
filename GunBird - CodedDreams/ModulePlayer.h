@@ -15,6 +15,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void OnCollision(Collider* c1, Collider* c2);
 	void setCharacter(ModuleCharacter* character);
 
 public:

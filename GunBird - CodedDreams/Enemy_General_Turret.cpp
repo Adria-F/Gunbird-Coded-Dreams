@@ -191,16 +191,27 @@ void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 	}
 	if (wave == 3 && App->scene_mine->turret_appeared || wave != 3)
 	{
-		vector.x = (App->player1->position.x - (App->render->camera.x + position.x));
-		vector.y = (App->player1->position.y - (App->render->camera.y + position.y));
-		distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-		vector.x = (App->player2->position.x - (App->render->camera.x + position.x));
-		vector.y = (App->player2->position.y - (App->render->camera.y + position.y));
-		distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-		if (distance[0] <= distance[1])
-			player = App->player1;
-		else
+		if (App->player1->IsEnabled() && App->player2->IsEnabled())
+		{
+			vector.x = (App->player1->position.x - (App->render->camera.x + position.x));
+			vector.y = (App->player1->position.y - (App->render->camera.y + position.y));
+			distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			vector.x = (App->player2->position.x - (App->render->camera.x + position.x));
+			vector.y = (App->player2->position.y - (App->render->camera.y + position.y));
+			distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			if (distance[0] <= distance[1])
+				player = App->player1;
+			else
+				player = App->player2;
+		}
+		else if (App->player1->IsEnabled() == false)
+		{
 			player = App->player2;
+		}
+		else
+		{
+			player = App->player1;
+		}
 		//---------------------------------------------------------------------------------------
 		for (int i = 0; i < 2; i++)
 		{

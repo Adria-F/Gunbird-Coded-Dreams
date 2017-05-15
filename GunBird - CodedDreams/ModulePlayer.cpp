@@ -2,6 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleSceneMine.h"
 #include "SDL/include/SDL_timer.h"
 
 Player::Player()
@@ -112,4 +113,19 @@ update_status Player::Update()
 void Player::setCharacter(ModuleCharacter* character)
 {
 	this->character = character;
+}
+
+void Player::OnCollision(Collider* c1, Collider* c2)
+{
+	if (App->render->god_mode == false && c2->type == COLLIDER_ENEMY_SHOT && App->scene_mine->lost == false)
+	{
+		hit_timer_now = SDL_GetTicks() - hit_timer_start;
+		if (hit_timer_now > hit_timer_total)
+		{
+			hit_timer_start = SDL_GetTicks();
+			lives -= 1;
+		}
+		if (lives == 0)
+			Disable();
+	}
 }

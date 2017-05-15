@@ -223,16 +223,27 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					{
 					case PLAYER:
 						Player* player;
-						vector.x = (App->player1->position.x - (App->render->camera.x + x));
-						vector.y = (App->player1->position.y - (App->render->camera.y + y));
-						distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-						vector.x = (App->player2->position.x - (App->render->camera.x + x));
-						vector.y = (App->player2->position.y - (App->render->camera.y + y));
-						distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
-						if (distance[0] < distance[1])
-							player = App->player1;
-						else
+						if (App->player1->IsEnabled() && App->player2->IsEnabled())
+						{
+							vector.x = (App->player1->position.x - (App->render->camera.x + x));
+							vector.y = (App->player1->position.y - (App->render->camera.y + y));
+							distance[0] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+							vector.x = (App->player2->position.x - (App->render->camera.x + x));
+							vector.y = (App->player2->position.y - (App->render->camera.y + y));
+							distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+							if (distance[0] < distance[1])
+								player = App->player1;
+							else
+								player = App->player2;
+						}
+						else if (App->player1->IsEnabled() == false)
+						{
 							player = App->player2;
+						}
+						else
+						{
+							player = App->player1;
+						}
 
 						y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12);
 						if (player->position.x - x < 0)
@@ -286,6 +297,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
+		
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
