@@ -3,6 +3,8 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleSceneMine.h"
+#include "ModuleAudio.h"
+#include "ModulePowerUp.h"
 #include "SDL/include/SDL_timer.h"
 
 Player::Player()
@@ -38,6 +40,8 @@ bool Player::CleanUp()
 {
 	if (character != nullptr)
 		character->CleanUp();
+	if (Pcollider != nullptr)
+		Pcollider->to_delete = true;
 	return true;
 }
 
@@ -46,6 +50,12 @@ update_status Player::Update()
 	if (character != nullptr)
 	{
 		now = SDL_GetTicks() - start_time;
+		
+		drop_timer_now = SDL_GetTicks() - drop_timer_start;
+		if (drop_timer_now >= drop_timer_total)
+		{
+			drop = true;
+		}
 		
 		character->current_animation = &character->idle;
 		
@@ -98,7 +108,10 @@ update_status Player::Update()
 			}
 			else
 			{
-				App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				if (shot_lvl == 1)
+					App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				else if (shot_lvl == 2)
+					App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 				start_time = SDL_GetTicks();
 				bullet_counter++;
 			}
@@ -127,5 +140,30 @@ void Player::OnCollision(Collider* c1, Collider* c2)
 		}
 		if (lives == 0)
 			Disable();
+	}
+	if (c2->type == COLLIDER_AIR_ENEMY)
+	{
+		onhit_now = SDL_GetTicks() - onhit_start_time;
+		//activate onhit animation
+		going_onhit = true;
+		//sound when hit flying enemy (Torpedo)
+		if (onhit_now > onhit_total_time)
+		{
+			going_onhit = false;
+			onhit_start_time = SDL_GetTicks();
+			App->audio->Load("assets/effects/gunbird_205 [EFFECT] Collide with Objects.wav", App->audio->EFFECT);
+			for (int i = 0; i < 3; i++)
+			{
+				App->audio->Play(App->audio->EFFECT);
+			}
+		}
+
+		if (drop && shot_lvl > 1)
+		{
+			App->powerup->AddPowerUp(UPGRADE, (c2->rect.x + c2->rect.w / 2), (c2->rect.y + c2->rect.h / 2));
+			shot_lvl -= 1;
+			drop = false;
+			drop_timer_start = SDL_GetTicks();
+		}
 	}
 }

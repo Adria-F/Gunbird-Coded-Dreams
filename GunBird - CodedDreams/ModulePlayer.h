@@ -44,18 +44,18 @@ public:
 	Uint32 hit_timer_total = (Uint32)(2.0f * 0.5f * 100.0f);
 	Uint32 hit_timer_now;
 
+	//Time between drops/collision animation
+	bool drop = true;
+	Uint32 drop_timer_start = 0;
+	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 750.0f);
+	Uint32 drop_timer_now;
+
 protected:
 
 	//Time between bullets
 	Uint32 start_time = 0;
 	Uint32 total_time = (Uint32)(2.0f * 0.5f * 100.0f);
 	Uint32 now;
-
-	//Time between drops/collision animation
-	bool drop = true;
-	Uint32 drop_timer_start = 0;
-	Uint32 drop_timer_total = (Uint32)(2.0f * 0.5f * 1000.0f);
-	Uint32 drop_timer_now;
 
 	//Duration of hit animation
 	Uint32 onhit_start_time = 0;

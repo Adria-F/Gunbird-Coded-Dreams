@@ -40,6 +40,7 @@
     <ClInclude Include="ModuleMarion.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="ModulePowerUp.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneMine.h" />
     <ClInclude Include="ModuleTextures.h" />
@@ -76,6 +77,7 @@
     <ClCompile Include="ModuleMarion.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="ModulePowerUp.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneMine.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />

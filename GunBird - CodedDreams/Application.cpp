@@ -16,6 +16,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
 #include "ModuleHighscores.h"
+#include "ModulePowerUp.h"
 
 Application::Application()
 {
@@ -36,6 +37,7 @@ Application::Application()
 	modules[i++] = marion = new ModuleMarion();
 	modules[i++] = ash = new ModuleAsh();
 
+	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = ui = new ModuleUI();
 	modules[i++] = fade = new ModuleFadeToBlack();

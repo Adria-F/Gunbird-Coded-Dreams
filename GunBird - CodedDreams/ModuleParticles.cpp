@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleMarion.h"
+#include "ModulePowerUp.h"
 #include "SDL/include/SDL_timer.h"
 
 #define PI 3.14159265
@@ -34,6 +35,8 @@ bool ModuleParticles::Start()
 
 	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
 	small_shot_texture = App->textures->Load("assets/enemies/Bullets Small.png");
+
+	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -89,6 +92,19 @@ bool ModuleParticles::Start()
 	big_shot_particle.anim.speed = 0.5f;
 	big_shot_particle.damage = 1;
 
+	// Upgrade
+	upgrade_particle.anim.PushBack({ 4, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 31, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 47, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 47, 22, 13 });
+	upgrade_particle.anim.PushBack({ 54, 64, 22, 13 });
+	upgrade_particle.anim.PushBack({ 104, 64, 22, 13 });
+	upgrade_particle.anim.PushBack({ 56, 83, 22, 13 });
+	upgrade_particle.anim.PushBack({ 81, 83, 22, 13 });
+	upgrade_particle.life = 100000;
+	upgrade_particle.anim.loop = true;
+	upgrade_particle.anim.speed = 0.2f;
 	
 	return true;
 }
@@ -109,6 +125,9 @@ bool ModuleParticles::CleanUp()
 	big_shot_texture = nullptr;
 	App->textures->Unload(small_shot_texture);
 	small_shot_texture = nullptr;
+
+	App->textures->Unload(upgrade_texture);
+	upgrade_texture = nullptr;
 	
 	LOG("Unloading particles");
 
@@ -208,7 +227,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 				p->collider = App->collision->AddCollider({(int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this, p);
 				break;
 			case COLLIDER_POWER_UP:
-				//p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, App->powerup);
+				p->collider = App->collision->AddCollider({ (int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h }, collider_type, App->powerup, p);
 				break;
 			case COLLIDER_ENEMY_SHOT:
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
@@ -245,7 +264,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 							player = App->player1;
 						}
 
-						y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12);
+						y_phase = 16 + (((x - player->position.x) / (y - player->position.y)) * 12); //Error when position y is the same
 						if (player->position.x - x < 0)
 						{
 							if (x_phase < 0)
@@ -342,10 +361,7 @@ bool Particle::Update()
 	}
 	else
 	{
-		if (anim.Finished())
-		{
-			ret = false;
-		}
+		ret = false;
 	}
 	position.x += speed.x;
 	position.y += speed.y;
