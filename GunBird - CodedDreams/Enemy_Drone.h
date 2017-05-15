@@ -3,6 +3,7 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "ModuleParticles.h"
 
 class Enemy_Drone : public Enemy
 {
@@ -16,8 +17,15 @@ public:
 public:
 
 	Path path;
-	Animation dronewave;
+	Animation Looking_down;
+	Animation Looking_right;
+	Animation Totally_right;
 	Animation dead;
+
+
+	char* shot_path;
+	particle_type shoot;
+	Particle* big_shoot;
 
 };
 

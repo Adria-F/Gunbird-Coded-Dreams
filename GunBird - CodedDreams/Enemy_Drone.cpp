@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
 
 Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 {
@@ -12,16 +13,38 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_drone.png");
 	
 
-	//Wave1
-	dronewave.PushBack({ 12, 37, 38, 38 });
-	dronewave.PushBack({ 59, 39, 38, 38 });
-	dronewave.PushBack({ 107, 40, 38, 38 });
-	dronewave.PushBack({ 164, 39, 38, 38 });
-	dronewave.PushBack({ 56, 90, 38, 38 });
-	dronewave.PushBack({ 108, 91, 38, 38 });
-	dronewave.PushBack({ 164, 92, 38, 38 });
-	dronewave.speed = 1.0f;
-	dronewave.loop = true;
+	//Looking Down
+	Looking_down.PushBack({ 14, 4, 35, 35 });
+	Looking_down.PushBack({ 52, 4, 35, 35 });
+	Looking_down.PushBack({ 91, 4, 35, 35 });
+	Looking_down.PushBack({ 128, 4, 35, 35 });
+	Looking_down.PushBack({ 166, 4, 35, 35 });
+	Looking_down.PushBack({ 203, 4, 35, 35 });
+	Looking_down.speed = 1.0f;
+	Looking_down.loop = true;
+
+	//Looking Right
+	Looking_right.PushBack({ 14, 40, 35, 35 });
+	Looking_right.PushBack({ 52, 40, 35, 35 });
+	Looking_right.PushBack({ 91, 40, 35, 35 });
+	Looking_right.PushBack({ 128, 40, 35, 35 });
+	Looking_right.PushBack({ 166, 40, 35, 35 });
+	Looking_right.PushBack({ 203, 40, 35, 35 });
+	
+	Looking_right.speed = 1.0f;
+	Looking_right.loop = true;
+
+
+	//Totally_right
+	Totally_right.PushBack({ 14, 86, 35, 35 });
+	Totally_right.PushBack({ 52, 86, 35, 35 });
+	Totally_right.PushBack({ 91, 86, 35, 35 });
+	Totally_right.PushBack({ 128, 86, 35, 35 });
+	Totally_right.PushBack({ 166, 86, 35, 35 });
+	Totally_right.PushBack({ 203, 86, 35, 35 });
+
+	Totally_right.speed = 1.0f;
+	Totally_right.loop = true;
 
 	//Death
 	//Chavales es la medium explosion sencera, si algu la vol aqui esta guapas
@@ -48,48 +71,51 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 
 	if (wave == 1 && id==1)
 	{
-		path.PushBack({ 0.0f, 0.2f }, 150, &dronewave);
-		path.PushBack({ 1.0f, 0.0f }, 60, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
-		path.PushBack({ 0.5f, 1.5f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.2f }, 150, &Looking_down);
+		path.PushBack({ 1.0f, 0.0f }, 60, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_down);
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_right);
+		path.PushBack({ 0.5f, 1.5f }, 70, &Looking_right);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &Totally_right);
 	
 	}
 	else if (wave==1 && id == 2) {
-		path.PushBack({ 0.0f, 0.2f }, 217, &dronewave);
-		path.PushBack({ 1.0f, 0.0f }, 60, &dronewave);
-		path.PushBack({ 0.0f, 0.2f }, 100, &dronewave);
-		path.PushBack({ 0.5f, 1.5f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.2f }, 217, &Looking_down);
+		path.PushBack({ 1.0f, 0.0f }, 60, &Looking_down);
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_down);
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_right);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &Looking_right);
 	}
 	//Wave2 Path
 	else if (wave == 2 && id==1)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 50, &dronewave);
-		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 50, &Looking_down);
+		path.PushBack({ 0.0f, 2.0f }, 70, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &Looking_down);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &Looking_down);
 	}
 	else if (wave == 2 && id == 2)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 50, &dronewave);
-		path.PushBack({ 0.0f, 0.0f }, 98, &dronewave);
-		path.PushBack({ 0.0f, 2.0f }, 70, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.2f }, 15, &dronewave);
-		path.PushBack({ 0.0f, -2.0f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 50, &Looking_down);
+		path.PushBack({ 0.0f, 0.0f }, 98, &Looking_down);
+		path.PushBack({ 0.0f, 2.0f }, 70, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 15, &Looking_down);
+		path.PushBack({ 0.0f, -2.0f }, 1000, &Looking_down);
 	}
 	//Wave3 Path
 	else if (wave == 3 && id == 1)
 	{
-		path.PushBack({ 0.0f, 0.0f }, 200, &dronewave);
-		path.PushBack({ -1.0f, 0.0f }, 100, &dronewave); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-		path.PushBack({ 0.0f, 0.0f }, 100, &dronewave);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 200, &Looking_down);
+		path.PushBack({ -1.0f, 0.0f }, 100, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.0f }, 100, &Looking_down);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &Looking_down);
 
 	}
 	else if (wave == 3 && id == 2) {
-		path.PushBack({ 0.0f, 0.0f }, 300, &dronewave);
-		path.PushBack({ -1.0f, 0.0f }, 100, &dronewave);
-		path.PushBack({ 0.0f, 0.0f }, 100, &dronewave);
-		path.PushBack({ -0.5f, 1.5f }, 1000, &dronewave);
+		path.PushBack({ 0.0f, 0.0f }, 300, &Looking_down);
+		path.PushBack({ -1.0f, 0.0f }, 100, &Looking_down);
+		path.PushBack({ 0.0f, 0.0f }, 100, &Looking_down);
+		path.PushBack({ -0.5f, 1.5f }, 1000, &Looking_down);
 	}
 	
 	//Set lives, initial_hp, points adn extra_anim
@@ -99,6 +125,12 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	extra_anim = false;
 	explosion_type = SMALL1;
 
+	//Shooting
+
+	shoot = particle_type::P_BIG_SHOT;
+	big_shoot = &App->particles->big_shot_particle;
+	Shot_Start_time = (Uint32)(3333.3f);
+	Shot_Total_time = (Uint32)(2000.0f);
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 35, 35 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
@@ -111,6 +143,16 @@ Enemy_Drone::~Enemy_Drone()
 void Enemy_Drone::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+
+	Shot_now = SDL_GetTicks() - Shot_Start_time;
+	if (animation == &Looking_right )
+	{
+		if (Shot_now > Shot_Total_time)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 0);
+		}
+	}
 }
 
 
