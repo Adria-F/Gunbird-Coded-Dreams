@@ -39,7 +39,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	
 	shoot = particle_type::P_BIG_SHOT;
 	big_shoot = &App->particles->big_shot_particle;
-	Shot_Total_time = (Uint32)(500.0f);
+	Shot_Total_time = (Uint32)(2000.0f);
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
@@ -58,7 +58,12 @@ void Enemy_Balloon::Move()
 	if (Shot_now > Shot_Total_time)
 	{
 		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 0);
+		//App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 248, ANGLE);
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 204, ANGLE);
+
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 292, ANGLE);
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 336, ANGLE);
 	}
 }
 
