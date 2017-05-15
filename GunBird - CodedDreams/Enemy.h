@@ -85,6 +85,7 @@ public:
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
 	virtual bool explode();
+	virtual void Drop();
 };
 
 #endif // __ENEMY_H__

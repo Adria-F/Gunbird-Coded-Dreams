@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleRender.h"
+#include "ModulePowerUp.h"
 
 Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 {
@@ -71,4 +72,9 @@ void Enemy_Balloon::DeadAnim()
 {
 	animation = &dead;
 	position.y += 0.2f; //Perque es mogui a la mateixa velocitat que l'overlay
+}
+
+void Enemy_Balloon::Drop()
+{
+	App->powerup->AddPowerUp(UPGRADE, App->render->camera.x + position.x, App->render->camera.y + position.y);
 }

@@ -193,6 +193,7 @@ void Enemy::OnCollision(Collider* collider)
 			{
 				App->player2->points += points;
 			}
+			Drop();
 		}
 	}
 	else if (collider->type == COLLIDER_DECORATION)
@@ -240,4 +241,9 @@ bool Enemy::explode()
 		break;
 	}
 	return result;
+}
+
+void Enemy::Drop()
+{
+
 }

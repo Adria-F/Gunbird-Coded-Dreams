@@ -50,7 +50,11 @@ update_status ModulePowerUp::Update()
 		if (powerups[i] != nullptr && powerups[i]->part->type == P_UPGRADE)
 		{
 			powerups[i]->Update();
-			if (powerups[i]->part->position.y <= 50 || powerups[i]->part->position.y >= (SCREEN_HEIGHT - 50 - 13))
+			if (powerups[i]->part->position.y <= 50 && powerups[i]->part->speed.y < 0)
+			{
+				powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
+			}
+			if (powerups[i]->part->position.y >= (SCREEN_HEIGHT - 50 - 13 ) && powerups[i]->part->speed.y > 0)
 			{
 				powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
 			}
