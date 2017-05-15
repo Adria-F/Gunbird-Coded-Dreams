@@ -69,9 +69,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 230, 2950, 3, 1);
 	App->enemies->AddEnemy(DRONE, 255, 2980, 3, 2);
 	//Drones wave4
-	App->enemies->AddEnemy(DRONE, 75, 2890, 2, 1);
-	App->enemies->AddEnemy(DRONE, 25, 2890, 2, 1);
-	App->enemies->AddEnemy(DRONE, 50, 2920, 2, 2);
+	App->enemies->AddEnemy(DRONE, 75, 2890, 4, 1);
+	App->enemies->AddEnemy(DRONE, 25, 2890, 4, 1);
+	App->enemies->AddEnemy(DRONE, 50, 2920, 4, 2);
 	//Drones wave5
 	App->enemies->AddEnemy(DRONE, -50, 2800, 1, 1);
 	App->enemies->AddEnemy(DRONE,   0, 2800, 1, 1);
@@ -85,9 +85,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 230, 2750, 3, 1);
 	App->enemies->AddEnemy(DRONE, 255, 2780, 3, 2);
 	//Drones wave8
-	App->enemies->AddEnemy(DRONE, 75, 2690, 2, 1);
-	App->enemies->AddEnemy(DRONE, 25, 2690, 2, 1);
-	App->enemies->AddEnemy(DRONE, 50, 2720, 2, 2);
+	App->enemies->AddEnemy(DRONE, 75, 2690, 4, 1);
+	App->enemies->AddEnemy(DRONE, 25, 2690, 4, 1);
+	App->enemies->AddEnemy(DRONE, 50, 2720, 4, 2);
 
 	//Falling Drones wave1
 	App->enemies->AddEnemy(FALLING_DRONE, -60, 2450, 1, 1);

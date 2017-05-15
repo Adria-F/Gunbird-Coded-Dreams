@@ -20,12 +20,15 @@ public:
 	Animation Looking_down;
 	Animation Looking_right;
 	Animation Totally_right;
+	Animation Looking_left;
+	Animation Totally_left;
 	Animation dead;
 
 
 	char* shot_path;
 	particle_type shoot;
 	Particle* big_shoot;
+	
 
 };
 
