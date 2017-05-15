@@ -5,6 +5,7 @@
 #include "Path.h"
 #include "p2Point.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 class Enemy_General_Turret : public Enemy
 {

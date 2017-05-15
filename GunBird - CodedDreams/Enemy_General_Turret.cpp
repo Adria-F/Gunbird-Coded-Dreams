@@ -100,6 +100,7 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	initial_hp = lives;
 	points = 400;
 	explosion_type = MID1; //Explosion type
+	Shot_Total_time = (Uint32)(5000.0f);
 	this->wave = wave;
 	this->id = id;
 
@@ -154,6 +155,16 @@ Enemy_General_Turret::~Enemy_General_Turret()
 void Enemy_General_Turret::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+	if (appearing == true && wave == 3 || wave <= 2)
+	{
+		Shot_now = SDL_GetTicks() - Shot_Start_time;
+		if (Shot_now > Shot_Total_time)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 10, COLLIDER_ENEMY_SHOT, 0, 0);
+		}
+	}
+
 }
 
 void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
