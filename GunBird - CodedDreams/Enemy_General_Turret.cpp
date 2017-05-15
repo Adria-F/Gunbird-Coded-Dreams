@@ -104,12 +104,12 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 	this->id = id;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	if (wave != 3)
+		collider = App->collision->AddCollider({ x, y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 	collider_pos.y = -6;
 
 	if (wave == 3)
 	{
-		collider->rect = { 0, 0, 0, 0 };
 		if (id == 2)
 		{
 			App->enemies->AddEnemy(GENERAL_TURRET, 160, 2618, 3, 1);
@@ -184,7 +184,8 @@ void Enemy_General_Turret::ExtraAnim(SDL_Texture* texture)
 		App->render->Blit(texture, App->render->camera.x + position.x + 5, App->render->camera.y + position.y - 9, &appear_anim.GetCurrentFrame());
 		if (appear_anim.Finished())
 		{
-			collider->rect = { (int)position.x, (int)position.y, 28, 35 };
+			if (collider == nullptr)
+				collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 28, 35 }, COLLIDER_ENEMY, (Module*)App->enemies);
 			if (id == 4)
 				App->scene_mine->turret_appeared = true;
 		}
