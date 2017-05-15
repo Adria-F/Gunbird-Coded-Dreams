@@ -61,12 +61,13 @@ Our most important contributions to the game were:
 ### Alpha
 - (6th May) Whole project was reset for the Alpha process, changing Castle level to Mine one.
 - (8th May) Completely new enemies are added, starting per Flying Machine and Torpedo. Debugging and God Modes are implemented following user interface.
-## History
 - (9th May) Drone enemies are added. Explosions do work and red/white effect too.
 - (11th May) Some visual textures (upper background for exmaple) are redone and General Turret and Tank added.
 - (12th May) Balloon is implemented with shotings.
 - (13th May) Balloon shoots to the nearest player.
 - (14th May) Player have three lives. Extra animations and static enemies are added.
+
+## History
 
 During our GunBird development the game had seven releases:
 - version 0.1 (20th March)
