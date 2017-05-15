@@ -140,6 +140,7 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	extra_anim = false;
 	explosion_type = SMALL1;
 
+	//Shooting
 
 	shoot = particle_type::P_BIG_SHOT;
 	big_shoot = &App->particles->big_shot_particle;
@@ -159,10 +160,13 @@ void Enemy_Faling_Drone::Move()
 	position = original_pos + path.GetCurrentPosition(&animation);
 
 	Shot_now = SDL_GetTicks() - Shot_Start_time;
-	if (Shot_now > Shot_Total_time)
+	if (animation == &rotate_right || animation == &rotate_left)
 	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 20, COLLIDER_ENEMY_SHOT, 0, 0);
+		if (Shot_now > Shot_Total_time)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 18, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 0);
+		}
 	}
 }
 
