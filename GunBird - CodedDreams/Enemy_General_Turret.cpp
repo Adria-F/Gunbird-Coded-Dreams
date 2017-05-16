@@ -155,7 +155,7 @@ Enemy_General_Turret::~Enemy_General_Turret()
 void Enemy_General_Turret::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	if (appearing == true && wave == 3 || wave <= 2)
+	if (App->scene_mine->turret_appeared == true && wave == 3 || wave != 3)
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
 		if (Shot_now > Shot_Total_time)

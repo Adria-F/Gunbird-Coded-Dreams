@@ -12,64 +12,66 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_Tank.png");
 
 	//Set animation steps, speed and loop
-	idle_motor.PushBack({ 6, 10, 100, 61 });
-	idle_motor.PushBack({ 128, 10, 100, 61 });
-	idle_motor.PushBack({ 250, 10, 100, 61 });
-	idle_motor.PushBack({ 372, 10, 100, 61 });
-	idle_motor.PushBack({ 494, 10, 100, 61 });
-	idle_motor.PushBack({ 616, 10, 100, 61 });
+	idle_motor.PushBack({ 6, 10, 105, 61 });
+	idle_motor.PushBack({ 128, 10, 105, 61 });
+	idle_motor.PushBack({ 250, 10, 105, 61 });
+	idle_motor.PushBack({ 372, 10, 105, 61 });
+	idle_motor.PushBack({ 494, 10, 105, 61 });
+	idle_motor.PushBack({ 616, 10, 105, 61 });
 	idle_motor.speed = 0.1f;
 	idle_motor.loop = false;
 
-	open_tur.PushBack({ 6, 91, 100, 61 });
-	open_tur.PushBack({ 128, 91, 100, 61 });
+	open_tur.PushBack({ 6, 91, 105, 61 });
+	open_tur.PushBack({ 128, 91, 105, 61 });
+	open_tur.PushBack({ 250, 91, 105, 61 });
+	open_tur.PushBack({ 372, 91, 105, 61 });
 	open_tur.speed = 0.1f;
 	open_tur.loop = false;
 
-	open_cent.PushBack({ 6, 256, 100, 61 });
-	open_cent.PushBack({ 128, 256, 100, 61 });
-	open_cent.PushBack({ 250, 256, 100, 61 });
-	open_cent.PushBack({ 372, 256, 100, 61 });
-	open_cent.PushBack({ 494, 256, 100, 61 });
+	open_cent.PushBack({ 6, 256, 105, 61 });
+	open_cent.PushBack({ 128, 256, 105, 61 });
+	open_cent.PushBack({ 250, 256, 105, 61 });
+	open_cent.PushBack({ 372, 256, 105, 61 });
+	open_cent.PushBack({ 494, 256, 105, 61 });
 	open_cent.speed = 0.05f;
 	open_cent.loop = false;
 
-	idle.PushBack({ 6, 338, 100, 61 });
-	idle.PushBack({ 128, 338, 100, 61 });
-	idle.PushBack({ 250, 338, 100, 61 });
-	idle.PushBack({ 372, 338, 100, 61 });
-	idle.PushBack({ 494, 338, 100, 61 });
-	idle.PushBack({ 616, 338, 100, 61 });
+	idle.PushBack({ 6, 338, 105, 61 });
+	idle.PushBack({ 128, 338, 105, 61 });
+	idle.PushBack({ 250, 338, 105, 61 });
+	idle.PushBack({ 372, 338, 105, 61 });
+	idle.PushBack({ 494, 338, 105, 61 });
+	idle.PushBack({ 616, 338, 105, 61 });
 	idle.speed = 0.2f;
 	idle.loop = true;
 	
 
-	close_tur.PushBack({ 6, 420, 100, 61 });
-	close_tur.PushBack({ 128, 420, 100, 61 });
-	close_tur.PushBack({ 250, 420, 100, 61 });
-	close_tur.PushBack({ 372, 420, 100, 61 });
+	close_tur.PushBack({ 6, 420, 105, 61 });
+	close_tur.PushBack({ 128, 420, 105, 61 });
+	close_tur.PushBack({ 250, 420, 105, 61 });
+	close_tur.PushBack({ 372, 420, 105, 61 });
 	close_tur.speed = 0.1f;
 	close_tur.loop = false;
 
-	close_cent.PushBack({ 6, 502, 100, 61 });
-	close_cent.PushBack({ 128, 502, 100, 61 });
-	close_cent.PushBack({ 250, 502, 100, 61 });
-	close_cent.PushBack({ 372, 502, 100, 61 });
-	close_cent.PushBack({ 494, 502, 100, 61 });
-	close_cent.PushBack({ 616, 502, 100, 61 });
-	close_cent.PushBack({ 738, 502, 100, 61 });
-	close_cent.PushBack({ 859, 502, 100, 61 });
+	close_cent.PushBack({ 6, 502, 105, 61 });
+	close_cent.PushBack({ 128, 502, 105, 61 });
+	close_cent.PushBack({ 250, 502, 105, 61 });
+	close_cent.PushBack({ 372, 502, 105, 61 });
+	close_cent.PushBack({ 494, 502, 105, 61 });
+	close_cent.PushBack({ 616, 502, 105, 61 });
+	close_cent.PushBack({ 738, 502, 105, 61 });
+	close_cent.PushBack({ 859, 502, 105, 61 });
 	close_cent.speed = 0.05f;
 	close_cent.loop = false;
 
-	dead.PushBack({ 6, 585, 100, 61 });
-	dead.PushBack({ 128, 585, 100, 61 });
-	dead.PushBack({ 250, 585, 100, 61 });
-	dead.PushBack({ 372, 585, 100, 61 });
-	dead.PushBack({ 494, 585, 100, 61 });
-	dead.PushBack({ 616, 585, 100, 61 });
-	dead.PushBack({ 738, 585, 100, 61 });
-	dead.PushBack({ 859, 585, 100, 61 });
+	dead.PushBack({ 6, 585, 105, 61 });
+	dead.PushBack({ 128, 585, 105, 61 });
+	dead.PushBack({ 250, 585, 105, 61 });
+	dead.PushBack({ 372, 585, 105, 61 });
+	dead.PushBack({ 494, 585, 105, 61 });
+	dead.PushBack({ 616, 585, 105, 61 });
+	dead.PushBack({ 738, 585, 105, 61 });
+	dead.PushBack({ 859, 585, 105, 61 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 	
