@@ -76,6 +76,15 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	dead.loop = true;
 	
 	//Set path
+	if (wave == 1)
+	{
+
+	}
+
+	else if (wave == 2)
+	{
+
+	}
 	path.PushBack({ -0.5f, 0.09f }, 50, &idle_motor);//Josep: He posat el 0.09f perque no es mogi cap a dalt. Suposo quen no era la teva intenció
 	path.PushBack({ -0.5f, 0.09f }, 100, &open_tur);
 	path.PushBack({ -0.5f, 0.09f }, 100, &open_cent);
