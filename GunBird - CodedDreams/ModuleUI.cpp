@@ -81,7 +81,7 @@ update_status ModuleUI::Update()
 			{
 				player1_top_score = player1_score;
 			}
-			sprintf_s(score_text, 10, "%7d", App->player1->points);
+			sprintf_s(score_text1, 10, "%7d", App->player1->points);
 
 			if (App->player1->character == App->marion)
 				char_pos.x = 8;
@@ -97,7 +97,7 @@ update_status ModuleUI::Update()
 		if (App->scene_mine->IsEnabled())
 		{
 			App->fonts->BlitText(0, 5, font_score, "uP:");
-			App->fonts->BlitText(25, 5, font_score, score_text);
+			App->fonts->BlitText(25, 5, font_score, score_text1);
 		}
 
 		if (App->player2->IsEnabled())
@@ -107,7 +107,7 @@ update_status ModuleUI::Update()
 			{
 				player2_top_score = player2_score;
 			}
-			sprintf_s(score_text, 10, "%7d", App->player2->points);
+			sprintf_s(score_text2, 10, "%7d", App->player2->points);
 
 			if (App->player2->character == App->marion)
 				char_pos.x = 8;
@@ -123,7 +123,7 @@ update_status ModuleUI::Update()
 		if (App->scene_mine->IsEnabled())
 		{
 			App->fonts->BlitText(130, 5, font_score, "dP:");
-			App->fonts->BlitText(155, 5, font_score, score_text);
+			App->fonts->BlitText(155, 5, font_score, score_text2);
 		}
 	}
 	else
@@ -134,20 +134,20 @@ update_status ModuleUI::Update()
 		if (player1_score >= player2_score)
 		{
 			App->render->Blit(marion_texture, 12, 46, &(App->player1->character->highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", player1_top_score);
-			App->fonts->BlitText(109, 58, highscores_score, score_text);
+			sprintf_s(score_text1, 10, "%7d", player1_top_score);
+			App->fonts->BlitText(109, 58, highscores_score, score_text1);
 			App->render->Blit(ash_texture, 194, 70, &(App->player2->character->highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", player2_top_score);
-			App->fonts->BlitText(109, 83, highscores_score, score_text);
+			sprintf_s(score_text2, 10, "%7d", player2_top_score);
+			App->fonts->BlitText(109, 83, highscores_score, score_text2);
 		}
 		else
 		{
 			App->render->Blit(marion_texture, 194, 70, &(App->player1->character->highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", player1_score);
-			App->fonts->BlitText(109, 83, highscores_score, score_text);
+			sprintf_s(score_text1, 10, "%7d", player1_score);
+			App->fonts->BlitText(109, 83, highscores_score, score_text1);
 			App->render->Blit(ash_texture, 12, 46, &(App->player2->character->highscore_anim.GetCurrentFrame()));
-			sprintf_s(score_text, 10, "%7d", player2_score);
-			App->fonts->BlitText(109, 58, highscores_score, score_text);
+			sprintf_s(score_text2, 10, "%7d", player2_score);
+			App->fonts->BlitText(109, 58, highscores_score, score_text2);
 		}
 	}
 

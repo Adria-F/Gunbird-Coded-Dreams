@@ -23,7 +23,8 @@ private:
 	int player2_score;
 	int player1_top_score;
 	int player2_top_score;
-	char score_text[10];
+	char score_text1[10];
+	char score_text2[10];
 	int font_score = -1;
 	int highscores_score = -1;
 	SDL_Texture* marion_texture;
