@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
 #include "SDL/include/SDL_timer.h"
+#include "ModuleAudio.h"
 
 Enemy::Enemy(int x, int y, int wave, int id) : position(x, y), original_pos(x, y), wave(wave), id (id), collider_pos(0, 0)
 {
@@ -214,32 +215,63 @@ bool Enemy::explode()
 	case BIG1:
 		App->render->Blit(b1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b1.GetCurrentFrame()));
 		result = (anim_b1.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			App->audio->Load("assets/effects/gunbird_208 [EFFECT] Big Explosion.wav", App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case BIG2:
 		App->render->Blit(b2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_b2.GetCurrentFrame()));
 		result = (anim_b2.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			App->audio->Load("assets/effects/gunbird_208 [EFFECT] Big Explosion.wav", App->audio->EFFECT);
+			//App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case MID1:
 		App->render->Blit(m1, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m1.GetCurrentFrame()));
 		result = (anim_m1.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			App->audio->Load("assets/effects/gunbird_207 [EFFECT] Medium Explosion.wav", App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case MID2:
 		App->render->Blit(m2, App->render->camera.x + position.x - 20, App->render->camera.y + position.y - 20, &(anim_m2.GetCurrentFrame()));
 		result = (anim_m2.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			//App->audio->Load("assets/effects/gunbird_207 [EFFECT] Medium Explosion.wav", App->audio->EFFECT);
+			//App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case SMALL1:
 		App->render->Blit(s1, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s1.GetCurrentFrame()));
 		result = (anim_s1.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			App->audio->Load("assets/effects/gunbird_206 [EFFECT] Small Explosion.wav", App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case SMALL2:
 		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_s2.GetCurrentFrame()));
 		result = (anim_s2.GetCurrentFrameNum() == 4);
+		if (lives <= 0 && die == false)
+		{
+			App->audio->Load("assets/effects/gunbird_206 [EFFECT] Small Explosion.wav", App->audio->EFFECT);
+			//App->audio->Play(App->audio->EFFECT);
+		}
 		break;
 	case FLYINGMACHINE:
 		App->render->Blit(s2, App->render->camera.x + position.x, App->render->camera.y + position.y, &(anim_fm.GetCurrentFrame()));
 		result = (anim_fm.GetCurrentFrameNum() == 7);
 		break;
 	}
+	
 	return result;
 }
 
