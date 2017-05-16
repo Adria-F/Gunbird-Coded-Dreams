@@ -38,7 +38,7 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 	 //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
-	lives = 2;
+	lives = 5;
 	initial_hp = lives;
 	points = 200;
 	extra_anim = false;

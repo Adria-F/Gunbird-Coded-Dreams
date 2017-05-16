@@ -166,9 +166,9 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	}
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 2;
+	lives = 1;
 	initial_hp = lives;
-	points = 500;
+	points = 200;
 	extra_anim = false;
 	explosion_type = SMALL1;
 
