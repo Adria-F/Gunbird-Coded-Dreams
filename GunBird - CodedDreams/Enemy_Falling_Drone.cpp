@@ -134,7 +134,7 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	}
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 1;
+	lives = 5;
 	initial_hp = lives;
 	points = 500;
 	extra_anim = false;

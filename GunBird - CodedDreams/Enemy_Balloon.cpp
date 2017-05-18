@@ -30,7 +30,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	path.PushBack({ 0.0f, 0.9f }, 600, &anim);
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 12;
+	lives = 25;
 	initial_hp = lives;
 	points = 400;
 	extra_anim = false;
