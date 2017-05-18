@@ -103,6 +103,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, -0.85f }, 135, &idle_up);
 	path.PushBack({ 0.0f, -0.45f }, 15, &idle_up);
 	path.PushBack({ 0.0f, 0.0f }, 15, &idle_up);
+
 	// DOWN LAST
 	path.PushBack({ 0.0f, 0.45f - 0.09f }, 15, &idle_up);
 	path.PushBack({ 0.0f, 1.0f - 0.09f }, 300, &idle_up);
@@ -122,10 +123,12 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 
 Enemy_Flying_Machine::~Enemy_Flying_Machine()
 {
+
 }
 
 void Enemy_Flying_Machine::Move()
 {
+
 	position = original_pos + path.GetCurrentPosition(&animation);
 	Shot_now = SDL_GetTicks() - Shot_Start_time;
 	if (lower_level == false)

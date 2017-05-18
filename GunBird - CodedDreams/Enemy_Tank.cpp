@@ -96,8 +96,8 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	points = 5000;
 	extra_anim = false;
 	explosion_type = BIG1; //Explosion type
-
-						   //Add and save collider
+						   
+	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 105, 60 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
