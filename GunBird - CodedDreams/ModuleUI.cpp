@@ -31,7 +31,7 @@ ModuleUI::~ModuleUI()
 bool ModuleUI::Start()
 {
 	font_score = App->fonts->Load("assets/UI/ui_fonts.png", "udP:0123456789 ", 3);
-	highscores_score = App->fonts->Load("assets/UI/highscores_fonts.png", "01234.56789 ", 2);
+	highscores_score = App->fonts->Load("assets/UI/highscores_points_fonts.png", "01234.56789 ", 2);
 	
 	marion_texture = App->textures->Load("assets/characters/marion.png");
 	ash_texture = App->textures->Load("assets/characters/ash.png");
