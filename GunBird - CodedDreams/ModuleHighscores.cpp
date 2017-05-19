@@ -29,11 +29,14 @@ bool ModuleHighscores::Start()
 	App->render->moving_scene = false;
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	graphics = App->textures->Load("assets/UI/highscores_3.png");
+	graphics = App->textures->Load("assets/UI/highscores_4.png");
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/highscore.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
+
+	App->ui->Addhighscore(App->player2->points, App->player2->character, App->player2);
+	App->ui->Addhighscore(App->player1->points, App->player1->character, App->player1);
 
 	App->ui->Enable();
 
