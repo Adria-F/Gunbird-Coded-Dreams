@@ -150,7 +150,8 @@ bool ModuleSceneMine::Start()
 
 	//Boss Stage 1
 	{
-	App->enemies->AddEnemy(CENTRALSIDE, 95, 2280);
+	//App->enemies->AddEnemy(CENTRALSIDE, 95, 2280);
+	App->enemies->AddEnemy(CENTRALSIDE, 95, 3180);
 
 
 	}

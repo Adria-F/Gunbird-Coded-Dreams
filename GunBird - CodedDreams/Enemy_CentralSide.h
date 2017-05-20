@@ -16,8 +16,9 @@ public:
 public:
 
 	Path path;
-	Animation idle;
-	Animation vault;
+	Animation moving;
+	Animation vault_closing;
+	Animation vault_open;
 
 };
 

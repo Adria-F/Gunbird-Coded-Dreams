@@ -12,36 +12,47 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	idle.PushBack({ 0, 103, 48, 91 });
-	idle.PushBack({ 49, 103, 48, 91 });
-	idle.PushBack({ 98, 103, 48, 91 });
-	idle.PushBack({ 147, 103, 48, 91 });
+	//Vault Open
+	vault_open.PushBack({ 0, 0, 48, 102 });
 
-	idle.PushBack({ 0, 195, 48, 91 });
-	idle.PushBack({ 49, 195, 48, 91 });
-	idle.PushBack({ 98, 195, 48, 91 });
-	idle.PushBack({ 147, 195, 48, 91 });
+	vault_open.speed = 0.02f;
+	vault_open.loop = false;
 
-	idle.speed = 0.02f;
-	idle.loop = true;
 
-	vault.PushBack({ 0, 0, 48, 91 });
-	vault.PushBack({ 49, 0, 48, 91 });
-	vault.PushBack({ 98, 0, 48, 91 });
-	vault.PushBack({ 147, 0, 48, 91 });
+	//Boss Moving
+	moving.PushBack({ 0, 103, 48, 91 });
+	moving.PushBack({ 49, 103, 48, 91 });
+	moving.PushBack({ 98, 103, 48, 91 });
+	moving.PushBack({ 147, 103, 48, 91 });
 
-	vault.speed = 0.02f;
-	vault.loop = false;
+	moving.PushBack({ 0, 195, 48, 91 });
+	moving.PushBack({ 49, 195, 48, 91 });
+	moving.PushBack({ 98, 195, 48, 91 });
+	moving.PushBack({ 147, 195, 48, 91 });
+
+	moving.speed = 0.02f;
+	moving.loop = true;
+
+	//Vault Closing
+	vault_closing.PushBack({ 0, 0, 48, 102 });
+	vault_closing.PushBack({ 49, 0, 48, 102 });
+	vault_closing.PushBack({ 98, 0, 48, 102 });
+	vault_closing.PushBack({ 147, 0, 48, 102 });
+
+	vault_closing.speed = 0.2f;
+	vault_closing.loop = false;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.9f }, 400, &vault);
-	path.PushBack({0.0f, 0.09f}, 100, &idle); 
+	path.PushBack({ 0.0f, 0.09f }, 100, &vault_open);
+	path.PushBack({ 0.0f, 0.09f }, 30, &vault_closing);
+	path.PushBack({0.0f, 0.09f}, 1500, &moving); 
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = true;
 
+	//collider
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
@@ -53,5 +64,5 @@ Enemy_CentralSide::~Enemy_CentralSide()
 void Enemy_CentralSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	//lower_level = true;
+	lower_level = false;
 }

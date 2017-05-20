@@ -81,6 +81,8 @@ public:
 
 	virtual void Move() {};
 	virtual void ExtraAnim(SDL_Texture* texture) {};
+	//virtual void ExtraAnim2(SDL_Texture* texture) {};
+	//virtual void ExtraAnim3(SDL_Texture* texture) {};
 	virtual void DeadAnim();
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
