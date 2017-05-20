@@ -148,6 +148,13 @@ bool ModuleSceneMine::Start()
 	//General Turret Wave 3
 	App->enemies->AddEnemy(GENERAL_TURRET, 127, 2618, 3, 2);
 
+	//Boss Stage 1
+	{
+	App->enemies->AddEnemy(CENTRALSIDE, 95, 2280);
+
+
+	}
+
 	//LEDS AND BLOWS
 	{
 		//LED 1
@@ -308,7 +315,7 @@ update_status ModuleSceneMine::Update()
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
 		lost = true;
 
-	if (App->render->camera.y >= -2151 && fading == false && App->fade->GetFadeState() == false)
+	if (App->render->camera.y >= -2000 && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;
