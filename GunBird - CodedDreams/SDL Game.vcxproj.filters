@@ -15,6 +15,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{4db1558a-a052-493a-b548-1b8d3782135d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Boss Stage 1">
+      <UniqueIdentifier>{9159753c-80ee-4999-b778-a36ac16c18a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p2Point.h">
@@ -131,6 +134,21 @@
     <ClInclude Include="ModulePowerUp.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Antiaircraft.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Boss1_Base.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_RightSide.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LeftSide.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_CentralSide.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Globals.cpp">
@@ -231,6 +249,21 @@
     </ClCompile>
     <ClCompile Include="ModulePowerUp.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Antiaircraft.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Boss1_Base.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_RightSide.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LeftSide.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_CentralSide.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

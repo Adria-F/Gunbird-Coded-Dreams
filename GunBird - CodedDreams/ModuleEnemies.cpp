@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleSceneMine.h"
 #include "Enemy.h"
+
 //Include all enemies
 #include "Enemy_Balloon.h"
 #include "Enemy_Torpedo.h"
@@ -18,6 +19,12 @@
 #include "Enemy_Barrel.h"
 #include "Enemy_Megaman.h"
 #include "Enemy_General_Turret.h"
+#include "Enemy_Antiaircraft.h"
+#include "Enemy_Boss1_Base.h"
+#include "Enemy_CentralSide.h"
+#include "Enemy_LeftSide.h"
+#include "Enemy_RightSide.h"
+
 
 #define SPAWN_MARGIN 75
 
@@ -203,6 +210,22 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GENERAL_TURRET:
 			enemies[i] = new Enemy_General_Turret(info.x, info.y, info.wave, info.id);
 			break;
+		case ENEMY_TYPES::RIGHTSIDE:
+			enemies[i] = new Enemy_RightSide(info.x, info.y);
+			break;
+		case ENEMY_TYPES::LEFTSIDE:
+			enemies[i] = new Enemy_LeftSide(info.x, info.y);
+			break;
+		case ENEMY_TYPES::CENTRALSIDE:
+			enemies[i] = new Enemy_CentralSide(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSS1_BASE:
+			enemies[i] = new Enemy_Boss1_Base(info.x, info.y);
+			break;
+		case ENEMY_TYPES::ANTIAIRCRAFT:
+			enemies[i] = new Enemy_Antiaircraft(info.x, info.y);
+			break;
+				
 		}
 	}
 }
