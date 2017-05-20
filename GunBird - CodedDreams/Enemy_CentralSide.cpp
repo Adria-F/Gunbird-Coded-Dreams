@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
+#include "ModuleRender.h"
 #include "p2Point.h"
 
 Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
@@ -43,9 +44,10 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	vault_closing.loop = false;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.09f }, 100, &vault_open);
+	path.PushBack({ 0.0f, 0.09f }, 600, &vault_open);
 	path.PushBack({ 0.0f, 0.09f }, 30, &vault_closing);
-	path.PushBack({0.0f, 0.09f}, 1500, &moving); 
+	path.PushBack({ 0.0f, 0.09f }, 30, &moving); 
+	path.PushBack({ 0.0f, -0.9f }, 1000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
@@ -64,5 +66,5 @@ Enemy_CentralSide::~Enemy_CentralSide()
 void Enemy_CentralSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	lower_level = false;
+	lower_level = true;
 }
