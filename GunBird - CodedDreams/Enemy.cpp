@@ -186,11 +186,11 @@ void Enemy::OnCollision(Collider* collider)
 		hit = true;
 		if (lives <= 0)
 		{
-			if (collider->part->type == P_MARION_BULLET_P1 || collider->part->type == P_MARION_BULLET_P2)
+			if (collider->part->type == App->player1->character->shot_lvl1 || collider->part->type == App->player1->character->shot_lvl2)
 			{
 				App->player1->points += points;
 			}
-			else if (collider->part->type == P_ASH_BULLET_P1 || collider->part->type == P_ASH_BULLET_P2)
+			else if (collider->part->type == App->player2->character->shot_lvl1 || collider->part->type == App->player2->character->shot_lvl2)
 			{
 				App->player2->points += points;
 			}

@@ -41,7 +41,7 @@ struct Particle
 	fPoint position;
 	fPoint speed;
 	Uint32 born = 0;
-	Uint32 life = 0;
+	bool to_delete = false;
 	bool fx_played = false;
 	particle_type type;
 	bool going_up = true;

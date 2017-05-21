@@ -142,7 +142,7 @@ update_status ModuleUI::Update()
 	if (App->highscores->IsEnabled())
 	{
 		highscore* curr = first;
-		char pos = '1';
+		char pos[2] = "1";
 		for (int i = 0; i < 10; i++)
 		{
 			int points_font_id = highscores_points_score_grey;
@@ -153,8 +153,8 @@ update_status ModuleUI::Update()
 				text_font_id = highscores_score;
 			}
 
-			App->fonts->BlitText(39, 52 + (24 * i), text_font_id, &pos);
-			if (pos == '0')
+			App->fonts->BlitText(39, 52 + (24 * i), text_font_id, pos);
+			if (pos[0] == '0')
 			{
 				App->fonts->BlitText(30, 52 + (24 * i), text_font_id, "1");
 			}
@@ -189,9 +189,9 @@ update_status ModuleUI::Update()
 			// x = 12/181 | y = 46 + (24 * i) [CHARACTER IMAGE ACTIVE]
 			// x = 181 | y = 56 + (24 * i) [CHARACTER IMAGE NOT ACTIVE]
 			if (i < 8)
-				pos++;
+				pos[0]++;
 			else
-				pos = '0';
+				pos[0] = '0';
 		}
 
 		/*if (player1_score >= player2_score)

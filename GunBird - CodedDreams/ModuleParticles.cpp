@@ -40,14 +40,12 @@ bool ModuleParticles::Start()
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
-	MARION_bullet_p1_particle.life = 10000;
 	MARION_bullet_p1_particle.speed.y = -8;
 	MARION_bullet_p1_particle.anim.loop = false;
 	MARION_bullet_p1_particle.anim.speed = 0.5f;
 	MARION_bullet_p1_particle.damage = 1;
 
 	MARION_bullet_p2_particle.anim.PushBack({ 192, 127, 15, 29 });
-	MARION_bullet_p2_particle.life = 10000;
 	MARION_bullet_p2_particle.speed.y = -8;
 	MARION_bullet_p2_particle.anim.loop = false;
 	MARION_bullet_p2_particle.anim.speed = 0.5f;
@@ -55,14 +53,12 @@ bool ModuleParticles::Start()
 
 	// Ash Bullets
 	ASH_bullet_p1_particle.anim.PushBack({ 175, 29, 9, 29});
-	ASH_bullet_p1_particle.life = 10000;
 	ASH_bullet_p1_particle.speed.y = -8;
 	ASH_bullet_p1_particle.anim.loop = false;
 	ASH_bullet_p1_particle.anim.speed = 0.5f;
 	ASH_bullet_p1_particle.damage = 1;
 
 	ASH_bullet_p2_particle.anim.PushBack({ 170, 68, 19, 37 });
-	ASH_bullet_p2_particle.life = 10000;
 	ASH_bullet_p2_particle.speed.y = -8;
 	ASH_bullet_p2_particle.anim.loop = false;
 	ASH_bullet_p2_particle.anim.speed = 0.5f;
@@ -77,7 +73,6 @@ bool ModuleParticles::Start()
 	small_shot_particle.anim.PushBack({ 185, 9, 6, 6 });
 	small_shot_particle.anim.PushBack({ 9, 25, 6, 6 });
 	small_shot_particle.anim.PushBack({ 41, 25, 6, 6 });
-	small_shot_particle.life = 100000;
 	small_shot_particle.speed.x = 0;
 	small_shot_particle.speed.y = 0;
 	small_shot_particle.anim.loop = true;
@@ -86,7 +81,6 @@ bool ModuleParticles::Start()
 	// Big_Shoot
 	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
 	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });
-	big_shot_particle.life = 10000;
 	big_shot_particle.speed.y = -8;
 	big_shot_particle.anim.loop = false;
 	big_shot_particle.anim.speed = 0.5f;
@@ -102,7 +96,6 @@ bool ModuleParticles::Start()
 	upgrade_particle.anim.PushBack({ 104, 64, 22, 13 });
 	upgrade_particle.anim.PushBack({ 56, 83, 22, 13 });
 	upgrade_particle.anim.PushBack({ 81, 83, 22, 13 });
-	upgrade_particle.life = 100000;
 	upgrade_particle.anim.loop = true;
 	upgrade_particle.anim.speed = 0.2f;
 	
@@ -197,7 +190,7 @@ update_status ModuleParticles::Update()
 
 			if (p->position.x < -PARTICLES_MARGIN || p->position.x >(SCREEN_WIDTH + PARTICLES_MARGIN) || p->position.y < -PARTICLES_MARGIN || p->position.y >(SCREEN_HEIGHT + PARTICLES_MARGIN))
 			{
-				p->life = 0;
+				p->to_delete = true;
 				delete p;
 				active[i] = nullptr;
 			}
@@ -322,7 +315,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			//friendly shots with enemy. Animation here!
 
-			active[i]->life = 0;
+			active[i]->to_delete = true;;
 			break;
 		}
 	}
@@ -338,7 +331,7 @@ Particle::Particle()
 
 Particle::Particle(const Particle& p) :
 	anim(p.anim), position(p.position), speed(p.speed),
-	fx(p.fx), born(p.born), life(p.life), damage(p.damage)
+	fx(p.fx), born(p.born), damage(p.damage)
 {}
 
 Particle::~Particle()
@@ -351,19 +344,6 @@ Particle::~Particle()
 
 bool Particle::Update()
 {
-	bool ret = true;
-
-	if (life > 0)
-	{
-		if ((SDL_GetTicks() - born) > life)
-		{
-			ret = false;
-		}
-	}
-	else
-	{
-		ret = false;
-	}
 	position.x += speed.x;
 	position.y += speed.y;
 
@@ -372,5 +352,5 @@ bool Particle::Update()
 		collider->SetPos(position.x, position.y);
 	}
 
-	return ret;
+	return !(to_delete);
 }
