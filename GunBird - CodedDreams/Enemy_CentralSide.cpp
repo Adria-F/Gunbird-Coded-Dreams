@@ -21,15 +21,15 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 
 
 	//Boss Moving
-	moving.PushBack({ 0, 103, 48, 91 });
-	moving.PushBack({ 49, 103, 48, 91 });
-	moving.PushBack({ 98, 103, 48, 91 });
-	moving.PushBack({ 147, 103, 48, 91 });
+	moving.PushBack({ 0, 103, 48, 102 });
+	moving.PushBack({ 49, 103, 48, 102 });
+	moving.PushBack({ 98, 103, 48, 102 });
+	moving.PushBack({ 147, 103, 48, 102 });
 
-	moving.PushBack({ 0, 195, 48, 91 });
-	moving.PushBack({ 49, 195, 48, 91 });
-	moving.PushBack({ 98, 195, 48, 91 });
-	moving.PushBack({ 147, 195, 48, 91 });
+	moving.PushBack({ 0, 206, 48, 102 });
+	moving.PushBack({ 49, 206, 48, 102 });
+	moving.PushBack({ 98, 206, 48, 102 });
+	moving.PushBack({ 147, 206, 48, 102 });
 
 	moving.speed = 0.02f;
 	moving.loop = true;
@@ -46,7 +46,6 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	//Set path
 	path.PushBack({ 0.0f, 0.09f }, 600, &vault_open);
 	path.PushBack({ 0.0f, 0.09f }, 30, &vault_closing);
-	path.PushBack({ 0.0f, 0.09f }, 30, &moving); 
 	path.PushBack({ 0.0f, -0.9f }, 1000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
