@@ -149,6 +149,9 @@
     <ClInclude Include="Enemy_CentralSide.h">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSelection.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Globals.cpp">
@@ -264,6 +267,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_CentralSide.cpp">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSelection.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
