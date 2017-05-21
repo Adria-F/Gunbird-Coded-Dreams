@@ -3,6 +3,7 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "ModuleParticles.h"
 
 class Enemy_Tank : public Enemy
 {
@@ -26,6 +27,9 @@ public:
 	Animation close_cent;
 	Animation dead;
 
+	char* shot_path;
+	particle_type shoot;
+	Particle* big_shoot;
 };
 
 #endif // !__TANK_H__

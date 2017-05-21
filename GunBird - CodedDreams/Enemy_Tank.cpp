@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
 
 Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 {
@@ -33,7 +34,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	open_cent.PushBack({ 250, 256, 110, 65 });
 	open_cent.PushBack({ 372, 256, 110, 65 });
 	open_cent.PushBack({ 494, 256, 110, 65 });
-	open_cent.speed = 0.05f;
+	open_cent.speed = 1.0f;
 	open_cent.loop = false;
 
 	idle.PushBack({ 6, 338, 110, 65 });
@@ -61,7 +62,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	close_cent.PushBack({ 616, 502, 110, 65 });
 	close_cent.PushBack({ 738, 502, 110, 65 });
 	close_cent.PushBack({ 859, 502, 110, 65 });
-	close_cent.speed = 0.05f;
+	close_cent.speed = 0.1f;
 	close_cent.loop = false;
 
 	dead.PushBack({ 6, 585, 110, 65 });
@@ -78,17 +79,25 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	//Set path
 	if (wave == 1)
 	{
-
+		path.PushBack({ -0.8f, 0.09f }, 205, &idle_motor);
+		path.PushBack({ -0.8f, 0.09f }, 15, &open_tur);
+		path.PushBack({ -0.8f, 0.09f }, 15, &open_cent);
+		path.PushBack({ -0.8f, 0.09f }, 50, &idle);
+		path.PushBack({ 0.0f, 0.09f }, 200, &idle);
+		path.PushBack({ 0.0f, 0.09f }, 35, &close_tur);
+		path.PushBack({ 0.0f, 0.09f }, 10000, &close_cent);
 	}
 
 	else if (wave == 2)
 	{
-
+		path.PushBack({ -0.8f, 0.09f }, 110, &idle_motor);
+		path.PushBack({ -0.8f, 0.09f }, 15, &open_tur);
+		path.PushBack({ -0.8f, 0.09f }, 15, &open_cent);
+		path.PushBack({ 0.0f, 0.09f }, 210, &idle);
+		path.PushBack({ 0.0f, 0.09f }, 25, &close_tur);
+		path.PushBack({ 0.0f, 0.09f }, 10000, &close_cent);
 	}
-	path.PushBack({ -0.5f, 0.09f }, 50, &idle_motor);//Josep: He posat el 0.09f perque no es mogi cap a dalt. Suposo quen no era la teva intenció
-	path.PushBack({ -0.5f, 0.09f }, 100, &open_tur);
-	path.PushBack({ -0.5f, 0.09f }, 100, &open_cent);
-	path.PushBack({ -0.5f, 0.09f }, 1000, &idle);//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	//Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 											   //Set lives, initial_hp, points adn extra_anim
 	lives = 52;
@@ -96,7 +105,11 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	points = 5000;
 	extra_anim = false;
 	explosion_type = BIG1; //Explosion type
-						   
+	
+	//shoting mechanic
+	shoot = particle_type::P_BIG_SHOT;
+	big_shoot = &App->particles->big_shot_particle;
+	Shot_Total_time = (Uint32)(2000.0f);
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 105, 60 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
@@ -109,6 +122,14 @@ Enemy_Tank::~Enemy_Tank()
 void Enemy_Tank::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+	Shot_now = SDL_GetTicks() - Shot_Start_time;
+	if (Shot_now > Shot_Total_time && animation == &idle)
+	{
+		Shot_Start_time = SDL_GetTicks();
+		
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 57, position.y + App->render->camera.y + 11, COLLIDER_ENEMY_SHOT, 0, 248, PLAYER);
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 57, position.y + App->render->camera.y + 33, COLLIDER_ENEMY_SHOT, 0, 204, PLAYER);
+	}
 }
 
 void Enemy_Tank::ExtraAnim(SDL_Texture* texture)
