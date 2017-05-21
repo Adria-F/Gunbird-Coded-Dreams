@@ -190,7 +190,7 @@ void Enemy::OnCollision(Collider* collider)
 			{
 				App->player1->points += points;
 			}
-			else if (collider->part->type == App->player2->character->shot_lvl1 || collider->part->type == App->player2->character->shot_lvl2)
+			else if (App->player2->IsEnabled() && (collider->part->type == App->player2->character->shot_lvl1 || collider->part->type == App->player2->character->shot_lvl2))
 			{
 				App->player2->points += points;
 			}
