@@ -16,7 +16,7 @@ public:
 public:
 
 	Path path;
-	Animation idle;
+	Animation moving;
 
 };
 

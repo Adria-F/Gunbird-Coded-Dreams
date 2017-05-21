@@ -19,7 +19,8 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 
 	//Set path
 	path.PushBack({0.0f, 0.09f}, 670, &moving); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
-	path.PushBack({ 0.0f, -0.9f }, 1000, &moving);
+	path.PushBack({ 0.0f, -0.9f }, 300, &moving);
+	path.PushBack({ 0.0f, -0.3f }, 1000, &moving);
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
 	initial_hp = lives;

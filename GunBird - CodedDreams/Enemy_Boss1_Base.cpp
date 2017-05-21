@@ -7,18 +7,17 @@
 Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y): Enemy(x, y)
 {
 	//Open all textures
-	NormalSprite = App->textures->Load("assets/enemies/spritesheetmegaman1.png");
+	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_base.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	idle.PushBack({ 12, 16, 42, 48 });
-	idle.PushBack({ 76, 16, 42, 48 });
-	idle.speed = 0.02f;
-	idle.loop = true;
+	base.PushBack({ 0, 0, 125, 137 });
+	base.speed = 0.02f;
+	base.loop = true;
 
 	//Set path
-	path.PushBack({0.0f, 0.09f}, 100, &idle); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({0.0f, 0.09f}, 100, &base); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;

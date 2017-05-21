@@ -14,9 +14,8 @@ public:
 	void Move();
 
 public:
-
 	Path path;
-	Animation idle;
+	Animation base;
 
 };
 
