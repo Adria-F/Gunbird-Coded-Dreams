@@ -17,6 +17,7 @@
 #include "ModuleUI.h"
 #include "ModuleHighscores.h"
 #include "ModulePowerUp.h"
+#include "ModuleSelection.h"
 
 Application::Application()
 {
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = welcometitle = new ModuleWelcomeTitle();
+	modules[i++] = selection = new ModuleSelection();
 	modules[i++] = scene_mine = new ModuleSceneMine();
 	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = enemies = new ModuleEnemies();
