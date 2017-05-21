@@ -7,7 +7,6 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSelection.h"
-#include "ModuleSceneMine.h"
 #include "ModuleUI.h"
 #include "ModulePlayer.h" //temp
 #include "ModuleMarion.h" //temp
@@ -44,9 +43,6 @@ bool ModuleWelcomeTitle::Start()
 
 	App->ui->Enable();
 
-	App->player1->setCharacter(App->marion); //Character selection
-	App->player2->setCharacter(App->ash); //Character selection
-
 	return ret;
 }
 
@@ -76,7 +72,7 @@ update_status ModuleWelcomeTitle::Update()
 
 	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->scene_mine, 0.5f);
+		App->fade->FadeToBlack(this, App->selection, 0.5f);
 		fading = true;
 	}
 

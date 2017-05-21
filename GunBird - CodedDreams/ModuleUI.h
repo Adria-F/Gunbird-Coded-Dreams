@@ -32,6 +32,8 @@ private:
 	int highscores_score_grey = -1;
 	int highscores_points_score = -1;
 	int highscores_points_score_grey = -1;
+	float anim_pos;
+	float anim_speed;
 	SDL_Texture* marion_texture;
 	SDL_Texture* ash_texture;
 	SDL_Texture* game_over = nullptr;
@@ -43,6 +45,14 @@ private:
 	SDL_Rect notification;
 	SDL_Rect marion_rect;
 	SDL_Rect ash_rect;
+	SDL_Texture* character_photo = nullptr;
+	SDL_Rect photo_rec;
+	SDL_Rect text_rec;
+	SDL_Texture* character_show = nullptr;
+	Animation ash_anim;
+	Animation marion_anim;
+	SDL_Texture* selec_box = nullptr;
+	SDL_Rect box_rec;
 	
 	struct highscore
 	{

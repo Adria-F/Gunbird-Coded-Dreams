@@ -13,6 +13,9 @@
 #include "ModuleHighscores.h"
 #include "ModuleUI.h"
 #include "ModuleParticles.h"
+#include "ModuleSelection.h"
+#include "ModuleMarion.h"
+#include "ModuleAsh.h"
 
 // Reference at updated to a youtube video from gunbird
 // https://youtu.be/HDC6PZxGwL4?t=3m17s
@@ -236,7 +239,6 @@ bool ModuleSceneMine::Start()
 	lost = false;
 
 	App->ui->Enable();
-	App->player2->Enable();
 	App->player1->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
@@ -268,7 +270,6 @@ bool ModuleSceneMine::CleanUp()
 	App->audio->Stop();
 	App->ui->Disable();
 	App->player1->Disable();
-	App->player2->Disable();
 	App->collision->Disable();
 	App->enemies->Disable();
 	App->particles->Disable();
@@ -315,6 +316,19 @@ update_status ModuleSceneMine::Update()
 		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
 		//BLOW 2
 		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 2165 + overlay_position, &upper_blow2.GetCurrentFrame(), 0.75f);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_2] && App->player2->IsEnabled() == false)
+	{
+		if (App->selection->selected_char == 0)
+		{
+			App->player2->setCharacter(App->marion);
+		}
+		else
+		{
+			App->player2->setCharacter(App->ash);
+		}
+		App->player2->Enable();
 	}
 
 	//Fade to black

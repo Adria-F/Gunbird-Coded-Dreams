@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleSelection.h"
 #include "ModuleSceneMine.h"
 #include "ModuleHighscores.h"
 #include "ModuleMarion.h"
@@ -23,6 +24,24 @@ ModuleUI::ModuleUI()
 	notification = { 0, 0, 73, 15 };
 	marion_rect = { 8, 12, 14, 13 };
 	ash_rect = { 28, 12, 11, 13 };
+
+	photo_rec = {8, 8, 96, 96};
+	text_rec = {121, 127, 54, 21};
+	box_rec = {6, 4, 32, 52};
+
+	marion_anim.PushBack({ 346, 142, 128, 108 });
+	marion_anim.PushBack({ 177, 140, 128, 108 });
+	marion_anim.PushBack({ 17, 141, 128, 108 });
+	marion_anim.PushBack({ 177, 140, 128, 108 });
+	marion_anim.loop = true;
+	marion_anim.speed = 0.3f;
+	
+	ash_anim.PushBack({ 13, 11, 128, 108 });
+	ash_anim.PushBack({ 141, 11, 128, 108 });
+	ash_anim.PushBack({ 270, 11, 128, 108 });
+	ash_anim.PushBack({ 394, 11, 128, 108 });
+	ash_anim.loop = true;
+	ash_anim.speed = 0.4f;
 
 }
 
@@ -44,6 +63,12 @@ bool ModuleUI::Start()
 	char_lives = App->textures->Load("assets/UI/ash_marion_ui.png");
 	debugging_text = App->textures->Load("assets/UI/debugging_on.png");
 	godMode_text = App->textures->Load("assets/UI/godmode_on.png");
+	character_photo = App->textures->Load("assets/UI/photo_names_UI.png");
+	character_show = App->textures->Load("assets/UI/ash_marion_char_UI.png");
+	selec_box = App->textures->Load("assets/UI/char_selection.png");
+
+	anim_pos = 127.0f;
+	anim_speed = 0.1f;
 
 	App->fonts->Enable();
 
@@ -80,6 +105,43 @@ update_status ModuleUI::Update()
 	if (App->render->god_mode)
 	{
 		App->render->Blit(godMode_text, 151, 305, &notification);
+	}
+	
+	if (App->selection->IsEnabled())
+	{
+		if (App->selection->selected_char == 1)
+		{
+			photo_rec.y = 112;
+			text_rec.y = 127;
+			text_rec.w = 54;
+		}
+		else
+		{
+			photo_rec.y = 8;
+			text_rec.y = 25;
+			text_rec.w = 27;
+		}
+
+		//Photo
+		App->render->Blit(character_photo, 12, 32, &photo_rec);
+		//Name
+		App->render->Blit(character_photo, ((App->selection->selected_char == 1)? 21 : 51), 165, &text_rec);
+		//Animation
+		App->render->Blit(character_show, ((App->selection->selected_char == 1)? 80 : 96), anim_pos, ((App->selection->selected_char == 1) ? &marion_anim.GetCurrentFrame() : &ash_anim.GetCurrentFrame()));
+		if (anim_pos < 125 && anim_speed < 0)
+		{
+			anim_speed = -anim_speed;
+		}
+		else if (anim_pos > 129 && anim_speed > 0)
+		{
+			anim_speed = -anim_speed;
+		}
+		anim_pos += anim_speed;
+		//Small Characters
+		App->render->Blit(ash_texture, 23, 256, &App->ash->idle.GetCurrentFrame());
+		App->render->Blit(marion_texture, 64, 254, &App->marion->idle.GetCurrentFrame());
+		//Selection Box
+		App->render->Blit(selec_box, 16 + (40 * App->selection->selected_char), 248, &box_rec);
 	}
 	
 	if (App->scene_mine->lost == false)
@@ -130,7 +192,7 @@ update_status ModuleUI::Update()
 			}
 		}
 
-		if (App->scene_mine->IsEnabled())
+		if (App->scene_mine->IsEnabled() && App->player2->IsEnabled())
 		{
 			App->fonts->BlitText(130, 5, font_score, "dP:");
 			App->fonts->BlitText(155, 5, font_score, score_text2);

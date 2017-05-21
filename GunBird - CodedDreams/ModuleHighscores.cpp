@@ -35,7 +35,11 @@ bool ModuleHighscores::Start()
 	App->audio->Load("assets/music/highscore.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
 
-	App->ui->Addhighscore(App->player2->points, App->player2->character, App->player2);
+	if (App->player2->IsEnabled())
+	{
+		App->ui->Addhighscore(App->player2->points, App->player2->character, App->player2);
+		App->player2->Disable();
+	}
 	App->ui->Addhighscore(App->player1->points, App->player1->character, App->player1);
 
 	App->ui->Enable();

@@ -61,9 +61,11 @@ bool Application::Init()
 {
 	bool ret = true;
 
+	selection->Disable();
 	scene_mine->Disable();
 	highscores->Disable();
 	player1->Disable();
+	player2->Disable();
 	marion->Disable();
 	ash->Disable();
 
