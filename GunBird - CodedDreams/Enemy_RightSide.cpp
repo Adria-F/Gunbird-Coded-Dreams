@@ -46,18 +46,23 @@ void Enemy_RightSide::Move()
 	if (Shot_now > Shot_Total_time || state >= 1) //Initial time
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
-		if (Shot_now > Shot_Total_time2 && state == 1) //Second Shoot
-		{
-			Shot_Start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 15, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			state = 2;
-		}
-		else if (Shot_now > Shot_Total_time1 && state == 2) //First Shoot
+		if (Shot_now > Shot_Total_time1 && state == 2) //First Shoot
 		{
 			Shot_Start_time = SDL_GetTicks();
 			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 15, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
 			state = 1;
 		}
+		else if (Shot_now > Shot_Total_time2 && state == 1) //Second Shoot
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 15, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			state = 2;
+		}
+		else if (state == 3)
+		{
+			state = 1;
+		}
+
 		state = 1;
 	}
 	lower_level = true;
