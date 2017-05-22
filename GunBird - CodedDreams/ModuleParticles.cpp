@@ -81,8 +81,9 @@ bool ModuleParticles::Start()
 	// Big_Shoot
 	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
 	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });
+	big_shot_particle.speed.x = 0;
 	big_shot_particle.speed.y = -8;
-	big_shot_particle.anim.loop = false;
+	big_shot_particle.anim.loop = true;
 	big_shot_particle.anim.speed = 0.5f;
 	big_shot_particle.damage = 1;
 

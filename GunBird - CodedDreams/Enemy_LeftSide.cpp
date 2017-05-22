@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
+#include "ModuleRender.h"
 #include "p2Point.h"
 
 Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
@@ -26,6 +28,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
+	Shot_Total_time = (Uint32)(400.0f);
 
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
