@@ -14,7 +14,6 @@ public:
 	void Move();
 
 public:
-
 	int state = 0;
 	Path path;
 	Animation moving;

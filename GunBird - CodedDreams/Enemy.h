@@ -59,6 +59,9 @@ public:
 	Uint32 Shot_now;
 	Uint32 Shot_Start_time;
 	Uint32 Shot_Total_time;
+	Uint32 Shot_Total_time1;
+	Uint32 Shot_Total_time2;
+	Uint32 Shot_Total_time3;
 	
 	int lives; //Hit points
 	int initial_hp; //To calculate when to turn red

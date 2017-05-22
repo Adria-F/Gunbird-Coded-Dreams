@@ -3,6 +3,8 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
+#include "ModuleParticles.h"
 
 Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 {
@@ -25,6 +27,9 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
+	Shot_Total_time = (Uint32)(12000.0f);
+	Shot_Total_time1 = (Uint32)(1500.0f);
+	Shot_Total_time2 = (Uint32)(3500.0f);
 
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
@@ -37,5 +42,23 @@ Enemy_RightSide::~Enemy_RightSide()
 void Enemy_RightSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
+	Shot_now = SDL_GetTicks() - Shot_Start_time;
+	if (Shot_now > Shot_Total_time || state >= 1) //Initial time
+	{
+		Shot_now = SDL_GetTicks() - Shot_Start_time;
+		if (Shot_now > Shot_Total_time2 && state == 1) //Second Shoot
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 15, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			state = 2;
+		}
+		else if (Shot_now > Shot_Total_time1 && state == 2) //First Shoot
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 15, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			state = 1;
+		}
+		state = 1;
+	}
 	lower_level = true;
 }

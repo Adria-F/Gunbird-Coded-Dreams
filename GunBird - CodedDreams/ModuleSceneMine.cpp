@@ -134,7 +134,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(MEGAMAN, 180, 3395, 1);
 
 	//Balloon
-	App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
+	//App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
 
 	//General Turret Wave 1
 	App->enemies->AddEnemy(GENERAL_TURRET, 49, 3050, 1, 1);
