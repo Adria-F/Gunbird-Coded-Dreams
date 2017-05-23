@@ -155,15 +155,13 @@ bool ModuleSceneMine::Start()
 	{
 	//final result
 	//App->enemies->AddEnemy(BOSS1_BASE, 55, 2320);
+	//App->enemies->AddEnemy(BOSS1_BASE, 0, 1200);
 	App->enemies->AddEnemy(CENTRALSIDE, 93, 2295);
 	App->enemies->AddEnemy(RIGHTSIDE, 133, 2309);
 	App->enemies->AddEnemy(LEFTSIDE, 43, 2308);
 
 	//Testing
-	//App->enemies->AddEnemy(BOSS1_BASE, 55, 3125);
-	App->enemies->AddEnemy(CENTRALSIDE, 93, 3150);
-	App->enemies->AddEnemy(RIGHTSIDE, 133, 3164);
-	App->enemies->AddEnemy(LEFTSIDE, 43, 3165);
+	App->enemies->AddEnemy(BOSS1_BASE, 0, 3125);
 	}
 
 	//LEDS AND BLOWS
@@ -337,7 +335,7 @@ update_status ModuleSceneMine::Update()
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
 		lost = true;
 
-	if (App->render->camera.y >= -2000 && fading == false && App->fade->GetFadeState() == false)
+	if (App->render->camera.y >= -500 && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;

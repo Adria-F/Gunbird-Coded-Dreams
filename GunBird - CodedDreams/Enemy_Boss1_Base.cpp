@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleEnemies.h"
 
 Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y): Enemy(x, y)
 {
@@ -12,8 +13,17 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y): Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	base.PushBack({ 0, 0, 125, 137 });
-	base.speed = 0.02f;
+	base.PushBack({ 0, 0, 224, 185 });
+	base.PushBack({ 225, 0, 224, 185 });
+	base.PushBack({ 450, 0, 224, 185 });
+
+	base.PushBack({ 0, 186, 224, 185 });
+	base.PushBack({ 225, 186, 224, 185 });
+	base.PushBack({ 450, 186, 224, 185 });
+
+	base.PushBack({ 0, 371, 224, 185 });
+	base.PushBack({ 225, 371, 224, 185 });
+	base.speed = 0.2f;
 	base.loop = true;
 
 	//Set path
@@ -23,6 +33,11 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
+
+	//Spawning all the parts
+	App->enemies->AddEnemy(RIGHTSIDE, 133, 3164);
+	App->enemies->AddEnemy(LEFTSIDE, 43, 3165);
+	App->enemies->AddEnemy(CENTRALSIDE, 93, 3150);
 
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
@@ -35,5 +50,5 @@ Enemy_Boss1_Base::~Enemy_Boss1_Base()
 void Enemy_Boss1_Base::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	lower_level = true;
+	lower_level = false;
 }

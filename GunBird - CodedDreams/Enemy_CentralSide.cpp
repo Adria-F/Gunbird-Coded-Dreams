@@ -116,5 +116,5 @@ void Enemy_CentralSide::Move()
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 22, ANGLE);
 		state = 1;
 	}
-	lower_level = true;
+	lower_level = false;
 }
