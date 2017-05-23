@@ -116,6 +116,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2930, 1);
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2881, 2);
 
+
 	//Miners
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
@@ -132,7 +133,6 @@ bool ModuleSceneMine::Start()
 
 	//<3
 	App->enemies->AddEnemy(MEGAMAN, 180, 3395, 1);
-
 	//Balloon
 	//App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
 
