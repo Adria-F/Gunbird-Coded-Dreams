@@ -47,7 +47,7 @@ update_status ModulePowerUp::Update()
 	
 	for (int i = 0; i < MAX_POWERUP; i++)
 	{
-		if (powerups[i] != nullptr && powerups[i]->part->type == P_UPGRADE)
+		if (powerups[i] != nullptr && (powerups[i]->part->type == P_UPGRADE || powerups[i]->part->type == P_BOMB))
 		{
 			powerups[i]->Update();
 			if (powerups[i]->part->position.y <= 50 && powerups[i]->part->speed.y < 0)
@@ -75,15 +75,36 @@ void ModulePowerUp::AddPowerUp(powerup_type type, int x, int y)
 	{
 		if (powerups[i] == nullptr)
 		{
-			App->particles->upgrade_particle.speed.x = rand() % 20 + -10;
-			App->particles->upgrade_particle.speed.x /= 10;
-			while (App->particles->upgrade_particle.speed.x == 0)
+			Particle* temp = nullptr;
+
+			switch (type)
 			{
+			case UPGRADE:
 				App->particles->upgrade_particle.speed.x = rand() % 20 + -10;
 				App->particles->upgrade_particle.speed.x /= 10;
+				while (App->particles->upgrade_particle.speed.x == 0)
+				{
+					App->particles->upgrade_particle.speed.x = rand() % 20 + -10;
+					App->particles->upgrade_particle.speed.x /= 10;
+				}
+				App->particles->upgrade_particle.speed.y = -sqrt(1 - pow(App->particles->upgrade_particle.speed.x, 2.0));
+				temp = App->particles->AddParticle(App->particles->upgrade_particle, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
+				break;
+			case BOMB:
+				App->particles->bomb_particle.speed.x = rand() % 20 + -10;
+				App->particles->bomb_particle.speed.x /= 10;
+				while (App->particles->bomb_particle.speed.x == 0)
+				{
+					App->particles->bomb_particle.speed.x = rand() % 20 + -10;
+					App->particles->bomb_particle.speed.x /= 10;
+				}
+				App->particles->bomb_particle.speed.y = -sqrt(1 - pow(App->particles->bomb_particle.speed.x, 2.0));
+				temp = App->particles->AddParticle(App->particles->bomb_particle, particle_type::P_BOMB, x, y, COLLIDER_POWER_UP);
+				break;
+			case COIN:
+				temp = App->particles->AddParticle(App->particles->coin_particle, particle_type::P_COIN, x, y, COLLIDER_POWER_UP);
+				break;
 			}
-			App->particles->upgrade_particle.speed.y = - sqrt(1-pow(App->particles->upgrade_particle.speed.x, 2.0));
-			Particle* temp = App->particles->AddParticle(App->particles->upgrade_particle, particle_type::P_UPGRADE, x, y, COLLIDER_POWER_UP);
 			powerups[i] = new PowerUp(temp, type);
 			break;
 		}

@@ -37,6 +37,8 @@ bool ModuleParticles::Start()
 	small_shot_texture = App->textures->Load("assets/enemies/Bullets Small.png");
 
 	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
+	bomb_texture = App->textures->Load("assets/items/bomb.png");
+	coin_texture = App->textures->Load("assets/items/coin.png");
 
 	// Marion Bullets
 	MARION_bullet_p1_particle.anim.PushBack({ 166, 127, 7, 30 });
@@ -99,6 +101,30 @@ bool ModuleParticles::Start()
 	upgrade_particle.anim.PushBack({ 81, 83, 22, 13 });
 	upgrade_particle.anim.loop = true;
 	upgrade_particle.anim.speed = 0.2f;
+
+	// Bomb
+	bomb_particle.anim.PushBack({ 2, 3, 23, 12 });
+	bomb_particle.anim.PushBack({ 30, 3, 23, 12 });
+	bomb_particle.anim.PushBack({ 59, 3, 23, 12 });
+	bomb_particle.anim.PushBack({ 2, 23, 23, 12 });
+	bomb_particle.anim.PushBack({ 30, 23, 23, 12 });
+	bomb_particle.anim.PushBack({ 59, 23, 23, 12 });
+	bomb_particle.anim.PushBack({ 2, 43, 23, 12 });
+	bomb_particle.anim.PushBack({ 30, 43, 23, 12 });
+	bomb_particle.anim.loop = true;
+	bomb_particle.anim.speed = 0.2f;
+
+	// Coin
+	coin_particle.anim.PushBack({ 4, 4, 12, 16 });
+	coin_particle.anim.PushBack({ 27, 4, 12, 16 });
+	coin_particle.anim.PushBack({ 50, 4, 12, 16 });
+	coin_particle.anim.PushBack({ 4, 29, 12, 16 });
+	coin_particle.anim.PushBack({ 27, 29, 12, 16 });
+	coin_particle.anim.PushBack({ 50, 29, 12, 16 });
+	coin_particle.anim.PushBack({ 4, 57, 12, 16 });
+	coin_particle.anim.PushBack({ 27, 57, 12, 16 });
+	coin_particle.anim.loop = true;
+	coin_particle.anim.speed = 0.25f;
 	
 	return true;
 }
@@ -171,6 +197,12 @@ update_status ModuleParticles::Update()
 				break;
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_BOMB:
+				App->render->Blit(bomb_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_COIN:
+				App->render->Blit(coin_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_SMALL_SHOT:
 				App->render->Blit(small_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));

@@ -22,6 +22,8 @@ enum particle_type
 	P_ASH_BULLET_P1,
 	P_ASH_BULLET_P2,
 	P_UPGRADE,
+	P_BOMB,
+	P_COIN,
 	P_SMALL_SHOT,
 	P_MID_SHOT,
 	P_BIG_SHOT
@@ -75,6 +77,8 @@ public:
 	SDL_Texture* ASH_bullet_p2_texture = nullptr;
 
 	SDL_Texture* upgrade_texture = nullptr;
+	SDL_Texture* bomb_texture = nullptr;
+	SDL_Texture* coin_texture = nullptr;
 	SDL_Texture* small_shot_texture = nullptr;
 	SDL_Texture* explosions_texture = nullptr;
 	SDL_Texture* big_shot_texture = nullptr;
@@ -98,6 +102,8 @@ public:
 	Particle ASH_bullet_p2_particle;
 
 	Particle upgrade_particle;
+	Particle coin_particle;
+	Particle bomb_particle;
 	Particle small_shot_particle;
 	Particle explosions_particle;
 	Particle big_shot_particle;

@@ -39,6 +39,7 @@ public:
 	uint points = 0;
 	int shot_lvl = 1;
 	int lives = 3;
+	int bombs = 2;
 
 	Uint32 hit_timer_start = 0;
 	Uint32 hit_timer_total = (Uint32)(2.0f * 0.5f * 100.0f);
