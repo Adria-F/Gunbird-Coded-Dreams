@@ -128,10 +128,10 @@ void Enemy_Tank::Move()
 	{
 		Shot_Start_time = SDL_GetTicks();
 		
-		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 5, COLLIDER_ENEMY_SHOT, 0, 0);
-		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 25, COLLIDER_ENEMY_SHOT, 0, 0);
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 50, PLAYER);
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, -50);
+		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 5, COLLIDER_ENEMY_SHOT, 0, 0);
+		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 25, COLLIDER_ENEMY_SHOT, 0, 0);		
 	}
 }
 
