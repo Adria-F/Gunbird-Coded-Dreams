@@ -45,6 +45,7 @@ bool ModuleSceneMine::Start()
 	graphics_background_text = App->textures->Load("assets/maps/mine_background.png");
 	graphics_above_background_text = App->textures->Load("assets/maps/above mine_background.png");
 	graphics_above_background_anims_text = App->textures->Load("assets/maps/above_mine_bg_anims.png");
+	graphics_bg_platfroms_text = App->textures->Load("assets/maps/bg_platforms.png");
 
 	App->render->camera.x  = 0;
 	App->render->camera.y = -3210;
@@ -164,7 +165,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(BOSS1_BASE, 0, 3125);
 	}
 
-	//LEDS AND BLOWS
+	//LEDS AND BLOWS, PLATFROMS
 	{
 		//LED 1
 		upper_led1.PushBack({ 1, 1, 16, 5 });
@@ -229,6 +230,18 @@ bool ModuleSceneMine::Start()
 		upper_blow2.PushBack({ 165, 65, 25, 34 });
 		upper_blow2.speed = 0.2f;
 		upper_blow2.loop = true;
+
+		//PLATFORMS
+		bg_platfroms.PushBack({ 0, 0, 216, 107 });
+		bg_platfroms.PushBack({ 216, 0, 216, 107 });
+		bg_platfroms.PushBack({ 0, 107, 216, 107 });
+		bg_platfroms.PushBack({ 216, 107, 216, 107 });
+		bg_platfroms.PushBack({ 0, 214, 216, 107 });
+		bg_platfroms.PushBack({ 216, 214, 216, 107 });
+		bg_platfroms.PushBack({ 0, 321, 216, 107 });
+		bg_platfroms.PushBack({ 216, 321, 216, 107 });
+		bg_platfroms.speed = 0.05f;
+		bg_platfroms.loop = true;
 	}
 	
 	LOG("Loading music");
@@ -266,6 +279,11 @@ bool ModuleSceneMine::CleanUp()
 		App->textures->Unload(graphics_above_background_anims_text);
 		graphics_above_background_anims_text = nullptr;
 	}
+	if (graphics_bg_platfroms_text != nullptr)
+	{
+		App->textures->Unload(graphics_bg_platfroms_text);
+		graphics_bg_platfroms_text = nullptr;
+	}
 	
 	App->audio->Stop();
 	App->ui->Disable();
@@ -292,7 +310,15 @@ update_status ModuleSceneMine::Update()
 	
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
-	
+	{
+		//PLATFORMS
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 773, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 1318, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 1625, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 2405, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 2810, &bg_platfroms.GetCurrentFrame(), 0.75f);
+	}
+
 	App->enemies->draw_underlayed = true;
 	App->enemies->Update();
 	App->enemies->draw_underlayed = false;

@@ -22,6 +22,7 @@ public:
 	SDL_Texture* graphics_background_text = nullptr;
 	SDL_Texture* graphics_above_background_text = nullptr;
 	SDL_Texture* graphics_above_background_anims_text = nullptr;
+	SDL_Texture* graphics_bg_platfroms_text = nullptr;
 
 	SDL_Rect background_rect;
 	SDL_Rect above_background_rect;
@@ -32,6 +33,7 @@ public:
 	Animation upper_led4;
 	Animation upper_blow2;
 	Animation upper_blow1;
+	Animation bg_platfroms;
 
 	float overlay_position;
 	float overlay_speed = 0.09f;
