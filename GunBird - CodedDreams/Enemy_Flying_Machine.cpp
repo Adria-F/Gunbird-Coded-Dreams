@@ -136,11 +136,11 @@ void Enemy_Flying_Machine::Move()
 		if (Shot_now > Shot_Total_time)
 		{
 			Shot_Start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 248, ANGLE);
-			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 226, ANGLE);
-			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 204, ANGLE);
-			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 5, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 180, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 248, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 226, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 204, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 180, ANGLE);
 
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 60, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 60, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 292, ANGLE);
