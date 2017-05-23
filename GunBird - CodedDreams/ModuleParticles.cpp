@@ -290,7 +290,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 							player = App->player1;
 						}
 
-						y_phase = 16 + ((y - player->position.y == 0)? (((x - player->position.x) / (y - player->position.y)) * 12) : 0 ); //Error when position y is the same
+						y_phase = 16 + ((y - player->position.y == 0) ? 0 : (((x - player->position.x) / (y - player->position.y)) * 12)); //Error when position y is the same
 						if (player->position.x - x < 0)
 						{
 							if (x_phase < 0)
