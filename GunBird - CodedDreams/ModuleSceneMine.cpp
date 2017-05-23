@@ -155,14 +155,11 @@ bool ModuleSceneMine::Start()
 	//Boss Stage 1
 	{
 	//final result
-	//App->enemies->AddEnemy(BOSS1_BASE, 55, 2320);
-	//App->enemies->AddEnemy(BOSS1_BASE, 0, 1200);
-	App->enemies->AddEnemy(CENTRALSIDE, 93, 2295);
-	App->enemies->AddEnemy(RIGHTSIDE, 133, 2309);
-	App->enemies->AddEnemy(LEFTSIDE, 43, 2308);
+	App->enemies->AddEnemy(BOSS1_BASE, 0, 2280, 2);
+
 
 	//Testing
-	App->enemies->AddEnemy(BOSS1_BASE, 0, 3125);
+	//App->enemies->AddEnemy(BOSS1_BASE, 0, 3125, 1);
 	}
 
 	//LEDS AND BLOWS, PLATFROMS

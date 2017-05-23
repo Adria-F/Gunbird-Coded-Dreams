@@ -69,5 +69,5 @@ void Enemy_LeftSide::Move()
 			state = 3;
 		}
 	}
-	lower_level = false;
+	lower_level = true;
 }
