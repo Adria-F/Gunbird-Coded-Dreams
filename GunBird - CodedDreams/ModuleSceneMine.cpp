@@ -309,11 +309,11 @@ update_status ModuleSceneMine::Update()
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 	{
 		//PLATFORMS
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 773, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 1318, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 1625, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 2405, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 6, App->render->camera.y + 2810, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 773, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 1318, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 1625, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 2405, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 2810, &bg_platfroms.GetCurrentFrame(), 0.75f);
 	}
 
 	App->enemies->draw_underlayed = true;
@@ -328,13 +328,13 @@ update_status ModuleSceneMine::Update()
 	//LEDS AND BLOWS
 	{
 		//LED 1
-		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 100, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
-		//LED 2
-		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 90, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
-		//LED 3
-		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 64, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 95, App->render->camera.y + 3436 + overlay_position, &upper_led1.GetCurrentFrame(), 0.75f);
 		//LED 4
-		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 172, App->render->camera.y + 2805 + overlay_position, &upper_led4.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 167, App->render->camera.y + 2805 + overlay_position, &upper_led4.GetCurrentFrame(), 0.75f);
+		//LED 2
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 86, App->render->camera.y + 2168 + overlay_position, &upper_led2.GetCurrentFrame(), 0.75f);
+		//LED 3
+		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x + 61, App->render->camera.y + 2077 + overlay_position, &upper_led3.GetCurrentFrame(), 0.75f);
 		//BLOW 1
 		App->render->Blit(graphics_above_background_anims_text, App->render->camera.x, App->render->camera.y + 3339 + overlay_position, &upper_blow1.GetCurrentFrame(), 0.75f);
 		//BLOW 2
