@@ -53,7 +53,8 @@ bool ModuleParticles::Start()
 	MARION_bullet_p2_particle.anim.speed = 0.5f;
 	MARION_bullet_p2_particle.damage = 2;
 	//NECESITA FER BE AIXO:
-	MARION_bullet_p3_particle.anim.PushBack({ 192, 127, 15, 29 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 192, 127, 15, 29 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 192, 127, 15, 29 });
 	MARION_bullet_p3_particle.speed.y = -8;
 	MARION_bullet_p3_particle.anim.loop = false;
 	MARION_bullet_p3_particle.anim.speed = 0.5f;
