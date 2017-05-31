@@ -80,18 +80,6 @@ bool ModuleParticles::Start()
 	ASH_bullet_p2_particle.anim.loop = false;
 	ASH_bullet_p2_particle.anim.speed = 0.5f;
 	ASH_bullet_p2_particle.damage = 2;
-	//NECESITA FER BE AIXO:
-	ASH_bullet_p3_particle.anim.PushBack({ 170, 68, 19, 37 });
-	ASH_bullet_p3_particle.speed.y = -8;
-	ASH_bullet_p3_particle.anim.loop = false;
-	ASH_bullet_p3_particle.anim.speed = 0.5f;
-	ASH_bullet_p3_particle.damage = 2;
-
-	ASH_bullet_p4_particle.anim.PushBack({ 170, 68, 19, 37 });
-	ASH_bullet_p4_particle.speed.y = -8;
-	ASH_bullet_p4_particle.anim.loop = false;
-	ASH_bullet_p4_particle.anim.speed = 0.5f;
-	ASH_bullet_p4_particle.damage = 2;
 
 	ASH_bullet_p3_particle.anim.PushBack({ 163, 111, 31, 43 });
 	ASH_bullet_p3_particle.anim.PushBack({ 197, 111, 31, 43 });
@@ -99,6 +87,13 @@ bool ModuleParticles::Start()
 	ASH_bullet_p3_particle.anim.loop = true;
 	ASH_bullet_p3_particle.anim.speed = 0.5f;
 	ASH_bullet_p3_particle.damage = 3;
+
+	ASH_bullet_p4_particle.anim.PushBack({ 163, 159, 35, 47 });
+	ASH_bullet_p4_particle.anim.PushBack({ 197, 159, 35, 47 });
+	ASH_bullet_p4_particle.speed.y = -8;
+	ASH_bullet_p4_particle.anim.loop = false;
+	ASH_bullet_p4_particle.anim.speed = 0.5f;
+	ASH_bullet_p4_particle.damage = 2;
 
 	// Small shot
 	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
@@ -229,6 +224,8 @@ update_status ModuleParticles::Update()
 			case P_ASH_BULLET_P2:
 				App->render->Blit(ASH_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
+			case P_ASH_BULLET_P3:
+				App->render->Blit(ASH_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
