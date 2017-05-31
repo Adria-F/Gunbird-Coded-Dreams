@@ -7,7 +7,7 @@
 Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 {
 	//Open all textures
-	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_antiaircraft_left.png");
+	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_antiaircraft.png");
 	RedSprite = nullptr;
 	WhiteSprite = nullptr;
 
@@ -43,8 +43,8 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
-	lower_level = true;
-	//collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
+	lower_level = false;
+	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
 Enemy_Antiaircraft::~Enemy_Antiaircraft()
@@ -55,5 +55,5 @@ Enemy_Antiaircraft::~Enemy_Antiaircraft()
 void Enemy_Antiaircraft::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	
+
 }
