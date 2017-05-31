@@ -107,8 +107,10 @@ public:
 
 	Particle MARION_bullet_p1_particle;
 	Particle MARION_bullet_p2_particle;
-	Particle MARION_bullet_p3_particle;
-	Particle MARION_bullet_p4_particle;
+	Particle MARION_bullet_p3_left_particle;
+	Particle MARION_bullet_p3_right_particle;
+	Particle MARION_bullet_p4_left_particle;
+	Particle MARION_bullet_p4_right_particle;
 
 	Particle ASH_bullet_p1_particle;
 	Particle ASH_bullet_p2_particle;
