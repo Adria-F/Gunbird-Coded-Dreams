@@ -89,10 +89,13 @@ bool ModuleMarion::Start()
 	texture_graphics = App->textures->Load("assets/characters/marion.png"); // arcade version
 	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png"); 
 	shot_path = "assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav";
+	shot_path2 = "assets/effects/gunbird_212 [EFFECT] MARION (Shoots Level 3 & 4).wav";
 	shot_lvl1 = particle_type::P_MARION_BULLET_P1;
 	shot_lvl2 = particle_type::P_MARION_BULLET_P2;
+	shot_lvl3 = particle_type::P_MARION_BULLET_P3;
 	shot_particle_lvl1 = &App->particles->MARION_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->MARION_bullet_p2_particle;
+	shot_particle_lvl3 = &App->particles->MARION_bullet_p3_particle;
 	
 	return ret;
 }

@@ -19,6 +19,7 @@ enum particle_type
 {
 	P_MARION_BULLET_P1,
 	P_MARION_BULLET_P2,
+	P_MARION_BULLET_P3,
 	P_ASH_BULLET_P1,
 	P_ASH_BULLET_P2,
 	P_UPGRADE,
@@ -72,6 +73,7 @@ public:
 
 	SDL_Texture* MARION_bullet_p1_texture = nullptr;
 	SDL_Texture* MARION_bullet_p2_texture = nullptr;
+	SDL_Texture* MARION_bullet_p3_texture = nullptr;
 
 	SDL_Texture* ASH_bullet_p1_texture = nullptr;
 	SDL_Texture* ASH_bullet_p2_texture = nullptr;
@@ -97,6 +99,7 @@ public:
 
 	Particle MARION_bullet_p1_particle;
 	Particle MARION_bullet_p2_particle;
+	Particle MARION_bullet_p3_particle;
 
 	Particle ASH_bullet_p1_particle;
 	Particle ASH_bullet_p2_particle;

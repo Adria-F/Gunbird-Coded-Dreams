@@ -136,7 +136,13 @@ update_status ModuleInput::PreUpdate()
 		{
 			App->player1->shot = true;
 			App->player1->bullet_counter = 0;
-			App->audio->Load(App->player1->character->shot_path, App->audio->EFFECT);
+			if (App->player1->shot_lvl < 3)
+			{
+				App->audio->Load(App->player1->character->shot_path, App->audio->EFFECT);
+			}
+			else 
+				App->audio->Load(App->player1->character->shot_path2, App->audio->EFFECT);
+
 			App->audio->Play(App->audio->EFFECT);
 		}
 
@@ -162,7 +168,13 @@ update_status ModuleInput::PreUpdate()
 		{
 			App->player2->shot = true;
 			App->player2->bullet_counter = 0;
-			App->audio->Load(App->player1->character->shot_path, App->audio->EFFECT);
+			if (App->player2->shot_lvl < 3)
+			{
+				App->audio->Load(App->player2->character->shot_path, App->audio->EFFECT);
+			}
+			else 
+				App->audio->Load(App->player2->character->shot_path2, App->audio->EFFECT);
+
 			App->audio->Play(App->audio->EFFECT);
 		}
 
