@@ -71,6 +71,7 @@ bool ModuleAsh::Start()
 	texture_graphics = App->textures->Load("assets/characters/ash.png"); // arcade version
 	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png");
 	shot_path = "assets/effects/gunbird_209 [EFFECT] ASH (Shoots Level 1 & 2).wav";
+	shot_path2 = "assets/effects/gunbird_210 [EFFECT] ASH (Shoots Level 3 & 4).wav";
 	shot_lvl1 = particle_type::P_ASH_BULLET_P1;
 	shot_lvl2 = particle_type::P_ASH_BULLET_P2;
 	shot_particle_lvl1 = &App->particles->ASH_bullet_p1_particle;
