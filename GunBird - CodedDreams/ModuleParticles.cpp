@@ -52,20 +52,32 @@ bool ModuleParticles::Start()
 	MARION_bullet_p2_particle.anim.loop = false;
 	MARION_bullet_p2_particle.anim.speed = 0.5f;
 	MARION_bullet_p2_particle.damage = 2;
-	//NECESITA FER BE AIXO:
-	MARION_bullet_p3_left_particle.anim.PushBack({ 192, 127, 15, 29 });
-	MARION_bullet_p3_right_particle.anim.PushBack({ 192, 127, 15, 29 });
+	
+	//stage 3
+	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 65, 19, 33 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 96, 19, 33 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 127, 19, 33 });
+
+	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 65, 19, 33 });
+	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 96, 19, 33 });
+	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 127, 19, 33 });
+
 	MARION_bullet_p3_left_particle.speed.y = -8;
-	MARION_bullet_p3_left_particle.anim.loop = false;
+	MARION_bullet_p3_left_particle.anim.loop = true;
 	MARION_bullet_p3_left_particle.anim.speed = 0.5f;
-	MARION_bullet_p3_left_particle.damage = 2;
+	MARION_bullet_p3_left_particle.damage = 1;
 
-
+	MARION_bullet_p3_right_particle.speed.y = -8;
+	MARION_bullet_p3_right_particle.anim.loop = true;
+	MARION_bullet_p3_right_particle.anim.speed = 0.5f;
+	MARION_bullet_p3_right_particle.damage = 1;
+	
+	//stage 4
 	MARION_bullet_p4_left_particle.anim.PushBack({ 192, 127, 15, 29 });
 	MARION_bullet_p4_left_particle.speed.y = -8;
 	MARION_bullet_p4_left_particle.anim.loop = false;
 	MARION_bullet_p4_left_particle.anim.speed = 0.5f;
-	MARION_bullet_p4_left_particle.damage = 2;
+	MARION_bullet_p4_left_particle.damage = 6;
 
 
 	// Ash Bullets
@@ -217,6 +229,12 @@ update_status ModuleParticles::Update()
 				break;
 			case P_MARION_BULLET_P2:
 				App->render->Blit(MARION_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_BULLET_P3_LEFT:
+				App->render->Blit(MARION_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_BULLET_P3_RIGHT:
+				App->render->Blit(MARION_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P1:
 				App->render->Blit(ASH_bullet_p1_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));

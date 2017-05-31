@@ -112,6 +112,30 @@ update_status Player::Update()
 					App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 				else if (shot_lvl == 2)
 					App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				else if (shot_lvl == 3)
+				{
+					if (character == (ModuleCharacter*)App->marion)
+					{
+						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					}
+					else
+					App->particles->AddParticle(*character->shot_particle_lvl3, character->shot_lvl3, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				}
+					
+				else if (shot_lvl == 4)
+				{
+					if (character == (ModuleCharacter*)App->marion)
+					{
+						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl4_right, character->shot_lvl4_right, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					}
+					else
+					App->particles->AddParticle(*character->shot_particle_lvl4, character->shot_lvl4, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+				}
+
 				start_time = SDL_GetTicks();
 				bullet_counter++;
 			}
