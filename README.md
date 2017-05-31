@@ -1,4 +1,3 @@
-encodig: UTF-8
 
 # Gunbird by Coded Dreams
 
