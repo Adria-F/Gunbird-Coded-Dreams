@@ -92,11 +92,11 @@ bool ModuleMarion::Start()
 	shot_path2 = "assets/effects/gunbird_212 [EFFECT] MARION (Shoots Level 3 & 4).wav";
 	shot_lvl1 = particle_type::P_MARION_BULLET_P1;
 	shot_lvl2 = particle_type::P_MARION_BULLET_P2;
-	shot_lvl3 = particle_type::P_MARION_BULLET_P3;
-	shot_lvl4 = particle_type::P_MARION_BULLET_P4;
+	shot_lvl3 = particle_type::P_MARION_BULLET_P3_LEFT;
+	shot_lvl4 = particle_type::P_MARION_BULLET_P4_LEFT;
 	shot_particle_lvl1 = &App->particles->MARION_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->MARION_bullet_p2_particle;
-	shot_particle_lvl3 = &App->particles->MARION_bullet_p3_particle;
+	shot_particle_lvl3 = &App->particles->MARION_bullet_p3_left_particle;
 	shot_particle_lvl4 = &App->particles->MARION_bullet_p4_particle;
 	
 	return ret;

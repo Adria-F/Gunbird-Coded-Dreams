@@ -55,10 +55,10 @@ bool ModuleParticles::Start()
 	//NECESITA FER BE AIXO:
 	MARION_bullet_p3_left_particle.anim.PushBack({ 192, 127, 15, 29 });
 	MARION_bullet_p3_left_particle.anim.PushBack({ 192, 127, 15, 29 });
-	MARION_bullet_p3_particle.speed.y = -8;
-	MARION_bullet_p3_particle.anim.loop = false;
-	MARION_bullet_p3_particle.anim.speed = 0.5f;
-	MARION_bullet_p3_particle.damage = 2;
+	MARION_bullet_p3_left_particle.speed.y = -8;
+	MARION_bullet_p3_left_particle.anim.loop = false;
+	MARION_bullet_p3_left_particle.anim.speed = 0.5f;
+	MARION_bullet_p3_left_particle.damage = 2;
 
 	MARION_bullet_p4_particle.anim.PushBack({ 192, 127, 15, 29 });
 	MARION_bullet_p4_particle.speed.y = -8;
