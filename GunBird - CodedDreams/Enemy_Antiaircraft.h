@@ -17,6 +17,10 @@ public:
 
 	Path path;
 	Animation idle;
+	Animation left_closed;
+	Animation left_opening;
+	Animation left_idle;
+	Animation left_death;
 
 };
 

@@ -219,13 +219,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::CENTRALSIDE:
 			enemies[i] = new Enemy_CentralSide(info.x, info.y);
 			break;
-		case ENEMY_TYPES::BOSS1_BASE:
-			enemies[i] = new Enemy_Boss1_Base(info.x, info.y, info.wave);
-			break;
 		case ENEMY_TYPES::ANTIAIRCRAFT:
 			enemies[i] = new Enemy_Antiaircraft(info.x, info.y);
 			break;
-				
+		case ENEMY_TYPES::BOSS1_BASE:
+			enemies[i] = new Enemy_Boss1_Base(info.x, info.y, info.wave);
+			break;
+
 		}
 	}
 }

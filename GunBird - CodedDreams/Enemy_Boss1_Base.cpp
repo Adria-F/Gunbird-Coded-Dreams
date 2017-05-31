@@ -38,16 +38,19 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave): Enemy(x, y)
 	//Spawning all the parts
 	if(wave == 1)
 	{
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 40, 3180);
 		App->enemies->AddEnemy(RIGHTSIDE, 133, 3164);
 		App->enemies->AddEnemy(LEFTSIDE, 43, 3165);
 		App->enemies->AddEnemy(CENTRALSIDE, 93, 3150);
+
 	}
 	if (wave == 2)
 	{
-
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 40, 2310);
 		App->enemies->AddEnemy(RIGHTSIDE, 133, 2309);
 		App->enemies->AddEnemy(LEFTSIDE, 43, 2308);
 		App->enemies->AddEnemy(CENTRALSIDE, 93, 2295);
+		
 	}
 
 
