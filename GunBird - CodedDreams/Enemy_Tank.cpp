@@ -110,6 +110,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	shoot = particle_type::P_BIG_SHOT;
 	big_shoot = &App->particles->big_shot_particle;
 	Shot_Total_time = (Uint32)(2000.0f);
+	Shot_Total_time2 = (Uint32)(3500.0f);
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 105, 60 }, COLLIDER_ENEMY, (Module*)App->enemies);
@@ -124,14 +125,18 @@ void Enemy_Tank::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
 	Shot_now = SDL_GetTicks() - Shot_Start_time;
-	if (Shot_now > Shot_Total_time && animation == &idle)
+	Shot2_now = SDL_GetTicks() - Shot2_start_time;
+	if (Shot_now > Shot_Total_time && (animation == &idle || animation == &close_tur ))
 	{
 		Shot_Start_time = SDL_GetTicks();
-		
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 50, PLAYER);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, -50);
+		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, -50);	
+	}
+	if (Shot2_now > Shot_Total_time2 && animation == &idle)
+	{
+		Shot2_start_time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 5, COLLIDER_ENEMY_SHOT, 0, 0);
-		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 25, COLLIDER_ENEMY_SHOT, 0, 0);		
+		App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 52, position.y + App->render->camera.y + 25, COLLIDER_ENEMY_SHOT, 0, 0);
 	}
 }
 
