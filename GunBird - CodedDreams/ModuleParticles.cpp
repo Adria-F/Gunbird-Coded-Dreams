@@ -105,7 +105,7 @@ bool ModuleParticles::Start()
 	ASH_bullet_p4_particle.speed.y = -8;
 	ASH_bullet_p4_particle.anim.loop = false;
 	ASH_bullet_p4_particle.anim.speed = 0.5f;
-	ASH_bullet_p4_particle.damage = 2;
+	ASH_bullet_p4_particle.damage = 4;
 
 	// Small shot
 	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
