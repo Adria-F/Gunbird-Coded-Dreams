@@ -1,3 +1,5 @@
+encodig: UTF-8
+
 # Gunbird by Coded Dreams
 
 Coded Dreams is a team by five members that are going to copy the GunBird arcade game done, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we have already done the prototype (Castle level) and right now working on The Mine, which will be our Alpha release.
