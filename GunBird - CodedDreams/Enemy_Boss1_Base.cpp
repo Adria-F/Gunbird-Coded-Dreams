@@ -58,7 +58,10 @@ Enemy_Boss1_Base::~Enemy_Boss1_Base()
 {
 	App->textures->Unload(NormalSprite);
 }
+void Enemy_Boss1_Base::ExtraAnim(SDL_Texture* texture)
+{
 
+}
 void Enemy_Boss1_Base::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);

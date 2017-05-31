@@ -12,10 +12,12 @@ public:
 	~Enemy_Boss1_Base();
 
 	void Move();
+	void ExtraAnim(SDL_Texture* texture);
 
 public:
 	Path path;
 	Animation base;
+	Animation protection;
 
 };
 
