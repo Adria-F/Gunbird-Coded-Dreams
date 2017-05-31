@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleMarion.h"
+#include "ModuleAsh.h"
 #include "ModulePowerUp.h"
 #include "SDL/include/SDL_timer.h"
 
@@ -32,6 +33,8 @@ bool ModuleParticles::Start()
 
 	ASH_bullet_p1_texture = App->textures->Load("assets/characters/ash.png");
 	ASH_bullet_p2_texture = App->textures->Load("assets/characters/ash.png");
+	ASH_bullet_p3_texture = App->textures->Load("assets/characters/ash.png");
+	ASH_bullet_p4_texture = App->textures->Load("assets/characters/ash.png");
 
 	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
 	small_shot_texture = App->textures->Load("assets/enemies/Bullets Small.png");
@@ -96,7 +99,7 @@ bool ModuleParticles::Start()
 	ASH_bullet_p3_particle.anim.PushBack({ 163, 111, 31, 43 });
 	ASH_bullet_p3_particle.anim.PushBack({ 197, 111, 31, 43 });
 	ASH_bullet_p3_particle.speed.y = -8;
-	ASH_bullet_p3_particle.anim.loop = true;
+	ASH_bullet_p3_particle.anim.loop = false;
 	ASH_bullet_p3_particle.anim.speed = 0.5f;
 	ASH_bullet_p3_particle.damage = 3;
 
@@ -181,6 +184,10 @@ bool ModuleParticles::CleanUp()
 	ASH_bullet_p1_texture = nullptr;
 	App->textures->Unload(ASH_bullet_p2_texture);
 	ASH_bullet_p2_texture = nullptr;
+	App->textures->Unload(ASH_bullet_p3_texture);
+	ASH_bullet_p3_texture = nullptr;
+	App->textures->Unload(ASH_bullet_p4_texture);
+	ASH_bullet_p4_texture = nullptr;
 
 	App->textures->Unload(big_shot_texture);
 	big_shot_texture = nullptr;
@@ -244,6 +251,10 @@ update_status ModuleParticles::Update()
 				break;
 			case P_ASH_BULLET_P3:
 				App->render->Blit(ASH_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_ASH_BULLET_P4:
+				App->render->Blit(ASH_bullet_p4_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;

@@ -130,12 +130,12 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			App->audio->Play(App->audio->EFFECT);
 			for (int i = 0; i < MAX_POWERUP; i++)
 			{
-				if (powerups[i] != nullptr && powerups[i]->part == c1->part)
+				if (App->player1->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 				{
 					powerups[i] = nullptr;
 					App->player1->drop = false;
 					App->player1->drop_timer_start = SDL_GetTicks();
-					App->player1->shot_lvl = 2;
+					App->player1->shot_lvl += 1;
 					break;
 				}
 			}
@@ -147,14 +147,15 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			App->audio->Play(App->audio->EFFECT);
 			for (int i = 0; i < MAX_POWERUP; i++)
 			{
-				if (powerups[i] != nullptr && powerups[i]->part == c1->part)
+				if (App->player2->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 				{
 					powerups[i] = nullptr;
 					App->player2->drop = false;
 					App->player2->drop_timer_start = SDL_GetTicks();
-					App->player2->shot_lvl = 2;
+					App->player2->shot_lvl += 1;
 					break;
 				}
+		
 			}
 			App->particles->OnCollision(c1, c2);
 		}
