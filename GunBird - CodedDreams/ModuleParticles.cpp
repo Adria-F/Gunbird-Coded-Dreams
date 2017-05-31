@@ -66,6 +66,13 @@ bool ModuleParticles::Start()
 	ASH_bullet_p2_particle.anim.speed = 0.5f;
 	ASH_bullet_p2_particle.damage = 2;
 
+	ASH_bullet_p3_particle.anim.PushBack({ 163, 111, 31, 43 });
+	ASH_bullet_p3_particle.anim.PushBack({ 197, 111, 31, 43 });
+	ASH_bullet_p3_particle.speed.y = -8;
+	ASH_bullet_p3_particle.anim.loop = true;
+	ASH_bullet_p3_particle.anim.speed = 0.5f;
+	ASH_bullet_p3_particle.damage = 3;
+
 	// Small shot
 	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
 	small_shot_particle.anim.PushBack({ 41, 9, 6, 6 });

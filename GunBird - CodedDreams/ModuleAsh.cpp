@@ -74,8 +74,10 @@ bool ModuleAsh::Start()
 	shot_path2 = "assets/effects/gunbird_210 [EFFECT] ASH (Shoots Level 3 & 4).wav";
 	shot_lvl1 = particle_type::P_ASH_BULLET_P1;
 	shot_lvl2 = particle_type::P_ASH_BULLET_P2;
+	shot_lvl3 = particle_type::P_ASH_BULLET_P3;
 	shot_particle_lvl1 = &App->particles->ASH_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->ASH_bullet_p2_particle;
+	shot_particle_lvl3 = &App->particles -> ASH_bullet_p3_particle;
 
 	return ret;
 }
