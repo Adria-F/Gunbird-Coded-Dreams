@@ -60,11 +60,13 @@ bool ModuleParticles::Start()
 	MARION_bullet_p3_left_particle.anim.speed = 0.5f;
 	MARION_bullet_p3_left_particle.damage = 2;
 
+
 	MARION_bullet_p4_left_particle.anim.PushBack({ 192, 127, 15, 29 });
 	MARION_bullet_p4_left_particle.speed.y = -8;
 	MARION_bullet_p4_left_particle.anim.loop = false;
 	MARION_bullet_p4_left_particle.anim.speed = 0.5f;
 	MARION_bullet_p4_left_particle.damage = 2;
+
 
 	// Ash Bullets
 	ASH_bullet_p1_particle.anim.PushBack({ 175, 29, 9, 29});
@@ -90,6 +92,13 @@ bool ModuleParticles::Start()
 	ASH_bullet_p4_particle.anim.loop = false;
 	ASH_bullet_p4_particle.anim.speed = 0.5f;
 	ASH_bullet_p4_particle.damage = 2;
+
+	ASH_bullet_p3_particle.anim.PushBack({ 163, 111, 31, 43 });
+	ASH_bullet_p3_particle.anim.PushBack({ 197, 111, 31, 43 });
+	ASH_bullet_p3_particle.speed.y = -8;
+	ASH_bullet_p3_particle.anim.loop = true;
+	ASH_bullet_p3_particle.anim.speed = 0.5f;
+	ASH_bullet_p3_particle.damage = 3;
 
 	// Small shot
 	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
