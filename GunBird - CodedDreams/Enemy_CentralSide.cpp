@@ -69,52 +69,56 @@ Enemy_CentralSide::~Enemy_CentralSide()
 void Enemy_CentralSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	Shot_now = SDL_GetTicks() - Shot_Start_time;
-	if (state == 6)
+	if (App->render->camera.y >= -2146)
 	{
-		state = 0;
+		Shot_now = SDL_GetTicks() - Shot_Start_time;
+		if (state == 6)
+		{
+			state = 0;
+		}
+		if (Shot_now > Shot_Total_time && state == 5)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 7, position.y + App->render->camera.y + 95, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 36, position.y + App->render->camera.y + 95, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+			state = 6;
+		}
+		if (Shot_now > Shot_Total_time && state == 4)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 247, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 292, ANGLE);
+			state = 5;
+		}
+		if (Shot_now > Shot_Total_time && state == 3)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 225, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 315, ANGLE);
+			state = 4;
+		}
+		if (Shot_now > Shot_Total_time && state == 2)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 202, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 337, ANGLE);
+			state = 3;
+		}
+		if (Shot_now > Shot_Total_time && state == 1)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 180, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 360, ANGLE);
+			state = 2;
+		}
+		if (Shot_now > Shot_Total_time && state == 0)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 157, ANGLE);
+			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 22, ANGLE);
+			state = 1;
+		}
 	}
-	if (Shot_now > Shot_Total_time && state == 5)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 7, position.y + App->render->camera.y + 95, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 36, position.y + App->render->camera.y + 95, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
-		state = 6;
-	}
-	if (Shot_now > Shot_Total_time && state == 4)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 247, ANGLE);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 292, ANGLE);
-		state = 5;
-	}
-	if (Shot_now > Shot_Total_time && state == 3)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 225, ANGLE);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 315, ANGLE);
-		state = 4;
-	}
-	if (Shot_now > Shot_Total_time && state == 2)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 202, ANGLE);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 337, ANGLE);
-		state = 3;
-	}
-	if (Shot_now > Shot_Total_time && state == 1)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 180, ANGLE);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 360, ANGLE);
-		state = 2;
-	}
-	if (Shot_now > Shot_Total_time && state == 0)
-	{
-		Shot_Start_time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 157, ANGLE);
-		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 22, position.y + App->render->camera.y + 62, COLLIDER_ENEMY_SHOT, 0, 22, ANGLE);
-		state = 1;
-	}
+	
 	lower_level = true;
 }

@@ -45,29 +45,39 @@ Enemy_LeftSide::~Enemy_LeftSide()
 void Enemy_LeftSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	Shot_now = SDL_GetTicks() - Shot_Start_time;
-	if (Shot_now > Shot_Total_time && state == 0 || state >= 1) //Initial time
+
+	if (App->render->camera.y >= -2146)
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
-		if (Shot_now > Shot_Total_time1 && state < 2) //Two consecutives shoots
+		if (Shot_now > Shot_Total_time && state == 0 || Shot_now > Shot_Total_time && state == 4 || state >= 1) //Initial time 5000.0f
 		{
-			Shot_Start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 106, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			state++;
-		}
-		if (Shot_now > Shot_Total_time2 && state == 3) //Second Shoot
-		{
-			Shot_Start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			state = 2;
-		}
-		else if (Shot_now > Shot_Total_time3 && state == 2) //First Shoot
-		{
-			Shot_Start_time = SDL_GetTicks();
-			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
-			state = 3;
+			Shot_now = SDL_GetTicks() - Shot_Start_time;
+			if (Shot_now > Shot_Total_time1 && state < 2) //Two consecutives shoots 500.0f + 500.0f 0->1 1->2
+			{
+				Shot_Start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 106, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				state++;
+			}
+			if (Shot_now > Shot_Total_time2 && state == 3) //Second Shoot 2000.0f 3->4
+			{
+				Shot_Start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				state = 4;
+			}
+			if (Shot_now > Shot_Total_time3 && state == 2) //First Shoot 4000.0f state 2->3
+			{
+				Shot_Start_time = SDL_GetTicks();
+				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				state = 3;
+			}
+			if (state == 4) //4->2
+			{
+				state = 2;
+				Shot_now = SDL_GetTicks() - Shot_Start_time;
+			}
 		}
 	}
+
 	lower_level = true;
 }
