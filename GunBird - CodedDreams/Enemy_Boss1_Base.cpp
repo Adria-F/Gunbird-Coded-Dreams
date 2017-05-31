@@ -26,6 +26,10 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave): Enemy(x, y)
 	base.speed = 0.2f;
 	base.loop = true;
 
+	protection.PushBack({ 0, 0, 0, 0 });
+	protection.speed = 0.2f;
+	protection.loop = true;
+
 	//Set path
 	path.PushBack({ 0.0f, 0.09f }, 670, &base);
 	path.PushBack({ 0.0f, -0.9f }, 300, &base);
@@ -38,18 +42,18 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave): Enemy(x, y)
 	//Spawning all the parts
 	if(wave == 1)
 	{
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 40, 3175);
-		App->enemies->AddEnemy(RIGHTSIDE, 133, 3164);
-		App->enemies->AddEnemy(LEFTSIDE, 43, 3165);
-		App->enemies->AddEnemy(CENTRALSIDE, 93, 3150);
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 35, 3175);
+		App->enemies->AddEnemy(RIGHTSIDE, 125, 3164);
+		App->enemies->AddEnemy(LEFTSIDE, 35, 3165);
+		App->enemies->AddEnemy(CENTRALSIDE, 85, 3150);
 
 	}
 	if (wave == 2)
 	{
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 40, 2295);
-		App->enemies->AddEnemy(RIGHTSIDE, 133, 2309);
-		App->enemies->AddEnemy(LEFTSIDE, 43, 2308);
-		App->enemies->AddEnemy(CENTRALSIDE, 93, 2295);
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 38, 2300);
+		App->enemies->AddEnemy(RIGHTSIDE, 128, 2314);
+		App->enemies->AddEnemy(LEFTSIDE, 38, 2313);
+		App->enemies->AddEnemy(CENTRALSIDE, 88, 2300);
 		
 	}
 

@@ -19,6 +19,7 @@ public:
 	Animation base;
 	Animation protection;
 
+
 };
 
 #endif // !__BALLOON_H__
