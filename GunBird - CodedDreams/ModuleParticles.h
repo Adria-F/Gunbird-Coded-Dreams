@@ -20,8 +20,11 @@ enum particle_type
 	P_MARION_BULLET_P1,
 	P_MARION_BULLET_P2,
 	P_MARION_BULLET_P3,
+	P_MARION_BULLET_P4,
 	P_ASH_BULLET_P1,
 	P_ASH_BULLET_P2,
+	P_ASH_BULLET_P3,
+	P_ASH_BULLET_P4,
 	P_UPGRADE,
 	P_BOMB,
 	P_COIN,
@@ -100,9 +103,12 @@ public:
 	Particle MARION_bullet_p1_particle;
 	Particle MARION_bullet_p2_particle;
 	Particle MARION_bullet_p3_particle;
+	Particle MARION_bullet_p4_particle;
 
 	Particle ASH_bullet_p1_particle;
 	Particle ASH_bullet_p2_particle;
+	Particle ASH_bullet_p3_particle;
+	Particle ASH_bullet_p4_particle;
 
 	Particle upgrade_particle;
 	Particle coin_particle;

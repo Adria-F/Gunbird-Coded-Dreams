@@ -28,7 +28,7 @@ public:
 	Animation center_from_left;
 	Animation dead;
 
-	char* shot_path;
+
 	particle_type shoot;
 	Particle* big_shoot;
 
