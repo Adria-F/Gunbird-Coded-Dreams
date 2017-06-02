@@ -60,7 +60,7 @@ void Enemy_LeftSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
 
-	if (App->render->camera.y >= -5000) //-2146
+	if (App->render->camera.y >= -2146) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
 		if (Shot_now > Shot_Total_time && state == 0 || Shot_now > Shot_Total_time && state == 4 || state >= 1) //Initial time 5000.0f

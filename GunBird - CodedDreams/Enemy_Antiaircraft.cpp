@@ -3,6 +3,8 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModuleRender.h"
+#include "ModuleParticles.h"
 
 Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y, int id): Enemy(x, y)
 {
@@ -138,6 +140,8 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y, int id): Enemy(x, y)
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
+	Shot_Total_time = (Uint32)(4000.0f);
+	Shot_Total_time1 = (Uint32)(200.0f);
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
@@ -149,5 +153,30 @@ Enemy_Antiaircraft::~Enemy_Antiaircraft()
 void Enemy_Antiaircraft::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-
+	if (App->render->camera.y >= -1839) //-1839
+	{
+			Shot_now = SDL_GetTicks() - Shot_Start_time;
+			if (Shot_now > Shot_Total_time1)
+			{
+				Shot_now = SDL_GetTicks() - Shot_Start_time;
+				if (state == 2)
+				{
+					state = 0;
+				}
+				if (Shot_now > Shot_Total_time && state == 1)
+				{
+					Shot_Start_time = SDL_GetTicks();
+					App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 28, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+					App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 28, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+					state = 2;
+				}
+				if (Shot_now > Shot_Total_time && state == 0)
+				{
+					Shot_Start_time = SDL_GetTicks();
+					App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 28, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+					App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 28, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 0, PLAYER);
+					state = 1;
+				}
+			}		
+	}
 }

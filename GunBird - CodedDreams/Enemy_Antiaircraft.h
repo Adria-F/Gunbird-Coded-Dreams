@@ -28,8 +28,7 @@ public:
 	Animation right_idle;
 	Animation right_death;
 
-	int state_right;
-	int state_left;
+	int state = 0;
 
 };
 
