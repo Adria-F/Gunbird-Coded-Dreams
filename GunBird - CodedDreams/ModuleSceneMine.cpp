@@ -128,14 +128,15 @@ bool ModuleSceneMine::Start()
 	//The Trump
 	App->enemies->AddEnemy(TRUMP, 15, 2845, 1, 1);
 	App->enemies->AddEnemy(TRUMP, 145, 2830, 1, 2);
-	App->enemies->AddEnemy(TRUMP, 110, 2357, 1, 3);
-	App->enemies->AddEnemy(TRUMP, 250, 2345, 2, 2);
-	App->enemies->AddEnemy(TRUMP, -30, 2345, 2, 1);
+	App->enemies->AddEnemy(TRUMP, 105, 2357, 1, 3);
+	App->enemies->AddEnemy(TRUMP, 245, 2350, 2, 2);
+	App->enemies->AddEnemy(TRUMP, -35, 2350, 2, 1);
 
 	//<3
 	App->enemies->AddEnemy(MEGAMAN, 180, 3395, 1);
+
 	//Balloon
-	//App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
+	App->enemies->AddEnemy(BALLON, 50, 3200, 1, 1);
 
 	//General Turret Wave 1
 	App->enemies->AddEnemy(GENERAL_TURRET, 49, 3050, 1, 1);

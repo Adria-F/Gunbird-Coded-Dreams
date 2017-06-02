@@ -174,7 +174,7 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 		path.PushBack({ 0.40f, 0.09f }, 305, &anim_pilot_right);
 		path.PushBack({ 0.0f, 0.09f }, 180, &anim_pilot_idle);
 		path.PushBack({ 0.40f, 0.09f }, 45, &anim_pilot_right);
-		path.PushBack({ 0.00f, -0.31f }, 150, &anim_pilot_up);
+		path.PushBack({ 0.00f, -0.31f }, 140, &anim_pilot_up);
 		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
 	}
 	//boy
@@ -188,7 +188,7 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 		path.PushBack({ -0.40f, 0.09f }, 310, &anim_boy_left);
 		path.PushBack({ 0.0f, 0.09f }, 150, &anim_boy_idle);
 		path.PushBack({ -0.40f, 0.09f }, 40, &anim_boy_left);
-		path.PushBack({ 0.00f, -0.31f }, 150, &anim_boy_up);
+		path.PushBack({ 0.00f, -0.31f }, 140, &anim_boy_up);
 		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
 	}
 
@@ -197,7 +197,7 @@ Enemy_Trump::Enemy_Trump(int x, int y, int wave, int id) : Enemy(x, y)
 	{
 		path.PushBack({ 0.0f, 0.09f }, 450, &anim_girl_idle);
 		path.PushBack({ 0.0f, 0.09f }, 15, &anim_girl_turning);
-		path.PushBack({ 0.0f, -0.31f }, 172, &anim_girl_up);
+		path.PushBack({ 0.0f, -0.31f }, 170, &anim_girl_up);
 		path.PushBack({ 0.0f, 0.09f }, 1000, &anim);
 
 	}
