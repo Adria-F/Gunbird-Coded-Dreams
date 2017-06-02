@@ -39,7 +39,7 @@ Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 	initial_hp = lives;
 	points = 1000;
 	extra_anim = false;
-	explosion_type = BIG1;
+	explosion_type = MID1;
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 44, 30 }, COLLIDER_ENEMY, (Module*)App->enemies);

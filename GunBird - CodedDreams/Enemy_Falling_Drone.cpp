@@ -138,7 +138,7 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	initial_hp = lives;
 	points = 500;
 	extra_anim = false;
-	explosion_type = SMALL1;
+	explosion_type = SMALL2;
 
 	//Shooting
 

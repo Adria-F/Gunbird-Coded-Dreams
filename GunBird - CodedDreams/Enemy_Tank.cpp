@@ -104,7 +104,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	initial_hp = lives;
 	points = 5000;
 	extra_anim = false;
-	explosion_type = BIG1; //Explosion type
+	explosion_type = MID2; //Explosion type
 	
 	//shoting mechanic
 	shoot = particle_type::P_BIG_SHOT;

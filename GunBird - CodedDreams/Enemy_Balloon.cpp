@@ -34,7 +34,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	initial_hp = lives;
 	points = 400;
 	extra_anim = false;
-	explosion_type = MID1; //Explosion type
+	explosion_type = BIG1; //Explosion type
 
 	//shooting mechanic
 	

@@ -114,7 +114,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	initial_hp = lives;
 	points = 5000;
 	extra_anim = false;
-	explosion_type = BIG1;
+	explosion_type = FLYINGMACHINE;
 	Shot_Total_time = (Uint32)(2500.0f);
 
 	//Add and save collider

@@ -1,0 +1,17 @@
+Balloon - big1
+Drone - small1
+General Turret - medium1
+Tank - 3 medium2
+Barrel - medium1
+Falling Drone - small2
+Flying Machine - flying machine
+Torpedo - small1
+Disk - small2
+
+BOSS 1
+Antiaircrafts - medium
+Body's sides - big
+Main body - big + medium
+
+BOSS 2
+Special + 15 big + special 2.0 + 2 small
