@@ -58,8 +58,9 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	{
 
 		App->enemies->AddEnemy(BOSS1_BASE, 32, 3145, 0, 2);
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 33, 3165);
-		App->enemies->AddEnemy(RIGHTSIDE, 128, 3125);
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 33, 3165, 1); //left
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 70, 3165, 2); //right
+		App->enemies->AddEnemy(RIGHTSIDE, 112, 3125);
 		App->enemies->AddEnemy(LEFTSIDE, 38, 3125);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 3110);
 
@@ -67,8 +68,9 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	if (wave == 2)
 	{
 		App->enemies->AddEnemy(BOSS1_BASE, 32, 2332, 0, 2); //proctection
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 33, 2325);
-		App->enemies->AddEnemy(RIGHTSIDE, 128, 2310);
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 33, 2325, 1); // left
+		App->enemies->AddEnemy(ANTIAIRCRAFT, 70, 2325, 2); // right
+		App->enemies->AddEnemy(RIGHTSIDE, 112, 2310);
 		App->enemies->AddEnemy(LEFTSIDE, 38, 2310);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 2300);
 	}
