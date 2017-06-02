@@ -158,7 +158,7 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(BOSS1_BASE, 0, 2285, 2, 1);
 
 	//Testing
-	App->enemies->AddEnemy(BOSS1_BASE, 0, 3100, 1, 1);
+	//App->enemies->AddEnemy(BOSS1_BASE, 0, 3100, 1, 1);
 	}
 
 	//LEDS AND BLOWS, PLATFROMS

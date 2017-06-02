@@ -28,6 +28,9 @@ public:
 	Animation right_idle;
 	Animation right_death;
 
+	int state_right;
+	int state_left;
+
 };
 
 #endif // !__BALLOON_H__
