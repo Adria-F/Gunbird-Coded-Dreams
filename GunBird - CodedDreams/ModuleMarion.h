@@ -23,6 +23,9 @@ public:
 	Animation stele2;
 	Animation stele3;
 
+	//Bomb animations;
+
+
 };
 
 #endif

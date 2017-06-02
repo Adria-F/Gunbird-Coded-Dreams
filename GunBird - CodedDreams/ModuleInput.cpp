@@ -145,13 +145,17 @@ update_status ModuleInput::PreUpdate()
 
 			App->audio->Play(App->audio->EFFECT);
 		}
-		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs > 0 && App->player1->bomb_attacking == false)
+		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs < 10 && App->player1->bomb_attacking == false)
 		{
 			App->player1->bombs--;
 			App->player1->bomb_attacking = true;
 			App->player1->bomb_timer_start = SDL_GetTicks();
 			App->audio->Load(App->player1->character->bomb_path, App->audio->EFFECT);
 			App->audio->Play(App->audio->EFFECT);
+			App->particles->AddParticle(App->player1->character->bomb_north, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->player1->character->bomb_south, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->player1->character->bomb_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->player1->character->bomb_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
 		}
 
 		//Player 2

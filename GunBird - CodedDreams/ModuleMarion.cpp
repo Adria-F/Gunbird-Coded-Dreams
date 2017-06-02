@@ -76,6 +76,35 @@ ModuleMarion::ModuleMarion()
 	highscore_anim.PushBack({ 66, 33, 23, 32 });
 	highscore_anim.PushBack({ 99, 33, 23, 32 });
 	highscore_anim.speed = 0.1f;
+
+	//Bomb animations
+	bomb_north.anim.PushBack({ 10, 466, 42, 46 });
+	bomb_north.anim.PushBack({ 57, 466, 42, 46 });
+	bomb_north.anim.PushBack({ 106, 466, 42, 46 });
+	bomb_north.anim.speed = 0.2f;
+	bomb_north.anim.loop = false;
+	bomb_north.speed.y = -3;
+
+	bomb_south.anim.PushBack({ 156, 466, 42, 46 });
+	bomb_south.anim.PushBack({ 203, 466, 42, 46 });
+	bomb_south.anim.PushBack({ 252, 466, 42, 46 });
+	bomb_south.anim.speed = 0.2f;
+	bomb_south.anim.loop = false;
+	bomb_south.speed.y = 3;
+
+	bomb_east.anim.PushBack({ 177, 381, 42, 46 });
+	bomb_east.anim.PushBack({ 235, 381, 42, 46 });
+	bomb_east.anim.PushBack({ 290, 381, 42, 46 });
+	bomb_east.anim.speed = 0.2f;
+	bomb_east.anim.loop = false;
+	bomb_east.speed.x = -3;
+
+	bomb_west.anim.PushBack({ 15, 381, 42, 46 });
+	bomb_west.anim.PushBack({ 73, 381, 42, 46 });
+	bomb_west.anim.PushBack({ 128, 381, 42, 46 });
+	bomb_west.anim.speed = 0.2f;
+	bomb_west.anim.loop = false;
+	bomb_west.speed.x = 3;
 }
 
 ModuleMarion::~ModuleMarion()
@@ -118,4 +147,3 @@ bool ModuleMarion::CleanUp()
 
 	return ret;
 }
-	

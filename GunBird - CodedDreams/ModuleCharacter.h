@@ -7,6 +7,7 @@
 #include "p2Point.h"
 #include "Application.h"
 #include "ModuleRender.h"
+#include "ModuleParticles.h"
 
 #define CHARACTER_SPEED 3
 
@@ -21,6 +22,7 @@ public:
 
 	virtual bool Start() = 0;
 	virtual bool CleanUp() = 0;
+
 
 public:
 
@@ -57,6 +59,15 @@ public:
 	Particle* shot_particle_lvl4;
 	Particle* shot_particle_lvl4_left;
 	Particle* shot_particle_lvl4_right;
+
+	Particle bomb_north;
+	Particle bomb_south;
+	Particle bomb_east;
+	Particle bomb_west;
+	Particle bomb_north_east;
+	Particle bomb_north_weast;
+	Particle bomb_south_east;
+	Particle bomb_south_west;
 };
 
 #endif // !__MODULE_CHARACTER_H__

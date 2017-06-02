@@ -143,10 +143,14 @@ update_status Player::Update()
 		}
 
 		//Bomb system
-		if (bomb_timer_now > bomb_timer_total && bomb_attacking)
+		if (bomb_attacking)
 		{
-			bomb_timer_start = SDL_GetTicks();
-			bomb_attacking = false;
+			if (bomb_timer_now > bomb_timer_total)
+			{
+				
+				bomb_timer_start = SDL_GetTicks();
+				bomb_attacking = false;
+			}
 		}
 
 		//Update collider position
