@@ -53,6 +53,8 @@ private:
 	Animation marion_anim;
 	SDL_Texture* selec_box = nullptr;
 	SDL_Rect box_rec;
+	SDL_Texture* bomb = nullptr;
+	SDL_Rect bomb_rect;
 	
 	struct highscore
 	{

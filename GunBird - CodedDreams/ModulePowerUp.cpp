@@ -126,39 +126,90 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (c2->callback == App->player1)
 		{
-			App->audio->Load("assets/music/upgrade_marion.wav", App->audio->EFFECT);
-			App->audio->Play(App->audio->EFFECT);
-			for (int i = 0; i < MAX_POWERUP; i++)
+			switch (temp->type)
 			{
-				if (App->player1->shot_lvl < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+			case UPGRADE:
+				
+				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					powerups[i] = nullptr;
-					App->player1->drop = false;
-					App->player1->drop_timer_start = SDL_GetTicks();
-					App->player1->shot_lvl += 1;
-					break;
+					if (App->player1->shot_lvl < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load(App->player1->character->upgrade_path, App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
+						App->player1->drop = false;
+						App->player1->drop_timer_start = SDL_GetTicks();
+						App->player1->shot_lvl += 1;
+						break;
+					}
+					else if (App->player1->shot_lvl >= 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load(App->player1->character->full_upgrade_path, App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
+					}
 				}
+				break;
+			case BOMB:
+				for (int i = 0; i < MAX_POWERUP; i++)
+				{
+					if (App->player1->bombs < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						App->player1->bombs++;
+						powerups[i] = nullptr;
+					}
+				}
+				break;
+			case COIN:
+				break;
 			}
-			App->particles->OnCollision(c1, c2);
+
 		}
 		else if (c2->callback == App->player2)
 		{
-			App->audio->Load("assets/music/upgrade_ash.wav", App->audio->EFFECT);
-			App->audio->Play(App->audio->EFFECT);
-			for (int i = 0; i < MAX_POWERUP; i++)
+			switch (temp->type)
 			{
-				if (App->player2->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+			case UPGRADE:
+				
+				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					powerups[i] = nullptr;
-					App->player2->drop = false;
-					App->player2->drop_timer_start = SDL_GetTicks();
-					App->player2->shot_lvl += 1;
-					break;
+					if (App->player2->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load(App->player2->character->upgrade_path, App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
+						App->player2->drop = false;
+						App->player2->drop_timer_start = SDL_GetTicks();
+						App->player2->shot_lvl += 1;
+						break;
+					}
+					else if (App->player2->shot_lvl > 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load(App->player2->character->full_upgrade_path, App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+					}
+
 				}
-		
+				App->particles->OnCollision(c1, c2);
+			case BOMB:
+				for (int i = 0; i < MAX_POWERUP; i++)
+				{
+					if (App->player2->bombs < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						App->player2->bombs++;
+						powerups[i] = nullptr;
+					}
+				}
+				break;
+			case COIN:
+				break;
 			}
-			App->particles->OnCollision(c1, c2);
 		}
+		App->particles->OnCollision(c1, c2);
 	}
 }
 

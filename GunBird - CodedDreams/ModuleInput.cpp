@@ -145,6 +145,14 @@ update_status ModuleInput::PreUpdate()
 
 			App->audio->Play(App->audio->EFFECT);
 		}
+		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs > 0 && App->player1->bomb_attacking == false)
+		{
+			App->player1->bombs--;
+			App->player1->bomb_attacking = true;
+			App->player1->bomb_timer_start = SDL_GetTicks();
+			App->audio->Load(App->player1->character->bomb_path, App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
+		}
 
 		//Player 2
 		if (keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
@@ -175,6 +183,14 @@ update_status ModuleInput::PreUpdate()
 			else 
 				App->audio->Load(App->player2->character->shot_path2, App->audio->EFFECT);
 
+			App->audio->Play(App->audio->EFFECT);
+		}
+		if (keyboard[SDL_SCANCODE_KP_PERIOD] == KEY_STATE::KEY_DOWN && App->player2->IsEnabled() && App->player2->bombs > 0 && App->player2->bomb_attacking == false)
+		{
+			App->player2->bombs--;
+			App->player2->bomb_attacking = true;
+			App->player2->bomb_timer_start = SDL_GetTicks();
+			App->audio->Load(App->player2->character->bomb_path, App->audio->EFFECT);
 			App->audio->Play(App->audio->EFFECT);
 		}
 

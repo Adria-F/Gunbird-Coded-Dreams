@@ -72,6 +72,9 @@ bool ModuleAsh::Start()
 	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png");
 	shot_path = "assets/effects/gunbird_209 [EFFECT] ASH (Shoots Level 1 & 2).wav";
 	shot_path2 = "assets/effects/gunbird_210 [EFFECT] ASH (Shoots Level 3 & 4).wav";
+	upgrade_path = "assets/effects/upgrade_ash.wav";
+	full_upgrade_path = "assets/effects/ash_full_upgrade.wav";
+	bomb_path = "assets/effects/ash_bomb.wav";
 	shot_lvl1 = particle_type::P_ASH_BULLET_P1;
 	shot_lvl2 = particle_type::P_ASH_BULLET_P2;
 	shot_lvl3 = particle_type::P_ASH_BULLET_P3;

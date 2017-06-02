@@ -22,6 +22,7 @@ bool Player::Start()
 		points = 0;
 		lives = 3;
 		shot_lvl = 1;
+		bombs = 2;
 		character->Start();
 		position.y = 266;
 		if (this == App->player1 && App->player2->IsEnabled())
@@ -50,7 +51,7 @@ update_status Player::Update()
 	if (character != nullptr)
 	{
 		now = SDL_GetTicks() - start_time;
-		
+		bomb_timer_now = SDL_GetTicks() - bomb_timer_start;
 		drop_timer_now = SDL_GetTicks() - drop_timer_start;
 		if (drop_timer_now >= drop_timer_total)
 		{
@@ -139,6 +140,13 @@ update_status Player::Update()
 				start_time = SDL_GetTicks();
 				bullet_counter++;
 			}
+		}
+
+		//Bomb system
+		if (bomb_timer_now > bomb_timer_total && bomb_attacking)
+		{
+			bomb_timer_start = SDL_GetTicks();
+			bomb_attacking = false;
 		}
 
 		//Update collider position

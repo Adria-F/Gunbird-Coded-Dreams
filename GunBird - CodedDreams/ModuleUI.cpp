@@ -29,6 +29,8 @@ ModuleUI::ModuleUI()
 	text_rec = {121, 127, 54, 21};
 	box_rec = {6, 4, 32, 52};
 
+	bomb_rect = { 2, 1, 12, 15 };
+
 	marion_anim.PushBack({ 346, 142, 128, 108 });
 	marion_anim.PushBack({ 177, 140, 128, 108 });
 	marion_anim.PushBack({ 17, 141, 128, 108 });
@@ -66,6 +68,7 @@ bool ModuleUI::Start()
 	character_photo = App->textures->Load("assets/UI/photo_names_UI.png");
 	character_show = App->textures->Load("assets/UI/ash_marion_char_UI.png");
 	selec_box = App->textures->Load("assets/UI/char_selection.png");
+	bomb = App->textures->Load("assets/UI/bomb_icon.png");
 
 	anim_pos = 127.0f;
 	anim_speed = 0.1f;
@@ -100,7 +103,7 @@ update_status ModuleUI::Update()
 {
 	if (App->render->debugging)
 	{
-		App->render->Blit(debugging_text, 0, 305, &notification);
+		App->render->Blit(debugging_text, 151, 290, &notification); // 0, 305
 	}
 	if (App->render->god_mode)
 	{
@@ -164,6 +167,10 @@ update_status ModuleUI::Update()
 			{
 				App->render->Blit(char_lives, 5 + ((char_pos.w + 2) * i), 20, &char_pos);
 			}
+			for (int i = 0; i < App->player1->bombs; i++)
+			{
+				App->render->Blit(bomb, 2 + (16 * i), 300, &bomb_rect);
+			}
 		}
 
 		if (App->scene_mine->IsEnabled())
@@ -189,6 +196,10 @@ update_status ModuleUI::Update()
 			for (int i = 0; i < App->player2->lives - 1; i++)
 			{
 				App->render->Blit(char_lives, 204 - ((char_pos.w + 2) * i), 20, &char_pos);
+			}
+			for (int i = 0; i < App->player2->bombs; i++)
+			{
+				App->render->Blit(bomb, 118 + (16 * i), 300, &bomb_rect);
 			}
 		}
 

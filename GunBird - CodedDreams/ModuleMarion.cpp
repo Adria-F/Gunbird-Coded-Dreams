@@ -90,6 +90,9 @@ bool ModuleMarion::Start()
 	texture_onhit = App->textures->Load("assets/characters/Collision sprites.png"); 
 	shot_path = "assets/effects/gunbird_211 [EFFECT] MARION (Shoots Level 1 & 2).wav";
 	shot_path2 = "assets/effects/gunbird_212 [EFFECT] MARION (Shoots Level 3 & 4).wav";
+	upgrade_path = "assets/effects/upgrade_marion.wav";
+	full_upgrade_path = "assets/effects/marion_full_upgrade.wav";
+	bomb_path = "assets/effects/marion_bomb.wav";
 	shot_lvl1 = particle_type::P_MARION_BULLET_P1;
 	shot_lvl2 = particle_type::P_MARION_BULLET_P2;
 	shot_lvl3_left = particle_type::P_MARION_BULLET_P3_LEFT;
