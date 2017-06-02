@@ -14,15 +14,28 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	moving.PushBack({ 16, 0, 58, 90 });
-	moving.PushBack({ 88, 0, 58, 90 });
+	moving.PushBack({ 304, 0, 74, 89 });
+	moving.PushBack({ 228, 0, 74, 89 });
 	moving.speed = 0.2f;
 	moving.loop = true;
+
+	//Death animation
+	dead.PushBack({ 0, 89, 74, 89 });
+	dead.PushBack({ 76, 89, 74, 89 });
+	dead.PushBack({ 152, 89, 74, 89 });
+	dead.PushBack({ 228, 89, 74, 89 });
+	dead.PushBack({ 304, 89, 74, 89 });
+	dead.PushBack({ 152, 178, 74, 89 });
+	dead.PushBack({ 228, 178, 74, 89 });
+	dead.PushBack({ 304, 178, 74, 89 });
+	dead.speed = 0.1f;
+	dead.loop = true;
 
 	//Set path
 	path.PushBack({0.0f, 0.09f}, 670, &moving); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 	path.PushBack({ 0.0f, -0.9f }, 300, &moving);
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
+
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
 	initial_hp = lives;
@@ -66,4 +79,10 @@ void Enemy_RightSide::Move()
 		state = 1;
 	}
 	lower_level = true;
+}
+
+void Enemy_RightSide::DeadAnim()
+{
+	animation = &dead;
+	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
 }

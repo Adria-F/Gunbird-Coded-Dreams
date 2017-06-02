@@ -12,12 +12,14 @@ public:
 	~Enemy_RightSide();
 
 	void Move();
+	void DeadAnim();
 
 public:
 
 	int state = 0;
 	Path path;
 	Animation moving;
+	Animation dead;
 
 };
 

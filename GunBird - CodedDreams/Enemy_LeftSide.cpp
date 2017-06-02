@@ -15,20 +15,21 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	WhiteSprite = nullptr;
 
 	//Set animation steps, speed and loop
-	moving.PushBack({ 0, 0, 71, 89 });
-	moving.PushBack({ 72, 0, 71, 89 });
+	moving.PushBack({ 0, 0, 74, 89 });
+	moving.PushBack({ 76, 0, 74, 89 });
 	moving.speed = 0.2f;
 	moving.loop = true;
 
 	//Death animation
-	dead.PushBack({ 3, 92, 71, 89});
-	dead.PushBack({ 75, 92, 71, 89 });
-	dead.PushBack({ 147, 92, 71, 89 });
-	dead.PushBack({ 219, 92, 71, 89 });
-	dead.PushBack({ 291, 92, 71, 89 });
-	dead.PushBack({ 3, 181, 71, 89 });
-	dead.PushBack({ 75, 181, 71, 89 });
-	dead.PushBack({ 147, 181, 71, 89 });
+	dead.PushBack({ 0, 89, 74, 89 });
+	dead.PushBack({ 76, 89, 74, 89 });
+	dead.PushBack({ 152, 89, 74, 89 });
+	dead.PushBack({ 228, 89, 74, 89 });
+	dead.PushBack({ 304, 89, 74, 89 });
+	dead.PushBack({ 0, 178, 74, 89 });
+	dead.PushBack({ 152, 178, 74, 89 });
+	dead.PushBack({ 228, 178, 74, 89 });
+	dead.PushBack({ 304, 178, 74, 89 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 
