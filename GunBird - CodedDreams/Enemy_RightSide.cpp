@@ -40,6 +40,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
+	lower_level = true;
 	Shot_Total_time = (Uint32)(12000.0f);
 	Shot_Total_time1 = (Uint32)(1500.0f);
 	Shot_Total_time2 = (Uint32)(3500.0f);
@@ -78,7 +79,6 @@ void Enemy_RightSide::Move()
 
 		state = 1;
 	}
-	lower_level = true;
 }
 
 void Enemy_RightSide::DeadAnim()
