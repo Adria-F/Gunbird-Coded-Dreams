@@ -78,33 +78,130 @@ ModuleMarion::ModuleMarion()
 	highscore_anim.speed = 0.1f;
 
 	//Bomb animations
-	bomb_north.anim.PushBack({ 10, 466, 42, 46 });
-	bomb_north.anim.PushBack({ 57, 466, 42, 46 });
-	bomb_north.anim.PushBack({ 106, 466, 42, 46 });
-	bomb_north.anim.speed = 0.2f;
-	bomb_north.anim.loop = false;
-	bomb_north.speed.y = -3;
+	{
+		bomb_north.anim.PushBack({ 10, 466, 42, 46 });
+		bomb_north.anim.PushBack({ 57, 466, 42, 46 });
+		bomb_north.anim.PushBack({ 106, 466, 42, 46 });
+		bomb_north.anim.speed = 0.2f;
+		bomb_north.anim.loop = false;
+		bomb_north.speed.y = -3;
 
-	bomb_south.anim.PushBack({ 156, 466, 42, 46 });
-	bomb_south.anim.PushBack({ 203, 466, 42, 46 });
-	bomb_south.anim.PushBack({ 252, 466, 42, 46 });
-	bomb_south.anim.speed = 0.2f;
-	bomb_south.anim.loop = false;
-	bomb_south.speed.y = 3;
+		bomb_south.anim.PushBack({ 156, 466, 42, 46 });
+		bomb_south.anim.PushBack({ 203, 466, 42, 46 });
+		bomb_south.anim.PushBack({ 252, 466, 42, 46 });
+		bomb_south.anim.speed = 0.2f;
+		bomb_south.anim.loop = false;
+		bomb_south.speed.y = 3;
 
-	bomb_east.anim.PushBack({ 177, 381, 42, 46 });
-	bomb_east.anim.PushBack({ 235, 381, 42, 46 });
-	bomb_east.anim.PushBack({ 290, 381, 42, 46 });
-	bomb_east.anim.speed = 0.2f;
-	bomb_east.anim.loop = false;
-	bomb_east.speed.x = -3;
+		bomb_east.anim.PushBack({ 177, 381, 42, 46 });
+		bomb_east.anim.PushBack({ 235, 381, 42, 46 });
+		bomb_east.anim.PushBack({ 290, 381, 42, 46 });
+		bomb_east.anim.speed = 0.2f;
+		bomb_east.anim.loop = false;
+		bomb_east.speed.x = -3;
 
-	bomb_west.anim.PushBack({ 15, 381, 42, 46 });
-	bomb_west.anim.PushBack({ 73, 381, 42, 46 });
-	bomb_west.anim.PushBack({ 128, 381, 42, 46 });
-	bomb_west.anim.speed = 0.2f;
-	bomb_west.anim.loop = false;
-	bomb_west.speed.x = 3;
+		bomb_west.anim.PushBack({ 15, 381, 42, 46 });
+		bomb_west.anim.PushBack({ 73, 381, 42, 46 });
+		bomb_west.anim.PushBack({ 128, 381, 42, 46 });
+		bomb_west.anim.speed = 0.2f;
+		bomb_west.anim.loop = false;
+		bomb_west.speed.x = 3;
+	}
+
+	//diagonals
+	{
+		//NORTH EAST
+		bomb_north_east.anim.PushBack({ 19, 549, 45, 45 });
+		bomb_north_east.anim.PushBack({ 70, 549, 45, 45 });
+		bomb_north_east.anim.PushBack({ 121, 549, 45, 45 });
+
+		bomb_north_east.anim.PushBack({ 26, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 77, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 128, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 178, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 229, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 280, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 330, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 380, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 430, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 480, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 530, 663, 45, 45 });
+		bomb_north_east.anim.PushBack({ 580, 663, 45, 45 });
+
+		bomb_north_east.anim.PushBack({ 26, 663, 45, 45 });
+		bomb_north_east.anim.speed = 0.2f;
+		bomb_north_east.anim.loop = false;
+		bomb_north_east.speed.x = 3;
+
+		//SOUTH EAST
+		bomb_south_east.anim.PushBack({ 178, 549, 45, 45 });
+		bomb_south_east.anim.PushBack({ 229, 549, 45, 45 });
+		bomb_south_east.anim.PushBack({ 280, 549, 45, 45 });
+
+		bomb_south_east.anim.PushBack({ 229, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 280, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 330, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 380, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 430, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 480, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 530, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 580, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 26, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 77, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 128, 663, 45, 45 });
+		bomb_south_east.anim.PushBack({ 178, 663, 45, 45 });
+
+		bomb_south_east.anim.PushBack({ 229, 663, 45, 45 });
+		bomb_south_east.anim.speed = 0.2f;
+		bomb_south_east.anim.loop = false;
+		bomb_south_east.speed.x = 3;
+
+		//SOUTH WEAST
+		bomb_south_west.anim.PushBack({ 337, 549, 45, 45 });
+		bomb_south_west.anim.PushBack({ 388, 549, 45, 45 });
+		bomb_south_west.anim.PushBack({ 439, 549, 45, 45 });
+
+		bomb_south_west.anim.PushBack({ 330, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 380, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 430, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 480, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 530, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 580, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 26, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 77, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 128, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 178, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 229, 663, 45, 45 });
+		bomb_south_west.anim.PushBack({ 280, 663, 45, 45 });
+
+		bomb_south_west.anim.PushBack({ 330, 663, 45, 45 });
+		bomb_south_west.anim.speed = 0.2f;
+		bomb_south_west.anim.loop = false;
+		bomb_south_west.speed.x = 3;
+
+		//NORTH WEAST
+		bomb_north_weast.anim.PushBack({ 496, 549, 45, 45});
+		bomb_north_weast.anim.PushBack({ 547, 549, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 598, 549, 45, 45 });
+
+		bomb_north_weast.anim.PushBack({ 530, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 580, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 26, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 77, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 128, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 178, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 229, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 280, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 330, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 380, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 430, 663, 45, 45 });
+		bomb_north_weast.anim.PushBack({ 480, 663, 45, 45 });
+
+		bomb_north_weast.anim.PushBack({ 530, 663, 45, 45 });
+		bomb_north_weast.anim.speed = 0.2f;
+		bomb_north_weast.anim.loop = false;
+		bomb_north_weast.speed.x = 3;
+	}
 }
 
 ModuleMarion::~ModuleMarion()
