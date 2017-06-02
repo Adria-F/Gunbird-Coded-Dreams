@@ -77,12 +77,16 @@ void Enemy_LeftSide::Move()
 			{
 				Shot_Start_time = SDL_GetTicks();
 				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				App->particles->AddParticle(App->particles->mid_shot_particle, particle_type::P_MID_SHOT, position.x + 33, position.y + App->render->camera.y + 30, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				App->particles->AddParticle(App->particles->mid_shot_particle, particle_type::P_MID_SHOT, position.x + 33, position.y + App->render->camera.y + 30, COLLIDER_ENEMY_SHOT, 0, 280, ANGLE);
 				state = 4;
 			}
 			if (Shot_now > Shot_Total_time3 && state == 2) //First Shoot 4000.0f state 2->3
 			{
 				Shot_Start_time = SDL_GetTicks();
 				App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 31, position.y + App->render->camera.y + 60, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				App->particles->AddParticle(App->particles->mid_shot_particle, particle_type::P_MID_SHOT, position.x + 33, position.y + App->render->camera.y + 30, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+				App->particles->AddParticle(App->particles->mid_shot_particle, particle_type::P_MID_SHOT, position.x + 33, position.y + App->render->camera.y + 30, COLLIDER_ENEMY_SHOT, 0, 280, ANGLE);
 				state = 3;
 			}
 			if (state == 4) //4->2
