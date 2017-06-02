@@ -1,6 +1,9 @@
 # Gunbird by Coded Dreams
 
-Coded Dreams is a team by five members that are going to copy the GunBird arcade game done, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we have already done the prototype (Castle level) and right now working on The Mine, which will be our Alpha release.
+Coded Dreams is a team by five members that work on copying the GunBird arcade game, originally created by Psikyo. This project is the current first one of the university and consists to analyse every single detail and recreate it to the screen by using SDL (Simple DirectMedia Layer). Up to now, we have already done the prototype (Castle level) and right now working on The Mine level, which will be our Alpha release.
+
+#### Easter Egg
+We have decided to put Megaman as an Easter Egg. Since the early stages of the development we used him as a base class for all the added enemies. Since we started to get used to it on screen we have decided to have it always as a part of our GunBird.
 
 Check our [wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
 
@@ -10,10 +13,12 @@ Decompress the .zip file in any directory and execute the executable inside the 
 
 ## Functionalities
 
-- Two different players functionality (Marion (gamepad too) and Ash)
+- Two different players functionality (one with gamepad and another one with keyboard).
 - Mine map up until first boss.
 - 8 types of enemies implemented (Balloon, Barrel, Drone, Falling Drone, Flying Machine, General Turret, Tank and Torpedo)
 - Players have 3 lives.
+- Players reach 3rd power up level.
+- First boss.
 
 ## Usage
 
@@ -34,10 +39,11 @@ Decompress the .zip file in any directory and execute the executable inside the 
 - Arrow keys: move character
 - 0 numpad key: shoot
 
-### Special feautres
+### Special features
 - F1: activate / deactivate Debugging Mode
 - Arrow numpad keys (8462): move camera
 - F2: activate / deactivate God Mode
+- 2: activate second player (in-game)
 
 ## Contributing
 
@@ -62,14 +68,21 @@ Our most important contributions to the game were:
 - (6th May) Whole project was reset for the Alpha process, changing Castle level to Mine one.
 - (8th May) Completely new enemies are added, starting per Flying Machine and Torpedo. Debugging and God Modes are implemented following user interface.
 - (9th May) Drone enemies are added. Explosions do work and red/white effect too.
-- (11th May) Some visual textures (upper background for exmaple) are redone and General Turret and Tank added.
-- (12th May) Balloon is implemented with shotings.
+- (11th May) Some visual textures (upper background for example) are redone and General Turret and Tank added.
+- (12th May) Balloon is implemented with shootings.
 - (13th May) Balloon shoots to the nearest player.
 - (14th May) Player have three lives. Extra animations and static enemies are added.
+- (15th May) Player can die, power up fully implemented and added General Turret and Flying machine shooting mechanics.
+- (16th May) Explosions added for the first time.
+- (19th May) High scores screen completed.
+- (20th May) Whole First Boss sprite sheets are ripped from zero.
+- (21th May) Selection screen is completed.
+- (23th May) Tank enemy is fully finished.
+- (31th May) Players reach 3rd power up level.
 
 ## History
 
-During our GunBird development the game had seven releases:
+During our GunBird development, the game had nine releases:
 - version 0.1 (20th March)
 - version 0.2 (26th March)
 - version 0.2.1 (29th March)
@@ -77,19 +90,20 @@ During our GunBird development the game had seven releases:
 - version 0.4 (5th April)
 - version 0.45 (18th April)
 - version 0.46 (25th April)
-- version 0.5 - Prototype (26th April)
+- version 0.5 (26th April) - Prototype
+- version 1.0 (4th June) - Alpha
  
 ## Credits
 
 - Josep Pi Serra - Management
-- Pau Llopart Cervelló - Art/Design
-- Adrià Ferrer Comas, Norman Benet - Code
+- Pau Llopart Cervello - Art/Design
+- Adria�Ferrer Comas, Norman Benet - Code
 - Vladimir Agache - QA
 
 [Github](https://github.com/Adria-F/Gunbird-Coded-Dreams)
-[Trello ](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams)
+[Trello](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams)
 
 ## License
 
-All rights over the game and all properties are entirely from Psikyo (not from us), currently property of X-Nauts.
+All rights over the game and all properties are entirely from Psikyo, currently property of X-Nauts.
 
