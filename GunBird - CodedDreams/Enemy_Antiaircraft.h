@@ -12,6 +12,7 @@ public:
 	~Enemy_Antiaircraft();
 
 	void Move();
+	void DeadAnim();
 
 public:
 

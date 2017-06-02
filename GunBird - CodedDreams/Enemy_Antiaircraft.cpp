@@ -37,6 +37,20 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y, int id): Enemy(x, y)
 		left_idle.PushBack({ 211, 115, 67, 55 });
 		left_idle.speed = 0.2f;
 		left_idle.loop = true;
+
+		//left death animation
+		left_death.PushBack({ 1, 172, 61, 46 });
+		left_death.PushBack({ 71, 172, 61, 46 });
+		left_death.PushBack({ 141, 172, 61, 46 });
+		left_death.PushBack({ 211, 172, 61, 46 });
+		left_death.PushBack({ 281, 172, 61, 46 });
+		left_death.PushBack({ 351, 172, 61, 46 });
+
+		left_death.PushBack({ 1, 229, 61, 46 });
+		left_death.PushBack({ 71, 229, 61, 46 });
+		left_death.speed = 0.2f;
+		left_death.loop = true;
+
 	}
 	//right Pushbacks
 	{
@@ -62,6 +76,19 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y, int id): Enemy(x, y)
 		right_idle.PushBack({ 210, 406, 67, 55 });
 		right_idle.speed = 0.2f;
 		right_idle.loop = true;
+
+		//right death animation
+		right_death.PushBack({ 6, 463, 67, 55 });
+		right_death.PushBack({ 76, 463, 67, 55 });
+		right_death.PushBack({ 146, 463, 67, 55 });
+		right_death.PushBack({ 216, 463, 67, 55 });
+		right_death.PushBack({ 286, 463, 67, 55 });
+		right_death.PushBack({ 356, 463, 67, 55 });
+
+		right_death.PushBack({ 6, 520, 67, 55 });
+		right_death.PushBack({ 76, 520, 67, 55 });
+		right_death.speed = 0.2f;
+		right_death.loop = true;
 	}
 
 	if (id == 1)
@@ -142,7 +169,7 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y, int id): Enemy(x, y)
 	lower_level = true;
 	Shot_Total_time = (Uint32)(4000.0f);
 	Shot_Total_time1 = (Uint32)(200.0f);
-	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Antiaircraft::~Enemy_Antiaircraft()
@@ -179,4 +206,10 @@ void Enemy_Antiaircraft::Move()
 				}
 			}		
 	}
+}
+
+void Enemy_Antiaircraft::DeadAnim()
+{
+	animation = &left_death;
+	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
 }
