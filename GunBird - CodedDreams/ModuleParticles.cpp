@@ -37,6 +37,7 @@ bool ModuleParticles::Start()
 	ASH_bullet_p4_texture = App->textures->Load("assets/characters/ash.png");
 
 	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
+	mid_shot_texture = App->textures->Load("Assets/enemies/Bullets Medium.png");
 	small_shot_texture = App->textures->Load("assets/enemies/Bullets Small.png");
 
 	upgrade_texture = App->textures->Load("assets/items/upgrade.png");
@@ -124,6 +125,22 @@ bool ModuleParticles::Start()
 	small_shot_particle.anim.loop = true;
 	small_shot_particle.anim.speed = 0.5f;
 	
+	// Mid_Shoot
+	mid_shot_particle.anim.PushBack({ 0, 0, 8, 8 });
+	mid_shot_particle.anim.PushBack({ 9, 0, 8, 8 });
+	mid_shot_particle.anim.PushBack({ 18, 0, 8, 8 });
+
+	mid_shot_particle.anim.PushBack({ 0, 9, 8, 8 });
+	mid_shot_particle.anim.PushBack({ 9, 9, 8, 8 });
+	mid_shot_particle.anim.PushBack({ 18, 9, 8, 8 });
+
+	mid_shot_particle.anim.PushBack({ 0, 18, 8, 8 });
+	mid_shot_particle.anim.PushBack({ 9, 18, 8, 8 });
+	mid_shot_particle.speed.x = 0;
+	mid_shot_particle.speed.y = 0;
+	mid_shot_particle.anim.loop = true;
+	mid_shot_particle.anim.speed = 0.75f;
+
 	// Big_Shoot
 	big_shot_particle.anim.PushBack({ 96, 97, 12, 12 });
 	big_shot_particle.anim.PushBack({ 153, 98, 12, 12 });
@@ -191,6 +208,8 @@ bool ModuleParticles::CleanUp()
 
 	App->textures->Unload(big_shot_texture);
 	big_shot_texture = nullptr;
+	App->textures->Unload(mid_shot_texture);
+	mid_shot_texture = nullptr;
 	App->textures->Unload(small_shot_texture);
 	small_shot_texture = nullptr;
 
@@ -271,7 +290,7 @@ update_status ModuleParticles::Update()
 				App->render->Blit(big_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MID_SHOT:
-				
+				App->render->Blit(mid_shot_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 
 			}

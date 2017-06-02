@@ -90,8 +90,9 @@ public:
 	SDL_Texture* bomb_texture = nullptr;
 	SDL_Texture* coin_texture = nullptr;
 	SDL_Texture* small_shot_texture = nullptr;
-	SDL_Texture* explosions_texture = nullptr;
+	SDL_Texture* mid_shot_texture = nullptr;
 	SDL_Texture* big_shot_texture = nullptr;
+	SDL_Texture* explosions_texture = nullptr;
 	SDL_Texture* explosion_building1_texture = nullptr;
 	SDL_Texture* explosion_torpedo_texture = nullptr;
 	SDL_Texture* explosion_antiaircraft_texture = nullptr;
@@ -121,8 +122,9 @@ public:
 	Particle coin_particle;
 	Particle bomb_particle;
 	Particle small_shot_particle;
-	Particle explosions_particle;
+	Particle mid_shot_particle;
 	Particle big_shot_particle;
+	Particle explosions_particle;
 	Particle exploison_building1_particle;
 	Particle exploison_torpedo_particle;
 	Particle exploison_antiaricraft_particle;
