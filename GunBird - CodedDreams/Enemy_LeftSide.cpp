@@ -35,7 +35,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	//Set path
 	path.PushBack({ 0.0f, 0.09f }, 670, &moving); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 	path.PushBack({ 0.0f, -0.9f }, 300, &moving);
-	path.PushBack({ 0.0f, -0.3f }, 1000, &moving);
+	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 12; //120
@@ -58,7 +58,7 @@ void Enemy_LeftSide::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
 
-	if (App->render->camera.y >= -2146)
+	if (App->render->camera.y >= -5000) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
 		if (Shot_now > Shot_Total_time && state == 0 || Shot_now > Shot_Total_time && state == 4 || state >= 1) //Initial time 5000.0f

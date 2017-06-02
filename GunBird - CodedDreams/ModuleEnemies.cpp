@@ -221,7 +221,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_CentralSide(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BOSS1_BASE:
-			enemies[i] = new Enemy_Boss1_Base(info.x, info.y, info.wave);
+			enemies[i] = new Enemy_Boss1_Base(info.x, info.y, info.wave, info.id);
 			break;
 		case ENEMY_TYPES::ANTIAIRCRAFT:
 			enemies[i] = new Enemy_Antiaircraft(info.x, info.y);

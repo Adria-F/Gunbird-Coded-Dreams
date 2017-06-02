@@ -8,7 +8,7 @@ class Enemy_Boss1_Base : public Enemy
 {
 public:
 
-	Enemy_Boss1_Base(int x, int y, int wave);
+	Enemy_Boss1_Base(int x, int y, int wave, int id);
 	~Enemy_Boss1_Base();
 
 	void Move();

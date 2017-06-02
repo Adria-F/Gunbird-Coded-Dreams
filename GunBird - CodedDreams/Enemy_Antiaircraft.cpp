@@ -24,20 +24,28 @@ Enemy_Antiaircraft::Enemy_Antiaircraft(int x, int y): Enemy(x, y)
 	left_opening.PushBack({ 211, 58, 61, 54 });
 	left_opening.PushBack({ 281, 58, 66, 54 });
 	left_opening.PushBack({ 351, 58, 67, 55 });
-	left_opening.speed = 0.02f;
-	left_opening.loop = true;
+	left_opening.speed = 0.2f;
+	left_opening.loop = false;
 
 	left_idle.PushBack({ 1, 115, 67, 55 });
 	left_idle.PushBack({ 71, 115, 67, 55 });
 	left_idle.PushBack({ 141, 115, 67, 55 });
 	left_idle.PushBack({ 211, 115, 67, 55 });
-	left_idle.speed = 0.02f;
+	left_idle.speed = 0.2f;
 	left_idle.loop = true;
 
 	
 
 	//Set path
-	path.PushBack({0.0f, 0.09f}, 100, &left_opening); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, 0.09f }, 670, &left_closed); //wait
+	path.PushBack({ 0.0f, -0.9f }, 300, &left_closed); //go to the top
+	path.PushBack({ 0.0f, -0.3f }, 475, &left_closed); //hold position
+	path.PushBack({ 0.0f, 0.18f }, 140, &left_closed); //extend
+	path.PushBack({ 0.0f, -0.3f }, 40, &left_opening); //opening
+	path.PushBack({ 0.0f, 0.09f }, 55, &left_idle); //go bottom
+	path.PushBack({ 0.0f, -0.3f }, 150, &left_idle); //hold position
+	path.PushBack({ 0.0f, -0.7f }, 75, &left_idle); //go top
+	path.PushBack({ 0.0f, -0.3f }, 500, &left_idle); //hold position
 
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
