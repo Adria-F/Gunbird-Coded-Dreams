@@ -176,6 +176,13 @@ update_status Player::Update()
 						bomb_timer_start = SDL_GetTicks();
 					}
 				}
+				for (int i = 0; i < MAX_ACTIVE_PARTICLES; i++)
+				{
+					if (App->particles->active[i] != nullptr && (App->particles->active[i]->type == P_SMALL_SHOT || App->particles->active[i]->type == P_MID_SHOT || App->particles->active[i]->type == P_BIG_SHOT))
+					{
+						App->particles->active[i]->to_delete = true;
+					}
+				}
 			}
 		}
 		else if (character == (ModuleCharacter*)App->ash)
