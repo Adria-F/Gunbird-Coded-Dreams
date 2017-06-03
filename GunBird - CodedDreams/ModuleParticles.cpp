@@ -58,9 +58,9 @@ bool ModuleParticles::Start()
 	MARION_bullet_p3_left_particle.anim.PushBack({ 225, 97, 5, 28 });
 	MARION_bullet_p3_left_particle.anim.PushBack({ 225, 127, 5, 28 });
 
-	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 65, 19, 33 });
-	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 96, 19, 33 });
-	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 127, 19, 33 });
+	MARION_bullet_p3_right_particle.anim.PushBack({ 258, 67, 5, 28 });
+	MARION_bullet_p3_right_particle.anim.PushBack({ 258, 97, 5, 28 });
+	MARION_bullet_p3_right_particle.anim.PushBack({ 258, 127, 5, 28 });
 
 	MARION_bullet_p3_left_particle.speed.y = -8;
 	MARION_bullet_p3_left_particle.anim.loop = true;
@@ -73,11 +73,21 @@ bool ModuleParticles::Start()
 	MARION_bullet_p3_right_particle.damage = 1;
 	
 	//stage 4
-	MARION_bullet_p4_left_particle.anim.PushBack({ 192, 127, 15, 29 });
+	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 67, 15, 28 });
+	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 97, 15, 28 });
+	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 127, 15, 28 });
 	MARION_bullet_p4_left_particle.speed.y = -8;
-	MARION_bullet_p4_left_particle.anim.loop = false;
+	MARION_bullet_p4_left_particle.anim.loop = true;
 	MARION_bullet_p4_left_particle.anim.speed = 0.5f;
-	MARION_bullet_p4_left_particle.damage = 6;
+	MARION_bullet_p4_left_particle.damage = 2;
+
+	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 67, 15, 28 });
+	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 97, 15, 28 });
+	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 127, 15, 28 });
+	MARION_bullet_p4_right_particle.speed.y = -8;
+	MARION_bullet_p4_right_particle.anim.loop = true;
+	MARION_bullet_p4_right_particle.anim.speed = 0.5f;
+	MARION_bullet_p4_right_particle.damage = 2;
 
 
 	// Ash Bullets
@@ -250,6 +260,12 @@ update_status ModuleParticles::Update()
 			case P_MARION_BULLET_P3_RIGHT:
 				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
+			case P_MARION_BULLET_P4_LEFT:
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_BULLET_P4_RIGHT:
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
 			case P_MARION_BOMB:
 				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
@@ -334,7 +350,7 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 					vector.x /= modul;
 					vector.y /= modul;
 					p->speed.x = vector.x * BIG_SHOT_SPEED;
-					p->speed.y = vector.y * BIG_SHOT_SPEED;
+					p->speed.y = vector.y * BIG_SHOT_SPEED * 3;
 				}
 				break;
 			case COLLIDER_POWER_UP:
