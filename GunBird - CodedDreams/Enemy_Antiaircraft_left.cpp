@@ -83,6 +83,14 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 		path.PushBack({ 0.0f, 0.09f }, 75, &left_idle); //go bottom
 		path.PushBack({ 0.0f, -0.3f }, 200, &left_idle); //hold position
 		path.PushBack({ 0.0f, -0.7f }, 75, &left_idle); //go top
+		path.PushBack({ 0.0f, -0.3f }, 200, &left_idle); //hold position
+		path.PushBack({ 0.0f, 0.09f }, 75, &left_idle); //go bottom
+		path.PushBack({ 0.0f, -0.3f }, 200, &left_idle); //hold position
+		path.PushBack({ 0.0f, -0.7f }, 75, &left_idle); //go top
+		path.PushBack({ 0.0f, -0.3f }, 200, &left_idle); //hold position
+		path.PushBack({ 0.0f, 0.09f }, 75, &left_idle); //go bottom
+		path.PushBack({ 0.0f, -0.3f }, 200, &left_idle); //hold position
+		path.PushBack({ 0.0f, -0.7f }, 75, &left_idle); //go top
 	}
 
 
@@ -104,7 +112,11 @@ Enemy_Antiaircraft_left::~Enemy_Antiaircraft_left()
 
 void Enemy_Antiaircraft_left::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+
 	if (App->render->camera.y >= -1839) //-1839
 	{
 			Shot_now = SDL_GetTicks() - Shot_Start_time;
@@ -134,5 +146,5 @@ void Enemy_Antiaircraft_left::Move()
 void Enemy_Antiaircraft_left::DeadAnim()
 {
 	animation = &left_death;
-	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
+	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
 }

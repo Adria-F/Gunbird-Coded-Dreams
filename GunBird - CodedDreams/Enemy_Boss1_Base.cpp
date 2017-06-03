@@ -88,6 +88,10 @@ void Enemy_Boss1_Base::ExtraAnim(SDL_Texture* texture)
 }
 void Enemy_Boss1_Base::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	
 
 }

@@ -46,7 +46,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(1500.0f);
 	Shot_Total_time2 = (Uint32)(3500.0f);
 
-	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_RightSide::~Enemy_RightSide()
@@ -56,7 +56,10 @@ Enemy_RightSide::~Enemy_RightSide()
 
 void Enemy_RightSide::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
 	if (App->render->camera.y >= -2077) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
@@ -93,5 +96,5 @@ void Enemy_RightSide::Move()
 void Enemy_RightSide::DeadAnim()
 {
 	animation = &dead;
-	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
+	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
 }

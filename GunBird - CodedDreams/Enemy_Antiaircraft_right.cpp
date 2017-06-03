@@ -101,7 +101,11 @@ Enemy_Antiaircraft_right::~Enemy_Antiaircraft_right()
 
 void Enemy_Antiaircraft_right::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	
 	if (App->render->camera.y >= -1839) //-1839
 	{
 			Shot_now = SDL_GetTicks() - Shot_Start_time;
@@ -131,5 +135,5 @@ void Enemy_Antiaircraft_right::Move()
 void Enemy_Antiaircraft_right::DeadAnim()
 {
 	animation = &right_death;
-	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
+	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
 }

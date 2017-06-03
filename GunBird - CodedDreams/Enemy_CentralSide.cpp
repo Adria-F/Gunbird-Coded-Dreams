@@ -59,7 +59,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(7000.0f);
 
 	//collider
-	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
 Enemy_CentralSide::~Enemy_CentralSide()
@@ -69,7 +69,10 @@ Enemy_CentralSide::~Enemy_CentralSide()
 
 void Enemy_CentralSide::Move()
 {
-	position = original_pos + path.GetCurrentPosition(&animation);
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position = original_pos + path.GetCurrentPosition(&animation);
+	}
 	if (App->render->camera.y >= -2146) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
