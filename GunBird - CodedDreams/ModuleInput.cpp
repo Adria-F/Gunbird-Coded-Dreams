@@ -145,13 +145,15 @@ update_status ModuleInput::PreUpdate()
 
 			App->audio->Play(App->audio->EFFECT);
 		}
-		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs < 10 && App->player1->bomb_attacking == false)
+		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs > 0 && App->player1->bomb_attacking == false)
 		{
 			App->player1->bombs--;
 			App->player1->bomb_attacking = true;
 			App->player1->bomb_timer_start = SDL_GetTicks();
 			App->audio->Load(App->player1->character->bomb_path, App->audio->EFFECT);
 			App->audio->Play(App->audio->EFFECT);
+			App->player1->bomb_pos.x = App->player1->position.x - 10;
+			App->player1->bomb_pos.y = App->player1->position.y - 16;
 		}
 
 		//Player 2
@@ -192,6 +194,8 @@ update_status ModuleInput::PreUpdate()
 			App->player2->bomb_timer_start = SDL_GetTicks();
 			App->audio->Load(App->player2->character->bomb_path, App->audio->EFFECT);
 			App->audio->Play(App->audio->EFFECT);
+			App->player2->bomb_pos.x = App->player2->position.x - 10;
+			App->player2->bomb_pos.y = App->player2->position.y - 16;
 		}
 
 		if (keyboard[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_LEFTSHOULDER] == PAD_BUTON_STATE::BUTTON_DOWN)

@@ -132,7 +132,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				
 				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					if (App->player1->shot_lvl < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					if (App->player1->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player1->character->upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
@@ -142,7 +142,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						App->player1->shot_lvl += 1;
 						break;
 					}
-					else if (App->player1->shot_lvl >= 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					else if (App->player1->shot_lvl > 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player1->character->full_upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);

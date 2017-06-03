@@ -84,28 +84,28 @@ ModuleMarion::ModuleMarion()
 		bomb_north.anim.PushBack({ 106, 466, 45, 46 });
 		bomb_north.anim.speed = 0.2f;
 		bomb_north.anim.loop = false;
-		bomb_north.speed.y = -3;
+		bomb_north.speed.y = -3.5;
 
 		bomb_south.anim.PushBack({ 156, 466, 45, 46 });
 		bomb_south.anim.PushBack({ 203, 466, 45, 46 });
 		bomb_south.anim.PushBack({ 252, 466, 45, 46 });
 		bomb_south.anim.speed = 0.2f;
 		bomb_south.anim.loop = false;
-		bomb_south.speed.y = 3;
+		bomb_south.speed.y = 3.5;
 
 		bomb_east.anim.PushBack({ 177, 381, 42, 46 });
 		bomb_east.anim.PushBack({ 235, 381, 42, 46 });
 		bomb_east.anim.PushBack({ 290, 381, 42, 46 });
 		bomb_east.anim.speed = 0.2f;
 		bomb_east.anim.loop = false;
-		bomb_east.speed.x = -3;
+		bomb_east.speed.x = -3.5;
 
 		bomb_west.anim.PushBack({ 15, 381, 42, 46 });
 		bomb_west.anim.PushBack({ 73, 381, 42, 46 });
 		bomb_west.anim.PushBack({ 128, 381, 42, 46 });
 		bomb_west.anim.speed = 0.2f;
 		bomb_west.anim.loop = false;
-		bomb_west.speed.x = 3;
+		bomb_west.speed.x = 3.5;
 	}
 
 	//diagonals
@@ -131,8 +131,8 @@ ModuleMarion::ModuleMarion()
 		bomb_north_east.anim.PushBack({ 26, 663, 45, 45 });
 		bomb_north_east.anim.speed = 0.3f;
 		bomb_north_east.anim.loop = false;
-		bomb_north_east.speed.x = 2.12f;
-		bomb_north_east.speed.y = -2.12f;
+		bomb_north_east.speed.x = 2.47f;
+		bomb_north_east.speed.y = -2.47f;
 
 		//SOUTH EAST
 		bomb_south_east.anim.PushBack({ 178, 549, 45, 45 });
@@ -155,8 +155,8 @@ ModuleMarion::ModuleMarion()
 		bomb_south_east.anim.PushBack({ 229, 663, 45, 45 });
 		bomb_south_east.anim.speed = 0.3f;
 		bomb_south_east.anim.loop = false;
-		bomb_south_east.speed.x = 2.12f;
-		bomb_south_east.speed.y = 2.12f;
+		bomb_south_east.speed.x = 2.47f;
+		bomb_south_east.speed.y = 2.47f;
 
 		//SOUTH WEST
 		bomb_south_west.anim.PushBack({ 337, 549, 45, 45 });
@@ -179,8 +179,8 @@ ModuleMarion::ModuleMarion()
 		bomb_south_west.anim.PushBack({ 330, 663, 45, 45 });
 		bomb_south_west.anim.speed = 0.3f;
 		bomb_south_west.anim.loop = false;
-		bomb_south_west.speed.x = -2.12f;
-		bomb_south_west.speed.y = 2.12f;
+		bomb_south_west.speed.x = -2.47f;
+		bomb_south_west.speed.y = 2.47f;
 
 		//NORTH WEST
 		bomb_north_west.anim.PushBack({ 496, 549, 45, 45});
@@ -203,8 +203,8 @@ ModuleMarion::ModuleMarion()
 		bomb_north_west.anim.PushBack({ 530, 663, 45, 45 });
 		bomb_north_west.anim.speed = 0.3f;
 		bomb_north_west.anim.loop = false;
-		bomb_north_west.speed.x = -2.12f;
-		bomb_north_west.speed.y = -2.12f;
+		bomb_north_west.speed.x = -2.47f;
+		bomb_north_west.speed.y = -2.47f;
 	}
 }
 

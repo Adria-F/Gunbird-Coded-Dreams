@@ -54,6 +54,7 @@ public:
 	//Time of the bomb attack
 	bool bomb_attacking;
 	int bomb_count;
+	iPoint bomb_pos;
 	Uint32 bomb_timer_start = 0;
 	Uint32 bomb_timer_total = (Uint32)(2.0f * 0.5f * 150.0f);
 	Uint32 bomb_timer_now;
