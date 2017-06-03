@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModulePowerUp.h"
 
 Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
@@ -163,4 +164,9 @@ void Enemy_Flying_Machine::Move()
 			lower_level = true;
 		}
 	}
+}
+
+void Enemy_Flying_Machine::Drop()
+{
+	App->powerup->AddPowerUp(UPGRADE, App->render->camera.x + position.x + 45, App->render->camera.y + position.y + 34);
 }

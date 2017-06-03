@@ -4,6 +4,7 @@
 #include "ModuleCollision.h"
 #include "p2Point.h"
 #include "ModuleRender.h"
+#include "ModulePowerUp.h"
 
 Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 {
@@ -105,6 +106,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	points = 5000;
 	extra_anim = false;
 	explosion_type = MID2; //Explosion type
+	this->wave = wave;
 	
 	//shoting mechanic
 	shoot = particle_type::P_BIG_SHOT;
@@ -144,4 +146,16 @@ void Enemy_Tank::DeadAnim()
 {
 	animation = &dead;
 	position.y += 0.09f;
+}
+
+void Enemy_Tank::Drop()
+{
+	if (wave == 1)
+	{
+		App->powerup->AddPowerUp(UPGRADE, App->render->camera.x + position.x + 55, App->render->camera.y + position.y + 32);
+	}
+	else if (wave == 2)
+	{
+		App->powerup->AddPowerUp(BOMB, App->render->camera.x + position.x + 55, App->render->camera.y + position.y + 32);
+	}
 }

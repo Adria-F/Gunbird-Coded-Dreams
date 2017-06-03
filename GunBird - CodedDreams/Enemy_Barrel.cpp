@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
+#include "ModulePowerUp.h"
 
 Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 {
@@ -58,4 +59,9 @@ void Enemy_Barrel::DeadAnim()
 {
 	animation = &dead;
 	position.y += 0.09f;
+}
+
+void Enemy_Barrel::Drop()
+{
+	App->powerup->AddPowerUp(COIN, App->render->camera.x + position.x + 16, App->render->camera.y + position.y + 7);
 }

@@ -14,6 +14,7 @@ public:
 
 	void Move();
 	void DeadAnim();
+	void Drop();
 
 public:
 

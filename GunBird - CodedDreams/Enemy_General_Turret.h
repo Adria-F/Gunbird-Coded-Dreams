@@ -17,6 +17,7 @@ public:
 	void Move();
 	void DeadAnim();
 	void ExtraAnim(SDL_Texture* texture);
+	void Drop();
 
 public:
 

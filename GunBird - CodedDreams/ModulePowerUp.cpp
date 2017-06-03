@@ -42,25 +42,28 @@ update_status ModulePowerUp::Update()
 {
 	if (App->render->debugging && App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
-		AddPowerUp(powerup_type::UPGRADE, 100, 150);
+		AddPowerUp(powerup_type::COIN, 100, 150);
 	}
 	
 	for (int i = 0; i < MAX_POWERUP; i++)
 	{
-		if (powerups[i] != nullptr && (powerups[i]->part->type == P_UPGRADE || powerups[i]->part->type == P_BOMB))
+		if (powerups[i] != nullptr)
 		{
 			powerups[i]->Update();
-			if (powerups[i]->part->position.y <= 50 && powerups[i]->part->speed.y < 0)
+			if (powerups[i]->part->type == P_UPGRADE || powerups[i]->part->type == P_BOMB)
 			{
-				powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
-			}
-			if (powerups[i]->part->position.y >= (SCREEN_HEIGHT - 50 - 13 ) && powerups[i]->part->speed.y > 0)
-			{
-				powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
-			}
-			if (powerups[i]->part->position.x <= 0 || powerups[i]->part->position.x >= (SCREEN_WIDTH - 22))
-			{
-				powerups[i]->part->speed.x = -powerups[i]->part->speed.x;
+				if (powerups[i]->part->position.y <= 50 && powerups[i]->part->speed.y < 0)
+				{
+					powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
+				}
+				if (powerups[i]->part->position.y >= (SCREEN_HEIGHT - 50 - 13) && powerups[i]->part->speed.y > 0)
+				{
+					powerups[i]->part->speed.y = -powerups[i]->part->speed.y;
+				}
+				if (powerups[i]->part->position.x <= 0 || powerups[i]->part->position.x >= (SCREEN_WIDTH - 22))
+				{
+					powerups[i]->part->speed.x = -powerups[i]->part->speed.x;
+				}
 			}
 		}
 	}
@@ -132,7 +135,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				
 				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					if (App->player1->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					if (App->player1->shot_lvl < 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player1->character->upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
@@ -163,6 +166,16 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			case COIN:
+				for (int i = 0; i < MAX_POWERUP; i++)
+				{
+					if (powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->player1->points += 200;
+						App->audio->Load("assets/effects/gunbird_202 [EFFECT] Collect Coin.wav", App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
+					}
+				}
 				break;
 			}
 
@@ -175,7 +188,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				
 				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					if (App->player2->shot_lvl <= 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					if (App->player2->shot_lvl < 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player2->character->upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
@@ -206,6 +219,16 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			case COIN:
+				for (int i = 0; i < MAX_POWERUP; i++)
+				{
+					if (powerups[i] != nullptr && powerups[i]->part == c1->part)
+					{
+						App->player2->points += 200;
+						App->audio->Load("assets/effects/gunbird_202 [EFFECT] Collect Coin.wav", App->audio->EFFECT);
+						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
+					}
+				}
 				break;
 			}
 		}
@@ -215,7 +238,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 
 bool PowerUp::Update()
 {
-	if (part != nullptr && part->anim.Finished() && active == false)
+	if (part != nullptr && (part->anim.Finished() || type == COIN) && active == false)
 	{
 		active = true;
 	}

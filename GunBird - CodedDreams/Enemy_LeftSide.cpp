@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "p2Point.h"
 #include "Enemy_CentralSide.h"
+#include "ModulePowerUp.h"
 
 Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 {
@@ -106,4 +107,9 @@ void Enemy_LeftSide::DeadAnim()
 {
 	animation = &dead;
 	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+}
+
+void Enemy_LeftSide::Drop()
+{
+	App->powerup->AddPowerUp(UPGRADE, App->render->camera.x + position.x + 37, App->render->camera.y + position.y + 44);
 }

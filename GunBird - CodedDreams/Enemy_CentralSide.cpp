@@ -59,7 +59,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(7000.0f);
 
 	//collider
-	collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_NONE, (Module*)App->enemies);
+	//collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
 Enemy_CentralSide::~Enemy_CentralSide()

@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "ModulePlayer.h"
 
-#define MAX_POWERUP 5
+#define MAX_POWERUP 10
 
 struct SDL_Texture;
 struct Particle;

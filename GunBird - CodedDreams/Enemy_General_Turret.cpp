@@ -6,6 +6,7 @@
 #include "ModuleSceneMine.h"
 #include "ModuleEnemies.h"
 #include "p2Point.h"
+#include "ModulePowerUp.h"
 
 #define PI 3.14159265
 
@@ -249,4 +250,12 @@ void Enemy_General_Turret::DeadAnim()
 {
 	animation = &dead;
 	position.y += 0.09f; //Perque es mogui a la mateixa velocitat que l'overlay
+}
+
+void Enemy_General_Turret::Drop()
+{
+	if (wave == 3)
+	{
+		App->powerup->AddPowerUp(COIN, App->render->camera.x + position.x + 8, App->render->camera.y + position.y + 9);
+	}
 }

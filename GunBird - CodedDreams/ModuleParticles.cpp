@@ -192,6 +192,7 @@ bool ModuleParticles::Start()
 	coin_particle.anim.PushBack({ 27, 57, 12, 16 });
 	coin_particle.anim.loop = true;
 	coin_particle.anim.speed = 0.25f;
+	coin_particle.speed.y = 0.09f + App->render->cam_speed;
 	
 	return true;
 }

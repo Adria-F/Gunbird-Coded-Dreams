@@ -12,6 +12,7 @@ public:
 	~Enemy_Flying_Machine();
 
 	void Move();
+	void Drop();
 
 public:
 

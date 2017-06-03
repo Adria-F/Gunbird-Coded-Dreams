@@ -13,6 +13,7 @@ public:
 
 	void Move();
 	void DeadAnim();
+	void Drop();
 
 public:
 	int state = 0;
