@@ -61,6 +61,7 @@ public:
 	Particle* shot_particle_lvl4_left;
 	Particle* shot_particle_lvl4_right;
 
+	Particle dropping_bomb;
 	Particle bomb_north;
 	Particle bomb_south;
 	Particle bomb_east;

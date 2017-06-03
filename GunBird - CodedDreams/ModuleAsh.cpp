@@ -62,15 +62,38 @@ ModuleAsh::ModuleAsh()
 	//Bomb animations
 	{
 		//bomb
-		bomb_north.anim.PushBack({ 0, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 222, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 444, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 666, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 888, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 1110, 0, 222, 222 });
-		bomb_north.anim.PushBack({ 1332, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 0, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 0, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 0, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 0, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 222, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 222, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 222, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 222, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 444, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 444, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 444, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 444, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 666, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 666, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 666, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 666, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 888, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 888, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 888, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 888, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 1110, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 1110, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 1110, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 1110, 0, 222, 222 });
+		dropping_bomb.anim.PushBack({ 0, 0, 0, 0 });
+		//dropping_bomb.anim.PushBack({ 1332, 0, 222, 222 });
+		dropping_bomb.anim.speed = 0.9f;
+		dropping_bomb.anim.loop = false;
+		dropping_bomb.life = 1000;
 
 		//start
+		bomb_north.anim.PushBack({ 0, 0, 222, 222 });
 		bomb_north.anim.PushBack({ 0, 222, 222, 222 });
 		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
 		bomb_north.anim.PushBack({ 222, 222, 222, 222 });
@@ -207,8 +230,9 @@ ModuleAsh::ModuleAsh()
 		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
 		bomb_north.anim.PushBack({ 1332, 1110, 222, 222 });
 		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
-		bomb_north.anim.speed = 0.3f;
+		bomb_north.anim.speed = 0.9f;
 		bomb_north.anim.loop = false;
+		bomb_north.life = 2750;
 	}
 }
 

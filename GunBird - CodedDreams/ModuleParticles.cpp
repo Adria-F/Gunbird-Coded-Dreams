@@ -31,6 +31,7 @@ bool ModuleParticles::Start()
 	MARION_bullet_texture = App->textures->Load("assets/characters/marion.png");
 
 	ASH_bullet_texture = App->textures->Load("assets/characters/ash.png");
+	ASH_bomb = App->textures->Load("assets/characters/Ash Bomb.png");
 
 	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
 	mid_shot_texture = App->textures->Load("Assets/enemies/Bullets Medium.png");
@@ -204,6 +205,8 @@ bool ModuleParticles::CleanUp()
 	MARION_bullet_texture = nullptr;
 	App->textures->Unload(ASH_bullet_texture);
 	ASH_bullet_texture = nullptr;
+	App->textures->Unload(ASH_bomb);
+	ASH_bomb = nullptr;
 
 	App->textures->Unload(big_shot_texture);
 	big_shot_texture = nullptr;
@@ -283,7 +286,7 @@ update_status ModuleParticles::Update()
 				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BOMB:
-				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(ASH_bomb, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
@@ -313,9 +316,12 @@ update_status ModuleParticles::Update()
 
 			if (p->position.x < -PARTICLES_MARGIN || p->position.x >(SCREEN_WIDTH + PARTICLES_MARGIN) || p->position.y < -PARTICLES_MARGIN || p->position.y >(SCREEN_HEIGHT + PARTICLES_MARGIN))
 			{
-				p->to_delete = true;
-				delete p;
-				active[i] = nullptr;
+				if (p->type != P_ASH_BOMB)
+				{
+					p->to_delete = true;
+					delete p;
+					active[i] = nullptr;
+				}
 			}
 		}
 
@@ -342,6 +348,11 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 			case COLLIDER_PLAYER1_SHOT:
 			case COLLIDER_PLAYER2_SHOT:
 				p->collider = App->collision->AddCollider({(int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this, p);
+				if (x_phase == 360)
+				{
+					p->collider->to_delete = true;
+					p->collider = nullptr;
+				}
 				if (shotAt == ANGLE)
 				{
 					vector.x = (x_phase < 90 || x_phase > 270) ? 1 : -1;
@@ -467,7 +478,7 @@ Particle::Particle()
 
 Particle::Particle(const Particle& p) :
 	anim(p.anim), position(p.position), speed(p.speed),
-	fx(p.fx), born(p.born), damage(p.damage)
+	fx(p.fx), born(p.born), damage(p.damage), life(p.life)
 {}
 
 Particle::~Particle()
@@ -486,6 +497,11 @@ bool Particle::Update()
 	if (collider != nullptr)
 	{
 		collider->SetPos(position.x, position.y);
+	}
+
+	if (SDL_GetTicks() - born > life)
+	{
+		to_delete = true;
 	}
 
 	return !(to_delete);

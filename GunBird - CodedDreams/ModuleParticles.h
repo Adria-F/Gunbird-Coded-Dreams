@@ -56,6 +56,7 @@ struct Particle
 	particle_type type;
 	bool going_up = true;
 	int damage = 1;
+	int life = 100000000;
 
 	Particle();
 	Particle(const Particle& p);
@@ -81,6 +82,7 @@ public:
 	SDL_Texture* MARION_bullet_texture = nullptr;
 
 	SDL_Texture* ASH_bullet_texture = nullptr;
+	SDL_Texture* ASH_bomb = nullptr;
 
 	SDL_Texture* upgrade_texture = nullptr;
 	SDL_Texture* bomb_texture = nullptr;
