@@ -51,6 +51,7 @@ public:
 	particle_type shot_lvl4;
 	particle_type shot_lvl4_right;
 	particle_type shot_lvl4_left;
+	particle_type bomb;
 	Particle* shot_particle_lvl1;
 	Particle* shot_particle_lvl2;
 	Particle* shot_particle_lvl3;

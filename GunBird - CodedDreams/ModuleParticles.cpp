@@ -28,13 +28,9 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	MARION_bullet_p1_texture = App->textures->Load("assets/characters/marion.png");
-	MARION_bullet_p2_texture = App->textures->Load("assets/characters/marion.png");
+	MARION_bullet_texture = App->textures->Load("assets/characters/marion.png");
 
-	ASH_bullet_p1_texture = App->textures->Load("assets/characters/ash.png");
-	ASH_bullet_p2_texture = App->textures->Load("assets/characters/ash.png");
-	ASH_bullet_p3_texture = App->textures->Load("assets/characters/ash.png");
-	ASH_bullet_p4_texture = App->textures->Load("assets/characters/ash.png");
+	ASH_bullet_texture = App->textures->Load("assets/characters/ash.png");
 
 	big_shot_texture = App->textures->Load("assets/enemies/Bullets Big.png");
 	mid_shot_texture = App->textures->Load("Assets/enemies/Bullets Medium.png");
@@ -193,18 +189,10 @@ bool ModuleParticles::Start()
 // Unload assets
 bool ModuleParticles::CleanUp()
 {
-	App->textures->Unload(MARION_bullet_p1_texture);
-	MARION_bullet_p1_texture = nullptr;
-	App->textures->Unload(MARION_bullet_p2_texture);
-	MARION_bullet_p2_texture = nullptr;
-	App->textures->Unload(ASH_bullet_p1_texture);
-	ASH_bullet_p1_texture = nullptr;
-	App->textures->Unload(ASH_bullet_p2_texture);
-	ASH_bullet_p2_texture = nullptr;
-	App->textures->Unload(ASH_bullet_p3_texture);
-	ASH_bullet_p3_texture = nullptr;
-	App->textures->Unload(ASH_bullet_p4_texture);
-	ASH_bullet_p4_texture = nullptr;
+	App->textures->Unload(MARION_bullet_texture);
+	MARION_bullet_texture = nullptr;
+	App->textures->Unload(ASH_bullet_texture);
+	ASH_bullet_texture = nullptr;
 
 	App->textures->Unload(big_shot_texture);
 	big_shot_texture = nullptr;
@@ -251,28 +239,34 @@ update_status ModuleParticles::Update()
 			switch (p->type)
 			{
 			case P_MARION_BULLET_P1:
-				App->render->Blit(MARION_bullet_p1_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MARION_BULLET_P2:
-				App->render->Blit(MARION_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MARION_BULLET_P3_LEFT:
-				App->render->Blit(MARION_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MARION_BULLET_P3_RIGHT:
-				App->render->Blit(MARION_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_BOMB:
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P1:
-				App->render->Blit(ASH_bullet_p1_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P2:
-				App->render->Blit(ASH_bullet_p2_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P3:
-				App->render->Blit(ASH_bullet_p3_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P4:
-				App->render->Blit(ASH_bullet_p4_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_ASH_BOMB:
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_UPGRADE:
 				App->render->Blit(upgrade_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
@@ -423,7 +417,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		
 		// Always destroy particles that collide
-		if (active[i] != nullptr && active[i]->collider == c1)
+		if (active[i] != nullptr && active[i]->collider == c1 && (active[i]->type != P_MARION_BOMB && active[i]->type != P_ASH_BOMB))
 		{
 			//friendly shots with enemy. Animation here!
 

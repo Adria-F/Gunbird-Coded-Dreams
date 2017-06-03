@@ -154,10 +154,10 @@ update_status Player::Update()
 			{
 				if (bomb_count == 0 || bomb_count == 2)
 				{
-					App->particles->AddParticle(App->player1->character->bomb_north, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->player1->character->bomb_south, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->player1->character->bomb_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->player1->character->bomb_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_north, App->player1->character->bomb, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_south, App->player1->character->bomb, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_east, App->player1->character->bomb, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_west, App->player1->character->bomb, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
 					bomb_count++;
 					bomb_timer_start = SDL_GetTicks();
 				}

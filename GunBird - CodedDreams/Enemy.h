@@ -75,6 +75,7 @@ public:
 	int id = -1; //Id of an enemy inside a wave
 	int points = 0; //Points that give to the player
 	Collider* collider = nullptr;
+	int white_counter;
 
 public:
 	Enemy(int x, int y, int wave = 1, int id = 0);

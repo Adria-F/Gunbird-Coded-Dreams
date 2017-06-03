@@ -220,10 +220,11 @@ void Enemy::Draw(SDL_Texture* sprites)
 	if (animation != nullptr)
 	{
 		sprites = NormalSprite;
-		if (hit && WhiteSprite != nullptr)
+		if (hit && WhiteSprite != nullptr && white_counter > 3)
 		{
 			sprites = WhiteSprite;
 			hit = false;
+			white_counter = 0;
 		}
 		else if (RedSprite != nullptr && lives <= (initial_hp/5) && lives > 0 && Red_now >= Red_Total_time && Red_now <= (Red_Total_time + 50))
 		{
@@ -239,6 +240,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 	
 		if (extra_anim && lives > 0)
 			ExtraAnim(sprites);
+		white_counter++;
 	}
 	if (lives <= 0 && die == false)
 		die = explode();
@@ -258,11 +260,17 @@ void Enemy::OnCollision(Collider* collider)
 		case P_MARION_BULLET_P2:
 			lives -= 2;
 			break;
+		case P_MARION_BOMB:
+			lives -= 1;
+			break;
 		case P_ASH_BULLET_P1:
 			lives -= 1;
 			break;
 		case P_ASH_BULLET_P2:
 			lives -= 2;
+			break;
+		case P_ASH_BOMB:
+			lives -= 1;
 			break;
 		default:
 			lives -= 1;
