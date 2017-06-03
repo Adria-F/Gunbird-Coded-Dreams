@@ -90,7 +90,7 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
-	lower_level = false;
+	lower_level = true;
 	explosion_type = MID1;
 	Shot_Total_time = (Uint32)(4000.0f);
 	Shot_Total_time1 = (Uint32)(200.0f);

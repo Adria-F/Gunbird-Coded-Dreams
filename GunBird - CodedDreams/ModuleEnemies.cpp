@@ -74,7 +74,7 @@ update_status ModuleEnemies::Update()
 	{
 		for (uint i = 0; i < MAX_ENEMIES; ++i)
 
-			if (enemies[i] != nullptr && (enemies[i]->collider != nullptr) && (enemies[i]->lower_level)) enemies[i]->Draw(enemies[i]->sprites);
+			if (enemies[i] != nullptr && (enemies[i]->lower_level)) enemies[i]->Draw(enemies[i]->sprites);
 	}
 	else
 	{
