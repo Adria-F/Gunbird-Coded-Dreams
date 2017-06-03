@@ -12,7 +12,7 @@ public:
 	~Enemy_CentralSide();
 
 	void Move();
-
+	void DeadAnim();
 public:
 
 	int state = 0;
@@ -20,6 +20,7 @@ public:
 	Animation moving;
 	Animation vault_closing;
 	Animation vault_open;
+	Animation death;
 
 };
 

@@ -60,6 +60,10 @@ void Enemy_RightSide::Move()
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
+	else
+	{
+		lives = 0;
+	}
 	if (App->render->camera.y >= -2077) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
@@ -96,5 +100,9 @@ void Enemy_RightSide::Move()
 void Enemy_RightSide::DeadAnim()
 {
 	animation = &dead;
-	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	}
+	
 }

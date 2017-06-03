@@ -116,6 +116,10 @@ void Enemy_Antiaircraft_left::Move()
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
+	else
+	{
+		lives = 0;
+	}
 
 	if (App->render->camera.y >= -1839) //-1839
 	{
@@ -146,5 +150,9 @@ void Enemy_Antiaircraft_left::Move()
 void Enemy_Antiaircraft_left::DeadAnim()
 {
 	animation = &left_death;
-	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	}
+	
 }
