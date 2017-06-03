@@ -65,7 +65,7 @@ public:
 	Particle bomb_east;
 	Particle bomb_west;
 	Particle bomb_north_east;
-	Particle bomb_north_weast;
+	Particle bomb_north_west;
 	Particle bomb_south_east;
 	Particle bomb_south_west;
 };

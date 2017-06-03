@@ -143,13 +143,33 @@ update_status Player::Update()
 		}
 
 		//Bomb system
-		if (bomb_attacking)
+		if (bomb_attacking && (bomb_count == 0 || bomb_timer_now > bomb_timer_total))
 		{
-			if (bomb_timer_now > bomb_timer_total)
+			if (bomb_count > 3 && bomb_timer_now > 1500)
 			{
-				
-				bomb_timer_start = SDL_GetTicks();
+				bomb_count = 0;
 				bomb_attacking = false;
+			}
+			else
+			{
+				if (bomb_count == 0 || bomb_count == 2)
+				{
+					App->particles->AddParticle(App->player1->character->bomb_north, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_south, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					bomb_count++;
+					bomb_timer_start = SDL_GetTicks();
+				}
+				else if (bomb_count == 1 || bomb_count == 3)
+				{
+					App->particles->AddParticle(App->player1->character->bomb_north_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_north_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_south_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->player1->character->bomb_south_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
+					bomb_count++;	
+					bomb_timer_start = SDL_GetTicks();
+				}			
 			}
 		}
 

@@ -152,10 +152,6 @@ update_status ModuleInput::PreUpdate()
 			App->player1->bomb_timer_start = SDL_GetTicks();
 			App->audio->Load(App->player1->character->bomb_path, App->audio->EFFECT);
 			App->audio->Play(App->audio->EFFECT);
-			App->particles->AddParticle(App->player1->character->bomb_north, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->player1->character->bomb_south, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->player1->character->bomb_east, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->player1->character->bomb_west, App->player1->character->shot_lvl4, App->player1->position.x, App->player1->position.y, COLLIDER_PLAYER_SHOT);
 		}
 
 		//Player 2
