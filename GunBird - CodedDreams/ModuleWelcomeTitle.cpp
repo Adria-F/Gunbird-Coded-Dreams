@@ -33,11 +33,16 @@ bool ModuleWelcomeTitle::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	graphics = App->textures->Load("assets/maps/credit-insert_welcome-page.png");
+	graphics = App->textures->Load("assets/maps/welcome page.png");
 
 	LOG("Loading music");
 	App->audio->Load("assets/music/welcome_title.ogg", App->audio->MUSIC);
 	App->audio->Play(App->audio->MUSIC);
+
+	credits_anim.PushBack({ 0, 0, 224, 320 });
+	credits_anim.PushBack({ 224, 0, 224, 320 });
+	credits_anim.speed = 0.03f;
+	credits_anim.loop = true;
 
 	fading = false;
 
@@ -68,7 +73,9 @@ update_status ModuleWelcomeTitle::Update()
 {
 	// Draw everything --------------------------------------
 	
-	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // Welcome title Screen
+	App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &credits_anim.GetCurrentFrame(), 0.75f);
+
+	//App->render->Blit(graphics, App->render->camera.x, App->render->camera.y, &background, 0.75f); // Welcome title Screen
 
 	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{

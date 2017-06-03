@@ -22,6 +22,8 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect background;
+	Animation credits_anim;
+
 	bool fading;
 };
 
