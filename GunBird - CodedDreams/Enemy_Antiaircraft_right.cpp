@@ -41,15 +41,15 @@ Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(
 	right_idle.loop = true;
 
 	//right death animation
-	right_death.PushBack({ 6, 463, 67, 55 });
-	right_death.PushBack({ 76, 463, 67, 55 });
-	right_death.PushBack({ 146, 463, 67, 55 });
-	right_death.PushBack({ 216, 463, 67, 55 });
-	right_death.PushBack({ 286, 463, 67, 55 });
-	right_death.PushBack({ 356, 463, 67, 55 });
+	right_death.PushBack({ 6, 463, 61, 46 });
+	right_death.PushBack({ 76, 463, 61, 46 });
+	right_death.PushBack({ 146, 463, 61, 46 });
+	right_death.PushBack({ 216, 463, 61, 46 });
+	right_death.PushBack({ 286, 463, 61, 46 });
+	right_death.PushBack({ 356, 463, 61, 46 });
 
-	right_death.PushBack({ 6, 520, 67, 55 });
-	right_death.PushBack({ 76, 520, 67, 55 });
+	right_death.PushBack({ 6, 520, 61, 46 });
+	right_death.PushBack({ 76, 520, 61, 46 });
 	right_death.speed = 0.2f;
 	right_death.loop = true;
 	
