@@ -14,7 +14,7 @@ The objective is to get as much points as possible.
 
 ### Game Controls
 
-Press change between screns and choose characters
+Press space to change between screns and choose characters
 
 F1: To activate debug mode
 
