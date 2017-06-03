@@ -22,6 +22,7 @@ public:
 	Animation left_opening;
 	Animation left_idle;
 	Animation left_death;
+	bool collider_state = 0;
 
 
 	int state = 0;

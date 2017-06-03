@@ -95,7 +95,7 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 1;
+	lives = 25;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
@@ -121,9 +121,10 @@ void Enemy_Antiaircraft_left::Move()
 		lives = 0;
 	}
 
-	if (left_idle.GetCurrentFrameNum() == 2 && collider == NULL)
+	if (left_idle.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
 		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider_state = 1;
 	}
 	if (App->render->camera.y >= -1839) //-1839
 	{
@@ -157,6 +158,7 @@ void Enemy_Antiaircraft_left::DeadAnim()
 	if (App->render->camera.y <= -1300) //-1839
 	{
 		position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+		collider = NULL;
 	}
 	
 }

@@ -84,7 +84,7 @@ Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(
 
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 1;
+	lives = 25;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
@@ -109,9 +109,10 @@ void Enemy_Antiaircraft_right::Move()
 	{
 		lives = 0;
 	}
-	if (right_idle.GetCurrentFrameNum() == 2 && collider == NULL)
+	if (right_idle.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
 		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider_state = 1;
 	}
 	if (App->render->camera.y >= -1839) //-1839
 	{

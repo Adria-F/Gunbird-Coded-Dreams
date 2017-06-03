@@ -358,7 +358,7 @@ update_status ModuleSceneMine::Update()
 	if (App->player1->IsEnabled() == false && App->player2->IsEnabled() == false)
 		lost = true;
 
-	if (App->render->camera.y >= -500 && fading == false && App->fade->GetFadeState() == false)
+	if (App->render->camera.y >= -1200 && fading == false && App->fade->GetFadeState() == false)
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 		fading = true;

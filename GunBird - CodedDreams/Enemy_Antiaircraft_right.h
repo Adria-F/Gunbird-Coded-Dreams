@@ -24,7 +24,7 @@ public:
 	Animation right_death;
 
 	int state = 0;
-
+	bool collider_state = 0;
 };
 
 #endif // !__ANTIAIRCRAFT_RIGHT_H__

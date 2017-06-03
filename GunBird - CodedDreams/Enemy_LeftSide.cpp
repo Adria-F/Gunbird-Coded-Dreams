@@ -25,7 +25,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	notmoving.PushBack({ 0, 0, 74, 89 });
 	notmoving.PushBack({ 76, 0, 74, 89 });
 	notmoving.speed = 0.2f;
-	notmoving.loop = true;
+	notmoving.loop = false;
 
 	//Death animation
 	dead.PushBack({ 0, 89, 74, 89 });
@@ -45,7 +45,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 12; //120
+	lives = 50; //120
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
@@ -55,7 +55,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	Shot_Total_time3 = (Uint32)(2000.0f);
 	Shot_Total_time2 = (Uint32)(4000.0f);
 
-	collider = NULL;
+	
 }
 
 Enemy_LeftSide::~Enemy_LeftSide()
@@ -74,9 +74,10 @@ void Enemy_LeftSide::Move()
 		lives = 0;
 	}
 
-	if (moving.GetCurrentFrameNum() == 1 && collider == NULL)
+	if (moving.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 64, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider_state = 1;
 	}
 
 	if (App->render->camera.y >= -2146) //-2146

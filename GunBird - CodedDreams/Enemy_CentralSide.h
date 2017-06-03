@@ -16,6 +16,7 @@ public:
 public:
 
 	int state = 0;
+	bool collider_state = 0;
 	Path path;
 	Animation moving;
 	Animation vault_closing;
