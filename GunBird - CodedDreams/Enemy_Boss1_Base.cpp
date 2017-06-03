@@ -36,6 +36,7 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	lives = 1;
 	initial_hp = lives;
 	extra_anim = false;
+	lower_level = true;
 
 	//Set path
 	if (id == 1)
@@ -57,8 +58,8 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	if(wave == 1)
 	{
 		App->enemies->AddEnemy(BOSS1_BASE, 32, 3145, 0, 2);
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 30, 3165, 0, 1); //left
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 128, 3165, 0, 2); //right
+		App->enemies->AddEnemy(ANTIAIRCRAFT_LEFT, 30, 3165); //left
+		App->enemies->AddEnemy(ANTIAIRCRAFT_RIGHT, 128, 3165); //right
 		App->enemies->AddEnemy(RIGHTSIDE, 112, 3125);
 		App->enemies->AddEnemy(LEFTSIDE, 38, 3125);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 3110);
@@ -67,8 +68,8 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	if (wave == 2)
 	{
 		App->enemies->AddEnemy(BOSS1_BASE, 32, 2332, 0, 2); //proctection
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 31, 2325, 0, 1); // left
-		App->enemies->AddEnemy(ANTIAIRCRAFT, 126, 2325, 0, 2); // right
+		App->enemies->AddEnemy(ANTIAIRCRAFT_LEFT, 31, 2325); // left
+		App->enemies->AddEnemy(ANTIAIRCRAFT_RIGHT, 126, 2325); // right
 		App->enemies->AddEnemy(RIGHTSIDE, 112, 2310);
 		App->enemies->AddEnemy(LEFTSIDE, 38, 2310);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 2300);
@@ -88,5 +89,5 @@ void Enemy_Boss1_Base::ExtraAnim(SDL_Texture* texture)
 void Enemy_Boss1_Base::Move()
 {
 	position = original_pos + path.GetCurrentPosition(&animation);
-	lower_level = true;
+
 }
