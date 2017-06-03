@@ -58,6 +58,158 @@ ModuleAsh::ModuleAsh()
 	onhit.PushBack({ 203, 8, 31, 31 });
 	onhit.PushBack({ 16, 41, 31, 31 });
 	onhit.speed = 0.25f;*/
+
+	//Bomb animations
+	{
+		//bomb
+		bomb_north.anim.PushBack({ 0, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 222, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 444, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 666, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 888, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 1110, 0, 222, 222 });
+		bomb_north.anim.PushBack({ 1332, 0, 222, 222 });
+
+		//start
+		bomb_north.anim.PushBack({ 0, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 222, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		//bucle (3)
+		bomb_north.anim.PushBack({ 0, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		bomb_north.anim.PushBack({ 0, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		//
+		bomb_north.anim.PushBack({ 0, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		bomb_north.anim.PushBack({ 0, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		//
+		bomb_north.anim.PushBack({ 0, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 444, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		bomb_north.anim.PushBack({ 0, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 666, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		//end
+		bomb_north.anim.PushBack({ 0, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 888, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+
+		bomb_north.anim.PushBack({ 0, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 222, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 444, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 666, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 888, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1110, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.PushBack({ 1332, 1110, 222, 222 });
+		bomb_north.anim.PushBack({ 0, 0, 0, 0 });
+		bomb_north.anim.speed = 0.3f;
+		bomb_north.anim.loop = false;
+	}
 }
 
 ModuleAsh::~ModuleAsh()
