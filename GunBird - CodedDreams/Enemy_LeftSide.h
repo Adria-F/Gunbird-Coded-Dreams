@@ -20,6 +20,7 @@ public:
 	Path path;
 	Animation moving;
 	Animation dead;
+	Animation notmoving;
 
 };
 

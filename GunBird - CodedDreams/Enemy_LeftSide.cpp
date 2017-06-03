@@ -21,6 +21,12 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	moving.speed = 0.2f;
 	moving.loop = true;
 
+	//notmoving
+	notmoving.PushBack({ 0, 0, 74, 89 });
+	notmoving.PushBack({ 76, 0, 74, 89 });
+	notmoving.speed = 0.2f;
+	notmoving.loop = true;
+
 	//Death animation
 	dead.PushBack({ 0, 89, 74, 89 });
 	dead.PushBack({ 76, 89, 74, 89 });
@@ -34,7 +40,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	dead.loop = true;
 
 	//Set path
-	path.PushBack({ 0.0f, 0.09f }, 670, &moving); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+	path.PushBack({ 0.0f, 0.09f }, 670, &notmoving); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 	path.PushBack({ 0.0f, -0.9f }, 300, &moving);
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
