@@ -81,7 +81,7 @@ bool ModuleAsh::Start()
 	bomb = particle_type::P_ASH_BOMB;
 	shot_particle_lvl1 = &App->particles->ASH_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->ASH_bullet_p2_particle;
-	shot_particle_lvl3 = &App->particles -> ASH_bullet_p3_particle;
+	shot_particle_lvl3 = &App->particles ->ASH_bullet_p3_particle;
 
 	return ret;
 }

@@ -131,7 +131,7 @@ void Enemy_Tank::Move()
 		Shot_Start_time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, 50, PLAYER);
 		App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 65, position.y + App->render->camera.y + 22, COLLIDER_ENEMY_SHOT, 0, -50);	
-	}
+	} 
 	if (Shot2_now > Shot_Total_time2 && animation == &idle)
 	{
 		Shot2_start_time = SDL_GetTicks();
