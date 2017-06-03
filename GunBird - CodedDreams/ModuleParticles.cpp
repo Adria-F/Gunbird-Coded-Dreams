@@ -54,9 +54,9 @@ bool ModuleParticles::Start()
 	MARION_bullet_p2_particle.damage = 2;
 	
 	//stage 3
-	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 65, 19, 33 });
-	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 96, 19, 33 });
-	MARION_bullet_p3_left_particle.anim.PushBack({ 220, 127, 19, 33 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 225, 67, 5, 28 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 225, 97, 5, 28 });
+	MARION_bullet_p3_left_particle.anim.PushBack({ 225, 127, 5, 28 });
 
 	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 65, 19, 33 });
 	MARION_bullet_p3_right_particle.anim.PushBack({ 250, 96, 19, 33 });
