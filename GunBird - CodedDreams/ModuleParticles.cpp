@@ -324,6 +324,18 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 			{
 			case COLLIDER_PLAYER_SHOT:
 				p->collider = App->collision->AddCollider({(int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this, p);
+				if (shotAt == ANGLE)
+				{
+					vector.x = (x_phase < 90 || x_phase > 270) ? 1 : -1;
+					vector.y = vector.x * tan(x_phase * PI / 180);
+					vector.y = -vector.y;
+
+					modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+					vector.x /= modul;
+					vector.y /= modul;
+					p->speed.x = vector.x * BIG_SHOT_SPEED;
+					p->speed.y = vector.y * BIG_SHOT_SPEED;
+				}
 				break;
 			case COLLIDER_POWER_UP:
 				p->collider = App->collision->AddCollider({ (int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h }, collider_type, App->powerup, p);
