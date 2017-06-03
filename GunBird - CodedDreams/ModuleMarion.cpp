@@ -233,6 +233,7 @@ bool ModuleMarion::Start()
 	shot_particle_lvl1 = &App->particles->MARION_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->MARION_bullet_p2_particle;
 	shot_particle_lvl3_left = &App->particles->MARION_bullet_p3_left_particle;
+	shot_particle_lvl3_right = &App->particles->MARION_bullet_p3_right_particle;
 	shot_particle_lvl4 = &App->particles->MARION_bullet_p4_left_particle;
 	
 	return ret;

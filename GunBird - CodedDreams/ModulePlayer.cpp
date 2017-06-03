@@ -117,8 +117,8 @@ update_status Player::Update()
 				{
 					if (character == (ModuleCharacter*)App->marion)
 					{
-						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
 					}
 					else
