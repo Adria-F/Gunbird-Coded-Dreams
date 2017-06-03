@@ -309,11 +309,9 @@ update_status ModuleSceneMine::Update()
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 	{
 		//PLATFORMS
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 773, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 1318, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 1625, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 2405, &bg_platfroms.GetCurrentFrame(), 0.75f);
-		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 2810, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 727, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 1687, &bg_platfroms.GetCurrentFrame(), 0.75f);
+		App->render->Blit(graphics_bg_platfroms_text, App->render->camera.x + 1, App->render->camera.y + 2487, &bg_platfroms.GetCurrentFrame(), 0.75f);
 	}
 
 	App->enemies->draw_underlayed = true;
