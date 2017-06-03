@@ -168,10 +168,10 @@ update_status Player::Update()
 					}
 					else if (bomb_count == 1 || bomb_count == 3)
 					{
-						App->particles->AddParticle(character->bomb_north_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
-						App->particles->AddParticle(character->bomb_north_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
-						App->particles->AddParticle(character->bomb_south_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
-						App->particles->AddParticle(character->bomb_south_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_north_west, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_north_east, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_south_west, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_south_east, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
 						bomb_count++;
 						bomb_timer_start = SDL_GetTicks();
 					}
