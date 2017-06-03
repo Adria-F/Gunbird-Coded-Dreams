@@ -27,9 +27,8 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	dead.PushBack({ 228, 89, 74, 89 });
 	dead.PushBack({ 304, 89, 74, 89 });
 	dead.PushBack({ 0, 178, 74, 89 });
+	dead.PushBack({ 76, 178, 74, 89 });
 	dead.PushBack({ 152, 178, 74, 89 });
-	dead.PushBack({ 228, 178, 74, 89 });
-	dead.PushBack({ 304, 178, 74, 89 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 
