@@ -17,10 +17,10 @@ The objective is to get as much points as possible.
 
 ### Roles
 
-Coders: [Adrià Ferrer|https://github.com/Adria-F] and [Norman Benet|https://github.com/Normanbg]
+Coders: [Adrià Ferrer](https://github.com/Adria-F) and [Norman Benet](https://github.com/Normanbg)
 
-QA: [Vladimir Agache|https://github.com/VladimirA97]
+QA: [Vladimir Agache](https://github.com/VladimirA97)
 
-Manager: [Josep Pi|https://github.com/joseppi]
+Manager: [Josep Pi](https://github.com/joseppi)
 
-Art: [Pau Llopart|https://github.com/Paxillop]
+Art: [Pau Llopart](https://github.com/Paxillop)
