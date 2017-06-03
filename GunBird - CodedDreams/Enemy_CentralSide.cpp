@@ -45,6 +45,11 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	vault_closing.speed = 0.2f;
 	vault_closing.loop = false;
 
+	//Death
+	death.PushBack({ 0, 0, 0, 0, });
+	death.speed = 0.02f;
+	death.loop = false;
+
 	//Set path
 	path.PushBack({ 0.0f, 0.09f }, 640, &vault_open);
 	path.PushBack({ 0.0f, 0.09f }, 30, &vault_closing);
@@ -54,12 +59,14 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1;
 	initial_hp = lives;
-	extra_anim = true;
+	extra_anim = false;
+	lower_level = true;
+	explosion_type = MID1;
 	Shot_Total_time = (Uint32)(400.0f);
 	Shot_Total_time1 = (Uint32)(7000.0f);
 
 	//collider
-	//collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_CentralSide::~Enemy_CentralSide()
@@ -72,6 +79,10 @@ void Enemy_CentralSide::Move()
 	if (App->render->camera.y <= -1300) //-1839
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
+	}
+	else
+	{
+		lives = 0;
 	}
 	if (App->render->camera.y >= -2146) //-2146
 	{
@@ -130,5 +141,10 @@ void Enemy_CentralSide::Move()
 		}
 	}
 	
-	lower_level = true;
+	
+}
+
+void Enemy_CentralSide::DeadAnim()
+{
+	animation = &death;
 }

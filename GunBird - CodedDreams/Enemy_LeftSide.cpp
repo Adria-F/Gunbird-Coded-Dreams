@@ -63,6 +63,10 @@ void Enemy_LeftSide::Move()
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
+	else
+	{
+		lives = 0;
+	}
 	
 
 	if (App->render->camera.y >= -2146) //-2146
@@ -106,7 +110,10 @@ void Enemy_LeftSide::Move()
 void Enemy_LeftSide::DeadAnim()
 {
 	animation = &dead;
-	position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	if (App->render->camera.y <= -1300) //-1839
+	{
+		position.y += -0.3f; //Perque es mogui a la mateixa velocitat que l'overlay
+	}
 }
 
 void Enemy_LeftSide::Drop()

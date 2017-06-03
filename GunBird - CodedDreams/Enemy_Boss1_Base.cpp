@@ -86,6 +86,7 @@ void Enemy_Boss1_Base::ExtraAnim(SDL_Texture* texture)
 
 	App->render->Blit(texture, App->render->camera.x + position.x + 5, App->render->camera.y + position.y - 9, &protection.GetCurrentFrame());
 }
+
 void Enemy_Boss1_Base::Move()
 {
 	if (App->render->camera.y <= -1300) //-1839
