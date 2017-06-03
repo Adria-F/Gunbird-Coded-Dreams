@@ -47,7 +47,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(1500.0f);
 	Shot_Total_time2 = (Uint32)(3500.0f);
 
-	collider = App->collision->AddCollider({ x, y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = NULL;
 }
 
 Enemy_RightSide::~Enemy_RightSide()
@@ -65,6 +65,12 @@ void Enemy_RightSide::Move()
 	{
 		lives = 0;
 	}
+
+	if (moving.GetCurrentFrameNum() == 1 && collider == NULL)
+	{
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	}
+
 	if (App->render->camera.y >= -2077) //-2146
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;

@@ -66,7 +66,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(7000.0f);
 
 	//collider
-	collider = App->collision->AddCollider({ x, y, 48, 102 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = NULL;
 }
 
 Enemy_CentralSide::~Enemy_CentralSide()
@@ -83,6 +83,10 @@ void Enemy_CentralSide::Move()
 	else
 	{
 		lives = 0;
+	}
+	if (moving.GetCurrentFrameNum() == 2 && collider == NULL)
+	{
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 48, 102 }, COLLIDER_ENEMY, (Module*)App->enemies);
 	}
 	if (App->render->camera.y >= -2146) //-2146
 	{

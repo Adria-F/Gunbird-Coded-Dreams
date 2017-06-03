@@ -91,7 +91,7 @@ Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(
 	explosion_type = MID1;
 	Shot_Total_time = (Uint32)(4000.0f);
 	Shot_Total_time1 = (Uint32)(200.0f);
-	collider = App->collision->AddCollider({ x, y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = NULL;
 }
 
 Enemy_Antiaircraft_right::~Enemy_Antiaircraft_right()
@@ -104,13 +104,15 @@ void Enemy_Antiaircraft_right::Move()
 	if (App->render->camera.y <= -1300) //-1839
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
-		
 	}
 	else
 	{
 		lives = 0;
 	}
-	
+	if (right_idle.GetCurrentFrameNum() == 2 && collider == NULL)
+	{
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	}
 	if (App->render->camera.y >= -1839) //-1839
 	{
 			Shot_now = SDL_GetTicks() - Shot_Start_time;
