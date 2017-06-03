@@ -34,8 +34,8 @@ Application::Application()
 	modules[i++] = highscores = new ModuleHighscores();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = player1 = new Player();
-	modules[i++] = player2 = new Player();
+	modules[i++] = player1 = new Player(1);
+	modules[i++] = player2 = new Player(2);
 	modules[i++] = marion = new ModuleMarion();
 	modules[i++] = ash = new ModuleAsh();
 

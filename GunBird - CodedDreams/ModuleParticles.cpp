@@ -339,7 +339,8 @@ Particle* ModuleParticles::AddParticle(const Particle& particle, particle_type t
 			p->type = type;
 			switch (collider_type)
 			{
-			case COLLIDER_PLAYER_SHOT:
+			case COLLIDER_PLAYER1_SHOT:
+			case COLLIDER_PLAYER2_SHOT:
 				p->collider = App->collision->AddCollider({(int)p->position.x, (int)p->position.y, p->anim.GetCurrentFrame().w, p->anim.GetCurrentFrame().h}, collider_type, this, p);
 				if (shotAt == ANGLE)
 				{

@@ -250,7 +250,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER_SHOT && die == false)
+	if ((collider->type == COLLIDER_PLAYER1_SHOT || collider->type == COLLIDER_PLAYER2_SHOT) && die == false)
 	{
 		switch (collider->part->type)
 		{
@@ -279,14 +279,11 @@ void Enemy::OnCollision(Collider* collider)
 		hit = true;
 		if (lives <= 0)
 		{
-			if (collider->part->type == App->player1->character->shot_lvl1 || collider->part->type == App->player1->character->shot_lvl2)
-			{
+			if (collider->type == COLLIDER_PLAYER1_SHOT)
 				App->player1->points += points;
-			}
-			else if (App->player2->IsEnabled() && (collider->part->type == App->player2->character->shot_lvl1 || collider->part->type == App->player2->character->shot_lvl2))
-			{
+			else if (collider->type == COLLIDER_PLAYER2_SHOT)
 				App->player2->points += points;
-			}
+
 			Drop();
 		}
 	}

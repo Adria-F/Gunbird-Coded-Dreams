@@ -7,8 +7,12 @@
 #include "ModulePowerUp.h"
 #include "SDL/include/SDL_timer.h"
 
-Player::Player()
+Player::Player(int num)
 {
+	if (num == 1)
+		collider_type = COLLIDER_PLAYER1_SHOT;
+	else if (num == 2)
+		collider_type = COLLIDER_PLAYER2_SHOT;
 }
 
 Player::~Player()
@@ -110,30 +114,30 @@ update_status Player::Update()
 			else
 			{
 				if (shot_lvl == 1)
-					App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, collider_type);
 				else if (shot_lvl == 2)
-					App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
 				else if (shot_lvl == 3)
 				{
 					if (character == (ModuleCharacter*)App->marion)
 					{
-						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 10, position.y - 45, collider_type, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 10, position.y - 45, collider_type, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, collider_type);
 					}
 					else
-					App->particles->AddParticle(*character->shot_particle_lvl3, character->shot_lvl3, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(*character->shot_particle_lvl3, character->shot_lvl3, position.x + 5, position.y - 45, collider_type);
 				}
 					else if (shot_lvl == 4)
 				{
 					if (character == (ModuleCharacter*)App->marion)
 					{
-						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x - 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 120, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl4_right, character->shot_lvl4_right, position.x + 10, position.y - 45, COLLIDER_PLAYER_SHOT, 0, 60, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x - 10, position.y - 45, collider_type, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl4_right, character->shot_lvl4_right, position.x + 10, position.y - 45, collider_type, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
 					}
 					else
-					App->particles->AddParticle(*character->shot_particle_lvl4, character->shot_lvl4, position.x + 5, position.y - 45, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(*character->shot_particle_lvl4, character->shot_lvl4, position.x + 5, position.y - 45, collider_type);
 				}
 
 				start_time = SDL_GetTicks();
@@ -155,19 +159,19 @@ update_status Player::Update()
 				{
 					if (bomb_count == 0 || bomb_count == 2)
 					{
-						App->particles->AddParticle(character->bomb_north, character->bomb, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_south, character->bomb, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_east, character->bomb, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_west, character->bomb, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(character->bomb_north, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_south, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_east, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_west, character->bomb, bomb_pos.x, bomb_pos.y, collider_type);
 						bomb_count++;
 						bomb_timer_start = SDL_GetTicks();
 					}
 					else if (bomb_count == 1 || bomb_count == 3)
 					{
-						App->particles->AddParticle(character->bomb_north_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_north_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_south_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(character->bomb_south_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(character->bomb_north_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_north_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_south_west, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
+						App->particles->AddParticle(character->bomb_south_east, character->shot_lvl4, bomb_pos.x, bomb_pos.y, collider_type);
 						bomb_count++;
 						bomb_timer_start = SDL_GetTicks();
 					}

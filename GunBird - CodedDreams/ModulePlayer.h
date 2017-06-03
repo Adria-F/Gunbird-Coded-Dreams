@@ -3,12 +3,13 @@
 
 #include "Module.h"
 #include "ModuleCharacter.h"
+#include "ModuleCollision.h"
 
 class Player : public Module
 {
 public:
 
-	Player();
+	Player(int num);
 	~Player();
 
 	bool Start();
@@ -21,6 +22,7 @@ public:
 public:
 
 	ModuleCharacter* character = nullptr;
+	COLLIDER_TYPE collider_type;
 	
 	iPoint position;
 
