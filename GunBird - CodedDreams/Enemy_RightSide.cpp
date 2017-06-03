@@ -41,6 +41,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
+	explosion_type = BIG1;
 	Shot_Total_time = (Uint32)(12000.0f);
 	Shot_Total_time1 = (Uint32)(1500.0f);
 	Shot_Total_time2 = (Uint32)(3500.0f);

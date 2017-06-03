@@ -149,7 +149,10 @@
     <ClInclude Include="Enemy_Boss1_Base.h">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Antiaircraft.h">
+    <ClInclude Include="Enemy_Antiaircraft_right.h">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Antiaircraft_left.h">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClInclude>
   </ItemGroup>
@@ -268,7 +271,10 @@
     <ClCompile Include="Enemy_Boss1_Base.cpp">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Antiaircraft.cpp">
+    <ClCompile Include="Enemy_Antiaircraft_right.cpp">
+      <Filter>Modules\Enemies\Boss Stage 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Antiaircraft_left.cpp">
       <Filter>Modules\Enemies\Boss Stage 1</Filter>
     </ClCompile>
   </ItemGroup>
