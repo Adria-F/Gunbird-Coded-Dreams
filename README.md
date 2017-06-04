@@ -4,6 +4,7 @@ Coded Dreams is a team by five members that work on copying the GunBird arcade g
 #### Easter Egg
 We have decided to put Megaman as an Easter Egg. Since the early stages of the development we used him as a base class for all the added enemies. Since we started to get used to it on screen we have decided to have it always as a part of our GunBird.
 
+Check our [web page](https://adria-f.github.io/Gunbird-Coded-Dreams/)
 Check our [wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki) for more details.
 
 ## Installation
@@ -16,12 +17,13 @@ Decompress the .zip file in any directory and execute the executable inside the 
 - 8 types of enemies implemented (Balloon, Drone, Barrel, Falling Drone, Flying Machine, General Turret, Tank and Torpedo)
 
 ## Usage
+
+- SPACE/Y button: fade scene (auto win in debug mode)
+
 #### Gamepad (just for the first player)
 - Left joystick: move character
-- A/X button: shoot
-- Y/triangle button: fade scene
-- LB/L1 button: (de)/activate debugging mode
-- RB/R1 button: (de)/activate god mode
+- A button: shoot
+- B button: drop bomb
 
 #### Keyboard
 ### Player 1
@@ -35,8 +37,8 @@ Decompress the .zip file in any directory and execute the executable inside the 
 - Keypad '.' key: drop bomb
 
 ### Special features
-- F1: (de)/activate Debugging Mode
-- F2: (de)/activate God Mode
+- F1/LB: (de)/activate Debugging Mode
+- F2/RB: (de)/activate God Mode
 - 2: activate second player (in-game)
 
 ## Contributing
