@@ -27,6 +27,7 @@ enum particle_type
 	P_ASH_BULLET_P1,
 	P_ASH_BULLET_P2,
 	P_ASH_BULLET_P3,
+	P_ASH_BULLET_P3_DONUT,
 	P_ASH_BULLET_P4,
 	P_ASH_BOMB,
 	P_UPGRADE,
@@ -114,7 +115,9 @@ public:
 	Particle ASH_bullet_p1_particle;
 	Particle ASH_bullet_p2_particle;
 	Particle ASH_bullet_p3_particle;
+	Particle ASH_bullet_p3_donut_particle;
 	Particle ASH_bullet_p4_particle;
+	Particle ASH_bullet_p4_donut_particle;
 
 	Particle upgrade_particle;
 	Particle coin_particle;

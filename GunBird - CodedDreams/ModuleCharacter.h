@@ -46,6 +46,7 @@ public:
 	particle_type shot_lvl1;
 	particle_type shot_lvl2;
 	particle_type shot_lvl3;
+	particle_type shot_lvl3_donut_p3;
 	particle_type shot_lvl3_right;
 	particle_type shot_lvl3_left;
 	particle_type shot_lvl4;
@@ -55,6 +56,7 @@ public:
 	Particle* shot_particle_lvl1;
 	Particle* shot_particle_lvl2;
 	Particle* shot_particle_lvl3;
+	Particle* shot_particle_lvl3_donut;
 	Particle* shot_particle_lvl3_left;
 	Particle* shot_particle_lvl3_right;
 	Particle* shot_particle_lvl4;

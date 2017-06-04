@@ -115,8 +115,14 @@ update_status Player::Update()
 			{
 				if (shot_lvl == 1)
 					App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, collider_type);
-				else if (shot_lvl == 2)
-					App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
+				else if (shot_lvl == 2) {
+					
+						if (character == (ModuleCharacter*)App->ash) {
+							App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x, position.y - 45, collider_type);
+						}
+						else
+							App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
+				}
 				else if (shot_lvl == 3)
 				{
 					if (character == (ModuleCharacter*)App->marion)
@@ -126,7 +132,8 @@ update_status Player::Update()
 						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, collider_type);
 					}
 					else
-					App->particles->AddParticle(*character->shot_particle_lvl3, character->shot_lvl3, position.x + 5, position.y - 45, collider_type);
+					App->particles->AddParticle(*character->shot_particle_lvl3, character->shot_lvl3, position.x-5, position.y - 45, collider_type);
+					App->particles->AddParticle(*character->shot_particle_lvl3_donut, character->shot_lvl3_donut_p3, position.x - 15, position.y - 45, collider_type);
 				}
 					else if (shot_lvl == 4)
 				{
