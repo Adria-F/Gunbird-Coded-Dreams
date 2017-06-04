@@ -146,7 +146,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						App->player1->shot_lvl += 1;
 						break;
 					}
-					else if (App->player1->shot_lvl > 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					else if (App->player1->shot_lvl == 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player1->character->full_upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
@@ -157,11 +157,14 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			case BOMB:
 				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					if (App->player1->bombs < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					if (powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
-						App->player1->bombs++;
+						if (App->player1->bombs < 3)
+						{
+							App->player1->bombs++;
+						}
 						powerups[i] = nullptr;
 					}
 				}
@@ -199,10 +202,11 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						App->player2->shot_lvl += 1;
 						break;
 					}
-					else if (App->player2->shot_lvl > 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					else if (App->player2->shot_lvl == 4 && powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load(App->player2->character->full_upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
+						powerups[i] = nullptr;
 					}
 
 				}
@@ -210,11 +214,14 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			case BOMB:
 				for (int i = 0; i < MAX_POWERUP; i++)
 				{
-					if (App->player2->bombs < 3 && powerups[i] != nullptr && powerups[i]->part == c1->part)
+					if (powerups[i] != nullptr && powerups[i]->part == c1->part)
 					{
 						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
-						App->player2->bombs++;
+						if (App->player2->bombs < 3)
+						{				
+							App->player2->bombs++;
+						}
 						powerups[i] = nullptr;
 					}
 				}
