@@ -120,7 +120,6 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 
 Enemy_Tank::~Enemy_Tank()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Tank::Move()

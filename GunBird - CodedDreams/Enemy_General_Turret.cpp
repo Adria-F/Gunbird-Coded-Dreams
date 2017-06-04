@@ -150,7 +150,6 @@ Enemy_General_Turret::Enemy_General_Turret(int x, int y, int wave, int id) : Ene
 
 Enemy_General_Turret::~Enemy_General_Turret()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_General_Turret::Move()

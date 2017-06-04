@@ -61,7 +61,6 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 
 Enemy_RightSide::~Enemy_RightSide()
 {
-	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_RightSide::Move()
