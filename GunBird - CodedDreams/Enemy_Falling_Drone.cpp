@@ -148,7 +148,9 @@ Enemy_Faling_Drone::Enemy_Faling_Drone(int x, int y, int wave, int id) : Enemy(x
 	Shot_Total_time = (Uint32)(2000.0f);
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 40, 40 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	collider_pos.x = 5;
+	collider_pos.x = 5;
+	collider = App->collision->AddCollider({ x, y, 30, 40 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Faling_Drone::~Enemy_Faling_Drone()

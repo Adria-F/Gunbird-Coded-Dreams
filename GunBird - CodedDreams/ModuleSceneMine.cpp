@@ -94,9 +94,9 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 50, 2720, 4, 2);
 
 	//Falling Drones wave1
-	App->enemies->AddEnemy(FALLING_DRONE, -60, 2450, 1, 1);
-	App->enemies->AddEnemy(FALLING_DRONE, -20, 2450, 1, 1);
-	App->enemies->AddEnemy(FALLING_DRONE, -40, 2490, 1, 2);
+	App->enemies->AddEnemy(FALLING_DRONE, -75, 2450, 1, 1);
+	App->enemies->AddEnemy(FALLING_DRONE, -35, 2450, 1, 1);
+	App->enemies->AddEnemy(FALLING_DRONE, -55, 2490, 1, 2);
 	//Falling Drones wave2
 	App->enemies->AddEnemy(FALLING_DRONE, 240, 2450, 2, 1);
 	App->enemies->AddEnemy(FALLING_DRONE, 200, 2450, 2, 1);
