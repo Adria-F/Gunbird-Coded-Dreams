@@ -6,6 +6,8 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
+#include "ModuleEnemies.h"
+
 
 Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 {
@@ -67,6 +69,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 
 	//collider
 	collider = NULL;
+	collider_pos.x = 8;
 }
 
 Enemy_CentralSide::~Enemy_CentralSide()
@@ -84,11 +87,11 @@ void Enemy_CentralSide::Move()
 	else
 	{
 		lives = 0;
+		App->enemies->boss_death = true;
 	}
-
 	if (moving.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 48, 80 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 32, 102 }, COLLIDER_ENEMY, (Module*)App->enemies);
 		collider_state = 1;
 	}
 	if (App->render->camera.y >= -2146) //-2146

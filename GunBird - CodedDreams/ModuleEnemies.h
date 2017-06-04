@@ -54,6 +54,7 @@ public:
 public:
 
 	bool draw_underlayed = false;
+	bool boss_death = false;
 
 private:
 

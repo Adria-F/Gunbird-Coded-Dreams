@@ -7,6 +7,7 @@
 #include "p2Point.h"
 #include "Enemy_CentralSide.h"
 #include "ModulePowerUp.h"
+#include "ModuleEnemies.h"
 
 Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 {
@@ -73,10 +74,14 @@ void Enemy_LeftSide::Move()
 	{
 		lives = 0;
 	}
+	if (App->enemies->boss_death == true)
+	{
+		lives = 0;
+	}
 
 	if (moving.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 78, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 58, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
 		collider_state = 1;
 	}
 

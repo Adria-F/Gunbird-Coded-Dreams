@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x, y)
 {
@@ -95,7 +96,7 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 25;
+	lives = 500;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
@@ -120,7 +121,10 @@ void Enemy_Antiaircraft_left::Move()
 	{
 		lives = 0;
 	}
-
+	if (App->enemies->boss_death == true)
+	{
+		lives = 0;
+	}
 	if (left_idle.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
 		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 67, 55 }, COLLIDER_ENEMY, (Module*)App->enemies);
