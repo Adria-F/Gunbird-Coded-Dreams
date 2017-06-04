@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModulePowerUp.h"
+#include "ModuleRender.h"
 
 Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 {
@@ -131,9 +132,10 @@ void Enemy_Flying_Machine::Move()
 {
 
 	position = original_pos + path.GetCurrentPosition(&animation);
-	Shot_now = SDL_GetTicks() - Shot_Start_time;
-	if (lower_level == false)
+
+	if (lower_level == false && App->render->camera.y >= -3000)
 	{
+		Shot_now = SDL_GetTicks() - Shot_Start_time;
 		if (Shot_now > Shot_Total_time)
 		{
 			Shot_Start_time = SDL_GetTicks();
