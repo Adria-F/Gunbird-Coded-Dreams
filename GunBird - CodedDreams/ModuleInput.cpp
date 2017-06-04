@@ -90,6 +90,7 @@ update_status ModuleInput::PreUpdate()
 	button[SDL_CONTROLLER_BUTTON_LEFTSHOULDER] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
 	button[SDL_CONTROLLER_BUTTON_RIGHTSHOULDER] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
 	button[SDL_CONTROLLER_BUTTON_A] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_A);
+	button[SDL_CONTROLLER_BUTTON_B] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_B);
 	button[SDL_CONTROLLER_BUTTON_Y] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_Y);
 	button[SDL_CONTROLLER_BUTTON_DPAD_LEFT] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
 	button[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] = SDL_GameControllerGetButton(App->input->game_controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
@@ -145,7 +146,7 @@ update_status ModuleInput::PreUpdate()
 
 			App->audio->Play(App->audio->EFFECT);
 		}
-		if (keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN && App->player1->IsEnabled() && App->player1->bombs > 0 && App->player1->bomb_attacking == false)
+		if ((keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN || controller[SDL_CONTROLLER_BUTTON_B] == PAD_BUTON_STATE::BUTTON_DOWN) && App->player1->IsEnabled() && App->player1->bombs > 0 && App->player1->bomb_attacking == false)
 		{
 			App->player1->bombs--;
 			App->player1->bomb_attacking = true;
