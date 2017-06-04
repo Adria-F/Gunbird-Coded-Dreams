@@ -67,7 +67,7 @@ void Enemy_LeftSide::Move()
 {
 	if (App->render->camera.y <= -1300) //-1839
 	{
-		position = original_pos + path.GetCurrentPosition(&animation);
+		position = original_pos + path.GetCurrentPosition(&animation);	
 	}
 	else
 	{
@@ -76,7 +76,7 @@ void Enemy_LeftSide::Move()
 
 	if (moving.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 64, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 78, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
 		collider_state = 1;
 	}
 

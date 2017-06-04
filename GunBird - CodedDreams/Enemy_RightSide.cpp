@@ -1,4 +1,5 @@
 #include "Enemy_RightSide.h"
+#include "Enemy_CentralSide.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollision.h"
@@ -6,6 +7,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModulePowerUp.h"
+#include "ModuleEnemies.h"
 
 Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 {
@@ -63,7 +65,7 @@ Enemy_RightSide::~Enemy_RightSide()
 
 void Enemy_RightSide::Move()
 {
-	if (App->render->camera.y <= -1300) //-1839
+	if (App->render->camera.y <= -1300 && lives > 0) //-1839
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
@@ -71,10 +73,10 @@ void Enemy_RightSide::Move()
 	{
 		lives = 0;
 	}
-
+	
 	if (moving.GetCurrentFrameNum() == 1 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 64, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
 		collider_state = 1;
 	}
 

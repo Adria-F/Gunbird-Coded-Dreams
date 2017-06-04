@@ -74,9 +74,10 @@ Enemy_CentralSide::~Enemy_CentralSide()
 	App->textures->Unload(NormalSprite);
 }
 
+
 void Enemy_CentralSide::Move()
 {
-	if (App->render->camera.y <= -1300) //-1839
+	if (App->render->camera.y <= -1300 && lives > 0) //-1839
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
@@ -84,6 +85,7 @@ void Enemy_CentralSide::Move()
 	{
 		lives = 0;
 	}
+
 	if (moving.GetCurrentFrameNum() == 2 && collider_state == 0)
 	{
 		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 48, 80 }, COLLIDER_ENEMY, (Module*)App->enemies);

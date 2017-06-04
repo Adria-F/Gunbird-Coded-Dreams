@@ -6,6 +6,7 @@
 
 class Enemy_CentralSide : public Enemy
 {
+
 public:
 
 	Enemy_CentralSide(int x, int y);
@@ -13,6 +14,7 @@ public:
 
 	void Move();
 	void DeadAnim();
+	int ReturnHp() { return lives; }
 public:
 
 	int state = 0;
