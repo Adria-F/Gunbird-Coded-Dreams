@@ -161,7 +161,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					{
 						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
-						if (App->player1->bombs < 3)
+						if (App->player1->bombs < 5)
 						{
 							App->player1->bombs++;
 						}
@@ -218,7 +218,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					{
 						App->audio->Load("assets/effects/gunbird_203 [EFFECT] Collect bomb.wav", App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
-						if (App->player2->bombs < 3)
+						if (App->player2->bombs < 5)
 						{				
 							App->player2->bombs++;
 						}
