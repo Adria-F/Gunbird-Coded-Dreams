@@ -75,7 +75,7 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 		App->enemies->AddEnemy(LEFTSIDE, 38, 2315);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 2300);
 	}
-	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
+	collider = NULL;
 }
 
 Enemy_Boss1_Base::~Enemy_Boss1_Base()
@@ -94,6 +94,6 @@ void Enemy_Boss1_Base::Move()
 	{
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
-	
+
 
 }

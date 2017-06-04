@@ -56,6 +56,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(500.0f);
 	Shot_Total_time3 = (Uint32)(2000.0f);
 	Shot_Total_time2 = (Uint32)(4000.0f);
+	collider = NULL;
 
 	
 }
