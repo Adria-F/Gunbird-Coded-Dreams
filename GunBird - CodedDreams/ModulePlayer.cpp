@@ -70,7 +70,7 @@ update_status Player::Update()
 		else
 			Pcollider->type = COLLIDER_PLAYER;
 
-		if (going_up && position.y > 32)
+		if (going_up && position.y > 32 + 35)
 		{
 			position.y -= CHARACTER_SPEED;
 		}
@@ -83,7 +83,7 @@ update_status Player::Update()
 				position.x -= CHARACTER_SPEED;
 			}
 		}
-		if (going_down && position.y < SCREEN_HEIGHT)
+		if (going_down && position.y < SCREEN_HEIGHT - 20)
 		{
 			position.y += CHARACTER_SPEED;
 		}

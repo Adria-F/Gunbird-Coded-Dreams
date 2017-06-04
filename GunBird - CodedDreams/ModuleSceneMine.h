@@ -19,6 +19,11 @@ public:
 
 public:
 
+	Uint32 win_timer_now;
+	Uint32 win_timer_start;
+	Uint32 win_timer_total = 750;
+	bool winning = false;
+
 	SDL_Texture* graphics_background_text = nullptr;
 	SDL_Texture* graphics_above_background_text = nullptr;
 	SDL_Texture* graphics_above_background_anims_text = nullptr;

@@ -306,6 +306,8 @@ update_status ModuleSceneMine::Update()
 		}
 	}
 	
+	win_timer_now = SDL_GetTicks() - win_timer_start;
+
 	// Draw everything --------------------------------------	
 	App->render->Blit(graphics_background_text, App->render->camera.x, App->render->camera.y, &background_rect, 0.75f); // back of the room
 	{
@@ -359,8 +361,13 @@ update_status ModuleSceneMine::Update()
 
 	if (App->render->camera.y >= -1200 && fading == false && App->fade->GetFadeState() == false || App->enemies->boss_death == true && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->highscores, 0.5f);
+		winning = true;
 		fading = true;
+		win_timer_start = SDL_GetTicks();
+	}
+	else if (winning && (win_timer_now > win_timer_total))
+	{
+		App->fade->FadeToBlack(this, App->highscores, 0.5f);
 	}
 	
 	if (((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false) && App->render->debugging)

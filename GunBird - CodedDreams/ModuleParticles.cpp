@@ -492,7 +492,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		
 		// Always destroy particles that collide
-		if (active[i] != nullptr && active[i]->collider == c1 && (active[i]->type != P_MARION_BOMB && active[i]->type != P_ASH_BOMB) && !(c1->type == COLLIDER_ENEMY_SHOT && c2->type == COLLIDER_POWER_UP) && !(c1->type == COLLIDER_ENEMY_SHOT && c2->part->type != P_ASH_BOMB))
+		if (active[i] != nullptr && active[i]->collider == c1 && (active[i]->type != P_MARION_BOMB && active[i]->type != P_ASH_BOMB) && !(c1->type == COLLIDER_ENEMY_SHOT && c2->type == COLLIDER_POWER_UP) && !(c1->type == COLLIDER_ENEMY_SHOT && c2->part != nullptr &&c2->part->type != P_ASH_BOMB))
 		{
 			//friendly shots with enemy. Animation here!
 
