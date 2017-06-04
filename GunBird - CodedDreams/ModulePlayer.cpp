@@ -211,12 +211,12 @@ update_status Player::Update()
 				}
 				else if (bomb_count == 0)
 				{
-					App->particles->AddParticle(character->dropping_bomb, character->bomb, bomb_pos.x - 111, bomb_pos.y - 222, collider_type, 0, 360);
+					App->particles->AddParticle(character->dropping_bomb, character->bomb, bomb_pos.x - 92, bomb_pos.y - 222, collider_type, 0, 360);
 					bomb_count++;
 				}
 				else if (bomb_count == 1 && bomb_timer_now > 500)
 				{
-					App->particles->AddParticle(character->bomb_north, character->bomb, bomb_pos.x - 111, bomb_pos.y - 222, collider_type);
+					App->particles->AddParticle(character->bomb_north, character->bomb, bomb_pos.x - 92, bomb_pos.y - 222, collider_type);
 					bomb_count++;
 				}
 				
