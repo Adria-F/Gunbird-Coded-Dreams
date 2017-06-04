@@ -63,6 +63,6 @@ Manager: [Josep Pi](https://github.com/joseppi)
 
 Art: [Pau Llopart](https://github.com/Paxillop)
 
-## Download the last version of GunBird [here](https://github.com/Adria-F/Gunbird-Coded-Dreams/releases/tag/0.6)
+## Download the last version of GunBird [here](https://github.com/Adria-F/Gunbird-Coded-Dreams/releases/tag/1.0Beta)
 
 ## To see more information about the game read the [GunBird wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
