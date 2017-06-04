@@ -40,12 +40,6 @@ bool ModulePowerUp::CleanUp()
 
 update_status ModulePowerUp::Update()
 {
-	if (App->render->debugging && App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
-	{
-		AddPowerUp(powerup_type::BOMB, 100, 150);
-		AddPowerUp(powerup_type::UPGRADE, 150, 150);
-	}
-	
 	for (int i = 0; i < MAX_POWERUP; i++)
 	{
 		if (powerups[i] != nullptr)

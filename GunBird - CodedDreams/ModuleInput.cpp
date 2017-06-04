@@ -216,9 +216,6 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if (keyboard[SDL_SCANCODE_BACKSPACE] == KEY_STATE::KEY_DOWN && App->render->debugging)
-		App->scene_mine->lost = true;
-
 	return update_status::UPDATE_CONTINUE;
 }
 

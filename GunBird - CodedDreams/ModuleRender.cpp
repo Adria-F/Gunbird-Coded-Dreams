@@ -34,7 +34,7 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); //Uncomment to have fullscreen
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); //Uncomment to have fullscreen
 
 	return ret;
 }
@@ -52,27 +52,6 @@ update_status ModuleRender::Update()
 	if (camera.y < 0 && moving_scene)
 	{
 		camera.y += cam_speed;
-	}
-	if (debugging)
-	{
-		if (App->input->keyboard[SDL_SCANCODE_KP_8])
-		{
-			App->scene_mine->overlay_position += 0.9f;
-			camera.y += 3;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_KP_2])
-		{
-			App->scene_mine->overlay_position -= 0.9f;
-			camera.y -= 3;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_KP_6])
-		{
-			camera.x -= 3;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_KP_4])
-		{
-			camera.x += 3;
-		}
 	}
 	
 	return update_status::UPDATE_CONTINUE;
