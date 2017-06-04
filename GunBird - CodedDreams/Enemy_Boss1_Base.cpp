@@ -37,7 +37,7 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
-	App->enemies->boss_death = false;
+
 
 	//Set path
 	if (id == 1)

@@ -52,6 +52,7 @@ bool ModuleSceneMine::Start()
 	overlay_position = 0;
 	turret_appeared = false;
 	turret_appearing = false;
+	App->enemies->boss_death = false;
 
 	//Set enemies
 	//Flying Machine

@@ -59,7 +59,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 500;
+	lives = 1500;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
