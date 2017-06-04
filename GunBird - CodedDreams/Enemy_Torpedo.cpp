@@ -44,7 +44,9 @@ Enemy_Torpedo::Enemy_Torpedo(int x, int y, int wave) : Enemy(x, y)
 	explosion_type = SMALL1;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 23, 31 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	collider_pos.x = 5;
+	collider_pos.y = 5;
+	collider = App->collision->AddCollider({ x, y, 18, 26 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Torpedo::~Enemy_Torpedo()
