@@ -98,6 +98,7 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 500;
 	initial_hp = lives;
+	points = 2000;
 	extra_anim = false;
 	lower_level = true;
 	explosion_type = MID1;

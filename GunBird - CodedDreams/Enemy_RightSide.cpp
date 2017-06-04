@@ -48,6 +48,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1000;
 	initial_hp = lives;
+	points = 3000;
 	extra_anim = false;
 	lower_level = true;
 	explosion_type = BIG1;

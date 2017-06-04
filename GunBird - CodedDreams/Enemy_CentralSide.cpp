@@ -61,6 +61,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	//Set lives, initial_hp, points adn extra_anim
 	lives = 1500;
 	initial_hp = lives;
+	points = 8000;
 	extra_anim = false;
 	lower_level = true;
 	explosion_type = MID1;
