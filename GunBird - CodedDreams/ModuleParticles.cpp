@@ -75,19 +75,19 @@ bool ModuleParticles::Start()
 	
 	//stage 4
 	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 67, 15, 28 });
-	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 97, 15, 28 });
+	//MARION_bullet_p4_left_particle.anim.PushBack({ 286, 97, 15, 28 });
 	MARION_bullet_p4_left_particle.anim.PushBack({ 286, 127, 15, 28 });
 	MARION_bullet_p4_left_particle.speed.y = -8;
-	MARION_bullet_p4_left_particle.anim.loop = true;
-	MARION_bullet_p4_left_particle.anim.speed = 0.5f;
+	MARION_bullet_p4_left_particle.anim.loop = false;
+	MARION_bullet_p4_left_particle.anim.speed = 0.05f;
 	MARION_bullet_p4_left_particle.damage = 2;
 
 	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 67, 15, 28 });
-	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 97, 15, 28 });
+	//MARION_bullet_p4_right_particle.anim.PushBack({ 316, 97, 15, 28 });
 	MARION_bullet_p4_right_particle.anim.PushBack({ 316, 127, 15, 28 });
 	MARION_bullet_p4_right_particle.speed.y = -8;
-	MARION_bullet_p4_right_particle.anim.loop = true;
-	MARION_bullet_p4_right_particle.anim.speed = 0.5f;
+	MARION_bullet_p4_right_particle.anim.loop = false;
+	MARION_bullet_p4_right_particle.anim.speed = 0.05f;
 	MARION_bullet_p4_right_particle.damage = 2;
 
 

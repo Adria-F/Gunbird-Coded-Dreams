@@ -130,9 +130,9 @@ update_status Player::Update()
 				{
 					if (character == (ModuleCharacter*)App->marion)
 					{
-						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 10, position.y - 45, collider_type, 0, 120, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 10, position.y - 45, collider_type, 0, 60, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x + 5, position.y - 45, collider_type);
+						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 2, position.y - 45, collider_type, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 14, position.y - 45, collider_type, 0, 60, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x +5, position.y - 45, collider_type);
 					}
 					else
 					{
@@ -144,9 +144,9 @@ update_status Player::Update()
 				{
 					if (character == (ModuleCharacter*)App->marion)
 					{
-						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x - 10, position.y - 45, collider_type, 0, 120, ANGLE);
+						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x - 8, position.y - 45, collider_type, 0, 120, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl4_right, character->shot_lvl4_right, position.x + 10, position.y - 45, collider_type, 0, 60, ANGLE);
-						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
+						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x+1, position.y - 45, collider_type);
 					}
 					else
 					{

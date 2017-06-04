@@ -118,7 +118,6 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2930, 1);
 	App->enemies->AddEnemy(TANK, SCREEN_WIDTH, 2881, 2);
 
-
 	//Miners
 	App->enemies->AddEnemy(MINER, 50, 3300, 1);
 	App->enemies->AddEnemy(MINER, 80, 3280, 2);
