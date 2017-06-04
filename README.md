@@ -51,7 +51,7 @@ Our most important contributions to the game were:
 - (11th April) Power Ups have their own path.
 - (14th April) Buildings and Humanoid Robot are added.
 - (18th April) Implemented second character (Ash).
-- (21th April) Tordo enemy and its waves are added.
+- (21th April) Torpedo enemy and its waves are added.
 - (23th April) Third Torpedo's wave attack to the player.
 - (24th April) Second level of Power Up added to Marion and Ash and Antiaircraft enemy too.
 - (25th April) Enemies have dead animation, enemies turn white when hit and red when at low hp. High scores are done too. Antiaircraft enemy is corrected.
@@ -85,7 +85,8 @@ During our GunBird development, the game had nine releases:
 - version 0.4 (5th April)
 - version 0.45 (18th April)
 - version 0.46 (25th April)
-- version 0.5 (26th April) - Prototype
+- version 0.5 (26th April) - [Prototype] (https://github.com/Adria-F/Gunbird-Coded-Dreams/releases/tag/0.5)
+- version 0.6 (16th May)
 - version 1.0 (4th June) - Alpha
  
 ## Credits
@@ -94,8 +95,8 @@ During our GunBird development, the game had nine releases:
 - Adria Ferrer Comas, Norman Benet - Code
 - Vladimir Agache - QA
 
-[Github](https://github.com/Adria-F/Gunbird-Coded-Dreams)
-[Trello](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams)
+Our [Github](https://github.com/Adria-F/Gunbird-Coded-Dreams).
+Our [Trello](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams).
 
 ## License
 All rights over the game and all properties are entirely from Psikyo, currently property of X-Nauts.
