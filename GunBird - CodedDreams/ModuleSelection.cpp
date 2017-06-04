@@ -71,21 +71,36 @@ update_status ModuleSelection::Update()
 	}
 
 	if ((App->input->keyboard[SDL_SCANCODE_A] || App->input->controller[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == PAD_BUTON_STATE::BUTTON_DOWN) && selected_char == 1)
+	{
 		selected_char = 0;
+		App->audio->Load("assets/effects/gunbird_201 [EFFECT] Character Selection.wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
+	}
 	if ((App->input->keyboard[SDL_SCANCODE_D] || App->input->controller[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == PAD_BUTON_STATE::BUTTON_DOWN) && selected_char == 0)
+	{
 		selected_char = 1;
-
+		App->audio->Load("assets/effects/gunbird_201 [EFFECT] Character Selection.wav", App->audio->EFFECT);
+		App->audio->Play(App->audio->EFFECT);
+	}
 	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{
 		if (selected_char == 0)
 		{
 			App->player1->setCharacter(App->ash);
+			{
+				App->audio->Load("assets/effects/gunbird_102 [VOICE] ASH Selected.wav", App->audio->EFFECT);
+				App->audio->Play(App->audio->EFFECT);
+			}
 		}
 		else
 		{
 			App->player1->setCharacter(App->marion);
+			{
+				App->audio->Load("assets/effects/gunbird_103 [VOICE] MARION Selected.wav", App->audio->EFFECT);
+				App->audio->Play(App->audio->EFFECT);
+			}
 		}
-		App->fade->FadeToBlack(this, App->scene_mine, 0.5f);
+		App->fade->FadeToBlack(this, App->scene_mine, 0.7f);
 		fading = true;
 	}
 

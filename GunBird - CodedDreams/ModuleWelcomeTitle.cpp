@@ -79,8 +79,13 @@ update_status ModuleWelcomeTitle::Update()
 
 	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false)
 	{
-		App->fade->FadeToBlack(this, App->selection, 0.5f);
+		
+		App->fade->FadeToBlack(this, App->selection, 1.4f);
 		fading = true;
+		{
+			App->audio->Load("assets/effects/gunbird_101 [VOICE] Coin (Credit Inserted).wav", App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
+		}
 	}
 
 	return UPDATE_CONTINUE;
