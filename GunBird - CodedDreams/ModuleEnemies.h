@@ -55,6 +55,7 @@ public:
 
 	bool draw_underlayed = false;
 	Enemy* enemies[MAX_ENEMIES];
+	bool boss_death = false;
 
 private:
 

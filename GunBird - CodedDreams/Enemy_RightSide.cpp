@@ -54,7 +54,7 @@ Enemy_RightSide::Enemy_RightSide(int x, int y): Enemy(x, y)
 	Shot_Total_time = (Uint32)(12000.0f);
 	Shot_Total_time1 = (Uint32)(1500.0f);
 	Shot_Total_time2 = (Uint32)(3500.0f);
-
+	collider_pos.x = 16;
 	collider = NULL;
 }
 
@@ -73,10 +73,15 @@ void Enemy_RightSide::Move()
 	{
 		lives = 0;
 	}
-	
+
+	if (App->enemies->boss_death == true)
+	{
+		lives = 0;
+	}
+
 	if (moving.GetCurrentFrameNum() == 1 && collider_state == 0)
 	{
-		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 74, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 58, 89 }, COLLIDER_ENEMY, (Module*)App->enemies);
 		collider_state = 1;
 	}
 

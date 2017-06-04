@@ -37,6 +37,7 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
+	App->enemies->boss_death = false;
 
 	//Set path
 	if (id == 1)
@@ -70,8 +71,8 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 		App->enemies->AddEnemy(BOSS1_BASE, 32, 2332, 0, 2); //proctection
 		App->enemies->AddEnemy(ANTIAIRCRAFT_LEFT, 31, 2325); // left
 		App->enemies->AddEnemy(ANTIAIRCRAFT_RIGHT, 126, 2325); // right
-		App->enemies->AddEnemy(RIGHTSIDE, 112, 2310);
-		App->enemies->AddEnemy(LEFTSIDE, 38, 2310);
+		App->enemies->AddEnemy(RIGHTSIDE, 112, 2315);
+		App->enemies->AddEnemy(LEFTSIDE, 38, 2315);
 		App->enemies->AddEnemy(CENTRALSIDE, 88, 2300);
 	}
 	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);

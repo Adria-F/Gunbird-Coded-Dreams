@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(x, y)
 {
@@ -84,7 +85,7 @@ Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(
 
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 25;
+	lives = 500;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
@@ -106,6 +107,10 @@ void Enemy_Antiaircraft_right::Move()
 		position = original_pos + path.GetCurrentPosition(&animation);
 	}
 	else
+	{
+		lives = 0;
+	}
+	if (App->enemies->boss_death == true)
 	{
 		lives = 0;
 	}
