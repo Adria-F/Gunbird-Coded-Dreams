@@ -144,7 +144,8 @@ update_status Player::Update()
 						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
 					}
 					else
-					App->particles->AddParticle(*character->shot_particle_lvl4, character->shot_lvl4, position.x + 5, position.y - 45, collider_type);
+					App->particles->AddParticle(*character->shot_particle_lvl4, character->shot_lvl4, position.x - 8, position.y - 45, collider_type);
+					App->particles->AddParticle(*character->shot_particle_lvl4_donut, character->shot_lvl4_donut_p4, position.x - 25, position.y - 45, collider_type);
 				}
 
 				start_time = SDL_GetTicks();

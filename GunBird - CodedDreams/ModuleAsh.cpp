@@ -255,11 +255,15 @@ bool ModuleAsh::Start()
 	shot_lvl2 = particle_type::P_ASH_BULLET_P2;
 	shot_lvl3 = particle_type::P_ASH_BULLET_P3;
 	shot_lvl3_donut_p3 = particle_type::P_ASH_BULLET_P3_DONUT;
+	shot_lvl4 = particle_type::P_ASH_BULLET_P4;
+	shot_lvl4_donut_p4 = particle_type::P_ASH_BULLET_P4_DONUT;
 	bomb = particle_type::P_ASH_BOMB;
 	shot_particle_lvl1 = &App->particles->ASH_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->ASH_bullet_p2_particle;
 	shot_particle_lvl3 = &App->particles ->ASH_bullet_p3_particle;
 	shot_particle_lvl3_donut= &App->particles->ASH_bullet_p3_donut_particle;
+	shot_particle_lvl4= &App->particles->ASH_bullet_p4_particle;
+	shot_particle_lvl4_donut = &App->particles->ASH_bullet_p4_donut_particle;
 
 	return ret;
 }

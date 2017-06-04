@@ -117,15 +117,26 @@ bool ModuleParticles::Start()
 	ASH_bullet_p3_donut_particle.anim.PushBack({ 262, 214, 52, 29 });
 	ASH_bullet_p3_donut_particle.speed.y = -11;
 	ASH_bullet_p3_donut_particle.anim.loop = false;
-	ASH_bullet_p3_donut_particle.anim.speed = 0.5f;
+	ASH_bullet_p3_donut_particle.anim.speed = 0.1f;
 	ASH_bullet_p3_donut_particle.damage = 3;
 
-	ASH_bullet_p4_particle.anim.PushBack({ 163, 159, 35, 47 });
-	ASH_bullet_p4_particle.anim.PushBack({ 197, 159, 35, 47 });
+	ASH_bullet_p4_particle.anim.PushBack({ 161, 158, 38, 45 });
+	ASH_bullet_p4_particle.anim.PushBack({ 195, 158, 38, 45 });
+	ASH_bullet_p4_particle.anim.PushBack({ 233, 158, 38, 45 });
 	ASH_bullet_p4_particle.speed.y = -8;
 	ASH_bullet_p4_particle.anim.loop = false;
 	ASH_bullet_p4_particle.anim.speed = 0.5f;
 	ASH_bullet_p4_particle.damage = 4;
+
+	ASH_bullet_p4_donut_particle.anim.PushBack({ 8, 245, 74, 33 });
+	ASH_bullet_p4_donut_particle.anim.PushBack({ 83, 245, 74, 33 });
+	ASH_bullet_p4_donut_particle.anim.PushBack({ 165, 245, 74, 33 });
+	ASH_bullet_p4_donut_particle.anim.PushBack({ 251, 245, 74, 33 });
+	ASH_bullet_p4_donut_particle.anim.PushBack({ 338, 245, 74, 33 });
+	ASH_bullet_p4_donut_particle.speed.y = -11;
+	ASH_bullet_p4_donut_particle.anim.loop = false;
+	ASH_bullet_p4_donut_particle.anim.speed = 0.1f;
+	ASH_bullet_p4_donut_particle.damage = 3;
 
 	// Small shot
 	small_shot_particle.anim.PushBack({ 9, 9, 6, 6 });
@@ -295,6 +306,9 @@ update_status ModuleParticles::Update()
 				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BULLET_P4:
+				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_ASH_BULLET_P4_DONUT:
 				App->render->Blit(ASH_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_ASH_BOMB:
