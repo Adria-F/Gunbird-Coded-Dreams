@@ -75,6 +75,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 
 Enemy_CentralSide::~Enemy_CentralSide()
 {
+	App->textures->Unload(NormalSprite);
 }
 
 

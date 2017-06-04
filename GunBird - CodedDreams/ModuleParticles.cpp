@@ -242,11 +242,6 @@ bool ModuleParticles::CleanUp()
 
 	App->textures->Unload(upgrade_texture);
 	upgrade_texture = nullptr;
-
-	App->textures->Unload(bomb_texture);
-	bomb_texture = nullptr;
-	App->textures->Unload(coin_texture);
-	coin_texture = nullptr;
 	
 	LOG("Unloading particles");
 

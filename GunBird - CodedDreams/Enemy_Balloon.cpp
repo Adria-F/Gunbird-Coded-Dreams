@@ -50,7 +50,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 
 Enemy_Balloon::~Enemy_Balloon()
 {
-
+	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Balloon::Move()

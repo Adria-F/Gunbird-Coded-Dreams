@@ -201,7 +201,7 @@ Enemy::~Enemy()
 	App->textures->Unload(s2);
 	App->textures->Unload(s1);
 	App->textures->Unload(fm);
-	if (collider != nullptr && lives > 0)
+	if (collider != nullptr)
 		collider->to_delete = true;
 }
 

@@ -98,6 +98,7 @@ Enemy_Antiaircraft_right::Enemy_Antiaircraft_right(int x, int y, int id): Enemy(
 
 Enemy_Antiaircraft_right::~Enemy_Antiaircraft_right()
 {
+	App->textures->Unload(NormalSprite);
 }
 
 void Enemy_Antiaircraft_right::Move()

@@ -80,6 +80,7 @@ Enemy_Boss1_Base::Enemy_Boss1_Base(int x, int y, int wave, int id): Enemy(x, y)
 
 Enemy_Boss1_Base::~Enemy_Boss1_Base()
 {
+	App->textures->Unload(NormalSprite);
 }
 void Enemy_Boss1_Base::ExtraAnim(SDL_Texture* texture)
 {
