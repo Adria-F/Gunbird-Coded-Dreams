@@ -10,7 +10,7 @@ The objective is to get as much points as possible.
 
 ## GunBird Tribute Game
 
-(Video: GunBird Tribute Game by Coded Dreams)
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=DXanwbnL47Q&feature=youtu.be" frameborder="0" allowfullscreen></iframe>
 
 ### Game Controls
 
