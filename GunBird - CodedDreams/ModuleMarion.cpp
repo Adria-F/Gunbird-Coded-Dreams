@@ -229,6 +229,7 @@ bool ModuleMarion::Start()
 	shot_lvl3_right = particle_type::P_MARION_BULLET_P3_RIGHT;
 	shot_lvl4_left = particle_type::P_MARION_BULLET_P4_LEFT;
 	shot_lvl4_right = particle_type::P_MARION_BULLET_P4_RIGHT;
+	shot_star = particle_type::P_MARION_STAR;
 	bomb = particle_type::P_MARION_BOMB;
 	shot_particle_lvl1 = &App->particles->MARION_bullet_p1_particle;
 	shot_particle_lvl2 = &App->particles->MARION_bullet_p2_particle;
@@ -236,6 +237,7 @@ bool ModuleMarion::Start()
 	shot_particle_lvl3_right = &App->particles->MARION_bullet_p3_right_particle;
 	shot_particle_lvl4_left = &App->particles->MARION_bullet_p4_left_particle;
 	shot_particle_lvl4_right = &App->particles->MARION_bullet_p4_right_particle;
+	shot_particle_star = &App->particles->MARION_star_particle;
 	
 	return ret;
 }

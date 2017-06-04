@@ -91,6 +91,10 @@ bool ModuleParticles::Start()
 	MARION_bullet_p4_right_particle.anim.speed = 0.05f;
 	MARION_bullet_p4_right_particle.damage = 2;
 
+	MARION_star_particle.anim.PushBack({132, 76, 15, 15});
+	MARION_star_particle.anim.speed = 0.2f;
+	MARION_star_particle.damage = 2;
+	MARION_star_particle.speed.y = -3.0f;
 
 	// Ash Bullets
 	ASH_bullet_p1_particle.anim.PushBack({ 175, 29, 9, 29});
@@ -289,6 +293,9 @@ update_status ModuleParticles::Update()
 				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MARION_BULLET_P4_RIGHT:
+				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+				break;
+			case P_MARION_STAR:
 				App->render->Blit(MARION_bullet_texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 				break;
 			case P_MARION_BOMB:
@@ -518,6 +525,39 @@ Particle::~Particle()
 
 bool Particle::Update()
 {
+	if (type == P_MARION_STAR)
+	{
+		Enemy* enemy = nullptr;
+		fPoint vector;
+		int distance[2];
+		distance[0] = 320;
+		for (int i = 0; i < MAX_ENEMIES; i++)
+		{
+			if (App->enemies->enemies[i] != nullptr && App->enemies->enemies[i]->collider != nullptr)
+			{
+				vector.x = App->enemies->enemies[i]->position.x - (position.x);
+				vector.y = App->enemies->enemies[i]->position.y - (position.y - App->render->camera.y);
+				distance[1] = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+				if (distance[1] < distance[0])
+				{
+					distance[0] = distance[1];
+					enemy = App->enemies->enemies[i];
+				}
+			}
+		}
+		if (enemy != nullptr)
+		{
+			vector.x = enemy->position.x - (position.x);
+			vector.y = enemy->position.y - (position.y - App->render->camera.y);
+
+			float modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
+			vector.x /= modul;
+			vector.y /= modul;
+			speed.x = vector.x * 3.5;
+			speed.y = vector.y * 3.5;
+		}
+	}
+	
 	position.x += speed.x;
 	position.y += speed.y;
 

@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleCollision.h"
+#include "Enemy.h"
+#include "ModuleEnemies.h"
 
 #define MAX_ACTIVE_PARTICLES 200
 #define SMALL_SHOT_SPEED 2.0
@@ -30,6 +32,7 @@ enum particle_type
 	P_ASH_BULLET_P3_DONUT,
 	P_ASH_BULLET_P4,
 	P_ASH_BULLET_P4_DONUT,
+	P_MARION_STAR,
 	P_ASH_BOMB,
 	P_UPGRADE,
 	P_BOMB,
@@ -112,6 +115,7 @@ public:
 	Particle MARION_bullet_p3_right_particle;
 	Particle MARION_bullet_p4_left_particle;
 	Particle MARION_bullet_p4_right_particle;
+	Particle MARION_star_particle;
 
 	Particle ASH_bullet_p1_particle;
 	Particle ASH_bullet_p2_particle;

@@ -25,7 +25,6 @@ Enemy_Megaman::Enemy_Megaman(int x, int y): Enemy(x, y)
 	initial_hp = lives;
 	extra_anim = false;
 
-	collider = App->collision->AddCollider({ x, y, 0, 0 }, COLLIDER_NONE, (Module*)App->enemies);
 }
 
 Enemy_Megaman::~Enemy_Megaman()

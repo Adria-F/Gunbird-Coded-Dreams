@@ -53,6 +53,7 @@ public:
 	particle_type shot_lvl4_donut_p4;
 	particle_type shot_lvl4_right;
 	particle_type shot_lvl4_left;
+	particle_type shot_star;
 	particle_type bomb;
 	Particle* shot_particle_lvl1;
 	Particle* shot_particle_lvl2;
@@ -64,6 +65,7 @@ public:
 	Particle* shot_particle_lvl4_donut;
 	Particle* shot_particle_lvl4_left;
 	Particle* shot_particle_lvl4_right;
+	Particle* shot_particle_star;
 
 	Particle dropping_bomb;
 	Particle bomb_north;

@@ -133,6 +133,13 @@ update_status Player::Update()
 						App->particles->AddParticle(*character->shot_particle_lvl3_left, character->shot_lvl3_left, position.x - 2, position.y - 45, collider_type, 0, 120, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl3_right, character->shot_lvl3_right, position.x + 14, position.y - 45, collider_type, 0, 60, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl1, character->shot_lvl1, position.x +5, position.y - 45, collider_type);
+						shooting_count++;
+						if (shooting_count > 5)
+						{
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x - 10, position.y - 50, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x + 10, position.y - 50, collider_type);
+							shooting_count = 0;
+						}
 					}
 					else
 					{
@@ -147,6 +154,17 @@ update_status Player::Update()
 						App->particles->AddParticle(*character->shot_particle_lvl4_left, character->shot_lvl4_left, position.x - 8, position.y - 45, collider_type, 0, 120, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl4_right, character->shot_lvl4_right, position.x + 10, position.y - 45, collider_type, 0, 60, ANGLE);
 						App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x+1, position.y - 45, collider_type);
+						shooting_count++;
+						if (shooting_count > 9)
+						{
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x - 30, position.y - 50, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x + 30, position.y - 50, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x - 20, position.y - 60, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x + 20, position.y - 60, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x - 10, position.y - 70, collider_type);
+							App->particles->AddParticle(*character->shot_particle_star, character->shot_star, position.x + 10, position.y - 70, collider_type);
+							shooting_count = 0;
+						}
 					}
 					else
 					{

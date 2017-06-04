@@ -54,6 +54,7 @@ public:
 public:
 
 	bool draw_underlayed = false;
+	Enemy* enemies[MAX_ENEMIES];
 
 private:
 
@@ -62,7 +63,7 @@ private:
 private:
 
 	EnemyInfo queue[MAX_ENEMIES];
-	Enemy* enemies[MAX_ENEMIES];
+	
 };
 
 #endif // __ModuleEnemies_H__
