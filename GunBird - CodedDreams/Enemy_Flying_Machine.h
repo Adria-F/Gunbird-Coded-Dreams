@@ -13,7 +13,7 @@ public:
 
 	void Move();
 	void Drop();
-
+	
 public:
 
 	Path path;
@@ -22,7 +22,7 @@ public:
 	Animation idle_grow_gun;
 	Animation idle_up;
 	Animation dead;
-
+	int state = 0;
 };
 
 #endif // !__FLYING_MACHINE_H__

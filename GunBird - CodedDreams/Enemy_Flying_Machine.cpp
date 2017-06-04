@@ -117,7 +117,9 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	points = 5000;
 	extra_anim = false;
 	explosion_type = FLYINGMACHINE;
-	Shot_Total_time = (Uint32)(2500.0f);
+	Shot_Total_time = (Uint32)(500.0f);
+	Shot_Total_time1 = (Uint32)(500.0f);
+	Shot_Total_time2 = (Uint32)(2000.0f);
 
 	//Add and save collider
 	collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
@@ -136,7 +138,7 @@ void Enemy_Flying_Machine::Move()
 	if (lower_level == false && App->render->camera.y >= -3000)
 	{
 		Shot_now = SDL_GetTicks() - Shot_Start_time;
-		if (Shot_now > Shot_Total_time)
+		if (Shot_now > Shot_Total_time && state == 2)
 		{
 			Shot_Start_time = SDL_GetTicks();
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 25, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
@@ -150,6 +152,19 @@ void Enemy_Flying_Machine::Move()
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 60, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 314, ANGLE);
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 60, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 336, ANGLE);
 			App->particles->AddParticle(App->particles->small_shot_particle, particle_type::P_SMALL_SHOT, position.x + 60, position.y + App->render->camera.y + 40, COLLIDER_ENEMY_SHOT, 0, 360, ANGLE);
+			state = 3;
+		}
+		else if (Shot_now > Shot_Total_time1 && state < 2)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 0, position.y + App->render->camera.y + 45, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			App->particles->AddParticle(App->particles->big_shot_particle, particle_type::P_BIG_SHOT, position.x + 80, position.y + App->render->camera.y + 45, COLLIDER_ENEMY_SHOT, 0, 270, ANGLE);
+			state++;
+		}
+		else if (Shot_now > Shot_Total_time2 && state == 3)
+		{
+			Shot_Start_time = SDL_GetTicks();
+			state = 0;
 		}
 	}
 
