@@ -123,7 +123,7 @@ update_status Player::Update()
 						}
 						else
 						{
-							App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 5, position.y - 45, collider_type);
+							App->particles->AddParticle(*character->shot_particle_lvl2, character->shot_lvl2, position.x + 1, position.y - 45, collider_type);
 						}
 				}
 				else if (shot_lvl == 3)
