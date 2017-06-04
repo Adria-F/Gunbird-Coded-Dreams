@@ -67,5 +67,6 @@ Art: [Pau Llopart](https://github.com/Paxillop)
 
 ## To see more information about the game read the [GunBird wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
 
-### License
+
+
 All rights over the game and all properties are entirely from Psikyo, currently property of X-Nauts.
