@@ -62,8 +62,8 @@ bool ModuleSceneMine::Start()
 
 	//Drones wave1->Done
 	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 1);
-	App->enemies->AddEnemy(DRONE,   0, 3020+70, 1, 1);
-	App->enemies->AddEnemy(DRONE, -25, 3040+70, 1, 2);
+	App->enemies->AddEnemy(DRONE, -50, 3020+70, 1, 3);
+	App->enemies->AddEnemy(DRONE, -50, 3040+70, 1, 2);
 	//Drones wave2->Done
 	App->enemies->AddEnemy(DRONE, 175, 2980 + 70, 2, 1);
 	App->enemies->AddEnemy(DRONE, 125, 2980 + 70, 2, 1);
@@ -78,8 +78,8 @@ bool ModuleSceneMine::Start()
 	App->enemies->AddEnemy(DRONE, 50, 2920, 4, 2);
 	//Drones wave5
 	App->enemies->AddEnemy(DRONE, -50, 2800, 1, 1);
-	App->enemies->AddEnemy(DRONE,   0, 2800, 1, 1);
-	App->enemies->AddEnemy(DRONE, -25, 2820, 1, 2);
+	App->enemies->AddEnemy(DRONE, -50, 2800, 1, 3);
+	App->enemies->AddEnemy(DRONE, -50, 2820, 1, 2);
 	//Drones wave6
 	App->enemies->AddEnemy(DRONE, 175, 2760, 2, 1);
 	App->enemies->AddEnemy(DRONE, 125, 2760, 2, 1);

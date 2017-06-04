@@ -12,6 +12,8 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	RedSprite = App->textures->Load("assets/enemies/hitten/hitten_red_drone.png");
 	WhiteSprite = App->textures->Load("assets/enemies/hitten/hitten_white_drone.png");
 	
+	collider_pos.x = 5;
+	collider_pos.y = 7;
 
 	//Looking Down
 	Looking_down.PushBack({ 14, 4, 35, 35 });
@@ -95,7 +97,8 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	if (wave == 1 && id==1)
 	{
 		path.PushBack({ 0.0f, 0.2f }, 150, &Looking_down);
-		path.PushBack({ 1.0f, 0.0f }, 60, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 48, &Looking_down);
+		path.PushBack({ 1.0f, 0.2f }, 50, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
 		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_down);
 		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_right);
 		path.PushBack({ 0.5f, 1.5f }, 70, &Looking_right);
@@ -104,10 +107,19 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	}
 	else if (wave==1 && id == 2) {
 		path.PushBack({ 0.0f, 0.2f }, 217, &Looking_down);
-		path.PushBack({ 1.0f, 0.0f }, 60, &Looking_down);
+		path.PushBack({ 0.0f, 0.2f }, 25, &Looking_down);
+		path.PushBack({ 1.0f, 0.2f }, 70, &Looking_down);
 		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_down);
 		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_right);
 		path.PushBack({ 0.5f, 1.5f }, 1000, &Looking_right);
+	}
+	else if (wave == 1 && id == 3) {
+		path.PushBack({ 0.0f, 0.2f }, 150, &Looking_down);
+		path.PushBack({ 1.0f, 0.2f }, 95, &Looking_down); //Si esta quiet en un punt ha de tenir velocitat y = 0.2 per moures a la mateixa velocitat que l'overlay
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_down);
+		path.PushBack({ 0.0f, 0.2f }, 50, &Looking_right);
+		path.PushBack({ 0.5f, 1.5f }, 70, &Looking_right);
+		path.PushBack({ 0.5f, 1.5f }, 1000, &Totally_right);
 	}
 	//Wave2 Path
 	else if (wave == 2 && id==1)
@@ -180,7 +192,7 @@ Enemy_Drone::Enemy_Drone(int x, int y, int wave, int id) : Enemy(x, y)
 	Shot_Total_time = (Uint32)(2000.0f);
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 35, 35 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 25, 27 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Drone::~Enemy_Drone()
