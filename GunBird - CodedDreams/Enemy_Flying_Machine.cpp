@@ -122,7 +122,7 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	Shot_Total_time2 = (Uint32)(2000.0f);
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	//collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Flying_Machine::~Enemy_Flying_Machine()
@@ -168,18 +168,17 @@ void Enemy_Flying_Machine::Move()
 		}
 	}
 
-	if (collider != nullptr)
+	if (path.GetCurrentAnimation() == &idle_grow_gun || path.GetCurrentAnimation() == &idle_up)
 	{
-		if (path.GetCurrentAnimation() == &idle_grow_gun || path.GetCurrentAnimation() == &idle_up)
+		if (collider == nullptr && lives > 0)
 		{
-			collider->rect = { (int)position.x, (int)position.y, 90, 69 };
-			lower_level = false;
+			collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 		}
-		else
-		{
-			collider->rect = { 0, 0, 0, 0 };
-			lower_level = true;
-		}
+		lower_level = false;
+	}
+	else
+	{
+		lower_level = true;
 	}
 }
 
