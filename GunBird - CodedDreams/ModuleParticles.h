@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 200
 #define SMALL_SHOT_SPEED 2.0
 #define BIG_SHOT_SPEED 2.0
 
