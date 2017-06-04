@@ -66,3 +66,6 @@ Art: [Pau Llopart](https://github.com/Paxillop)
 ## Download the last version of GunBird [here](https://github.com/Adria-F/Gunbird-Coded-Dreams/releases/tag/1.0)
 
 ## To see more information about the game read the [GunBird wiki](https://github.com/Adria-F/Gunbird-Coded-Dreams/wiki)
+
+### License
+All rights over the game and all properties are entirely from Psikyo, currently property of X-Nauts.
