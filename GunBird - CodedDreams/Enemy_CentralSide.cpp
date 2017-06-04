@@ -11,8 +11,8 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_central_side.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_red_B1_central_side.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_white_B1_central_side.png");
 
 	//Set animation steps, speed and loop
 	//Vault Open
@@ -57,7 +57,7 @@ Enemy_CentralSide::Enemy_CentralSide(int x, int y): Enemy(x, y)
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 50;
+	lives = 500;
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;

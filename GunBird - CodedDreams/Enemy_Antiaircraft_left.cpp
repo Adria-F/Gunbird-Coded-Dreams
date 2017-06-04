@@ -10,8 +10,8 @@ Enemy_Antiaircraft_left::Enemy_Antiaircraft_left(int x, int y, int id): Enemy(x,
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_antiaircraft.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_red_B1_antiaircraft.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_white_B1_antiaircraft.png");
 
 	//Set animation steps, speed and loop
 	//left Pushbacks

@@ -12,8 +12,8 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 {
 	//Open all textures
 	NormalSprite = App->textures->Load("assets/enemies/first boss/B1_left_side.png");
-	RedSprite = nullptr;
-	WhiteSprite = nullptr;
+	RedSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_red_B1_left_side.png");
+	WhiteSprite = App->textures->Load("assets/enemies/hitten/first boss hitten/hitten_white_B1_left_side.png");
 
 	//Set animation steps, speed and loop
 	moving.PushBack({ 0, 0, 74, 89 });
@@ -45,7 +45,7 @@ Enemy_LeftSide::Enemy_LeftSide(int x, int y): Enemy(x, y)
 	path.PushBack({ 0.0f, -0.3f }, 5000, &moving);
 
 	//Set lives, initial_hp, points adn extra_anim
-	lives = 50; //120
+	lives = 1000; //120
 	initial_hp = lives;
 	extra_anim = false;
 	lower_level = true;
