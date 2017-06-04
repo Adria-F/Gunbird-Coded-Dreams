@@ -62,7 +62,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	close_cent.PushBack({ 494, 502, 110, 65 });
 	close_cent.PushBack({ 616, 502, 110, 65 });
 	close_cent.PushBack({ 738, 502, 110, 65 });
-	close_cent.PushBack({ 859, 502, 110, 65 });
+	close_cent.PushBack({ 860, 502, 110, 65 });
 	close_cent.speed = 0.1f;
 	close_cent.loop = false;
 
@@ -73,7 +73,7 @@ Enemy_Tank::Enemy_Tank(int x, int y, int wave) : Enemy(x, y)
 	dead.PushBack({ 494, 585, 110, 65 });
 	dead.PushBack({ 616, 585, 110, 65 });
 	dead.PushBack({ 738, 585, 110, 65 });
-	dead.PushBack({ 859, 585, 110, 65 });
+	dead.PushBack({ 860, 585, 110, 65 });
 	dead.speed = 0.1f;
 	dead.loop = true;
 	
