@@ -77,7 +77,7 @@ Our most important contributions to the game were:
 - (4th June) Power ups level are implemented for Ash. Marion has its automatic star attack and final audio effects are inserted.
 
 ## History
-During our GunBird development, the game had nine releases:
+During our GunBird development, the game had ten releases:
 - version 0.1 (20th March)
 - version 0.2 (26th March)
 - version 0.2.1 (29th March)
@@ -85,7 +85,7 @@ During our GunBird development, the game had nine releases:
 - version 0.4 (5th April)
 - version 0.45 (18th April)
 - version 0.46 (25th April)
-- version 0.5 (26th April) - [Prototype] (https://github.com/Adria-F/Gunbird-Coded-Dreams/releases/tag/0.5)
+- version 0.5 (26th April) - Prototype
 - version 0.6 (16th May)
 - version 1.0 (4th June) - Alpha
  
@@ -96,6 +96,7 @@ During our GunBird development, the game had nine releases:
 - Vladimir Agache - QA
 
 Our [Github](https://github.com/Adria-F/Gunbird-Coded-Dreams).
+
 Our [Trello](https://trello.com/b/dwxSlLBC/gunbird-coded-dreams).
 
 ## License
