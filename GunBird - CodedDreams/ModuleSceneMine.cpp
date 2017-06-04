@@ -368,6 +368,7 @@ update_status ModuleSceneMine::Update()
 	else if (winning && (win_timer_now > win_timer_total))
 	{
 		App->fade->FadeToBlack(this, App->highscores, 0.5f);
+		winning = false;
 	}
 	
 	if (((App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[SDL_CONTROLLER_BUTTON_Y] == PAD_BUTON_STATE::BUTTON_DOWN) && fading == false && App->fade->GetFadeState() == false) && App->render->debugging)
