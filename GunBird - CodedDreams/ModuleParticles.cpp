@@ -547,8 +547,8 @@ bool Particle::Update()
 		}
 		if (enemy != nullptr)
 		{
-			vector.x = enemy->position.x - (position.x);
-			vector.y = enemy->position.y - (position.y - App->render->camera.y);
+			vector.x = (enemy->position.x + (enemy->collider->rect.w/2)) - (position.x);
+			vector.y = (enemy->position.y + (enemy->collider->rect.h/2)) - (position.y - App->render->camera.y);
 
 			float modul = sqrt(pow(vector.x, 2.0) + pow(vector.y, 2.0));
 			vector.x /= modul;
