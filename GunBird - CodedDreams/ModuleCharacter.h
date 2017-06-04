@@ -43,6 +43,7 @@ public:
 	char* upgrade_path;
 	char* full_upgrade_path;
 	char* bomb_path;
+	char* hit_path;
 	particle_type shot_lvl1;
 	particle_type shot_lvl2;
 	particle_type shot_lvl3;

@@ -261,6 +261,8 @@ void Player::OnCollision(Collider* c1, Collider* c2)
 		{
 			hit_timer_start = SDL_GetTicks();
 			lives -= 1;
+			App->audio->Load(character->hit_path, App->audio->EFFECT);
+			App->audio->Play(App->audio->EFFECT);
 		}
 		if (lives == 0)
 			Disable();

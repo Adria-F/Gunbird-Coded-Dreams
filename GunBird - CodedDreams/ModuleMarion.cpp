@@ -223,6 +223,7 @@ bool ModuleMarion::Start()
 	upgrade_path = "assets/effects/upgrade_marion.wav";
 	full_upgrade_path = "assets/effects/marion_full_upgrade.wav";
 	bomb_path = "assets/effects/marion_bomb.wav";
+	hit_path = "assets/effects/marion_hit.wav";
 	shot_lvl1 = particle_type::P_MARION_BULLET_P1;
 	shot_lvl2 = particle_type::P_MARION_BULLET_P2;
 	shot_lvl3_left = particle_type::P_MARION_BULLET_P3_LEFT;
