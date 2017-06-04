@@ -121,6 +121,9 @@ Enemy_Flying_Machine::Enemy_Flying_Machine(int x, int y) : Enemy(x, y)
 	Shot_Total_time1 = (Uint32)(500.0f);
 	Shot_Total_time2 = (Uint32)(2000.0f);
 
+	collider_pos.y = 4;
+	collider_pos.x = 17;
+
 	//Add and save collider
 	//collider = App->collision->AddCollider({ x, y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
@@ -172,7 +175,7 @@ void Enemy_Flying_Machine::Move()
 	{
 		if (collider == nullptr && lives > 0)
 		{
-			collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 90, 69 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+			collider = App->collision->AddCollider({ (int)position.x, (int)position.y, 56, 52 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 		}
 		lower_level = false;
 	}

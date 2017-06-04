@@ -43,7 +43,7 @@ Enemy_Balloon::Enemy_Balloon(int x, int y): Enemy(x, y)
 	Shot_Total_time = (Uint32)(2000.0f);
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 42, 48 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ x, y, 42, 44 }, COLLIDER_AIR_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Balloon::~Enemy_Balloon()

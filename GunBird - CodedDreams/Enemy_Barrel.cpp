@@ -43,7 +43,9 @@ Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
 	explosion_type = MID1;
 
 	//Add and save collider
-	collider = App->collision->AddCollider({ x, y, 44, 30 }, COLLIDER_ENEMY, (Module*)App->enemies);
+	collider_pos.x = 10;
+	collider_pos.y = 1;
+	collider = App->collision->AddCollider({ x, y, 34, 26 }, COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Barrel::~Enemy_Barrel()
