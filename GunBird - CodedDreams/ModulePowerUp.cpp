@@ -150,6 +150,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					{
 						App->audio->Load(App->player1->character->full_upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
+						App->player1->points += 2000;
 						powerups[i] = nullptr;
 					}
 				}
@@ -164,6 +165,10 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						if (App->player1->bombs < 5)
 						{
 							App->player1->bombs++;
+						}
+						else
+						{
+							App->player1->points += 2000;
 						}
 						powerups[i] = nullptr;
 					}
@@ -206,6 +211,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					{
 						App->audio->Load(App->player2->character->full_upgrade_path, App->audio->EFFECT);
 						App->audio->Play(App->audio->EFFECT);
+						App->player2->points += 2000;
 						powerups[i] = nullptr;
 					}
 
@@ -221,6 +227,10 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						if (App->player2->bombs < 5)
 						{
 							App->player2->bombs++;
+						}
+						else
+						{
+							App->player2->points += 2000;
 						}
 						powerups[i] = nullptr;
 					}
